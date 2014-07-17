@@ -16,6 +16,7 @@
 #  room_type      :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  parking_spot   :reference
 #
 
 require 'rails_helper'
@@ -70,6 +71,11 @@ RSpec.describe Contract, :type => :model do
 	it "is invalid without a room type" do
 		subject.room_type = nil
 		expect(subject).to_not be_valid
+	end
+
+	it "is valid without a parking spot" do
+		subject.parking_spot = nil
+		expect(subject).to be_valid
 	end
 
 	it "is invalid if type is not Private or Shared" do

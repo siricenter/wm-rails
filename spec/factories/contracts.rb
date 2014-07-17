@@ -16,6 +16,7 @@
 #  room_type      :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  parking_spot   :reference
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

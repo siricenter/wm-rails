@@ -82,7 +82,8 @@ RSpec.describe ContractsController, :type => :controller do
 
 	describe "GET new" do
 		it "assigns a new contract as @contract" do
-			get :new, {}, valid_session
+			building = FactoryGirl.create :building
+			get :new, {building_id: building.to_param}, valid_session
 			expect(assigns(:contract)).to be_a_new(Contract)
 		end
 	end
@@ -109,9 +110,9 @@ RSpec.describe ContractsController, :type => :controller do
 				expect(assigns(:contract)).to be_persisted
 			end
 
-			it "redirects to the created contract" do
+			it "redirects to the root page" do
 				post :create, {:contract => valid_attributes}, valid_session
-				expect(response).to redirect_to(Contract.last)
+				expect(response).to redirect_to(root_path)
 			end
 		end
 
@@ -182,19 +183,22 @@ RSpec.describe ContractsController, :type => :controller do
 		end
 	end
 
-	describe "DELETE destroy" do
-		it "destroys the requested contract" do
-			contract = FactoryGirl.create :contract
-			expect {
-				delete :destroy, {:id => contract.to_param}, valid_session
-			}.to change(Contract, :count).by(-1)
-		end
+	# We're not exposing the DELETE functionality right now. If we need to,
+	# the tests are here.
+	#
+	#describe "DELETE destroy" do
+	#	it "destroys the requested contract" do
+	#		contract = FactoryGirl.create :contract
+	#		expect {
+	#			delete :destroy, {:id => contract.to_param}, valid_session
+	#		}.to change(Contract, :count).by(-1)
+	#	end
 
-		it "redirects to the contracts list" do
-			contract = FactoryGirl.create :contract
-			delete :destroy, {:id => contract.to_param}, valid_session
-			expect(response).to redirect_to(contracts_url)
-		end
-	end
+	#	it "redirects to the contracts list" do
+	#		contract = FactoryGirl.create :contract
+	#		delete :destroy, {:id => contract.to_param}, valid_session
+	#		expect(response).to redirect_to(contracts_url)
+	#	end
+	#end
 
 end

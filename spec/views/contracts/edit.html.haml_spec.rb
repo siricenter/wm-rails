@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe "contracts/edit", :type => :view do
   before(:each) do
     @contract = assign(:contract, FactoryGirl.create(:contract))
+	@semesters = assign(:semesters, [FactoryGirl.create(:semester)])
+	@building = assign(:building, FactoryGirl.create(:building))
+	@apartments = assign(:apartments, [FactoryGirl.create(:apartment, building: @building)])
   end
 
   it "renders the edit contract form" do
@@ -26,7 +29,7 @@ RSpec.describe "contracts/edit", :type => :view do
 
       assert_select "input#contract_home_zip[name=?]", "contract[home_zip]"
 
-      assert_select "input#contract_room_type[name=?]", "contract[room_type]"
+      assert_select "select#contract_room_type[name=?]", "contract[room_type]"
     end
   end
 end

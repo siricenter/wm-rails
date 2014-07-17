@@ -14,3 +14,5 @@ Apartment.create!({building: womens, number: 101, bed_count: 6, floor: 1})
 Apartment.create!({building: womens, number: 102, bed_count: 6, floor: 1})
 
 Semester.create!({name: "Spring 2014", start_date: Date.yesterday, end_date: Date.tomorrow})
+
+ParkingSpot.create!({number: 1})

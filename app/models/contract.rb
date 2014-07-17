@@ -16,11 +16,19 @@
 #  room_type      :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  parking_spot   :reference
 #
+
+class ParkingValidator < ActiveModel::Validator
+	def validate(record)
+		record.errors[:parking] << "spot is already reserved that semester" unless Contract.where(semester_id: record.semester_id, parking_spot: record.parking_spot) == []
+	end
+end
 
 class Contract < ActiveRecord::Base
 	belongs_to :apartment
 	belongs_to :semester
+	belongs_to :parking_spot
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -38,4 +46,5 @@ class Contract < ActiveRecord::Base
 
 	validates_presence_of :apartment
 	validates_presence_of :semester
+	validates_with ParkingValidator
 end

@@ -2,17 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "contracts/new", :type => :view do
   before(:each) do
-    assign(:contract, Contract.new(
-      :first_name => "MyString",
-      :last_name => "MyString",
-      :email => "MyString",
-      :home_address_1 => "MyString",
-      :home_address_2 => "MyString",
-      :home_city => "MyString",
-      :home_state => "MyString",
-      :home_zip => "MyString",
-      :room_type => "MyString"
-    ))
+    assign(:contract, FactoryGirl.build(:contract))
+    @contract = assign(:contract, FactoryGirl.build(:contract))
+	@semesters = assign(:semesters, [FactoryGirl.create(:semester)])
+	@building = assign(:building, FactoryGirl.create(:building))
+	@apartments = assign(:apartments, [FactoryGirl.create(:apartment, building: @building)])
   end
 
   it "renders new contract form" do
@@ -36,7 +30,7 @@ RSpec.describe "contracts/new", :type => :view do
 
       assert_select "input#contract_home_zip[name=?]", "contract[home_zip]"
 
-      assert_select "input#contract_room_type[name=?]", "contract[room_type]"
+      assert_select "select#contract_room_type[name=?]", "contract[room_type]"
     end
   end
 end

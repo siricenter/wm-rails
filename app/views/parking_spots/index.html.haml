@@ -1,0 +1,19 @@
+%h1 Listing parking_spots
+
+%table
+  %tr
+    %th Number
+    %th
+    %th
+    %th
+
+  - @parking_spots.each do |parking_spot|
+    %tr
+      %td= parking_spot.number
+      %td= link_to 'Show', parking_spot
+      %td= link_to 'Edit', edit_parking_spot_path(parking_spot)
+      %td= link_to 'Destroy', parking_spot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Parking spot', new_parking_spot_path

@@ -18,6 +18,9 @@ class ContractsController < ApplicationController
 		@semesters = Semester.all
 		@building = Building.find(params[:building_id])
 		@apartments = Apartment.where(building: @building)
+		@parking_spots = ParkingSpot.all
+
+		session[:building_id] = @building.id
 	end
 
 	# GET /contracts/1/edit
@@ -31,15 +34,27 @@ class ContractsController < ApplicationController
 		@semester = Semester.find(params[:contract][:semester])
 		@apartment = Apartment.find(params[:contract][:apartment])
 
+
 		@contract.semester = @semester
 		@contract.apartment = @apartment
+
+		unless params[:contract][:parking_spot] == ""
+			@parking = ParkingSpot.find(params[:contract][:parking_spot])
+			@contract.parking_spot = @parking
+		end
 
 		respond_to do |format|
 			if @contract.save
 				format.html { redirect_to :root, notice: 'Contract was successfully created.' }
 				format.json { render :show, status: :created, location: @contract }
 			else
-				format.html { render :new }
+				format.html { 
+					@building = @apartment.building
+					@apartments = @building.apartments
+					@parking_spots = ParkingSpot.all
+					@semesters = Semester.all
+					render :new 
+				}
 				format.json { render json: @contract.errors, status: :unprocessable_entity }
 			end
 		end
@@ -49,6 +64,8 @@ class ContractsController < ApplicationController
 	# PATCH/PUT /contracts/1.json
 	def update
 		respond_to do |format|
+			@semester = Semester.find(params[:contract][:semester])
+			@apartment = Apartment.find(params[:contract][:apartment])
 			if @contract.update(contract_params)
 				format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
 				format.json { render :show, status: :ok, location: @contract }

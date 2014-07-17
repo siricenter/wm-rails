@@ -6,6 +6,7 @@
         - @contract.errors.full_messages.each do |msg|
           %li= msg
 
+  %input{type: :hidden, value: @building.id, name: :building_id}
   %h2
     Your Information
   .field
@@ -25,7 +26,7 @@
     - apartment_options = @apartments.map do |apartment|
       - ["#{apartment.building.name} #{apartment.number}", apartment.id]
     = f.label :apartment
-    = f.select :apartment, apartment_options
+    = f.select :apartment, apartment_options, selected: params[:building_id]
 
   .field
     = f.label :room_type
@@ -36,6 +37,12 @@
     - semester_options = @semesters.map do |semester|
       - [semester.name, semester.id]
     = f.select :semester, semester_options
+
+  .field
+    - parking_options = @parking_spots.map do |spot|
+      - [spot.number, spot.id]
+    = f.label :parking_spot
+    = f.select :parking_spot, [['', '']].concat(parking_options), selected: @contract.parking_spot
 
   %h2
     Your Home Address

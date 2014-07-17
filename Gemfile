@@ -41,7 +41,7 @@ group :development do
 end
 
 group :test do
-	#gem 'capybara-rails', '~> 0.0.2'
+	gem 'capybara', '~> 2.4.1'
 end
 
 # Use ActiveModel has_secure_password
