@@ -1,0 +1,19 @@
+= form_for @path do |f|
+  - if @apartment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@apartment.errors.count, "error")} prohibited this apartment from being saved:"
+      %ul
+        - @apartment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :number
+    = f.number_field :number
+  .field
+    = f.label :bed_count
+    = f.select :bed_count, ['4', '6', '8']
+  .field
+    = f.label :floor
+    = f.select :floor, [1,2,3,4,5]
+  .actions
+    = f.submit 'Save'

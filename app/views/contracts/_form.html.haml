@@ -1,0 +1,58 @@
+= form_for @contract do |f|
+  - if @contract.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@contract.errors.count, "error")} prohibited this contract from being saved:"
+      %ul
+        - @contract.errors.full_messages.each do |msg|
+          %li= msg
+
+  %h2
+    Your Information
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :email
+    = f.text_field :email
+
+  %h2
+    Your Apartment
+
+  .field
+    - apartment_options = @apartments.map do |apartment|
+      - ["#{apartment.building.name} #{apartment.number}", apartment.id]
+    = f.label :apartment
+    = f.select :apartment, apartment_options
+
+  .field
+    = f.label :room_type
+    = f.select :room_type, ['Shared', 'Private']
+
+  .field
+    = f.label :semester
+    - semester_options = @semesters.map do |semester|
+      - [semester.name, semester.id]
+    = f.select :semester, semester_options
+
+  %h2
+    Your Home Address
+  .field
+    = f.label :home_address_1
+    = f.text_field :home_address_1
+  .field
+    = f.label :home_address_2
+    = f.text_field :home_address_2
+  .field
+    = f.label :home_city
+    = f.text_field :home_city
+  .field
+    = f.label :home_state
+    = f.text_field :home_state
+  .field
+    = f.label :home_zip
+    = f.text_field :home_zip
+  .actions
+    = f.submit 'Save'

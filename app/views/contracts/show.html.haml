@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @contract.first_name
+%p
+  %b Last name:
+  = @contract.last_name
+%p
+  %b Email:
+  = @contract.email
+%p
+  %b Home address 1:
+  = @contract.home_address_1
+%p
+  %b Home address 2:
+  = @contract.home_address_2
+%p
+  %b Home city:
+  = @contract.home_city
+%p
+  %b Home state:
+  = @contract.home_state
+%p
+  %b Home zip:
+  = @contract.home_zip
+%p
+  %b Room type:
+  = @contract.room_type
+
+= link_to 'Edit', edit_contract_path(@contract)
+\|
+= link_to 'Back', contracts_path

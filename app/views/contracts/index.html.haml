@@ -1,0 +1,33 @@
+%h1 Listing contracts
+
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th Email
+    %th Home address 1
+    %th Home address 2
+    %th Home city
+    %th Home state
+    %th Home zip
+    %th Room type
+    %th
+    %th
+    %th
+
+  - @contracts.each do |contract|
+    %tr
+      %td= contract.first_name
+      %td= contract.last_name
+      %td= contract.email
+      %td= contract.home_address_1
+      %td= contract.home_address_2
+      %td= contract.home_city
+      %td= contract.home_state
+      %td= contract.home_zip
+      %td= contract.room_type
+      %td= link_to 'Show', contract
+      %td= link_to 'Edit', edit_contract_path(contract)
+      %td= link_to 'Destroy', contract, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
