@@ -73,10 +73,10 @@ RSpec.describe Contract, :type => :model do
 		expect(subject).to_not be_valid
 	end
 
-	it "is valid without a parking spot" do
-		subject.parking_spot = nil
-		expect(subject).to be_valid
-	end
+    it "is invalid if parking_type is not none covered or uncovered" do
+        subject.parking_type = "pineapple"
+        expect(subject).to_not be_valid
+    end
 
 	it "is invalid if type is not Private or Shared" do
 		subject.room_type = "Random"

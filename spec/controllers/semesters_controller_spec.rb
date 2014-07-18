@@ -26,13 +26,19 @@ RSpec.describe SemestersController, :type => :controller do
 	let(:valid_attributes) {{
 		name: "Spring Semester 2014", 
 		start_date: Date.yesterday,
-		end_date: Date.tomorrow
+		end_date: Date.tomorrow,
+		private_cost: 1500,
+		shared_cost: 1200,
+		deposit: 250
 	}}
 
 	let(:invalid_attributes) {{
 		name: "Spring Semester 2014", 
 		start_date: Date.today,
-		end_date: Date.today
+		end_date: Date.today,
+		private_cost: 1500,
+		shared_cost: 1200,
+		deposit: 250
 	}}
 
 	# This should return the minimal set of values that should be in the session
@@ -42,7 +48,7 @@ RSpec.describe SemestersController, :type => :controller do
 
 	describe "GET index" do
 		it "assigns all semesters as @semesters" do
-			semester = Semester.create! valid_attributes
+			semester = FactoryGirl.create :semester
 			get :index, {}, valid_session
 			expect(assigns(:semesters)).to eq([semester])
 		end
@@ -50,7 +56,7 @@ RSpec.describe SemestersController, :type => :controller do
 
 	describe "GET show" do
 		it "assigns the requested semester as @semester" do
-			semester = Semester.create! valid_attributes
+			semester = FactoryGirl.create :semester
 			get :show, {:id => semester.to_param}, valid_session
 			expect(assigns(:semester)).to eq(semester)
 		end
@@ -65,7 +71,7 @@ RSpec.describe SemestersController, :type => :controller do
 
 	describe "GET edit" do
 		it "assigns the requested semester as @semester" do
-			semester = Semester.create! valid_attributes
+			semester = FactoryGirl.create :semester
 			get :edit, {:id => semester.to_param}, valid_session
 			expect(assigns(:semester)).to eq(semester)
 		end
@@ -109,11 +115,14 @@ RSpec.describe SemestersController, :type => :controller do
 			let(:new_attributes) {{
 				name: "Spring Semester 2014", 
 				start_date: Date.yesterday,
-				end_date: Date.tomorrow.next
+				end_date: Date.tomorrow.next,
+				private_cost: 1500,
+				shared_cost: 1200,
+				deposit: 250
 			}}
 
 			it "updates the requested semester" do
-				semester = Semester.create! valid_attributes
+				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => new_attributes}, valid_session
 				semester.reload
 				expect(semester.start_date).to eq(Date.yesterday)
@@ -121,13 +130,13 @@ RSpec.describe SemestersController, :type => :controller do
 			end
 
 			it "assigns the requested semester as @semester" do
-				semester = Semester.create! valid_attributes
+				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => valid_attributes}, valid_session
 				expect(assigns(:semester)).to eq(semester)
 			end
 
 			it "redirects to the semester" do
-				semester = Semester.create! valid_attributes
+				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => valid_attributes}, valid_session
 				expect(response).to redirect_to(semester)
 			end
@@ -135,13 +144,13 @@ RSpec.describe SemestersController, :type => :controller do
 
 		describe "with invalid params" do
 			it "assigns the semester as @semester" do
-				semester = Semester.create! valid_attributes
+				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => invalid_attributes}, valid_session
 				expect(assigns(:semester)).to eq(semester)
 			end
 
 			it "re-renders the 'edit' template" do
-				semester = Semester.create! valid_attributes
+				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => invalid_attributes}, valid_session
 				expect(response).to render_template("edit")
 			end
@@ -150,14 +159,14 @@ RSpec.describe SemestersController, :type => :controller do
 
 	describe "DELETE destroy" do
 		it "destroys the requested semester" do
-			semester = Semester.create! valid_attributes
+			semester = FactoryGirl.create :semester
 			expect {
 				delete :destroy, {:id => semester.to_param}, valid_session
 			}.to change(Semester, :count).by(-1)
 		end
 
 		it "redirects to the semesters list" do
-			semester = Semester.create! valid_attributes
+			semester = FactoryGirl.create :semester
 			delete :destroy, {:id => semester.to_param}, valid_session
 			expect(response).to redirect_to(semesters_url)
 		end

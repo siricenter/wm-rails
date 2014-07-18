@@ -2,12 +2,15 @@
 #
 # Table name: semesters
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  start_date :date
-#  end_date   :date
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  start_date   :date
+#  end_date     :date
+#  created_at   :datetime
+#  updated_at   :datetime
+#  private_cost :integer
+#  shared_cost  :integer
+#  deposit      :integer
 #
 
 require 'rails_helper'
@@ -45,4 +48,9 @@ RSpec.describe Semester, :type => :model do
 		subject.end_date = Date.yesterday
 		expect(subject).to_not be_valid
 	end
+    
+    it "is invalid without private cost" do
+        subject.private_cost = nil
+        expect(subject).to_not be_valid
+    end
 end

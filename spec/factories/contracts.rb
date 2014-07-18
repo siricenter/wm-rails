@@ -34,5 +34,6 @@ FactoryGirl.define do
 		home_state { Faker::Address.state }
 		home_zip { Faker::Address.zip }
 		room_type "Shared"
+        parking_type "Covered"
 	end
 end

@@ -37,7 +37,8 @@ RSpec.describe ContractsController, :type => :controller do
 			home_city: Faker::Address.city,
 			home_state: Faker::Address.state,
 			home_zip: Faker::Address.zip,
-			room_type: "Shared"
+			room_type: "Shared",
+            parking_type: "Covered"
 		}
 	}
 
