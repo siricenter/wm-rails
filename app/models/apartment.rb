@@ -22,7 +22,7 @@ class Apartment < ActiveRecord::Base
 	validates_presence_of :building
 
 	def available? semester
-        remaining_beds(semester) >= 1
+        remaining_beds(semester) > 0
 	end
 
     def remaining_beds semester
