@@ -92,4 +92,16 @@ RSpec.describe Contract, :type => :model do
 		subject.room_type = "Private"
 		expect(subject.beds).to eq(2)
 	end
+    
+    it "is invalid if the apartment is full" do
+        3.times do
+        	FactoryGirl.create :contract, apartment: subject.apartment, room_type: 'Private'
+        end
+        saved_contracts = Contract.where(apartment: subject.apartment)
+        expect(saved_contracts.count).to eq(3)
+        expect(subject.apartment.remaining_beds(subject.semester)).to eq(0)
+        expect(subject.apartment.beds_taken(subject.semester)).to eq(6)
+        expect(subject).to_not be_valid
+    end
+    
 end

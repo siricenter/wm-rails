@@ -19,10 +19,15 @@
 #  parking_type   :string(255)
 #
 
+class ApartmentAvailablityValidator < ActiveModel::Validator
+	def validate(record)
+        record.errors[:apartment] << "is full" unless record.apartment.available?(record.semester)
+    end 
+end
+
 class Contract < ActiveRecord::Base
 	belongs_to :apartment
 	belongs_to :semester
-	belongs_to :parking_spot
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -34,11 +39,14 @@ class Contract < ActiveRecord::Base
 	validates :room_type, presence: true, inclusion: { in: %w(Private Shared) }
 	validates :parking_type, presence: true, inclusion: { in: %w(None Covered Uncovered) }
 
+	validates_presence_of :apartment
+	validates_presence_of :semester
+    
+    validates_with ApartmentAvailablityValidator
+    
 	def beds
 		return 1 if room_type == "Shared"
 		return 2 if room_type == "Private"
+        return 100
 	end
-
-	validates_presence_of :apartment
-	validates_presence_of :semester
 end

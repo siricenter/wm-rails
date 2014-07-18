@@ -60,7 +60,7 @@ RSpec.describe Apartment, :type => :model do
 
 		it "knows how many beds have been taken in a semester" do
 			expect(subject.beds_taken(@semester)).to eq(3)
-			expect(subject.remaining_rooms(@semester)).to eq(3)
+            expect(subject.remaining_beds(@semester)).to eq(3)
 		end
 
 		it "knows if there is an availability in the apartment" do
