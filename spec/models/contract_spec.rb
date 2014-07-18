@@ -16,7 +16,7 @@
 #  room_type      :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  parking_spot   :reference
+#  parking_type   :string(255)
 #
 
 require 'rails_helper'

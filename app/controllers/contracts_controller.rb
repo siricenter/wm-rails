@@ -18,7 +18,6 @@ class ContractsController < ApplicationController
 		@semesters = Semester.all
 		@building = Building.find(params[:building_id])
 		@apartments = Apartment.where(building: @building)
-		@parking_spots = ParkingSpot.all
 
 		session[:building_id] = @building.id
 	end
@@ -38,11 +37,6 @@ class ContractsController < ApplicationController
 		@contract.semester = @semester
 		@contract.apartment = @apartment
 
-		unless params[:contract][:parking_spot] == ""
-			@parking = ParkingSpot.find(params[:contract][:parking_spot])
-			@contract.parking_spot = @parking
-		end
-
 		respond_to do |format|
 			if @contract.save
 				format.html { redirect_to :root, notice: 'Contract was successfully created.' }
@@ -51,7 +45,6 @@ class ContractsController < ApplicationController
 				format.html { 
 					@building = @apartment.building
 					@apartments = @building.apartments
-					@parking_spots = ParkingSpot.all
 					@semesters = Semester.all
 					render :new 
 				}
@@ -94,6 +87,6 @@ class ContractsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def contract_params
-		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type)
+		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type)
 	end
 end
