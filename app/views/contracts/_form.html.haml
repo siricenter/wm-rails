@@ -39,10 +39,8 @@
     = f.select :semester, semester_options, class: 'col-sm-4'
 
   .row.field
-    - parking_options = @parking_spots.map do |spot|
-      - [spot.number, spot.id]
-    = f.label :parking_spot, class: 'col-sm-2'
-    = f.select :parking_spot, [['', '']].concat(parking_options), selected: @contract.parking_spot, class: 'col-sm-4'
+    = f.label :parking_type, class: 'col-sm-2'
+    = f.select :parking_type, ['None', 'Uncovered', 'Covered']
 
   %h2
     Your Home Address
