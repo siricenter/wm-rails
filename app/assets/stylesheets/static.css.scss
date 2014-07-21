@@ -98,13 +98,11 @@ body
 	{
 		height: 40px;
 	}
-
 }
 
 .btn-blocky
 {
 	border-radius: none;
-	background-color: lightgreen;
 	height: 100%;
 	margin: 0;
 
@@ -112,7 +110,16 @@ body
 	{
 		margin-top: 30px;
 	}
+}
 
+.success
+{
+	background-color: lightgreen;
+}
+
+.failure
+{
+	background-color: red;
 }
 
 .inner-tile
@@ -145,21 +152,21 @@ body
 
 .cir-img-complex
 {
-	background: url("../img/building_art.jpg") no-repeat;
+	background: image-url('building_art.jpg') no-repeat;
 	background-size: 250px;
 	background-position: center;
 }
 
 .cir-img-apartments
 {
-	background: url("../img/large_apt.jpg") no-repeat;
+	background: image-url('large_apt.jpg') no-repeat;
 	background-size: 250px;
 	background-position: center;
 }
 
 .cir-img-amenities
 {
-	background: url("../img/amenities_example.jpg") no-repeat;
+	background: image-url('amenities_example.jpg') no-repeat;
 	background-size: 250px;
 	background-position: center;
 }

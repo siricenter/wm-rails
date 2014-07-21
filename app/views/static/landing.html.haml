@@ -15,14 +15,15 @@
         %p.col-md-3
           = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name')
         .col-md-1.gender-icon
-          = image_tag 'women_icon_wh.png'
+          = image_tag 'women_icon_wh.png', id: :womens
           %p Women
         .col-md-1.gender-icon
-          = image_tag 'men_icon_wh.png'
+          = image_tag 'men_icon_wh.png', id: :mens
           %p Men
         .col-md-1
-        .col-md-2.col-md-offset-1.text-center.btn-blocky
-          %p Book Now
+        .col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
+          %p 
+            /Book Now
   .row
     .col-md-4.col-md-4.tile
       .inner-tile
