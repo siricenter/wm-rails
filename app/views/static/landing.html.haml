@@ -1,3 +1,79 @@
-
-%a{href: "http://dirten-pencil.codio.io:3000/choose"}
-  choose!
+/ Main jumbotron for a primary marketing message or call to action
+.container-fluid
+  .row
+    %div
+      #home-title
+        %h1.text-center Welcome Home
+        #tagline.cntr
+          %p.text-center This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+        .cntr.fit-width
+          %a.btn.btn-primary.btn-lg{:role => "button"} Learn more &raquo;
+      / <img id="main-img" src="img/building_art.jpg">
+    .col-md-12
+      .row.availability
+        %p.col-md-4 Check Availability
+        %p.col-md-3
+          = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name')
+        .col-md-1.gender-icon
+          = image_tag 'women_icon_wh.png'
+          %p Women
+        .col-md-1.gender-icon
+          = image_tag 'men_icon_wh.png'
+          %p Men
+        .col-md-1
+        .col-md-2.col-md-offset-1.text-center.btn-blocky
+          %p Book Now
+  .row
+    .col-md-4.col-md-4.tile
+      .inner-tile
+        .circular.cir-img-complex
+        %h3 Complex
+        %p Info about the complex
+        %button.btn.cntr Learn More
+    .col-md-4.col-md-4.tile
+      .inner-tile
+        .circular.cir-img-apartments
+        %h3 Apartments
+        %p Info about the Apartments
+        %button.btn.cntr Learn More
+    .col-md-4.col-md-4.tile
+      .inner-tile
+        .circular.cir-img-amenities
+        %h3 Amenities
+        %p Info about the amenities
+        %button.btn.cntr Learn More
+    .col-md-4.col-md-4.tile
+      .inner-tile
+        .circular.cir-img-reservations
+        %h3 Reservations
+        %p Info about the reservations
+        %button.btn.cntr Learn More
+    .col-md-4.col-md-4.tile
+      .inner-tile
+        .circular.cir-img-tenants
+        %h3 Current Tenants
+        %p Info for current tenants
+        %button.btn.cntr Learn More
+    .col-md-4.col-md-4.tile
+      .inner-tile
+        .circular.cir-img-gallery
+        %h3 Gallery
+        %p A photo gallery
+        %button.btn.cntr Learn More
+  .row
+    .col-md-2
+    #news.inner-tile.col-md-8.col-md-offset-2
+      %h3 Latest News
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      %p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+  #social.row
+    %h3.col-md-12.text-center Follow us on
+    #social-icons.col-md-12
+      .cntr.fit-width
+        %a{:href => ""}
+          = image_tag 'facebook.png'
+        %a{:href => ""}
+          = image_tag 'twitter.png'
+  %hr/
+  %footer
+    %p.text-center &copy; Windsor Manor 2014

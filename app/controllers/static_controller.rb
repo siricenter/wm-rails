@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
   def landing
+	  @semesters = Semester.all
   end
 
   def choose
