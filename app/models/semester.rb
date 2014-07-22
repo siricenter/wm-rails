@@ -24,7 +24,7 @@ end
 class Semester < ActiveRecord::Base
 	has_many :contracts
 
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
 	validates :start_date, presence: true
 	validates :end_date, presence: true
     validates :private_cost, presence: true, numericality: true
