@@ -35,10 +35,7 @@ def install_mongo
 end
 
 def setup_database
-	puts `psql setup_db.sql`
-end
-
-def migrate
+	puts `rake db:create:all`
 	puts `rake db:migrate`
 	puts `rake db:seed`
 end
@@ -73,12 +70,9 @@ def install_packages
 	end
 end
 
-#install_mysql
-#install_mongo
 install_postgres
 setup_database
 bundle_install
-migrate
 start_server
 get_vimrc
 install_vundle
