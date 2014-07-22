@@ -31,7 +31,7 @@ class Contract < ActiveRecord::Base
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
-	validates :email, presence: true
+	validates :email, presence: true, format: {with: /@byui.edu/}
 	validates :home_address_1, presence: true
 	validates :home_city, presence: true
 	validates :home_state, presence: true
