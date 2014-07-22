@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 		put '/contracts/:id', to: 'contracts#update'
 		get '/contracts/:id/edit', to: 'contracts#edit', as: :edit_contract
 
-		resources :parking_spots
-
 		resources :buildings do
 			resources :apartments, shallow: true
 		end
