@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
 	before_action :set_contract, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_admin!, only: [:index, :show, :edit, :update]
 
 	# GET /contracts
 	# GET /contracts.json
