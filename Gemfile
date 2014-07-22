@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'haml-rails', '~> 0.5.3'
 gem 'devise', '~> 3.2.4'
+gem 'bootstrap-sass', '~> 3.2.0.0'
 
 group :development, :test do
 	gem 'factory_girl_rails', '~> 4.4.1'
@@ -54,5 +55,5 @@ end
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 

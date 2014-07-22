@@ -2,12 +2,15 @@
 #
 # Table name: semesters
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  start_date :date
-#  end_date   :date
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  start_date   :date
+#  end_date     :date
+#  created_at   :datetime
+#  updated_at   :datetime
+#  private_cost :integer
+#  shared_cost  :integer
+#  deposit      :integer
 #
 
 class DurationValidator < ActiveModel::Validator
@@ -24,5 +27,9 @@ class Semester < ActiveRecord::Base
 	validates :name, presence: true
 	validates :start_date, presence: true
 	validates :end_date, presence: true
-	validates_with DurationValidator
+    validates :private_cost, presence: true, numericality: true
+    validates :shared_cost, presence: true, numericality: true
+    validates :deposit, presence: true, numericality: true
+    
+    validates_with DurationValidator
 end

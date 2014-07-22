@@ -1,10 +1,178 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body
+{
+	background-color: whitesmoke;
+	background-image: image-url('wm-banner.jpg');
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 100% 675px;
+}
 
-//body 
-//{
-//	background-image: image-url('wm-banner.jpg');
-//	background-repeat: no-repeat;
-//	background-size: 100%;
-//}
+.cntr
+{
+	margin: 0 auto;
+	display: block;
+}
+
+.fit-width
+{
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+}
+
+.navbar-fixed-top
+{
+	//position: static;
+}
+
+.navbar
+{
+	background: whitesmoke;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	padding-bottom: 30px;
+}
+
+.navbar-header .navbar-brand img{
+	height: 70px;
+	margin-top: -10px;
+}
+
+#home-title
+{
+	width: 100%;
+	background: rgba(35,45,81,0.65);
+	color: white;
+	padding-top: 25px;
+	padding-bottom: 40px;
+	margin-top: 200px;
+	margin-bottom: 175px;
+}
+
+#tagline
+{
+	width: 35%;
+}
+
+#main-img
+{
+	width: 100%;
+	margin-top: -170px; /*TODO: this is just a quick fix*/
+}
+
+.availability
+{
+	background-color: brown;
+	height: 80px;
+
+	& > *
+	{
+		background-color: brown;
+	}
+
+	& > p
+	{
+		color: white;
+		margin-top: 30px;
+	}
+
+	& > div
+	{
+		color: white;
+	}
+
+	& > div:not(.btn-blocky)
+	{
+		margin-top: 10px;
+	}
+
+}
+
+.gender-icon
+{
+	float: left;
+	text-align: center;
+
+	img 
+	{
+		height: 40px;
+	}
+}
+
+.btn-blocky
+{
+	border-radius: none;
+	height: 100%;
+	margin: 0;
+
+	p
+	{
+		margin-top: 30px;
+	}
+}
+
+.success
+{
+	background-color: lightgreen;
+}
+
+.failure
+{
+	background-color: red;
+}
+
+.inner-tile
+{
+	background: white;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	margin: 15px 0px;
+	padding: 10px;
+
+	& > h3, & > p
+	{
+		margin: 10px auto;
+		text-align: center;
+	}
+
+	& > button
+	{
+		margin-top: 50px;
+	}
+}
+
+.circular
+{
+	width: 115px;
+	height: 115px;
+	border-radius: 60px;
+	box-shadow: 0 0 8px rgba(0,0,5px,0.5);
+	margin: 20px auto 35px;
+}
+
+.cir-img-complex
+{
+	background: image-url('building_art.jpg') no-repeat;
+	background-size: 250px;
+	background-position: center;
+}
+
+.cir-img-apartments
+{
+	background: image-url('large_apt.jpg') no-repeat;
+	background-size: 250px;
+	background-position: center;
+}
+
+.cir-img-amenities
+{
+	background: image-url('amenities_example.jpg') no-repeat;
+	background-size: 250px;
+	background-position: center;
+}
+
+#news, #social
+{
+	margin-top: 50px;
+}
+

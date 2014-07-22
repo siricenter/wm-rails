@@ -9,57 +9,60 @@
   %input{type: :hidden, value: @building.id, name: :building_id}
   %h2
     Your Information
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    = f.text_field :email
+  .row.field
+    = f.label :first_name, 'First Name', class: 'col-sm-2'
+    = f.text_field :first_name, class: 'col-sm-4'
+  .row.field
+    = f.label :last_name, 'Last Name', class: 'col-sm-2'
+    = f.text_field :last_name, class: 'col-sm-4'
+  .row.field
+    = f.label :school_email, 'School Email', class: 'col-sm-2'
+    = f.text_field :email, class: 'col-sm-4'
 
   %h2
     Your Apartment
 
-  .field
+  .row.field
     - apartment_options = @apartments.map do |apartment|
       - ["#{apartment.building.name} #{apartment.number}", apartment.id]
-    = f.label :apartment
-    = f.select :apartment, apartment_options, selected: params[:building_id]
+    = f.label :apartment, class: 'col-sm-2'
+    = f.select :apartment, apartment_options, selected: params[:building_id], class: 'col-sm-4'
 
-  .field
-    = f.label :room_type
-    = f.select :room_type, ['Shared', 'Private']
+  .row.field
+    = f.label :room_type, 'Room Type', class: 'col-sm-2'
+    = f.select :room_type, ['Shared', 'Private'], class: 'col-sm-4'
 
-  .field
-    = f.label :semester
+  .row.field
+    = f.label :semester, class: 'col-sm-2'
     - semester_options = @semesters.map do |semester|
       - [semester.name, semester.id]
-    = f.select :semester, semester_options
+    = f.select :semester, semester_options, class: 'col-sm-4'
 
-  .field
-    - parking_options = @parking_spots.map do |spot|
-      - [spot.number, spot.id]
-    = f.label :parking_spot
-    = f.select :parking_spot, [['', '']].concat(parking_options), selected: @contract.parking_spot
+  .row.field
+    = f.label :parking_type, 'Parking Type', class: 'col-sm-2'
+    = f.select :parking_type, ['None', 'Uncovered', 'Covered']
 
   %h2
     Your Home Address
-  .field
-    = f.label :home_address_1
-    = f.text_field :home_address_1
-  .field
-    = f.label :home_address_2
-    = f.text_field :home_address_2
-  .field
-    = f.label :home_city
-    = f.text_field :home_city
-  .field
-    = f.label :home_state
-    = f.text_field :home_state
-  .field
-    = f.label :home_zip
-    = f.text_field :home_zip
+  .row.field
+    = f.label :home_address_1, 'Home Address 1', class: 'col-sm-2'
+    = f.text_field :home_address_1, class: 'col-sm-4'
+
+  .row.field
+    = f.label :home_address_2, 'Home Address 2', class: 'col-sm-2'
+    = f.text_field :home_address_2, class: 'col-sm-4'
+
+  .row.field
+    = f.label :home_city, 'Home City', class: 'col-sm-2'
+    = f.text_field :home_city, class: 'col-sm-4'
+
+  .row.field
+    = f.label :home_state, 'Home State', class: 'col-sm-2'
+    = f.text_field :home_state, class: 'col-sm-4'
+
+  .row.field
+    = f.label :home_zip, 'Home Zip', class: 'col-sm-2'
+    = f.text_field :home_zip, class: 'col-sm-4'
+
   .actions
     = f.submit 'Save'

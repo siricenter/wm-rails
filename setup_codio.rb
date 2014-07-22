@@ -78,7 +78,7 @@ end
 install_postgres
 install_sqlite
 bundle_install
-setup_database
+migrate
 start_server
 get_vimrc
 install_vundle

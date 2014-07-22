@@ -22,10 +22,10 @@ class Apartment < ActiveRecord::Base
 	validates_presence_of :building
 
 	def available? semester
-		remaining_rooms(semester) > 1
+        remaining_beds(semester) > 0
 	end
 
-	def remaining_rooms semester
+    def remaining_beds semester
 		bed_count - beds_taken(semester)
 	end
 
@@ -36,6 +36,6 @@ class Apartment < ActiveRecord::Base
 		contracts.each do |contract|
 			beds += contract.beds
 		end
-		beds
+		return beds
 	end
 end
