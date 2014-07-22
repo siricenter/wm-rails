@@ -1,6 +1,7 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$nav-height: 80px;
 body
 {
 	background-color: #9A9C99;
@@ -36,7 +37,7 @@ body
 }
 
 .navbar-header .navbar-brand img{
-	height: 70px;
+	height: $nav-height;
 	margin-top: -10px;
 }
 
@@ -47,7 +48,7 @@ body
 	color: white;
 	padding-top: 25px;
 	padding-bottom: 40px;
-	margin-top: 200px;
+	margin-top: 120px;
 	margin-bottom: 175px;
 }
 
@@ -216,4 +217,9 @@ body
 		background-color: #5f7319;
 		border-color: #5f7319;
 	}
+}
+
+.main 
+{
+	margin-top: $nav-height;
 }

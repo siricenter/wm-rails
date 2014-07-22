@@ -1,29 +1,27 @@
 / Main jumbotron for a primary marketing message or call to action
 .container-fluid
   .row
-    %div
-      #home-title
-        %h1.text-center Welcome Home
-        #tagline.cntr
-          %p.text-center Windsor Manor is a brand new apartment complex close to campus and outfitted with top grade amenities. With study rooms, music rooms, game rooms, themed decor and spacious rooms it's the perfect place to call home (even if your mom's not cooking dinner).
-        .cntr.fit-width
-          = link_to "Book Now!", choose_apartment_path, class: ['btn', 'btn-primary', 'btn-lg'], role: 'button'
-      / <img id="main-img" src="img/building_art.jpg">
-    .col-md-12
-      .row.availability
-        %p.col-md-4 Check Availability
-        %p.col-md-3
-          = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name')
-        .col-md-1.gender-icon
-          = image_tag 'women_icon_wh.png', id: :womens
-          %p Women
-        .col-md-1.gender-icon
-          = image_tag 'men_icon_wh.png', id: :mens
-          %p Men
-        .col-md-1
-        .col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
-          %p 
-            /Book Now
+    #home-title
+      %h1.text-center Welcome Home
+      #tagline.cntr
+        %p.text-center Windsor Manor is a brand new apartment complex close to campus and outfitted with top grade amenities. With study rooms, music rooms, game rooms, themed decor and spacious rooms it's the perfect place to call home (even if your mom's not cooking dinner).
+      .cntr.fit-width
+        = link_to "Book Now!", choose_apartment_path, class: ['btn', 'btn-primary', 'btn-lg'], role: 'button'
+    / <img id="main-img" src="img/building_art.jpg">
+  .row.availability
+    %p.col-md-4 Check Availability
+    %p.col-md-3
+      = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name')
+    .col-md-1.gender-icon
+      = image_tag 'women_icon_wh.png', id: :womens
+      %p Women
+    .col-md-1.gender-icon
+      = image_tag 'men_icon_wh.png', id: :mens
+      %p Men
+    .col-md-1
+    .col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
+      %p 
+        /Book Now
   .row
     .col-md-4.col-md-4.tile
       .inner-tile
