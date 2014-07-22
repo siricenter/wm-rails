@@ -1,7 +1,12 @@
-%h1
-  Men's or Women's?
-.cntr.col-md-4
-  = link_to new_contract_path(@womens) do
-    = image_tag 'women_icon.png', class: [:bordered, 'col-md-6']
-  = link_to new_contract_path(@mens) do  
-    = image_tag 'men_icon.png', class: [:bordered, 'col-md-6']
+.container-fluid
+  #choose-main.row
+    = link_to new_contract_path(@mens) do
+      .choose-tag.choose-left
+        .arrow-left
+        %p Men's Housing
+      = image_tag 'studentsgrp.png', class: [:choose]
+    = link_to new_contract_path(@womens) do 
+      .choose-tag.choose-right
+        %p Women's Housing
+        .arrow-right
+      = image_tag 'studentstbl.png', class: [:choose]
