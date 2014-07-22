@@ -71,8 +71,8 @@ def install_packages
 end
 
 install_postgres
-setup_database
 bundle_install
+setup_database
 start_server
 get_vimrc
 install_vundle
