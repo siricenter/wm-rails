@@ -1,7 +1,8 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$nav-height: 80px;
+@import 'navbar.css';
+
 body
 {
 	background-color: #9A9C99;
@@ -24,23 +25,6 @@ body
 	width: -webkit-fit-content;
 }
 
-.navbar-fixed-top
-{
-	//position: static;
-}
-
-.navbar
-{
-	background: whitesmoke;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-	padding-bottom: 30px;
-}
-
-.navbar-header .navbar-brand img{
-	height: $nav-height;
-	margin-top: -10px;
-}
-
 #home-title
 {
 	width: 100%;
@@ -55,12 +39,6 @@ body
 #tagline
 {
 	width: 35%;
-}
-
-#main-img
-{
-	width: 100%;
-	margin-top: -170px; /*TODO: this is just a quick fix*/
 }
 
 .availability
@@ -204,24 +182,6 @@ body
 .opaque
 {
 	background-color: #9A9C99;
-}
-
-.btn-primary
-{
-	background-image: linear-gradient(to bottom, #98b855 0%, #5f7319 100%);
-	background-repeat: repeat-x;
-	border-color: #5f7319;
-	
-	&:hover
-	{
-		background-color: #5f7319;
-		border-color: #5f7319;
-	}
-}
-
-.main 
-{
-	margin-top: $nav-height + 15;
 }
 
 #session

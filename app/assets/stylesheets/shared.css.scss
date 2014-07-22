@@ -1,0 +1,13 @@
+.btn-primary
+{
+	background-image: linear-gradient(to bottom, #98b855 0%, #5f7319 100%);
+	background-repeat: repeat-x;
+	border-color: #5f7319;
+	
+	&:hover
+	{
+		background-color: #5f7319;
+		border-color: #5f7319;
+	}
+}
+
