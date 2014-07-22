@@ -1,6 +1,7 @@
 %h1
   Men's or Women's?
-= link_to new_contract_path(@womens) do
-  = image_tag 'women_icon.png'
-= link_to new_contract_path(@mens) do  
-  = image_tag 'men_icon.png'
+.cntr.col-md-4
+  = link_to new_contract_path(@womens) do
+    = image_tag 'women_icon.png', class: [:bordered, 'col-md-6']
+  = link_to new_contract_path(@mens) do  
+    = image_tag 'men_icon.png', class: [:bordered, 'col-md-6']
