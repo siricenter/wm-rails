@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	devise_for :admins
 	get '/choose', to: 'static#choose', as: :choose_apartment
 
 	get '/contracts/new/:building_id', to: 'contracts#new', as: :new_contract
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
 		put '/contracts/:id', to: 'contracts#update'
 		get '/contracts/:id/edit', to: 'contracts#edit', as: :edit_contract
 
-  		resources :parking_spots
+		resources :parking_spots
 
 		resources :buildings do
 			resources :apartments, shallow: true
