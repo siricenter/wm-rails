@@ -3,11 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body
 {
-	background-color: whitesmoke;
+	background-color: #9A9C99;
 	background-image: image-url('wm-banner.jpg');
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 675px;
+	color: #2B2B2B;
 }
 
 .cntr
@@ -63,12 +64,12 @@ body
 
 .availability
 {
-	background-color: brown;
+	background-color: #591616;
 	height: 80px;
 
 	& > *
 	{
-		background-color: brown;
+		background-color: #591616;
 	}
 
 	& > p
@@ -93,6 +94,7 @@ body
 {
 	float: left;
 	text-align: center;
+  cursor: pointer;
 
 	img 
 	{
@@ -114,7 +116,7 @@ body
 
 .success
 {
-	background-color: lightgreen;
+	background-color: #5f7319;
 }
 
 .failure
@@ -179,4 +181,17 @@ body
 .opaque
 {
 	background-color: #9A9C99;
+}
+
+.btn-primary
+{
+	background-image: linear-gradient(to bottom, #98b855 0%, #5f7319 100%);
+	background-repeat: repeat-x;
+	border-color: #5f7319;
+	
+	&:hover
+	{
+		background-color: #5f7319;
+		border-color: #5f7319;
+	}
 }

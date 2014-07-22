@@ -7,7 +7,7 @@
         #tagline.cntr
           %p.text-center This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
         .cntr.fit-width
-          %a.btn.btn-primary.btn-lg{:role => "button"} Learn more &raquo;
+          = link_to "Book Now!", choose_apartment_path, class: ['btn', 'btn-primary', 'btn-lg'], role: 'button'
       / <img id="main-img" src="img/building_art.jpg">
     .col-md-12
       .row.availability
