@@ -20,5 +20,23 @@
 require 'rails_helper'
 
 RSpec.describe Admin, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	subject {FactoryGirl.build :admin}
+
+	it "has a valid factory" do
+		expect(subject).to be_valid
+	end
+
+	it "is invalid without an email" do
+		subject.email = nil
+		expect(subject).to_not be_valid
+	end
+
+	it "is invalid without a password" do
+		subject.password = nil
+		expect(subject).to_not be_valid
+	end
+
+	it "successfully creates an admin" do
+		expect {FactoryGirl.create :admin}.to change(Admin, :count).by(1)
+	end
 end

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "contracts/edit", :type => :view do
   before(:each) do
-    @contract = assign(:contract, FactoryGirl.create(:contract))
 	@semesters = assign(:semesters, [FactoryGirl.create(:semester)])
+    @contract = assign(:contract, FactoryGirl.create(:contract, semester: @semesters.first))
 	@building = assign(:building, FactoryGirl.create(:building))
 	@apartments = assign(:apartments, [FactoryGirl.create(:apartment, building: @building)])
   end

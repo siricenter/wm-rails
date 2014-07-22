@@ -27,7 +27,7 @@ FactoryGirl.define do
 		apartment
 		first_name { Faker::Name.first_name } 
 		last_name { Faker::Name.last_name }
-		email { Faker::Internet.email }
+		email 'student1@byui.edu'
 		home_address_1 { Faker::Address.street_address }
 		home_address_2 { Faker::Address.secondary_address }
 		home_city { Faker::Address.city }

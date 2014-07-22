@@ -31,13 +31,18 @@ RSpec.describe ApartmentsController, :type => :controller do
 		{number: 301, bed_count: 7, floor: 3}
 	}
 
+	login_admin
+
 	# This should return the minimal set of values that should be in the session
 	# in order to pass any filters (e.g. authentication) defined in
 	# ApartmentsController. Be sure to keep this updated too.
 	let(:valid_session) { {} }
 
-	describe "GET index" do
+	describe "get index" do
 		it "assigns all apartments as @apartments" do
+			admin = FactoryGirl.create :admin
+			sign_in admin
+
 			apartment = FactoryGirl.create :apartment
 			get :index, {building_id: apartment.building.to_param}, valid_session
 			expect(assigns(:apartments)).to eq([apartment])

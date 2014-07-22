@@ -25,13 +25,13 @@ RSpec.describe ContractsController, :type => :controller do
 	# adjust the attributes here as well.
 	let(:valid_attributes) {
 		apartment = FactoryGirl.create :apartment
-		semester = FactoryGirl.create :semester
+		semester = FactoryGirl.create :semester, name: Faker::Name.first_name
 		{
 			semester: semester.to_param,
 			apartment: apartment.to_param,
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
-			email: Faker::Internet.email,
+			email: 'student1@byui.edu',
 			home_address_1: Faker::Address.street_address,
 			home_address_2: Faker::Address.secondary_address,
 			home_city: Faker::Address.city,
@@ -44,7 +44,7 @@ RSpec.describe ContractsController, :type => :controller do
 
 	let(:invalid_attributes) {
 		apartment = FactoryGirl.create :apartment
-		semester = FactoryGirl.create :semester
+		semester = FactoryGirl.create :semester, name: Faker::Name.first_name
 		{
 			semester: semester.to_param,
 			apartment: apartment.to_param,
@@ -59,6 +59,8 @@ RSpec.describe ContractsController, :type => :controller do
 			room_type: "Invalid"
 		}
 	}
+
+	login_admin
 
 	# This should return the minimal set of values that should be in the session
 	# in order to pass any filters (e.g. authentication) defined in
@@ -107,6 +109,7 @@ RSpec.describe ContractsController, :type => :controller do
 
 			it "assigns a newly created contract as @contract" do
 				post :create, {:contract => valid_attributes}, valid_session
+				expect(assigns(:contract)).to be_valid
 				expect(assigns(:contract)).to be_a(Contract)
 				expect(assigns(:contract)).to be_persisted
 			end
@@ -134,13 +137,13 @@ RSpec.describe ContractsController, :type => :controller do
 		describe "with valid params" do
 			let(:new_attributes) {
 				apartment = FactoryGirl.create :apartment
-				semester = FactoryGirl.create :semester
+				semester = FactoryGirl.create :semester, name: Faker::Name.first_name
 				{
 					semester: semester.to_param,
 					apartment: apartment.to_param,
 					first_name: Faker::Name.first_name,
 					last_name: Faker::Name.last_name,
-					email: Faker::Internet.email,
+					email: 'student1@byui.edu',
 					home_address_1: Faker::Address.street_address,
 					home_address_2: Faker::Address.secondary_address,
 					home_city: Faker::Address.city,

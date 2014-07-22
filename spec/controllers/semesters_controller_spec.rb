@@ -41,6 +41,8 @@ RSpec.describe SemestersController, :type => :controller do
 		deposit: 250
 	}}
 
+	login_admin
+
 	# This should return the minimal set of values that should be in the session
 	# in order to pass any filters (e.g. authentication) defined in
 	# SemestersController. Be sure to keep this updated too.
