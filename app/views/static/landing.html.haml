@@ -4,22 +4,22 @@
     #home-title
       %h1.text-center Welcome Home
       #tagline.cntr
-        %p.text-center Windsor Manor is a brand new apartment complex close to campus and outfitted with top grade amenities. With study rooms, music rooms, game rooms, themed decor and spacious rooms it's the perfect place to call home (even if your mom's not cooking dinner).
+        %p.text-center Windsor Manor is a brand new apartment complex close to campus and outfitted with top grade amenities. Study rooms, music rooms, game rooms, themed decor and spacious apartments are just a few things that make it the perfect place to call home (even if your mom's not cooking dinner).
       .cntr.fit-width
         = link_to "Book Now!", choose_apartment_path, class: ['btn', 'btn-primary', 'btn-lg'], role: 'button'
     / <img id="main-img" src="img/building_art.jpg">
   .row.availability
-    %p.col-md-4 Check Availability
-    %p.col-md-3
+    %h3.col-xs-3.col-md-3 Check Availability:
+    %p#sem-select.col-xs-3.col-md-3
       = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2']
-    .col-md-1.gender-icon#womens
+    .col-xs-1.col-xs-offset-1.col-md-1.col-md-offset-1.gender-icon#womens
       = image_tag 'women_icon_wh.png'
       %p Women
-    .col-md-1.gender-icon#mens
+    .col-xs-1.col-md-1.gender-icon#mens
       = image_tag 'men_icon_wh.png'
       %p Men
     .col-md-1
-    .col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
+    .col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
       %p 
         /Book Now
   .row

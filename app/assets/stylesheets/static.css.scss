@@ -51,10 +51,10 @@ body
 		background-color: #591616;
 	}
 
-	& > p
+	& > h3
 	{
 		color: white;
-		margin-top: 30px;
+		margin-top: 28px;
 	}
 
 	& > div
@@ -64,9 +64,17 @@ body
 
 	& > div:not(.btn-blocky)
 	{
-		margin-top: 10px;
+		padding-top: 10px;
 	}
+  
+  & > div:hover:not(.btn-blocky) {
+    background: rgba(255,255,255,0.3);
+  }
 
+}
+
+#sem-select {
+  margin-top: 22px;
 }
 
 .gender-icon
