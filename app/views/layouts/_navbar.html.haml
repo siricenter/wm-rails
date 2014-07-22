@@ -9,11 +9,12 @@
       = link_to :root, class: 'navbar-brand' do
         = image_tag 'logo.png'
     .navbar-collapse.collapse
-      %form.navbar-form.navbar-right{:role => "form"}
-        .form-group
-          %input.form-control{:placeholder => "Email", :type => "email"}/
-        .form-group
-          %input.form-control{:placeholder => "Password", :type => "password"}/
-        %button.btn.btn-success{:type => "submit"} Sign in
-        - if admin_signed_in?
-          = link_to 'Logout', destroy_admin_session_path, method: :delete
+      - if admin_signed_in?
+        = link_to 'Logout', destroy_admin_session_path, method: :delete, class: ['navbar-right', 'btn', 'btn-danger', 'col-md-1'], id: :session
+      - else
+        = form_tag session_path(:admin), class: ['navbar-form', 'navbar-right'], id: [:session] do
+          .form-group
+            = email_field_tag 'admin[email]', '', class: 'form-control', placeholder: 'Email'
+          .form-group
+            = password_field_tag 'admin[password]', 'Password', class: 'form-control'
+            = submit_tag 'Sign In', class: ['btn', 'btn-success']
