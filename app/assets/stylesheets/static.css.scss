@@ -43,7 +43,7 @@ body
 #home-title
 {
 	width: 100%;
-	background: rgba(35,45,81,0.65);
+	background: rgba(35,45,81,0.75);
 	color: white;
 	padding-top: 25px;
 	padding-bottom: 40px;
@@ -94,7 +94,7 @@ body
 {
 	float: left;
 	text-align: center;
-  cursor: pointer;
+	cursor: pointer;
 
 	img 
 	{
@@ -117,6 +117,7 @@ body
 .success
 {
 	background-color: #5f7319;
+	cursor: pointer;
 }
 
 .failure
@@ -169,6 +170,27 @@ body
 .cir-img-amenities
 {
 	background: image-url('amenities_example.jpg') no-repeat;
+	background-size: 250px;
+	background-position: center;
+}
+
+.cir-img-reservations
+{
+	background: image-url('reserv_img.jpg') no-repeat;
+	background-size: 250px;
+	background-position: center;
+}
+
+.cir-img-tenants
+{
+	background: image-url('tenants_img.jpg') no-repeat;
+	background-size: 250px;
+	background-position: center;
+}
+
+.cir-img-gallery
+{
+	background: image-url('gallery_img.jpg') no-repeat;
 	background-size: 250px;
 	background-position: center;
 }
