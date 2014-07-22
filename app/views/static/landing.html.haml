@@ -11,12 +11,12 @@
   .row.availability
     %p.col-md-4 Check Availability
     %p.col-md-3
-      = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name')
-    .col-md-1.gender-icon
-      = image_tag 'women_icon_wh.png', id: :womens
+      = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2']
+    .col-md-1.gender-icon#womens
+      = image_tag 'women_icon_wh.png'
       %p Women
-    .col-md-1.gender-icon
-      = image_tag 'men_icon_wh.png', id: :mens
+    .col-md-1.gender-icon#mens
+      = image_tag 'men_icon_wh.png'
       %p Men
     .col-md-1
     .col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
