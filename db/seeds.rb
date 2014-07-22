@@ -15,4 +15,4 @@ Apartment.create!({building: womens, number: 102, bed_count: 6, floor: 1})
 
 Semester.create!({name: "Winter 2015", start_date: Date.new(2015, 1, 2), end_date: Date.new(2015, 4, 10), private_cost: 1500, shared_cost: 1200, deposit: 250})
 
-
+Admin.create!(email: 'CJPoll@gmail.com', password: 'ki876Lp#$')
