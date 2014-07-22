@@ -7,7 +7,8 @@
         %span.icon-bar
         %span.icon-bar
       = link_to :root, class: 'navbar-brand' do
-        = image_tag 'logo.png'
+        = image_tag 'logo-no-text.png'
+        %h1 Windsor Manor
     .navbar-collapse.collapse
       - if admin_signed_in?
         = link_to 'Logout', destroy_admin_session_path, method: :delete, class: ['navbar-right', 'btn', 'btn-danger', 'col-md-1'], id: :session

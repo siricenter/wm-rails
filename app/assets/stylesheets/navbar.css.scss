@@ -1,4 +1,4 @@
-$nav-height: 80px;
+$nav-height: 135px;
 
 .navbar
 {
@@ -7,10 +7,16 @@ $nav-height: 80px;
 	padding-bottom: 30px;
 }
 
-.navbar-header .navbar-brand img
+.navbar-header .navbar-brand
 {
-	height: $nav-height;
-	margin-top: -10px;
+  img {
+    height: $nav-height;
+    margin-top: -10px;
+  }
+  
+  & > * {
+    float: left;
+  }
 }
 
 .main 
