@@ -18,6 +18,14 @@ def install_mysql
 	puts `parts start mariadb`
 end
 
+def install_postgres
+	unless `parts list`.match(/postgresql/)
+		puts `parts install postgresql`
+	end
+	
+	puts `parts start postgresql`
+end
+
 def install_mongo
 	unless `parts list`.match(/mongodb/)
 		puts `parts install mongodb`
@@ -27,7 +35,7 @@ def install_mongo
 end
 
 def setup_database
-	puts `mysql -u root < setup_database.sh`
+	puts `psql setup_db.sql`
 end
 
 def migrate
@@ -67,6 +75,7 @@ end
 
 #install_mysql
 #install_mongo
+install_postgres
 install_sqlite
 bundle_install
 setup_database
