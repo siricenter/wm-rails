@@ -76,7 +76,7 @@ end
 #install_mysql
 #install_mongo
 install_postgres
-install_sqlite
+setup_database
 bundle_install
 migrate
 start_server
