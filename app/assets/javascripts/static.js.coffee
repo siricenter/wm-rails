@@ -5,12 +5,12 @@ checkAvailability = (building) ->
 	$('#available-answer').fadeOut()
 	semesterId = $('#semester').val()
 	if building == 'mens'
-		building_id = 1
+		buildingId = 1
 	if building == 'womens'
-		building_id = 2
-	$.get "/buildings/#{building_id}/availability/#{semesterId}", {}, (data) ->
+		buildingId = 2
+	$.get "/buildings/#{buildingId}/availability/#{semesterId}", {}, (data) ->
 		if (data.available) 
-			available()
+			available(buildingId)
 		else
 			unavailable()
 
@@ -20,9 +20,12 @@ $(document).ready ->
 	$('#womens').on('click', () ->
 		checkAvailability('womens'))
 
-available = (data) ->
-	$('#available-answer').children().first().text('Available: Click Here to Book Now!')
-	$('#available-answer').addClass('success').hide().fadeIn()
+available = (buildingId) ->
+	view = $('#available-answer')
+	view.children().first().text('Available: Click Here to Book Now!')
+	view.addClass('success').hide().fadeIn()
+	view.on 'click', () ->
+		window.location = "/contracts/new/#{buildingId}"
 
 unavailable = (data) ->
 	$('#available-answer').children().first().text('Sorry - We\'re booked!')
