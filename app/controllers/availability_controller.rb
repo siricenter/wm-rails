@@ -1,5 +1,5 @@
 class AvailabilityController < ApplicationController
-	# GET /building/:id/availability
+	# GET /building/:id/availability/:semester_id
 	def available
 		building = Building.find(params[:id])
 		semester = Semester.find(params[:semester_id])
