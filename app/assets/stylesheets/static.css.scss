@@ -25,26 +25,18 @@ body
 	width: -webkit-fit-content;
 }
 
-#home-title
-{
-	width: 100%;
-	background: rgba(35,45,81,0.75);
-	color: white;
-	padding-top: 25px;
-	padding-bottom: 40px;
-	margin-top: 120px;
-	margin-bottom: 50px;
-}
-
 #tagline
 {
 	width: 35%;
 }
 
+$availability-height: 100px;
+$avail-marg: 35px;
 .availability
 {
 	background-color: #591616;
-	height: 80px;
+	height: $availability-height;
+	font-family: 'Poiret One';
 
 	& > *
 	{
@@ -54,7 +46,7 @@ body
 	& > h3
 	{
 		color: white;
-		margin-top: 28px;
+		margin-top: $avail-marg;
 	}
 
 	& > div
@@ -66,15 +58,14 @@ body
 	{
 		padding-top: 10px;
 	}
-  
-  & > div:hover:not(.btn-blocky) {
-    background: rgba(255,255,255,0.3);
-  }
 
-}
+	& > .gender-icon:hover:not(.btn-blocky) {
+		background: rgba(255,255,255,0.3);
+	}
 
-#sem-select {
-  margin-top: 22px;
+	#sem-select {
+		margin-top: $avail-marg;
+	}
 }
 
 .gender-icon
@@ -82,18 +73,20 @@ body
 	float: left;
 	text-align: center;
 	cursor: pointer;
+	height: $availability-height;
 
 	img 
 	{
-		height: 40px;
+		height: 60px;
 	}
 }
 
 .btn-blocky
 {
 	border-radius: none;
-	height: 100%;
+	height: $availability-height;
 	margin: 0;
+	font-size: 120%;
 
 	p
 	{
@@ -195,4 +188,9 @@ body
 #session
 {
 	margin-top: 25px;
+}
+
+.tiles
+{
+	margin-top: 40%;
 }

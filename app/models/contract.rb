@@ -36,7 +36,7 @@ class Contract < ActiveRecord::Base
 	validates :home_city, presence: true
 	validates :home_state, presence: true
 	validates :home_zip, presence: true
-	validates :parking_type, presence: true, inclusion: { in: %w(None Covered Uncovered) }
+	validates :parking_type, presence: true, inclusion: { in: ['None', 'Tandem Covered', 'Tandem Uncovered', 'Private Covered', 'Private Uncovered'] }
 	validates :phone, presence: true
 	validates :apartment_type, presence: true, inclusion: { in: ['No Preference', '6 Person', '8 Person'] }
 

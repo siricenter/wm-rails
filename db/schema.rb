@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725070336) do
+ActiveRecord::Schema.define(version: 20140725170531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20140725070336) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "contract_durations", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "semester_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contract_durations", ["semester_id"], name: "index_contract_durations_on_semester_id", using: :btree
 
   create_table "contracts", force: true do |t|
     t.integer  "semester_id"

@@ -3,7 +3,7 @@ class AvailabilityController < ApplicationController
 	def available
 		building = Building.find(params[:id])
 		semester = Semester.find(params[:semester_id])
-		available = building.availabilities? semester
+		available = true #building.availabilities? semester
 		hash = {available: available}
 
 		respond_to do |format|
