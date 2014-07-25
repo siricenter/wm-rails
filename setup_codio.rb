@@ -35,9 +35,7 @@ def install_mongo
 end
 
 def setup_database
-	puts `rake db:create:all`
-	puts `rake db:migrate`
-	puts `rake db:seed`
+	puts `rake db:setup`
 end
 
 def start_server
