@@ -1,15 +1,63 @@
 $choose-tag-width: 200px;
+$theme-blue: #24284D;
+$theme-dgrey: #2B2B2B;
+$theme-lgrey: #9A9C99;
+$theme-dburgandy: #3D0101;
+$theme-lburgandy: #591616;
+$theme-dgreen: #5f7319;
+$theme-lgreen: #98b855;
+
+h1 {
+  color: $theme-dgrey;
+}
+
+.back-blue {
+  background: $theme-blue;
+}
+
+.back-lgrey {
+  background: $theme-lgrey;
+}
+
+.back-dgrey {
+  background: $theme-dgrey;
+}
+
+.back-lburgandy {
+  background: $theme-lburgandy;
+}
+
+.cir-div {
+  padding: 30px;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.cir-div-inner {
+  padding: 10px;
+  border-radius: 50%;
+  background: white;
+  width: 150px;
+  height: 150px;
+  
+  h1 {
+    margin-top: 45px;
+  }
+}
 
 .btn-primary
 {
-	background-image: linear-gradient(to bottom, #98b855 0%, #5f7319 100%);
+	background-image: linear-gradient(to bottom, $theme-lgreen 0%, $theme-dgreen 100%);
 	background-repeat: repeat-x;
-	border-color: #5f7319;
+	border-color: $theme-dgreen;
 	
 	&:hover
 	{
-		background-color: #5f7319;
-		border-color: #5f7319;
+		background-color: $theme-dgreen;
+		border-color: $theme-dgreen;
 	}
 }
 
@@ -19,7 +67,7 @@ $choose-tag-width: 200px;
 	display: block;
 }
 
-#choose-main > * {
+#choose-gender > * {
   float:left;
   width:50%;
   
@@ -36,7 +84,7 @@ img.choose
 
 .choose-tag {
   top: 240px;
-  position: relative;
+  position: absolute;
   width: $choose-tag-width;
   color: white;
   padding: 10px;
@@ -44,6 +92,7 @@ img.choose
   
   &.choose-left {
     float: right;
+    right: 50%;
     
     & > * {
       float: left;
