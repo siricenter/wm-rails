@@ -8,70 +8,92 @@
 
   %input{type: :hidden, value: @building.id, name: :building_id}
   %h2
-    Your Information
-  .form-group
-    = f.label :first_name, 'First Name', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :first_name, class: ['form-control', 'col-md-5']
-  .form-group
-    = f.label :last_name, 'Last Name', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :last_name, class: ['form-control', 'col-md-5']
-  .form-group
-    = f.label :school_email, 'School Email', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.email_field :email, class: ['form-control', 'col-md-5']
+    Property Information
 
-  %h2
-    Your Apartment
+  .row
+    .form-group
+      = label_tag :property, "Property", class: 'col-md-2'
+      .col-md-4
+        = text_field_tag :property, @building.name, readonly: true, class: ['form-control', 'col-md-6']
+      = label_tag :website, "Web Site", class: 'col-md-2'
+      .col-md-4
+        = text_field_tag :website, 'www.thewindsormanor.com', readonly: true, class: ['form-control', 'col-md-6']
+    .form-group
+      = label_tag :address, "Property Address", class: 'col-md-2'
+      .col-md-4
+        = text_field_tag :address, '125 East 2nd South Rexburg, ID 83440', readonly: true, class: 'form-control'
+    .form-group
+      = label_tag :address, "Property Phone", class: 'col-md-2'
+      .col-md-4
+        = text_field_tag :address, '(208) 709-7076', readonly: true, class: 'form-control'
 
-  .form-group
-    = f.label :apartment, class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.select :apartment, options_from_collection_for_select(@apartments, 'id', 'number'), {}, class: 'form-control'
+  .row
+    %h2
+      Your Home Address
 
-  .form-group
-    = f.label :room_type, 'Room Type', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.select :room_type, ['Shared', 'Private'], {}, class: 'form-control'
+    .form-group
+      = f.label :home_address_1, 'Home Address 1', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :home_address_1, class: ['form-control', 'col-md-5']
 
-  .form-group
-    = f.label :semester, class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.select :semester, options_from_collection_for_select(@semesters, 'id', 'name'), {}, class: 'form-control'
+    .form-group
+      = f.label :home_address_2, 'Home Address 2', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :home_address_2, class: ['form-control', 'col-md-5']
 
-  .form-group
-    = f.label :parking_type, 'Parking Type', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.select :parking_type, ['None', 'Uncovered', 'Covered'], {}, class: 'form-control'
+    .form-group
+      = f.label :home_city, 'Home City', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :home_city, class: ['form-control', 'col-md-5']
 
-  %h2
-    Your Home Address
+    .form-group
+      = f.label :home_state, 'Home State', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :home_state, class: ['form-control', 'col-md-5']
 
-  .form-group
-    = f.label :home_address_1, 'Home Address 1', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :home_address_1, class: ['form-control', 'col-md-5']
+    .form-group
+      = f.label :home_zip, 'Home Zip', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :home_zip, class: ['form-control', 'col-md-5']
 
-  .form-group
-    = f.label :home_address_2, 'Home Address 2', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :home_address_2, class: ['form-control', 'col-md-5']
+  .row
+    %h2
+      Your Information
 
-  .form-group
-    = f.label :home_city, 'Home City', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :home_city, class: ['form-control', 'col-md-5']
+    .form-group
+      = f.label :first_name, 'First Name', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :first_name, class: ['form-control', 'col-md-5']
+      = f.label :last_name, 'Last Name', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :last_name, class: ['form-control', 'col-md-5']
+    .form-group
+      = f.label :school_email, 'BYU-I Email', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.email_field :email, class: ['form-control', 'col-md-5']
+      = f.label :phone, 'Phone Number', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.text_field :phone, class: ['form-control', 'col-md-5']
 
-  .form-group
-    = f.label :home_state, 'Home State', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :home_state, class: ['form-control', 'col-md-5']
+  .row
+    %h2
+      Your Apartment
 
-  .form-group
-    = f.label :home_zip, 'Home Zip', class: ['col-md-2', 'control-label']
-    .col-md-10
-      = f.text_field :home_zip, class: ['form-control', 'col-md-5']
+    .form-group
+      = f.label :semester, class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.select :semester, options_from_collection_for_select(@semesters, 'id', 'name'), {}, class: 'form-control'
+
+    .form-group
+      = f.label :apartment_type, class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.select :apartment_type, ['No Preference', '6 Person', '8 Person'], {}, class: 'form-control'
+
+    .form-group
+      = f.label :parking_type, 'Parking Type', class: ['col-md-2', 'control-label']
+      .col-md-4
+        = f.select :parking_type, ['None', 'Uncovered', 'Covered'], {}, class: 'form-control'
+
 
   .actions
     = f.submit 'Submit', class: ['btn', 'btn-primary', 'col-sm-1']

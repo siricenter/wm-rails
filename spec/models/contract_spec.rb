@@ -4,7 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  semester_id    :integer
-#  apartment_id   :integer
 #  first_name     :string(255)
 #  last_name      :string(255)
 #  email          :string(255)
@@ -13,10 +12,11 @@
 #  home_city      :string(255)
 #  home_state     :string(255)
 #  home_zip       :string(255)
-#  room_type      :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
 #  parking_type   :string(255)
+#  phone          :string(255)
+#  apartment_type :string(255)
 #
 
 require 'rails_helper'
