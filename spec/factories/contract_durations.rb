@@ -16,6 +16,6 @@ FactoryGirl.define do
   factory :contract_duration do
     start_date "2014-07-25"
     end_date "2014-07-25"
-    semester nil
+	semester
   end
 end
