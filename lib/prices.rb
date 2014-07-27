@@ -20,4 +20,12 @@ module Prices
 			return 0
 		end
 	end
+
+	def self.application_fee
+		return 50
+	end
+
+	def self.deposit semester
+		return semester.deposit
+	end
 end

@@ -14,17 +14,30 @@
         %td
           Application Fee (Non-Refundable)
         %td
-          $50
+          = number_to_currency(Prices::application_fee)
+      %tr
+        %td
+          Deposit (Refundable)
+        %td
+          = number_to_currency(50)
       %tr
         %td
           Rent
         %td
-          $1,445
+          = number_to_currency(1445)
       %tr
         %td
-          Covered Private Parking
+          Parking: Covered Private
         %td
-          $100
+          = number_to_currency(Prices::parking_price('Private Covered', 1))
+    %tfoot
+      %tr
+        %td
+          %strong
+            Total
+        %td
+          %strong
+            = number_to_currency(1645)
 
 .col-md-6
   %h2
@@ -51,3 +64,45 @@
 .col-md-12
   %h2
     Payment Schedule
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          Date
+        %th
+          Now
+        %th
+          Dec 14, 2014
+        %th
+          May 1, 2015
+    %tbody
+      %tr
+        %td
+          Amount
+        %td
+          = number_to_currency(50) 
+          Application Fee
+          %br
+          = number_to_currency(50) 
+          Deposit
+        %td
+          = number_to_currency(1445)
+        %td
+          = number_to_currency(1445)
+      %tfoot
+        %tr
+          %td
+            %strong
+              Total
+          %td
+            %strong
+              = number_to_currency(100)
+          %td
+            %strong
+              = number_to_currency(1445)
+          %td
+            %strong
+              = number_to_currency(1445)
+              
+
+  = button_to 'Check Out!', root_path,  class: ['btn', 'btn-primary', 'col-sm-2']
