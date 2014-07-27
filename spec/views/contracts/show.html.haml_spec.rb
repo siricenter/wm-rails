@@ -10,8 +10,7 @@ RSpec.describe "contracts/show", :type => :view do
 											  home_address_2: "Home Address 2",
 											  home_city: "Home City",
 											  home_state: "Home State",
-											  home_zip: "Home Zip",
-											  room_type: "Private"))
+											  home_zip: "Home Zip"))
 	end
 
 	it "renders attributes in <p>" do
@@ -24,6 +23,5 @@ RSpec.describe "contracts/show", :type => :view do
 		expect(rendered).to match(/Home City/)
 		expect(rendered).to match(/Home State/)
 		expect(rendered).to match(/Home Zip/)
-		expect(rendered).to match(/Private/)
 	end
 end

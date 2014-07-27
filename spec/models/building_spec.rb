@@ -6,6 +6,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  capacity   :integer
 #
 
 require 'rails_helper'
@@ -22,21 +23,31 @@ RSpec.describe Building, :type => :model do
 		expect(subject).to_not be_valid
 	end
 
+	it "is invalid without a capacity" do
+		subject.capacity = nil
+		expect(subject).to_not be_valid
+	end
+
+	it "is invalid if capacity is not a number" do
+		subject.capacity = 'ABC'
+		expect(subject).to_not be_valid
+	end
+
 	describe "availabilities" do
 		before :each do
 			@semester = FactoryGirl.create :semester
-			@apartment = FactoryGirl.create :apartment, building: subject
 		end
 
 		it "knows if there is an availability" do
-			expect(subject.availabilities?(@semester)).to be true
+			subject.capacity = 1
+			FactoryGirl.create(:contract, building: subject, semester: @semester)
+			expect(subject.availabilities?(@semester)).to be false
 		end
 
 		it "knows if there's no availability" do
-			FactoryGirl.create :contract, semester: @semester, apartment: @apartment, room_type: "Private"
-			FactoryGirl.create :contract, semester: @semester, apartment: @apartment, room_type: "Private"
-			FactoryGirl.create :contract, semester: @semester, apartment: @apartment, room_type: "Private"
-			expect(subject.availabilities?(@semester)).to be false
+			subject.capacity = 2
+			FactoryGirl.create(:contract, building: subject, semester: @semester)
+			expect(subject.availabilities?(@semester)).to be true
 		end
 	end
 end

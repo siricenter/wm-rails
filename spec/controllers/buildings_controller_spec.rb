@@ -24,11 +24,13 @@ RSpec.describe BuildingsController, :type => :controller do
   # Building. As you add validations to Building, be sure to
   # adjust the attributes here as well.
 	let(:valid_attributes) {{
-		name: "Windsor Manor Women's"
+		name: "Windsor Manor Women's",
+		capacity: 10
 	}}
 
   let(:invalid_attributes) {{
-	  name: ""
+	  name: "",
+	  capacity: 'ABC'
   }}
 
   login_admin
@@ -40,7 +42,7 @@ RSpec.describe BuildingsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all buildings as @buildings" do
-      building = Building.create! valid_attributes
+      building = FactoryGirl.create :building
       get :index, {}, valid_session
       expect(assigns(:buildings)).to eq([building])
     end
@@ -48,7 +50,7 @@ RSpec.describe BuildingsController, :type => :controller do
 
   describe "GET show" do
     it "assigns the requested building as @building" do
-      building = Building.create! valid_attributes
+      building = FactoryGirl.create :building
       get :show, {:id => building.to_param}, valid_session
       expect(assigns(:building)).to eq(building)
     end
@@ -63,7 +65,7 @@ RSpec.describe BuildingsController, :type => :controller do
 
   describe "GET edit" do
     it "assigns the requested building as @building" do
-      building = Building.create! valid_attributes
+      building = FactoryGirl.create :building
       get :edit, {:id => building.to_param}, valid_session
       expect(assigns(:building)).to eq(building)
     end
@@ -109,20 +111,20 @@ RSpec.describe BuildingsController, :type => :controller do
 		}}
 
       it "updates the requested building" do
-        building = Building.create! valid_attributes
+        building = FactoryGirl.create :building
         put :update, {:id => building.to_param, :building => new_attributes}, valid_session
         building.reload
 		expect(building.name).to eq("Windsor Manor Men's")
       end
 
       it "assigns the requested building as @building" do
-        building = Building.create! valid_attributes
+        building = FactoryGirl.create :building
         put :update, {:id => building.to_param, :building => valid_attributes}, valid_session
         expect(assigns(:building)).to eq(building)
       end
 
       it "redirects to the building" do
-        building = Building.create! valid_attributes
+        building = FactoryGirl.create :building
         put :update, {:id => building.to_param, :building => valid_attributes}, valid_session
         expect(response).to redirect_to(building)
       end
@@ -130,13 +132,13 @@ RSpec.describe BuildingsController, :type => :controller do
 
     describe "with invalid params" do
       it "assigns the building as @building" do
-        building = Building.create! valid_attributes
+        building = FactoryGirl.create :building
         put :update, {:id => building.to_param, :building => invalid_attributes}, valid_session
         expect(assigns(:building)).to eq(building)
       end
 
       it "re-renders the 'edit' template" do
-        building = Building.create! valid_attributes
+        building = FactoryGirl.create :building
         put :update, {:id => building.to_param, :building => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -145,14 +147,14 @@ RSpec.describe BuildingsController, :type => :controller do
 
   describe "DELETE destroy" do
     it "destroys the requested building" do
-      building = Building.create! valid_attributes
+      building = FactoryGirl.create :building
       expect {
         delete :destroy, {:id => building.to_param}, valid_session
       }.to change(Building, :count).by(-1)
     end
 
     it "redirects to the buildings list" do
-      building = Building.create! valid_attributes
+      building = FactoryGirl.create :building
       delete :destroy, {:id => building.to_param}, valid_session
       expect(response).to redirect_to(buildings_url)
     end

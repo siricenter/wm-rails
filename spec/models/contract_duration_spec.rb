@@ -13,5 +13,19 @@
 require 'rails_helper'
 
 RSpec.describe ContractDuration, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	subject {FactoryGirl.build :contract_duration}
+
+	it "has a valid factory" do
+		expect(subject).to be_valid
+	end
+
+	it "is invalid without a start_date" do
+		subject.start_date = nil
+		expect(subject).to_not be_valid
+	end
+
+	it "is invalid without an end date" do
+		subject.end_date = nil
+		expect(subject).to_not be_valid
+	end
 end

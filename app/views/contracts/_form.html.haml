@@ -62,7 +62,7 @@
 
     .form-group
       = f.label :first_name, 'First Name', class: ['col-md-2', 'control-label']
-      .col-md-4
+      .col-md-4.has-error
         = f.text_field :first_name, class: ['form-control', 'col-md-5']
       = f.label :last_name, 'Last Name', class: ['col-md-2', 'control-label']
       .col-md-4
@@ -151,9 +151,9 @@
 
   .row
     .col-md-6
-      = text_field_tag :signature_1, '', placeholder: 'Signature', class: 'form-control'
+      = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
     .col-md-6
-      = text_field_tag :signature_2, '', placeholder: 'Signature', class: 'form-control'
+      = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
 
   .row
     .col-md-6
@@ -178,7 +178,7 @@
 
   .row
     .col-md-6
-      = text_field_tag :signature_3, '', placeholder: 'Signature', class: 'form-control'
+      = f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
 
 
   .row
