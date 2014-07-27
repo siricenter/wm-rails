@@ -2,15 +2,13 @@
 #
 # Table name: semesters
 #
-#  id           :integer          not null, primary key
-#  name         :string(255)
-#  start_date   :date
-#  end_date     :date
-#  created_at   :datetime
-#  updated_at   :datetime
-#  private_cost :integer
-#  shared_cost  :integer
-#  deposit      :integer
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  deposit    :integer
+#  rent       :integer
+#  duration   :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -18,9 +16,16 @@
 FactoryGirl.define do
   	factory :semester do
     	name "Spring Semester 2014"
-    	start_date Date.yesterday
-    	end_date Date.tomorrow
 	  	deposit 50
 		rent 1500
+		duration 1
+
+		after :build do |semester|
+			build_list(:contract_duration, 1, semester: semester)
+		end
+
+		after :create do |semester|
+			create_list(:contract_duration, 1, semester: semester)
+		end
   	end
 end

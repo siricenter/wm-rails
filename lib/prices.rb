@@ -35,8 +35,14 @@ module Prices
 
 	def self.early_bird semester, today
 		days = semester.start_date - today 
-		return 40 if days >= 90
-		return 20 if days >= 60
-		return 0
+		if semester.duration == 1
+			return 40 if days >= 1.month
+			return 20 if days >= 60
+			return 0
+		elsif semester.duration == 2
+			return [40, 10] if days >= 90
+			return [20, 10] if days >= 60
+			return [0, 0]
+		end
 	end
 end
