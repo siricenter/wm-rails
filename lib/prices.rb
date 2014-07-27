@@ -28,4 +28,15 @@ module Prices
 	def self.deposit semester
 		return semester.deposit
 	end
+
+	def self.rent semester
+		return semester.rent
+	end
+
+	def self.early_bird semester, today
+		days = semester.start_date - today 
+		return 40 if days >= 90
+		return 20 if days >= 60
+		return 0
+	end
 end

@@ -49,13 +49,13 @@ RSpec.describe Semester, :type => :model do
 		expect(subject).to_not be_valid
 	end
     
-    it "is invalid without private cost" do
-        subject.private_cost = nil
-        expect(subject).to_not be_valid
-    end
-	
 	it "is invalid if semester name is not unique" do
 		FactoryGirl.create :semester
+		expect(subject).to_not be_valid
+	end
+
+	it "is invalid without rent" do
+		subject.rent = nil
 		expect(subject).to_not be_valid
 	end
 end
