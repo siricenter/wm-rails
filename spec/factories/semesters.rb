@@ -20,8 +20,7 @@ FactoryGirl.define do
     	name "Spring Semester 2014"
     	start_date Date.yesterday
     	end_date Date.tomorrow
-		private_cost 1500
-	  	shared_cost 1200
 	  	deposit 50
+		rent 1500
   	end
 end

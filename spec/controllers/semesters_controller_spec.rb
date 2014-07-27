@@ -27,8 +27,7 @@ RSpec.describe SemestersController, :type => :controller do
 		name: "Spring Semester 2014", 
 		start_date: Date.yesterday,
 		end_date: Date.tomorrow,
-		private_cost: 1500,
-		shared_cost: 1200,
+		rent: 1500,
 		deposit: 250
 	}}
 
@@ -36,8 +35,7 @@ RSpec.describe SemestersController, :type => :controller do
 		name: "Spring Semester 2014", 
 		start_date: Date.today,
 		end_date: Date.today,
-		private_cost: 1500,
-		shared_cost: 1200,
+		rent: 1500,
 		deposit: 250
 	}}
 
@@ -118,8 +116,7 @@ RSpec.describe SemestersController, :type => :controller do
 				name: "Spring Semester 2014", 
 				start_date: Date.yesterday,
 				end_date: Date.tomorrow.next,
-				private_cost: 1500,
-				shared_cost: 1200,
+				rent: 1500,
 				deposit: 250
 			}}
 

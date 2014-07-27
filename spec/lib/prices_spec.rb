@@ -87,4 +87,31 @@ RSpec.describe Prices do
 			expect(Prices::deposit(semester)).to eq(semester.deposit)
 		end
 	end
+
+	describe "Rent" do
+		semester = FactoryGirl.build :semester
+		it "returns the correct rent amount" do
+			expect(Prices::rent(semester)).to eq(semester.rent)
+		end
+	end
+
+	describe "Early Bird" do
+		context "one semester" do
+			semester = FactoryGirl.build :semester, start_date: Date.parse('1-1-2015')
+			it "should return the correct early bird discount for 1 semester 90 days in advance" do
+				expect(Prices::early_bird(semester, semester.start_date - 90)).to eq(40)
+			end
+
+			it "should return the correct early bird discount for 1 semester 60 days in advance" do
+				expect(Prices::early_bird(semester, semester.start_date - 60)).to eq(20)
+			end
+
+			it "should return the correct early bird discount for 1 semester < 60 days in advance" do
+				expect(Prices::early_bird(semester, semester.start_date - 59)).to eq(0)
+			end
+		end
+
+		context "two semesters"
+		context "whole year"
+	end
 end

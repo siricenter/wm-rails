@@ -28,9 +28,8 @@ class Semester < ActiveRecord::Base
 	validates :name, presence: true, uniqueness: true
 	validates :start_date, presence: true
 	validates :end_date, presence: true
-    validates :private_cost, presence: true, numericality: true
-    validates :shared_cost, presence: true, numericality: true
     validates :deposit, presence: true, numericality: true
+	validates :rent, presence: true, numericality: true
     
     validates_with DurationValidator
 end
