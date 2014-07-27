@@ -10,10 +10,6 @@
     %th Home city
     %th Home state
     %th Home zip
-    %th Room type
-    %th
-    %th
-    %th
 
   - @contracts.each do |contract|
     %tr
@@ -25,6 +21,5 @@
       %td= contract.home_city
       %td= contract.home_state
       %td= contract.home_zip
-      %td= contract.room_type
       %td= link_to 'Show', contract
       %td= link_to 'Edit', edit_contract_path(contract)

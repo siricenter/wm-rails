@@ -12,7 +12,6 @@ RSpec.describe "contracts/index", :type => :view do
 							   home_city: "Home City",
 							   home_state: "Home State",
 							   home_zip: "Home Zip",
-							   room_type: "Private",
 							   semester: semester),
 							   # My text editor indents this part weirdly. Sorry.
 							   FactoryGirl.create(:contract,
@@ -23,7 +22,6 @@ RSpec.describe "contracts/index", :type => :view do
 												  home_city: "Home City",
 												  home_state: "Home State",
 												  home_zip: "Home Zip",
-												  room_type: "Private",
 												  semester: semester)
 		])
 	end
@@ -38,6 +36,5 @@ RSpec.describe "contracts/index", :type => :view do
 		assert_select "tr>td", :text => "Home City".to_s, :count => 2
 		assert_select "tr>td", :text => "Home State".to_s, :count => 2
 		assert_select "tr>td", :text => "Home Zip".to_s, :count => 2
-		assert_select "tr>td", :text => "Private".to_s, :count => 2
 	end
 end

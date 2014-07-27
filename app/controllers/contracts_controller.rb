@@ -18,9 +18,6 @@ class ContractsController < ApplicationController
 		@contract = Contract.new
 		@semesters = Semester.all
 		@building = Building.find(params[:building_id])
-		@apartments = Apartment.where(building: @building)
-
-		session[:building_id] = @building.id
 	end
 
 	# GET /contracts/1/edit
@@ -32,11 +29,11 @@ class ContractsController < ApplicationController
 	def create
 		@contract = Contract.new(contract_params)
 		@semester = Semester.find(params[:contract][:semester])
-		@apartment = Apartment.find(params[:contract][:apartment])
+		@building = Building.find(params[:contract][:building_id])
 
 
 		@contract.semester = @semester
-		@contract.apartment = @apartment
+		@contract.building = @building
 
 		respond_to do |format|
 			if @contract.save
@@ -44,8 +41,6 @@ class ContractsController < ApplicationController
 				format.json { render :show, status: :created, location: @contract }
 			else
 				format.html { 
-					@building = @apartment.building
-					@apartments = @building.apartments
 					@semesters = Semester.all
 					render :new 
 				}
@@ -59,7 +54,7 @@ class ContractsController < ApplicationController
 	def update
 		respond_to do |format|
 			@semester = Semester.find(params[:contract][:semester])
-			@apartment = Apartment.find(params[:contract][:apartment])
+			@building = Building.find(params[:contract][:building_id])
 			if @contract.update(contract_params)
 				format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
 				format.json { render :show, status: :ok, location: @contract }
@@ -81,6 +76,23 @@ class ContractsController < ApplicationController
 	end
 
 	def discounts
+		@contract = Contract.new(contract_params)
+		@semester = Semester.find(params[:contract][:semester])
+		@building = Building.find(params[:building_id])
+		@contract.semester = @semester
+		@contract.building = @building
+
+		respond_to do |format|
+			if @contract.valid?
+				format.html 
+			else
+				format.html {
+					@contract = @contract
+					@semesters = Semester.all
+					render :new
+				}
+			end
+		end
 	end
 
 	private
@@ -91,6 +103,6 @@ class ContractsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def contract_params
-		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type)
+		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack)
 	end
 end

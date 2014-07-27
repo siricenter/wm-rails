@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-mens = Building.create!({name: 'Windsor Manor Men\'s'})
-womens = Building.create!({name: 'Windsor Manor Women\'s'})
+mens = Building.create!({name: 'Windsor Manor Men\'s', capacity: 206})
+womens = Building.create!({name: 'Windsor Manor Women\'s', capacity: 344})
 
 Apartment.create!({building: mens, number: 101, bed_count: 6, floor: 1})
 Apartment.create!({building: mens, number: 102, bed_count: 6, floor: 1})

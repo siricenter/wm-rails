@@ -2,21 +2,25 @@
 #
 # Table name: contracts
 #
-#  id             :integer          not null, primary key
-#  semester_id    :integer
-#  first_name     :string(255)
-#  last_name      :string(255)
-#  email          :string(255)
-#  home_address_1 :string(255)
-#  home_address_2 :string(255)
-#  home_city      :string(255)
-#  home_state     :string(255)
-#  home_zip       :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
-#  parking_type   :string(255)
-#  phone          :string(255)
-#  apartment_type :string(255)
+#  id                   :integer          not null, primary key
+#  semester_id          :integer
+#  first_name           :string(255)
+#  last_name            :string(255)
+#  email                :string(255)
+#  home_address_1       :string(255)
+#  home_address_2       :string(255)
+#  home_city            :string(255)
+#  home_state           :string(255)
+#  home_zip             :string(255)
+#  created_at           :datetime
+#  updated_at           :datetime
+#  parking_type         :string(255)
+#  phone                :string(255)
+#  apartment_type       :string(255)
+#  building_id          :integer
+#  eligibility_sig      :string(255)
+#  living_standards_sig :string(255)
+#  parking_ack          :string(255)
 #
 
 require 'rails_helper'
@@ -40,6 +44,11 @@ RSpec.describe Contract, :type => :model do
 
 	it "is invalid without an email" do
 		subject.email = nil
+		expect(subject).to_not be_valid
+	end
+
+	it "is invalid if email is not an @byui.edu email" do
+		subject.email = 'CJPoll@gmail.com'
 		expect(subject).to_not be_valid
 	end
 
@@ -68,38 +77,33 @@ RSpec.describe Contract, :type => :model do
 		expect(subject).to_not be_valid
 	end
 
-	it "is invalid without a room type" do
-		subject.room_type = nil
-		expect(subject).to_not be_valid
-	end
-
-    it "is invalid if parking_type is not none covered or uncovered" do
+    it "is invalid if parking_type is not in the inclusion list" do
         subject.parking_type = "pineapple"
         expect(subject).to_not be_valid
     end
 
-	it "is invalid if type is not Private or Shared" do
-		subject.room_type = "Random"
-		expect(subject).to_not be_valid
-	end
-
-	it "takes one bed if shared" do
-		subject.room_type = "Shared"
-		expect(subject.beds).to eq(1)
-	end
-
-	it "takes two beds if private" do
-		subject.room_type = "Private"
-		expect(subject.beds).to eq(2)
-	end
-    
-    it "is invalid if the apartment is full" do
-        3.times do
-            FactoryGirl.create :contract, apartment: subject.apartment, room_type: 'Private', semester: subject.semester
-        end
-        saved_contracts = Contract.where(apartment: subject.apartment)                
-        subject.apartment.save!
+	it "is invalid without a building" do
+		subject.building = nil
         expect(subject).to_not be_valid
-    end
-    
+	end
+
+	it "is invalid without an eligibility_sig" do
+		subject.eligibility_sig = nil
+        expect(subject).to_not be_valid
+	end
+
+	it "is invalid without an living_standards_sig" do
+		subject.living_standards_sig = nil
+        expect(subject).to_not be_valid
+	end
+
+	it "is invalid without an parking_ack" do
+		subject.parking_ack = nil
+        expect(subject).to_not be_valid
+	end
+
+    it "is invalid if the building is full" do
+		subject.building.capacity = 0
+        expect(subject).to_not be_valid
+	end
 end

@@ -1,0 +1,53 @@
+/= render inline: @contract.to_json << "<br/>" << params.inspect
+.col-md-6
+  %h2
+    Base Costs
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          Line Item
+        %th
+          Amount
+    %tbody
+      %tr
+        %td
+          Application Fee (Non-Refundable)
+        %td
+          $50
+      %tr
+        %td
+          Rent
+        %td
+          $1,445
+      %tr
+        %td
+          Covered Private Parking
+        %td
+          $100
+
+.col-md-6
+  %h2
+    Discounts
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          Discount
+        %th
+          Amount
+    %tbody
+      %tr
+        %td
+          Early Bird
+        %td
+          \- $40
+      %tr
+        %td
+          Euro?
+        %td
+          \- $50
+
+.col-md-12
+  %h2
+    Payment Schedule

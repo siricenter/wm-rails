@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725170531) do
+ActiveRecord::Schema.define(version: 20140726221556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,19 +34,11 @@ ActiveRecord::Schema.define(version: 20140725170531) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
-  create_table "apartments", force: true do |t|
-    t.integer  "number"
-    t.integer  "bed_count"
-    t.integer  "floor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "building_id"
-  end
-
   create_table "buildings", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "capacity"
   end
 
   create_table "contract_durations", force: true do |t|
@@ -74,7 +66,13 @@ ActiveRecord::Schema.define(version: 20140725170531) do
     t.string   "parking_type"
     t.string   "phone"
     t.string   "apartment_type"
+    t.integer  "building_id"
+    t.string   "eligibility_sig"
+    t.string   "living_standards_sig"
+    t.string   "parking_ack"
   end
+
+  add_index "contracts", ["building_id"], name: "index_contracts_on_building_id", using: :btree
 
   create_table "semesters", force: true do |t|
     t.string   "name"
