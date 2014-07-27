@@ -74,4 +74,17 @@ RSpec.describe Prices do
 			end
 		end
 	end
+
+	describe "Application Fee" do
+		it "returns the correct application fee" do
+			expect(Prices::application_fee).to eq(50)
+		end
+	end
+
+	describe "Deposit" do
+		it "returns the correct deposit amount" do
+			semester = FactoryGirl.build :semester
+			expect(Prices::deposit(semester)).to eq(semester.deposit)
+		end
+	end
 end

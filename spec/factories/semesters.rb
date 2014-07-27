@@ -22,6 +22,6 @@ FactoryGirl.define do
     	end_date Date.tomorrow
 		private_cost 1500
 	  	shared_cost 1200
-	  	deposit 250
+	  	deposit 50
   	end
 end
