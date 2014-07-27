@@ -17,7 +17,7 @@ module Prices
 			return 65 if duration == 2
 			return 90
 		else
-			0
+			return 0
 		end
 	end
 end
