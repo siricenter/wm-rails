@@ -2,14 +2,13 @@ Rails.application.routes.draw do
 	devise_for :admins
 	root 'static#landing'
 	get '/choose', to: 'static#choose', as: :choose_apartment
-	get '/testing', to: 'static#testing'
 
 	get '/contracts/new/:building_id', to: 'contracts#new', as: :new_contract
 
 	get 'buildings/:id/availability/:semester_id', to: 'availability#available'
 
-	post '/discounts', to: 'contracts#discounts', as: :discounts
-	get '/discounts', to: 'contracts#discounts'
+	post '/invoice', to: 'contracts#discounts', as: :discounts
+	get '/invoice', to: 'contracts#discounts'
 
 	scope :admin do
 		get '/contracts', to: 'contracts#index', as: :contracts
