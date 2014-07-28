@@ -2,23 +2,25 @@ module Prices
 	def self.parking_price type, semester
 		duration = semester.duration
 		if type == 'Private Covered'
-			return 100 if duration == 1
-			return 185 if duration == 2
-			return 270
+			return [ 100 ] if duration == 1
+			return [ 100, 85 ] if duration == 2
+			return [ 100, 85, 85 ]
 		elsif type == 'Tandem Covered'
-			return 75 if duration == 1
-			return 140 if duration == 2
-			return 200
+			return [ 75 ] if duration == 1
+			return [ 75, 65 ] if duration == 2
+			return [ 75, 65, 60 ]
 		elsif type == 'Private Uncovered'
-			return 50 if duration == 1
-			return 90 if duration == 2
-			return 125
+			return [ 50 ] if duration == 1
+			return [ 50, 40 ] if duration == 2
+			return [ 50, 40, 35 ]
 		elsif type == 'Tandem Uncovered'
-			return 35 if duration == 1
-			return 65 if duration == 2
-			return 90
+			return [ 35 ] if duration == 1
+			return [ 35, 30 ] if duration == 2
+			return [ 35, 30, 25 ]
 		else
-			return 0
+			return [ 0 ] if duration == 1
+			return [ 0, 0 ] if duration == 2
+			return [ 0, 0, 0 ]
 		end
 	end
 
