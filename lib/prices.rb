@@ -1,5 +1,6 @@
 module Prices
-	def self.parking_price type, duration
+	def self.parking_price type, semester
+		duration = semester.duration
 		if type == 'Private Covered'
 			return 100 if duration == 1
 			return 185 if duration == 2

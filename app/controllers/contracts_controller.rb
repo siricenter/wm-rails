@@ -76,19 +76,24 @@ class ContractsController < ApplicationController
 	end
 
 	def discounts
+		# Model Retrieval
 		@contract = Contract.new(contract_params)
 		@semester = Semester.find(params[:contract][:semester])
 		@building = Building.find(params[:building_id])
 		@contract.semester = @semester
 		@contract.building = @building
 
+		# Prices
 		@application_fee = Prices::application_fee
 		@deposit = Prices::deposit(@semester)
 		@rent = Prices::rent(@semester)
-		@parking_price = Prices::parking_price(@contract.parking_type, 1)
+		@parking_price = Prices::parking_price(@contract.parking_type, @semester)
+		@early_bird = Prices::early_bird(@semester, Date.today)
+		@multiple_semesters = Prices::multiple_semester_discounts @semester
+
+		# Calculations
 		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price
 
-		@early_bird = Prices::early_bird(@semester, Date.today)
 
 		respond_to do |format|
 			if @contract.valid?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727190648) do
+ActiveRecord::Schema.define(version: 20140728022829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140727190648) do
     t.integer  "semester_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "payment_due"
   end
 
   add_index "contract_durations", ["semester_id"], name: "index_contract_durations_on_semester_id", using: :btree

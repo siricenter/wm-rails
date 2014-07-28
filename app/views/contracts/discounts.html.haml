@@ -22,9 +22,11 @@
           = number_to_currency(@deposit)
       %tr
         %td
-          Rent Per Semester
+          Rent ( x 
+          = @semester.duration
+          Semesters )
         %td
-          = number_to_currency(@rent)
+          = number_to_currency(@rent * @semester.duration)
       %tr
         %td
           Parking: 
@@ -61,7 +63,15 @@
         %td
           Euro?
         %td
-          \- $50
+          \- 
+          = number_to_currency(50)
+      - if @semester.duration > 1
+        %tr
+          %td
+            Multiple Semesters
+          %td
+            \-
+            = number_to_currency(@multiple_semesters[1])
 
 .col-md-12
   %h2
@@ -73,24 +83,34 @@
           Date
         %th
           Now
-        %th
-          Dec 14, 2014
-        %th
-          May 1, 2015
+        - @semester.contract_durations.each do |duration|
+          %th
+            = duration.payment_due
     %tbody
       %tr
         %td
           Amount
         %td
-          = number_to_currency(50) 
+          = number_to_currency(@application_fee) 
           Application Fee
           %br
-          = number_to_currency(50) 
+          = number_to_currency(@deposit) 
           Deposit
-        %td
-          = number_to_currency(1445)
-        %td
-          = number_to_currency(1445)
+        - @semester.contract_durations.each_with_index do |duration, index|
+          %td
+            = number_to_currency(@rent)
+            Rent 
+            %br
+            \-
+            - early_bird = @early_bird[index]
+            = number_to_currency(early_bird)
+            Early Bird
+            %br
+            - unless @multiple_semesters[index] == 0
+              - multiple_semesters = @multiple_semesters[index]
+              \-
+              = number_to_currency(multiple_semesters)
+              Multiple Semesters
       %tfoot
         %tr
           %td
@@ -98,13 +118,12 @@
               Total
           %td
             %strong
-              = number_to_currency(100)
-          %td
-            %strong
-              = number_to_currency(1445)
-          %td
-            %strong
-              = number_to_currency(1445)
+              = number_to_currency(@application_fee + @deposit)
+          - @semester.contract_durations.each_with_index do |duration, index|
+            %td
+              %strong
+                - total = @rent - @early_bird[index] - @multiple_semesters[index]
+                = number_to_currency(total)
               
 
   = button_to 'Check Out!', root_path,  class: ['btn', 'btn-primary', 'col-sm-2']
