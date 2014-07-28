@@ -88,6 +88,8 @@ class ContractsController < ApplicationController
 		@parking_price = Prices::parking_price(@contract.parking_type, 1)
 		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price
 
+		@early_bird = Prices::early_bird(@semester, Date.today)
+
 		respond_to do |format|
 			if @contract.valid?
 				format.html 
