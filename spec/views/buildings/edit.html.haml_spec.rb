@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "buildings/edit", :type => :view do
   before(:each) do
-    @building = assign(:building, Building.create!(
-      :name => "MyString"
-    ))
+    @building = assign(:building, FactoryGirl.create(:building))
   end
 
   it "renders the edit building form" do

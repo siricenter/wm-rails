@@ -24,11 +24,10 @@ RSpec.describe ContractsController, :type => :controller do
 	# Contract. As you add validations to Contract, be sure to
 	# adjust the attributes here as well.
 	let(:valid_attributes) {
-		apartment = FactoryGirl.create :apartment
 		semester = FactoryGirl.create :semester, name: Faker::Name.first_name
+		building = FactoryGirl.create :building
 		{
 			semester: semester.to_param,
-			apartment: apartment.to_param,
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
 			email: 'student1@byui.edu',
@@ -37,17 +36,21 @@ RSpec.describe ContractsController, :type => :controller do
 			home_city: Faker::Address.city,
 			home_state: Faker::Address.state,
 			home_zip: Faker::Address.zip,
-			room_type: "Shared",
-            parking_type: "Covered"
+			parking_type: "Private Covered",
+			phone: Faker::PhoneNumber.phone_number,
+			apartment_type: '8 Person',
+			building_id: building.to_param,
+			eligibility_sig: 'John Doe',
+			living_standards_sig: 'John Doe',
+			parking_ack: 'John Doe'
 		}
 	}
 
 	let(:invalid_attributes) {
-		apartment = FactoryGirl.create :apartment
 		semester = FactoryGirl.create :semester, name: Faker::Name.first_name
+		building = FactoryGirl.create :building
 		{
 			semester: semester.to_param,
-			apartment: apartment.to_param,
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
 			email: Faker::Internet.email,
@@ -56,7 +59,13 @@ RSpec.describe ContractsController, :type => :controller do
 			home_city: Faker::Address.city,
 			home_state: Faker::Address.state,
 			home_zip: Faker::Address.zip,
-			room_type: "Invalid"
+			parking_type: "Private Covered",
+			phone: Faker::PhoneNumber.phone_number,
+			apartment_type: '8 Person',
+			building_id: building.to_param,
+			eligibility_sig: 'John Doe',
+			living_standards_sig: 'John Doe',
+			parking_ack: 'John Doe'
 		}
 	}
 
@@ -136,11 +145,10 @@ RSpec.describe ContractsController, :type => :controller do
 	describe "PUT update" do
 		describe "with valid params" do
 			let(:new_attributes) {
-				apartment = FactoryGirl.create :apartment
 				semester = FactoryGirl.create :semester, name: Faker::Name.first_name
+				building = FactoryGirl.create :building
 				{
 					semester: semester.to_param,
-					apartment: apartment.to_param,
 					first_name: Faker::Name.first_name,
 					last_name: Faker::Name.last_name,
 					email: 'student1@byui.edu',
@@ -149,14 +157,20 @@ RSpec.describe ContractsController, :type => :controller do
 					home_city: Faker::Address.city,
 					home_state: Faker::Address.state,
 					home_zip: Faker::Address.zip,
-					room_type: "Private"
+					parking_type: "Tandem Covered",
+					phone: Faker::PhoneNumber.phone_number,
+					apartment_type: '8 Person',
+					building_id: building.to_param,
+					eligibility_sig: 'John Doe',
+					living_standards_sig: 'John Doe',
+					parking_ack: 'John Doe'
 				}}
 
 			it "updates the requested contract" do
 				contract = FactoryGirl.create :contract
 				put :update, {:id => contract.to_param, :contract => new_attributes}, valid_session
 				contract.reload
-				expect(contract.room_type).to eq("Private")
+				expect(contract.parking_type).to eq("Tandem Covered")
 			end
 
 			it "assigns the requested contract as @contract" do

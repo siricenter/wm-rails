@@ -5,13 +5,12 @@ RSpec.describe "contracts/edit", :type => :view do
 	@semesters = assign(:semesters, [FactoryGirl.create(:semester)])
     @contract = assign(:contract, FactoryGirl.create(:contract, semester: @semesters.first))
 	@building = assign(:building, FactoryGirl.create(:building))
-	@apartments = assign(:apartments, [FactoryGirl.create(:apartment, building: @building)])
   end
 
   it "renders the edit contract form" do
     render
 
-    assert_select "form[action=?][method=?]", contract_path(@contract), "post" do
+    assert_select "form[action=?][method=?]", discounts_path, "post" do
 
       assert_select "input#contract_first_name[name=?]", "contract[first_name]"
 
@@ -29,7 +28,6 @@ RSpec.describe "contracts/edit", :type => :view do
 
       assert_select "input#contract_home_zip[name=?]", "contract[home_zip]"
 
-      assert_select "select#contract_room_type[name=?]", "contract[room_type]"
     end
   end
 end

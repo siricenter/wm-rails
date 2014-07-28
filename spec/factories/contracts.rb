@@ -2,21 +2,25 @@
 #
 # Table name: contracts
 #
-#  id             :integer          not null, primary key
-#  semester_id    :integer
-#  apartment_id   :integer
-#  first_name     :string(255)
-#  last_name      :string(255)
-#  email          :string(255)
-#  home_address_1 :string(255)
-#  home_address_2 :string(255)
-#  home_city      :string(255)
-#  home_state     :string(255)
-#  home_zip       :string(255)
-#  room_type      :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
-#  parking_type   :string(255)
+#  id                   :integer          not null, primary key
+#  semester_id          :integer
+#  first_name           :string(255)
+#  last_name            :string(255)
+#  email                :string(255)
+#  home_address_1       :string(255)
+#  home_address_2       :string(255)
+#  home_city            :string(255)
+#  home_state           :string(255)
+#  home_zip             :string(255)
+#  created_at           :datetime
+#  updated_at           :datetime
+#  parking_type         :string(255)
+#  phone                :string(255)
+#  apartment_type       :string(255)
+#  building_id          :integer
+#  eligibility_sig      :string(255)
+#  living_standards_sig :string(255)
+#  parking_ack          :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -24,7 +28,7 @@
 FactoryGirl.define do
 	factory :contract do
 		semester
-		apartment
+		building
 		first_name { Faker::Name.first_name } 
 		last_name { Faker::Name.last_name }
 		email 'student1@byui.edu'
@@ -33,7 +37,11 @@ FactoryGirl.define do
 		home_city { Faker::Address.city }
 		home_state { Faker::Address.state }
 		home_zip { Faker::Address.zip }
-		room_type "Shared"
-        parking_type "Covered"
+		apartment_type "6 Person"
+        parking_type "Private Covered"
+		phone '555-555-5555'
+		eligibility_sig "John Doe"
+		living_standards_sig "John Doe"
+		parking_ack "John Doe"
 	end
 end

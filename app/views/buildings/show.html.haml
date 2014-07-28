@@ -4,18 +4,6 @@
   %b Name:
   = @building.name
 
-.row
-  = link_to 'Add Apartment', new_building_apartment_path(@building)
-
-%ul
-  - @building.apartments.each do |apartment|
-    %li
-      = apartment.number
-      = link_to 'Show', apartment
-      = link_to 'Edit', edit_apartment_path(apartment)
-      = link_to 'Remove', apartment, method: :delete
-
-
 = link_to 'Edit', edit_building_path(@building)
 \|
 = link_to 'Back', buildings_path

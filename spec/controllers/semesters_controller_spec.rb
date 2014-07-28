@@ -25,20 +25,16 @@ RSpec.describe SemestersController, :type => :controller do
 	# adjust the attributes here as well.
 	let(:valid_attributes) {{
 		name: "Spring Semester 2014", 
-		start_date: Date.yesterday,
-		end_date: Date.tomorrow,
-		private_cost: 1500,
-		shared_cost: 1200,
-		deposit: 250
+		rent: 1500,
+		deposit: 50,
+		duration: 1
 	}}
 
 	let(:invalid_attributes) {{
-		name: "Spring Semester 2014", 
-		start_date: Date.today,
-		end_date: Date.today,
-		private_cost: 1500,
-		shared_cost: 1200,
-		deposit: 250
+		name: "", 
+		rent: 1500,
+		deposit: 50,
+		duration: 1
 	}}
 
 	login_admin
@@ -116,19 +112,16 @@ RSpec.describe SemestersController, :type => :controller do
 		describe "with valid params" do
 			let(:new_attributes) {{
 				name: "Spring Semester 2014", 
-				start_date: Date.yesterday,
-				end_date: Date.tomorrow.next,
-				private_cost: 1500,
-				shared_cost: 1200,
-				deposit: 250
+				rent: 1500,
+				deposit: 250,
+				duration: 1
 			}}
 
 			it "updates the requested semester" do
 				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => new_attributes}, valid_session
 				semester.reload
-				expect(semester.start_date).to eq(Date.yesterday)
-				expect(semester.end_date).to eq(Date.tomorrow.next)
+				expect(semester.deposit).to eq(250)
 			end
 
 			it "assigns the requested semester as @semester" do

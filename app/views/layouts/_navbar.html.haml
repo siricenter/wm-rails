@@ -1,21 +1,7 @@
 .navbar.navbar-fixed-top{:role => "navigation"}
   .container-fluid
     .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to :root, class: 'navbar-brand' do
+      = link_to root_path, class: 'navbar-brand' do
         = image_tag 'logo-no-text.png'
+      = link_to root_path, class: 'navbar-brand' do
         %h1 Windsor Manor
-    .navbar-collapse.collapse
-      - if admin_signed_in?
-        = link_to 'Logout', destroy_admin_session_path, method: :delete, class: ['navbar-right', 'btn', 'btn-danger', 'col-md-1'], id: :session
-      - else
-        = form_tag session_path(:admin), class: ['navbar-form', 'navbar-right'], id: [:session] do
-          .form-group
-            = email_field_tag 'admin[email]', '', class: 'form-control', placeholder: 'Email'
-          .form-group
-            = password_field_tag 'admin[password]', 'Password', class: 'form-control'
-            = submit_tag 'Sign In', class: ['btn', 'btn-primary']

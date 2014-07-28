@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 	devise_for :admins
+	root 'static#landing'
+
 	get '/choose', to: 'static#choose', as: :choose_apartment
 
-	get '/contracts/new/:building_id', to: 'contracts#new', as: :new_contract
+	post '/invoice', to: 'contracts#discounts', as: :discounts
+	get '/invoice', to: 'contracts#discounts'
 
-	get 'buildings/:id/availability/:semester_id', to: 'availability#available'
+	get '/contracts/new/:building_id', to: 'contracts#new', as: :new_contract
+	get '/buildings/:id/availability/:semester_id', to: 'availability#available'
 
 	scope :admin do
 		get '/contracts', to: 'contracts#index', as: :contracts
@@ -13,10 +17,7 @@ Rails.application.routes.draw do
 		put '/contracts/:id', to: 'contracts#update'
 		get '/contracts/:id/edit', to: 'contracts#edit', as: :edit_contract
 
-		resources :buildings do
-			resources :apartments, shallow: true
-		end
-
+		resources :buildings
 		resources :semesters
 	end
 
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
 	# See how all your routes lay out with "rake routes".
 
 	# You can have the root of your site routed with "root"
-	root 'static#landing'
 
 	# Example of regular route:
 	#   get 'products/:id' => 'catalog#view'

@@ -1,13 +1,5 @@
 / Main jumbotron for a primary marketing message or call to action
 .container-fluid
-  .row
-    #home-title
-      %h1.text-center Welcome Home
-      #tagline.cntr
-        %p.text-center Windsor Manor is a brand new apartment complex close to campus and outfitted with top grade amenities. Study rooms, music rooms, game rooms, themed decor and spacious apartments are just a few things that make it the perfect place to call home (even if your mom's not cooking dinner).
-      .cntr.fit-width
-        = link_to "Book Now!", choose_apartment_path, class: ['btn', 'btn-primary', 'btn-lg'], role: 'button'
-    / <img id="main-img" src="img/building_art.jpg">
   .row.availability
     %h3.col-xs-3.col-md-3 Check Availability:
     %p#sem-select.col-xs-3.col-md-3
@@ -22,44 +14,44 @@
     .col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
       %p 
         /Book Now
-  .row
+  .row.tiles
     .col-md-4.col-md-4.tile
       .inner-tile
-        .circular.cir-img-complex
         %h3 Complex
+        .circular.cir-img-complex
         %p Info about the complex
         %button.btn.cntr Coming Soon!
     .col-md-4.col-md-4.tile
       .inner-tile
-        .circular.cir-img-apartments
         %h3 Apartments
+        .circular.cir-img-apartments
         %p Info about the Apartments
         %button.btn.cntr Coming Soon!
     .col-md-4.col-md-4.tile
       .inner-tile
-        .circular.cir-img-amenities
         %h3 Amenities
+        .circular.cir-img-amenities
         %p Info about the amenities
         %button.btn.cntr Coming Soon!
     .col-md-4.col-md-4.tile
       .inner-tile
-        .circular.cir-img-reservations
         %h3 Reservations
+        .circular.cir-img-reservations
         %p Info about the reservations
         %button.btn.cntr Coming Soon!
     .col-md-4.col-md-4.tile
       .inner-tile
-        .circular.cir-img-tenants
         %h3 Current Tenants
+        .circular.cir-img-tenants
         %p Info for current tenants
         %button.btn.cntr Coming Soon!
     .col-md-4.col-md-4.tile
       .inner-tile
-        .circular.cir-img-gallery
         %h3 Gallery
+        .circular.cir-img-gallery
         %p A photo gallery
         %button.btn.cntr Coming Soon!
-  = render 'news'
+  /= render 'news'
   #social.row
     %h3.col-md-12.text-center Follow us on
     #social-icons.col-md-12
