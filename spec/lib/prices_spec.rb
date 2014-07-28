@@ -102,18 +102,41 @@ RSpec.describe Prices do
 		end
 	end
 
+	describe "Multiple Semester Discounts" do
+		it "returns the correct discount for a single semester" do
+			@semester.duration = 1
+			expect(Prices::multiple_semester_discounts(@semester)).to eq([0])
+		end
+
+		it "returns the correct discount for two semesters" do
+			@semester.duration = 2
+			expect(Prices::multiple_semester_discounts(@semester)).to eq([0, 95])
+		end
+
+		it "returns the correct discount for three semesters" do
+			@semester.duration = 3
+			expect(Prices::multiple_semester_discounts(@semester)).to eq([0, 95, 105])
+		end
+	end
+
 	describe "Early Bird" do
 		context "one semester" do
+			before :each do
+				@semester.duration = 1
+			end
+
 			it "should return the correct early bird discount for 1 semester 90 days in advance" do
-				expect(Prices::early_bird(@semester, @semester.start_date - 90)).to eq(40)
+				today = @semester.start_date - 90
+				discount = Prices::early_bird(@semester, today)
+				expect(discount).to eq([ 40 ])
 			end
 
 			it "should return the correct early bird discount for 1 semester 60 days in advance" do
-				expect(Prices::early_bird(@semester, @semester.start_date - 60)).to eq(20)
+				expect(Prices::early_bird(@semester, @semester.start_date - 60)).to eq([ 20 ])
 			end
 
 			it "should return the correct early bird discount for 1 semester < 60 days in advance" do
-				expect(Prices::early_bird(@semester, @semester.start_date - 59)).to eq(0)
+				expect(Prices::early_bird(@semester, @semester.start_date - 59)).to eq([ 0 ])
 			end
 		end
 
@@ -136,6 +159,23 @@ RSpec.describe Prices do
 			end
 		end
 
-		context "whole year"
+		context "whole year" do
+			before :each do
+				@semester.contract_durations << FactoryGirl.build(:contract_duration, semester: @semester)
+				@semester.duration = 3
+			end
+
+			it "should return the correct early bird discount for 1 semester 90 days in advance for 2 semester contracts" do
+				expect(Prices::early_bird(@semester, @semester.start_date - 90)).to eq([40, 10, 10])
+			end
+
+			it "should return the correct early bird discount for 1 semester 60 days in advance for 2 semester contracts" do
+				expect(Prices::early_bird(@semester, @semester.start_date - 60)).to eq([20, 10, 10])
+			end
+
+			it "should return the correct early bird discount for 1 semester  < 60 days in advance for 2 semester contracts" do
+				expect(Prices::early_bird(@semester, @semester.start_date - 59)).to eq([0, 0, 0])
+			end
+		end
 	end
 end
