@@ -8,6 +8,7 @@
 #  semester_id :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  payment_due :date
 #
 
 class ContractDuration < ActiveRecord::Base
@@ -15,4 +16,5 @@ class ContractDuration < ActiveRecord::Base
 
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :payment_due, presence: true
 end
