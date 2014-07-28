@@ -1,0 +1,31 @@
+.col-md-6
+  %h2
+    Discounts
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          Discount
+        %th
+          Amount
+    %tbody
+      %tr
+        %td
+          Early Bird
+        %td
+          \-
+          = number_to_currency(@early_bird_sum)
+      - unless @contract.euro.empty?
+        %tr
+          %td
+            Euro
+          %td
+            \- 
+            = number_to_currency(50)
+      - if @semester.duration > 1
+        %tr
+          %td
+            Multiple Semesters
+          %td
+            \-
+            = number_to_currency(@multiple_semesters[1])

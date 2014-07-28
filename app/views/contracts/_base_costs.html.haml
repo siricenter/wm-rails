@@ -1,0 +1,42 @@
+.col-md-6
+  %h2
+    Base Costs
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          Line Item
+        %th
+          Amount
+    %tbody
+      %tr
+        %td
+          Application Fee (Non-Refundable)
+        %td
+          = number_to_currency(@application_fee)
+      %tr
+        %td
+          Deposit (Refundable)
+        %td
+          = number_to_currency(@deposit)
+      %tr
+        %td
+          Rent ( x 
+          = @semester.duration
+          Semesters )
+        %td
+          = number_to_currency(@rent * @semester.duration)
+      %tr
+        %td
+          Parking: 
+          = @contract.parking_type
+        %td
+          = number_to_currency(@parking_price)
+    %tfoot
+      %tr
+        %td
+          %strong
+            Total
+        %td
+          %strong
+            = number_to_currency(@total)
