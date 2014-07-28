@@ -12,74 +12,80 @@ RSpec.describe Prices do
 
 	describe "#parking" do
 		context "one semester" do
-			duration = 1
+			before :each do
+				@semester.duration = 1
+			end
 
 			it "returns the right price for Private Covered" do
-				expect(Prices::parking_price('Private Covered', duration)).to eq(100)
+				expect(Prices::parking_price('Private Covered', @semester)).to eq([100])
 			end
 
 			it "returns the right price for Tandem Covered" do
-				expect(Prices::parking_price('Tandem Covered', duration)).to eq(75)
+				expect(Prices::parking_price('Tandem Covered', @semester)).to eq([75])
 			end
 
 			it "returns the right price for Private Uncovered" do
-				expect(Prices::parking_price('Private Uncovered', duration)).to eq(50)
+				expect(Prices::parking_price('Private Uncovered', @semester)).to eq([50])
 			end
 
 			it "returns the right price for Tandem Uncovered" do
-				expect(Prices::parking_price('Tandem Uncovered', duration)).to eq(35)
+				expect(Prices::parking_price('Tandem Uncovered', @semester)).to eq([35])
 			end
 
 			it "returns the right price for No Parking" do
-				expect(Prices::parking_price('None', duration)).to eq(0)
+				expect(Prices::parking_price('None', @semester)).to eq([0])
 			end
 		end
 
 		context "two semesters" do
-			duration = 2
+			before :each do
+				@semester.duration = 2
+			end
 
 			it "returns the right price for Private Covered" do
-				expect(Prices::parking_price('Private Covered', duration)).to eq(185)
+				expect(Prices::parking_price('Private Covered', @semester)).to eq([100, 85])
 			end
 
 			it "returns the right price for Tandem Covered" do
-				expect(Prices::parking_price('Tandem Covered', duration)).to eq(140)
+				expect(Prices::parking_price('Tandem Covered', @semester)).to eq([75, 65])
 			end
 
 			it "returns the right price for Private Uncovered" do
-				expect(Prices::parking_price('Private Uncovered', duration)).to eq(90)
+				expect(Prices::parking_price('Private Uncovered', @semester)).to eq([50, 40])
 			end
 
 			it "returns the right price for Tandem Uncovered" do
-				expect(Prices::parking_price('Tandem Uncovered', duration)).to eq(65)
+				expect(Prices::parking_price('Tandem Uncovered', @semester)).to eq([35, 30])
 			end
 
 			it "returns the right price for No Parking" do
-				expect(Prices::parking_price('None', duration)).to eq(0)
+				expect(Prices::parking_price('None', @semester)).to eq([0, 0])
 			end
 		end
 
 		context "three semesters" do
-			duration = 3
+			before :each do
+				@semester.duration = 3
+			end
 
 			it "returns the right price for Private Covered" do
-				expect(Prices::parking_price('Private Covered', duration)).to eq(270)
+				expect(Prices::parking_price('Private Covered', @semester)).to eq([100, 85, 85])
 			end
 
 			it "returns the right price for Tandem Covered" do
-				expect(Prices::parking_price('Tandem Covered', duration)).to eq(200)
+				expect(Prices::parking_price('Tandem Covered', @semester)).to eq([75, 65, 60])
 			end
 
 			it "returns the right price for Private Uncovered" do
-				expect(Prices::parking_price('Private Uncovered', duration)).to eq(125)
+				expect(Prices::parking_price('Private Uncovered', @semester)).to eq([50, 40, 35])
 			end
 
 			it "returns the right price for Tandem Uncovered" do
-				expect(Prices::parking_price('Tandem Uncovered', duration)).to eq(90)
+				expect(Prices::parking_price('Tandem Uncovered', @semester)).to eq([35, 30, 25])
 			end
 
 			it "returns the right price for No Parking" do
-				expect(Prices::parking_price('None', duration)).to eq(0)
+				expect(Prices::parking_price('None', @semester)).to eq([0, 0, 0])
 			end
 		end
 	end

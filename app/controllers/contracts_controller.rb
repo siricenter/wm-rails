@@ -87,12 +87,20 @@ class ContractsController < ApplicationController
 		@application_fee = Prices::application_fee
 		@deposit = Prices::deposit(@semester)
 		@rent = Prices::rent(@semester)
-		@parking_price = Prices::parking_price(@contract.parking_type, @semester)
+		@parking = Prices::parking_price(@contract.parking_type, @semester)
 		@early_bird = Prices::early_bird(@semester, Date.today)
 		@multiple_semesters = Prices::multiple_semester_discounts @semester
 
 		# Calculations
+		@parking_price = 0
+		@parking.each do |park|
+			@parking_price += park
+		end
 		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price
+		@early_bird_sum = 0
+		@early_bird.each do |early|
+			@early_bird_sum += early
+		end
 
 
 		respond_to do |format|
