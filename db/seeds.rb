@@ -5,14 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-mens = Building.create!({name: 'Windsor Manor Men\'s', capacity: 206})
-womens = Building.create!({name: 'Windsor Manor Women\'s', capacity: 344})
+Building.create!({name: 'Windsor Manor Men\'s', capacity: 206})
+Building.create!({name: 'Windsor Manor Women\'s', capacity: 344})
 
-Apartment.create!({building: mens, number: 101, bed_count: 6, floor: 1})
-Apartment.create!({building: mens, number: 102, bed_count: 6, floor: 1})
-Apartment.create!({building: womens, number: 101, bed_count: 6, floor: 1})
-Apartment.create!({building: womens, number: 102, bed_count: 6, floor: 1})
+winter = Semester.new({name: "Winter 2015", rent: 1200, deposit: 50, duration: 1})
+winter.contract_durations << ContractDuration.create({start_date: Date.new(2015, 1, 2), end_date: Date.new(2015, 4, 2), semester: winter})
+winter.save!
 
-Semester.create!({name: "Winter 2015", start_date: Date.new(2015, 1, 2), end_date: Date.new(2015, 4, 10), private_cost: 1500, shared_cost: 1200, deposit: 250})
+winter_spring = Semester.new({name: "Winter/Spring 2015", rent: 1200, deposit: 50, duration: 2})
+winter_spring.contract_durations << ContractDuration.create({start_date: Date.new(2015, 1, 2), end_date: Date.new(2015, 4, 2), semester: winter_spring})
+winter_spring.save!
 
 Admin.create!(email: 'CJPoll@gmail.com', password: 'ki876Lp#$')
