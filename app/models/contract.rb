@@ -32,7 +32,6 @@ class BuildingAvailablityValidator < ActiveModel::Validator
 end
 
 class Contract < ActiveRecord::Base
-	#belongs_to :apartment
 	belongs_to :semester
 	belongs_to :building
 

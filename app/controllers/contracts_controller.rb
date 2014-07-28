@@ -102,6 +102,8 @@ class ContractsController < ApplicationController
 			@early_bird_sum += early
 		end
 
+		debugger
+
 
 		respond_to do |format|
 			if @contract.valid?
@@ -124,6 +126,6 @@ class ContractsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def contract_params
-		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack)
+		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro)
 	end
 end

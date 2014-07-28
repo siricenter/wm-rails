@@ -102,6 +102,22 @@
 
   .row
     %h2
+      Special
+    .form-group
+      .col-md-2
+        = f.label :euro, class: ['control-label']
+        %span.text-danger
+          *
+      .col-md-4
+        = f.text_field :euro, placeholder: 'Your Euro Number', class: 'form-control'
+
+  .row
+    %strong.col-md-6.text-danger
+      *The Euro is a discount to people who reserved very early. Enter the number on your Euro card here.
+        
+
+  .row
+    %h2
       Legal
     .col-md-6
       %h3
