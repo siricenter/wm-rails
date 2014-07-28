@@ -59,12 +59,13 @@
         %td
           \-
           = number_to_currency(@early_bird_sum)
-      %tr
-        %td
-          Euro?
-        %td
-          \- 
-          = number_to_currency(50)
+      - unless @contract.euro.empty?
+        %tr
+          %td
+            Euro
+          %td
+            \- 
+            = number_to_currency(50)
       - if @semester.duration > 1
         %tr
           %td
@@ -104,16 +105,21 @@
             = number_to_currency(@parking[index])
             Parking
             %br
-            \-
-            - early_bird = @early_bird[index]
-            = number_to_currency(early_bird)
-            Early Bird
-            %br
             - unless @multiple_semesters[index] == 0
               - multiple_semesters = @multiple_semesters[index]
               \-
               = number_to_currency(multiple_semesters)
               Multiple Semesters
+              %br
+            - unless index != 0 or @contract.euro.empty?
+              \-
+              = number_to_currency(50)
+              Euro Discount
+              %br
+            \-
+            - early_bird = @early_bird[index]
+            = number_to_currency(early_bird)
+            Early Bird
       %tfoot
         %tr
           %td
@@ -125,7 +131,10 @@
           - @semester.contract_durations.each_with_index do |duration, index|
             %td
               %strong
+                - debugger
                 - total = @rent + @parking[index] - @early_bird[index] - @multiple_semesters[index]
+                - unless @contract.euro.empty?
+                  - total -= 50
                 = number_to_currency(total)
               
 
