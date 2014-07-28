@@ -82,6 +82,12 @@ class ContractsController < ApplicationController
 		@contract.semester = @semester
 		@contract.building = @building
 
+		@application_fee = Prices::application_fee
+		@deposit = Prices::deposit(@semester)
+		@rent = Prices::rent(@semester)
+		@parking_price = Prices::parking_price(@contract.parking_type, 1)
+		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price
+
 		respond_to do |format|
 			if @contract.valid?
 				format.html 
