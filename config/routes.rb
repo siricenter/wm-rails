@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  get 'contracts/success'
+
+  get 'contracts/failure'
+
 	devise_for :admins
 	root 'static#landing'
 
 	get '/choose', to: 'static#choose', as: :choose_apartment
+
+	get '/success', to: 'contracts#success', as: :success
 
 	post '/invoice', to: 'contracts#discounts', as: :discounts
 	get '/invoice', to: 'contracts#discounts'
