@@ -4,7 +4,7 @@ module Prices
 		if type == 'Private Covered'
 			return [ 100 ] if duration == 1
 			return [ 100, 85 ] if duration == 2
-			return [ 100, 85, 85 ]
+			return [ 100, 85, 75 ]
 		elsif type == 'Tandem Covered'
 			return [ 75 ] if duration == 1
 			return [ 75, 65 ] if duration == 2

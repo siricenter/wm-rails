@@ -69,7 +69,7 @@ RSpec.describe Prices do
 			end
 
 			it "returns the right price for Private Covered" do
-				expect(Prices::parking_price('Private Covered', @semester)).to eq([100, 85, 85])
+				expect(Prices::parking_price('Private Covered', @semester)).to eq([100, 85, 75])
 			end
 
 			it "returns the right price for Tandem Covered" do
