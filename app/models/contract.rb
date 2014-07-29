@@ -21,6 +21,7 @@
 #  eligibility_sig      :string(255)
 #  living_standards_sig :string(255)
 #  parking_ack          :string(255)
+#  euro                 :string(255)
 #
 
 class BuildingAvailablityValidator < ActiveModel::Validator
