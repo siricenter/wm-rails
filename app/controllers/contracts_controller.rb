@@ -83,6 +83,64 @@ class ContractsController < ApplicationController
 		@contract.semester = @semester
 		@contract.building = @building
 
+
+		session[:temp_contract] = @contract.to_json
+		session[:semester_id] = @semester.id
+		session[:building_id] = @building.id
+
+		set_prices
+
+		respond_to do |format|
+			if @contract.valid?
+				format.html 
+			else
+				format.html {
+					@contract = @contract
+					@semesters = Semester.all
+					render :new
+				}
+			end
+		end
+	end
+
+	def success
+		if session[:temp_contract] and session[:semester_id] and session[:building_id]
+			@contract = Contract.new(JSON.parse(session[:temp_contract]))
+			@semester = Semester.find(session[:semester_id])
+			@building = Building.find(session[:building_id])
+			@contract.semester = @semester
+			@contract.building = @building
+
+			set_prices
+
+			session[:temp_contract] = nil
+			session[:semester_id] = nil
+			session[:building_id] = nil
+
+			respond_to do |format|
+				if @contract.save
+					format.html {render :success}
+				else
+					format.html {render :failure}
+				end
+			end
+		else
+			redirect_to root_url
+		end
+	end
+
+	private
+	# Use callbacks to share common setup or constraints between actions.
+	def set_contract
+		@contract = Contract.find(params[:id])
+	end
+
+	# Never trust parameters from the scary internet, only allow the white list through.
+	def contract_params
+		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro)
+	end
+
+	def set_prices
 		# Prices
 		@application_fee = Prices::application_fee
 		@deposit = Prices::deposit(@semester)
@@ -101,31 +159,5 @@ class ContractsController < ApplicationController
 		@early_bird.each do |early|
 			@early_bird_sum += early
 		end
-
-		debugger
-
-
-		respond_to do |format|
-			if @contract.valid?
-				format.html 
-			else
-				format.html {
-					@contract = @contract
-					@semesters = Semester.all
-					render :new
-				}
-			end
-		end
-	end
-
-	private
-	# Use callbacks to share common setup or constraints between actions.
-	def set_contract
-		@contract = Contract.find(params[:id])
-	end
-
-	# Never trust parameters from the scary internet, only allow the white list through.
-	def contract_params
-		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro)
 	end
 end
