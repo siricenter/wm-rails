@@ -55,7 +55,6 @@
           - @semester.contract_durations.each_with_index do |duration, index|
             %td
               %strong
-                - debugger
                 - total = @rent + @parking[index] - @early_bird[index] - @multiple_semesters[index]
                 - unless @contract.euro.empty?
                   - total -= 50
