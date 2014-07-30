@@ -1,6 +1,6 @@
 .col-md-6
   %h2
-    Base Costs
+    Total Costs
   %table.table.table-hover
     %thead
       %tr
@@ -32,6 +32,12 @@
           = @contract.parking_type
         %td
           = number_to_currency(@parking_price)
+      %tr
+        %td
+          Discounts
+        %td
+          \-
+          = number_to_currency(@discounts_total)
     %tfoot
       %tr
         %td

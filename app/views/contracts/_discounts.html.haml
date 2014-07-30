@@ -15,17 +15,17 @@
         %td
           \-
           = number_to_currency(@early_bird_sum)
-      - unless @contract.euro.empty?
+      - unless @euro == 0
         %tr
           %td
             Windsor Euro
           %td
             \- 
-            = number_to_currency(50)
+            = number_to_currency(@euro)
       - if @semester.duration > 1
         %tr
           %td
             Multiple Semesters
           %td
             \-
-            = number_to_currency(@multiple_semesters[1])
+            = number_to_currency(@multiple_semesters_sum)
