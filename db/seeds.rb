@@ -37,7 +37,7 @@ spring_duration = ContractDuration.new({start_date: Date.new(2015, 4, 17), end_d
 spring.contract_durations << spring_duration
 spring.save!
 
-spring_fall = Semester.new({name: "Spring 2015 / Fall 2015", rent: 1445, deposit: 50, duration: 1})
+spring_fall = Semester.new({name: "Spring 2015 / Fall 2015", rent: 1445, deposit: 50, duration: 2})
 spring_duration = ContractDuration.new({start_date: Date.new(2015, 4, 17), end_date: Date.new(2015, 7, 24), payment_due: Date.new(2015, 4, 1), semester: spring_fall})
 fall_duration = ContractDuration.new({start_date: Date.new(2015, 9, 11), end_date: Date.new(2015, 12, 19), payment_due: Date.new(2015, 8, 24), semester: spring_fall})
 spring_fall.contract_durations << spring_duration
