@@ -23,6 +23,8 @@
 #  parking_ack          :string(255)
 #  euro                 :string(255)
 #  contract_agreement   :string(255)
+#  preferences          :text
+#  number               :text
 #
 
 require 'rails_helper'
