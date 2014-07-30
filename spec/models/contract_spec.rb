@@ -22,6 +22,7 @@
 #  living_standards_sig :string(255)
 #  parking_ack          :string(255)
 #  euro                 :string(255)
+#  contract_agreement   :string(255)
 #
 
 require 'rails_helper'

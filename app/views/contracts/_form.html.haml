@@ -17,7 +17,7 @@
         = text_field_tag :property, @building.name, readonly: true, class: ['form-control', 'col-md-6']
       = label_tag :website, "Web Site", class: 'col-md-2'
       .col-md-4
-        = text_field_tag :website, 'www.thewindsormanor.com', readonly: true, class: ['form-control', 'col-md-6']
+        = text_field_tag :website, 'www.windsormanor.net', readonly: true, class: ['form-control', 'col-md-6']
     .form-group
       = label_tag :address, "Property Address", class: 'col-md-2'
       .col-md-4
@@ -105,7 +105,7 @@
       Special
     .form-group
       .col-md-2
-        = f.label :euro, class: ['control-label']
+        = f.label :euro, 'Windsor Euro', class: ['control-label']
         %span.text-danger
           *
       .col-md-4
@@ -164,12 +164,14 @@
       expectations can be sufficient cause for termination of this Contract and 
 
       eviction.
+      %br
+      %br
+      = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
 
   .row
     .col-md-6
       = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
     .col-md-6
-      = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
 
   .row
     .col-md-6
@@ -191,10 +193,18 @@
         have a permit, outside of a designated stall, in a “no parking zone,” etc.), I 
 
         or my guest(s) accept the risk of being booted or towed.
+    .col-md-6
+      %h3
+        Contract Acceptance
+      %p
+        I have read and agree to the terms of the contract
+      %br
+      = f.text_field :contract_agreement, placeholder: 'Type Your Signature', class: 'form-control'
 
   .row
     .col-md-6
       = f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
+    .col-md-6
 
 
   .row

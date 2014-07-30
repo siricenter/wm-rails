@@ -1,4 +1,10 @@
 %h1 Payment Received!
-%p Your contract has been saved. Thanks for signing up - we can't wait to see you. For your convenience, here's the payment schedule.
+%p 
+  Your contract has been saved. Thanks for signing up - we can't wait to see you. 
+  The last day to cancel your contract is
+  = (@semester.contract_durations.first.start_date - 61).to_formatted_s(:long) << '.'
+  
+%p
+  For your convenience, here's the payment schedule:
 
 = render partial: 'payment_schedule'

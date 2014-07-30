@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728054122) do
+ActiveRecord::Schema.define(version: 20140729180557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140728054122) do
     t.string   "living_standards_sig"
     t.string   "parking_ack"
     t.string   "euro"
+    t.string   "contract_agreement"
   end
 
   add_index "contracts", ["building_id"], name: "index_contracts_on_building_id", using: :btree
