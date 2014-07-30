@@ -157,12 +157,15 @@
       %br
       %br
       = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
+<<<<<<< HEAD
+=======
 
   .row
     .col-md-6
       = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
     .col-md-6
 
+>>>>>>> e5418c42ff3a7337ec39cfd617dadf9194150def
   .row
     .col-md-6
       %h3
@@ -195,6 +198,7 @@
 
       = f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
     .col-md-6
+<<<<<<< HEAD
       %h3
         Eligibility
       %p
@@ -227,6 +231,8 @@
 
         = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
 
+=======
+>>>>>>> e5418c42ff3a7337ec39cfd617dadf9194150def
 
 
   .row
