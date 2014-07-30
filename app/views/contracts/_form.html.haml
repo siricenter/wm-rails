@@ -158,10 +158,6 @@
       %br
       = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
 
-  .row
-    .col-md-6
-      = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
-    .col-md-6
 
   .row
     .col-md-6
@@ -183,17 +179,10 @@
         have a permit, outside of a designated stall, in a “no parking zone,” etc.), I 
 
         or my guest(s) accept the risk of being booted or towed.
-    .col-md-6
-      %h3
-        Contract Acceptance
-      %p
-        I have read and agree to the terms of the contract
-      %br
-      = f.text_field :contract_agreement, placeholder: 'Type Your Signature', class: 'form-control'
-
       %br
 
       = f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
+
     .col-md-6
       %h3
         Eligibility
