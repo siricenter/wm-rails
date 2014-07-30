@@ -121,6 +121,58 @@
       Legal
     .col-md-6
       %h3
+        Contract Acceptance
+      %p
+        I have read and agree to the terms of 
+        = link_to 'the contract.', '/contract.pdf', target: '_blank'
+      %br
+      = f.text_field :contract_agreement, placeholder: 'Type Your Signature', class: 'form-control'
+    .col-md-6
+      %h3
+        Living Standards
+      %p
+      I agree to comply with and acknowledge Landlord’s and my responsibility 
+
+      to maintain the Apartment Living Standards as stated in the BYU-Idaho 
+
+      Approved Housing Guidebook incorporated herein by reference. Students 
+
+      are expected to help their guests and other residents understand and 
+
+      maintain the BYU-Idaho Apartment Living Standards. Failure to meet these 
+
+      expectations can be sufficient cause for termination of this Contract and 
+
+      eviction.
+      %br
+      %br
+      = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
+  .row
+    .col-md-6
+      %h3
+        Parking Acknowledgement
+      %p
+        I know and understand that whether or not I own or operate a motor vehicle, 
+
+        I am responsible to know the parking guidelines and requirements of the 
+
+        housing property and abide by them. I also understand that I have a 
+
+        responsibility to reasonably inform guests who visit my apartment of the 
+
+        parking requirements. I understand that if I or any of my guests park illegally 
+
+        (e.g., in a resident’s or handicapped stall for which I or my guest(s) do not 
+        
+        have a permit, outside of a designated stall, in a “no parking zone,” etc.), I 
+
+        or my guest(s) accept the risk of being booted or towed.
+
+      %br
+
+      = f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
+    .col-md-6
+      %h3
         Eligibility
       %p
         I hereby certify that I am a “student” in good standing and am eligible to 
@@ -147,64 +199,11 @@
 
         Landlord may pursue. (See section 5 for more information.)
 
-    .col-md-6
-      %h3
-        Living Standards
-      %p
-      I agree to comply with and acknowledge Landlord’s and my responsibility 
+        %br
+        %br
 
-      to maintain the Apartment Living Standards as stated in the BYU-Idaho 
+        = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
 
-      Approved Housing Guidebook incorporated herein by reference. Students 
-
-      are expected to help their guests and other residents understand and 
-
-      maintain the BYU-Idaho Apartment Living Standards. Failure to meet these 
-
-      expectations can be sufficient cause for termination of this Contract and 
-
-      eviction.
-      %br
-      %br
-      = f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
-
-  .row
-    .col-md-6
-      = f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
-    .col-md-6
-
-  .row
-    .col-md-6
-      %h3
-        Parking Acknowledgement
-      %p
-        I know and understand that whether or not I own or operate a motor vehicle, 
-
-        I am responsible to know the parking guidelines and requirements of the 
-
-        housing property and abide by them. I also understand that I have a 
-
-        responsibility to reasonably inform guests who visit my apartment of the 
-
-        parking requirements. I understand that if I or any of my guests park illegally 
-
-        (e.g., in a resident’s or handicapped stall for which I or my guest(s) do not 
-        
-        have a permit, outside of a designated stall, in a “no parking zone,” etc.), I 
-
-        or my guest(s) accept the risk of being booted or towed.
-    .col-md-6
-      %h3
-        Contract Acceptance
-      %p
-        I have read and agree to the terms of the contract
-      %br
-      = f.text_field :contract_agreement, placeholder: 'Type Your Signature', class: 'form-control'
-
-  .row
-    .col-md-6
-      = f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
-    .col-md-6
 
 
   .row
