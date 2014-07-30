@@ -154,10 +154,19 @@ class ContractsController < ApplicationController
 		@parking.each do |park|
 			@parking_price += park
 		end
-		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price
 		@early_bird_sum = 0
 		@early_bird.each do |early|
 			@early_bird_sum += early
 		end
+		@multiple_semesters_sum = 0
+		@multiple_semesters.each do |discount|
+			@multiple_semesters_sum += discount
+		end
+
+		@euro = 0
+		@euro = 50 unless @contract.euro.empty?
+		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
+
+		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price - @discounts_total
 	end
 end
