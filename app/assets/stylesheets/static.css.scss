@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'navbar.css';
 
+$font: 'Ovo', serif;
 body
 {
 	background-color: #9A9C99;
@@ -36,7 +37,7 @@ $avail-marg: 35px;
 {
 	background-color: #591616;
 	height: $availability-height;
-	font-family: 'Poiret One';
+	font-family: $font;
 
 	& > *
 	{
@@ -46,6 +47,7 @@ $avail-marg: 35px;
 	& > h3
 	{
 		color: white;
+		font-size: 220%;
 		margin-top: $avail-marg;
 	}
 
@@ -65,6 +67,7 @@ $avail-marg: 35px;
 
 	#sem-select {
 		margin-top: $avail-marg;
+		font-weight: bold;
 	}
 }
 
@@ -116,6 +119,7 @@ $avail-marg: 35px;
 	{
 		margin: 10px auto;
 		text-align: center;
+		font-family: $font;
 	}
 
 	& > button
