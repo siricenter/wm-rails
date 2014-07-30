@@ -77,11 +77,19 @@ class ContractsController < ApplicationController
 
 	def discounts
 		# Model Retrieval
-		@contract = Contract.new(contract_params)
-		@semester = Semester.find(params[:contract][:semester])
-		@building = Building.find(params[:building_id])
-		@contract.semester = @semester
-		@contract.building = @building
+		if params.has_key? :contract
+			@contract = Contract.new(contract_params)
+			@semester = Semester.find(params[:contract][:semester])
+			@building = Building.find(params[:building_id])
+			@contract.semester = @semester
+			@contract.building = @building
+		else
+			@contract = Contract.new(JSON.parse(session[:temp_contract]))
+			@semester = Semester.find(session[:semester_id])
+			@building = Building.find(session[:building_id])
+			@contract.semester = @semester
+			@contract.building = @building
+		end
 
 
 		session[:temp_contract] = @contract.to_json
@@ -113,15 +121,16 @@ class ContractsController < ApplicationController
 
 			set_prices
 
-			session[:temp_contract] = nil
-			session[:semester_id] = nil
-			session[:building_id] = nil
-
 			respond_to do |format|
-				if @contract.save
-					format.html {render :success}
+				unless session[:reserved]
+					if @contract.save
+						session[:reserved] = true
+						format.html {render :success}
+					else
+						format.html {render :failure}
+					end
 				else
-					format.html {render :failure}
+					format.html {render :success}
 				end
 			end
 		else

@@ -1,10 +1,22 @@
-%h1 Payment Received!
-%p 
-  Your contract has been saved. Thanks for signing up - we can't wait to see you. 
-  The last day to cancel your contract is
-  = (@semester.contract_durations.first.start_date - 61).to_formatted_s(:long) << '.'
-  
-%p
-  For your convenience, here's the payment schedule:
+.col-md-12
+  %h1 Almost There!
+.col-md-12
+  %p 
+    Pay your deposit and processing fee now to guarantee your spot.
 
-= render partial: 'payment_schedule'
+%form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :target => "_top"}
+  %input{:name => "cmd", :type => "hidden", :value => "_s-xclick"}/
+  %input{:name => "hosted_button_id", :type => "hidden", :value => "6NERN5GAAH5PC"}/
+  %input{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :name => "submit", :src => "https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif", :type => "image"}/
+  %img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}/
+
+.col-md-12
+  %p
+    The last day to cancel your contract is
+    %strong
+      = (@semester.contract_durations.first.start_date - 61).to_formatted_s(:long) << '.'
+  
+/%p
+/  For your convenience, here's the payment schedule:
+/
+/= render partial: 'payment_schedule'

@@ -1,8 +1,22 @@
+.row
+  &nbsp;
+.row
+  &nbsp;
+
+.row
+  .actions
+    = link_to 'Make Reservation', success_path, class: ['btn', 'btn-primary', 'col-sm-2'], id: 'make_reservation'
+
 = render partial: 'base_costs'
 
 = render partial: 'discounts'
 
 = render partial: 'payment_schedule'
+
+.row
+  .actions
+    = link_to 'Make Reservation', success_path, class: ['btn', 'btn-primary', 'col-sm-2'], id: 'make_reservation'
+
 
 /.col-md-12
 /  %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :target => "_top"}
@@ -11,9 +25,5 @@
 /    %input{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :name => "submit", :src => "https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", :type => "image"}/
 /    %img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}/
 
-.col-md-12
-  %form{action: "https://www.sandbox.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
-    %input{name: "cmd", type: "hidden", value: "_s-xclick"}/
-    %input{name: "hosted_button_id", type: "hidden", value: "63Z3P47RR96T4"}/
-    %input{alt: "PayPal - The safer, easier way to pay online!", border: "0", name: "submit", src: "https://www.sandbox.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif", type: "image"}/
-    %img{alt: "", border: "0", height: "1", src: "https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif", width: "1"}/
+/    %input{alt: "PayPal - The safer, easier way to pay online!", border: "0", name: "submit", src: "https://www.sandbox.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif", type: "image"}/
+/    %img{alt: "", border: "0", height: "1", src: "https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif", width: "1"}/
