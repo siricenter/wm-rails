@@ -22,6 +22,7 @@
 #  living_standards_sig :string(255)
 #  parking_ack          :string(255)
 #  euro                 :string(255)
+#  contract_agreement   :string(255)
 #
 
 class BuildingAvailablityValidator < ActiveModel::Validator
@@ -49,6 +50,8 @@ class Contract < ActiveRecord::Base
 	validates :eligibility_sig, presence: {message: 'Eligibility signature is required'}
 	validates :living_standards_sig, presence: {message: 'Living standards signature is required'}
 	validates :parking_ack, presence: {message: 'Parking acknowledgement signature is required'}
+	validates :contract_agreement, presence: true
+	validates :euro, format: { with: /\A(\d\d\d\d|)\z/ }
 
 	validates_presence_of :semester
 	validates_presence_of :building
