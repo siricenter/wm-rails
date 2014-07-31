@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th Semester
     %th First name
     %th Last name
     %th Email
@@ -10,9 +11,13 @@
     %th Home city
     %th Home state
     %th Home zip
+    %th Parking type
+    %th Preferences (If any)
+    %th Number (If known)
 
   - @contracts.each do |contract|
     %tr
+      %td= contract.semester.name
       %td= contract.first_name
       %td= contract.last_name
       %td= contract.email
@@ -21,5 +26,9 @@
       %td= contract.home_city
       %td= contract.home_state
       %td= contract.home_zip
+      %td= contract.parking_type
+      %td= contract.preferences
+      %td= contract.number
+
       %td= link_to 'Show', contract
       %td= link_to 'Edit', edit_contract_path(contract)
