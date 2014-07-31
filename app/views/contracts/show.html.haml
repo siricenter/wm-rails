@@ -1,6 +1,9 @@
 %p#notice= notice
 
 %p
+  %b Semester
+  = @contract.semester.name
+%p
   %b First name:
   = @contract.first_name
 %p
@@ -24,6 +27,17 @@
 %p
   %b Home zip:
   = @contract.home_zip
+%p
+  %b Parking Type
+  = @contract.parking_type
+
+%p
+  %b Preferences (If any)
+  = @contract.preferences
+
+%p
+  %b Apartment Number (if known)
+  = @contract.number
 
 = link_to 'Edit', edit_contract_path(@contract)
 \|
