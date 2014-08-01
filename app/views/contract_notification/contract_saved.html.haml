@@ -1,0 +1,36 @@
+%h1
+  Your Receipt
+
+%p
+  Hey 
+  = @contract.first_name << ','
+%p
+  Thanks for trusting Windsor Manor to keep you feeling like you're at home. We can't wait to see you!
+
+%p
+  - if @contract.semester.duration > 1
+    Semesters:
+  - else
+    Semester:
+  = @contract.semester.name
+%p
+  = "#{@contract.first_name} #{@contract.last_name} (#{@contract.email})"
+%p
+  Parking: 
+  = @contract.parking_type << '.'
+%p
+  Contract signed and completed on
+  = @contract.created_at.to_formatted_s(:long) << '.'
+%p
+  Requested a
+  = @contract.apartment_type
+  apartment, if it's available.
+- if @contract.preferences != ""
+  %p
+    Preferences Requested:
+    = @contract.preferences
+- if @contract.number != ""
+  %p
+    Apartment Number Requested:
+    = @contract.number
+
