@@ -56,6 +56,6 @@
             %td
               %strong
                 - total = @rent + @parking[index] - @early_bird[index] - @multiple_semesters[index]
-                - unless @contract.euro.empty?
+                - if !(@contract.euro.empty?) and index == 0
                   - total -= 50
                 = number_to_currency(total)
