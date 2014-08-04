@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 		get '/contracts/:id', to: 'contracts#show', as: :contract
 		put '/contracts/:id', to: 'contracts#update'
 		get '/contracts/:id/edit', to: 'contracts#edit', as: :edit_contract
+		delete '/contracts/:id', to: 'contracts#destroy', as: :destroy_contract
 
 		resources :buildings
 		resources :semesters
