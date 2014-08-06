@@ -83,7 +83,7 @@
     .form-group
       = f.label :semester, class: ['col-md-2', 'control-label']
       .col-md-4
-        = f.select :semester, options_from_collection_for_select(@semesters, 'id', 'name'), {}, class: 'form-control'
+        = f.select :semester, options_from_collection_for_select(@semesters, :id, :name, @contract.semester.id), {}, class: 'form-control'
 
     .form-group
       = f.label :apartment_type, class: ['col-md-2', 'control-label']
