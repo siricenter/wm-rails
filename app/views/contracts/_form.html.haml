@@ -14,6 +14,7 @@
     .form-group
       = label_tag :property, "Property", class: 'col-md-2'
       .col-md-4
+        = hidden_field_tag 'contract[building_id]', @building.id
         = text_field_tag :property, @building.name, readonly: true, class: ['form-control', 'col-md-6']
       = label_tag :website, "Web Site", class: 'col-md-2'
       .col-md-4
