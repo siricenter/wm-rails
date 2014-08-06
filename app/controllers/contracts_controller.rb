@@ -17,20 +17,12 @@ class ContractsController < ApplicationController
 
 	# GET /contracts/new
 	def new
-		@contract = Contract.new
-		@semesters = Semester.all
-		@building = Building.find(params[:building_id])
-		@url = discounts_path
-		@method = :post
+		setup_form discounts_path, :post
 	end
 
 	# GET /contracts/1/edit
 	def edit
-		@contract = Contract.find(params[:id])
-		@semesters = Semester.all
-		@building = @contract.building
-		@url = @contract
-		@method = :put
+		setup_form @contract, :put, Contract.find(params[:id])
 	end
 
 	# POST /contracts
@@ -50,7 +42,7 @@ class ContractsController < ApplicationController
 				format.json { render :show, status: :created, location: @contract }
 			else
 				format.html { 
-					@semesters = Semester.all
+					setup_form discount_path, @method, @contract
 					render :new 
 				}
 				format.json { render json: @contract.errors, status: :unprocessable_entity }
@@ -114,8 +106,9 @@ class ContractsController < ApplicationController
 				format.html 
 			else
 				format.html {
-					@contract = @contract
-					@semesters = Semester.all
+					debugger
+					setup_form discounts_path, :new, @contract
+					debugger
 					render :new
 				}
 			end
@@ -129,7 +122,6 @@ class ContractsController < ApplicationController
 			@building = Building.find(session[:building_id])
 			@contract.semester = @semester
 			@contract.building = @building
-
 			set_prices
 
 			respond_to do |format|
@@ -188,5 +180,20 @@ class ContractsController < ApplicationController
 		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
 
 		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price - @discounts_total
+	end
+
+	def setup_form url, method, contract = nil
+		@semesters = Semester.all
+		@url = url
+		@method = method
+		if contract
+			@contract = contract
+			@building = @contract.building
+			@semester = @contract.semester
+		end
+
+		@contract ||= Contract.new
+		@building ||= Building.find(params[:building_id])
+		@semester ||= Semester.find(params[:semester_id]) if params[:semester_id]
 	end
 end
