@@ -13,13 +13,15 @@
     .col-md-1
     .col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
       %p 
+.container
   .row.image
-    = image_tag 'building_cropped.png'
-  .row.availability.marketing-text
+    = image_tag 'building_cropped.png', class: 'col-md-12'
+  .row.availability.marketing-text.col-md-12
     %h3
-      You could walk a long way to campus, but why?  Welcome Home!
+      = @marketing_text
+.container
   .row.tiles
-    .col-md-4.col-md-4.tile
+    .col-md-4.col-sm-4.tile
       .inner-tile
         %h3 Complex
         .circular.cir-img-complex

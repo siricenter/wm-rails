@@ -32,12 +32,12 @@ body
 
 $availability-height: 100px;
 $avail-marg: 35px;
-$marketing-height: $availability-height - 25px;
+$marketing-height: $availability-height * .75;
 $marketing-marg: 21px;
 .availability
 {
 	background-color: #591616;
-	height: $availability-height;
+	min-height: $availability-height;
 	font-family: $font;
 
 	& > *
@@ -113,7 +113,8 @@ $marketing-marg: 21px;
 {
 	background: white;
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-	margin: 15px 0px;
+	margin-top: 10px;
+	//margin: 5px 0px 5px 0px;
 	padding: 10px;
 
 	& > h3, & > p
@@ -200,20 +201,17 @@ $marketing-marg: 21px;
 	margin-top: 0%;
 }
 
-.marketing-text
-{
-	margin-top: 0%;
-}
-
 .image > img
 {
-	max-height: 50%;
+	max-height: 60%;
 	width: 100%;
 }
 
 .marketing-text
 {
-	height: $marketing-height;
+	min-height: $marketing-height;
+	margin: 0;
+	//margin-top: 5px;
 
 	& > h3
 	{

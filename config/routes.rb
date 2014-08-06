@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'contracts/success'
 
   get 'contracts/failure'
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
 		resources :buildings
 		resources :semesters
 		get '/', to: 'static#dashboard', as: :dashboard
+		get '/marketing-text', to: 'static#marketing_text', as: :edit_text
+		post '/marketing-text', to: 'static#edit_text', as: :update_text
 	end
 
 	# The priority is based upon order of creation: first created -> highest priority.

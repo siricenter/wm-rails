@@ -1,0 +1,11 @@
+.container
+  %h1
+    Configure Marketing Text
+ 
+  = form_tag update_text_path do
+    .row
+      .col-md-8
+        = text_field_tag :marketing_text, @marketing_text.text, placeholder: 'Put your marketing text here', class: 'form-control'
+    .row
+      .col-md-2
+        = submit_tag 'Update Text', class: ['btn', 'btn-primary', 'btn-large']
