@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'contracts/success'
-
-  get 'contracts/failure'
+	get 'contracts/success'
+	get 'contracts/failure'
+	get 'amenities', to: 'static#amenities', as: :amenities
 
 	devise_for :admins
 	root 'static#landing'

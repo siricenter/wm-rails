@@ -31,4 +31,7 @@ class StaticController < ApplicationController
 		@marketing_text.save
 		redirect_to root_path
 	end
+
+	def amenities
+	end
 end
