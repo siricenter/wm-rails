@@ -106,9 +106,7 @@ class ContractsController < ApplicationController
 				format.html 
 			else
 				format.html {
-					debugger
-					setup_form discounts_path, :new, @contract
-					debugger
+					setup_form discounts_path, :post, @contract
 					render :new
 				}
 			end

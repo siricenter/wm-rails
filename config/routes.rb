@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
 		resources :buildings
 		resources :semesters
+		get '/', to: 'static#dashboard', as: :dashboard
 	end
 
 	# The priority is based upon order of creation: first created -> highest priority.

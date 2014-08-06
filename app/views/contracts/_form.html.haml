@@ -223,4 +223,7 @@
     &nbsp;
 
   .actions
-    = f.submit 'Check For Discounts!', class: ['btn', 'btn-primary', 'col-sm-2']
+    - if @method == :post
+      = f.submit 'Check For Discounts!', class: ['btn', 'btn-primary', 'col-sm-2']
+    - else
+      = f.submit 'Save Changes', class: ['btn', 'btn-primary', 'col-sm-2']
