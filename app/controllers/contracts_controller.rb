@@ -11,6 +11,8 @@ class ContractsController < ApplicationController
 	# GET /contracts/1
 	# GET /contracts/1.json
 	def show
+		@semester = @contract.semester
+		set_prices
 	end
 
 	# GET /contracts/new
@@ -18,10 +20,17 @@ class ContractsController < ApplicationController
 		@contract = Contract.new
 		@semesters = Semester.all
 		@building = Building.find(params[:building_id])
+		@url = discounts_path
+		@method = :post
 	end
 
 	# GET /contracts/1/edit
 	def edit
+		@contract = Contract.find(params[:id])
+		@semesters = Semester.all
+		@building = @contract.building
+		@url = @contract
+		@method = :put
 	end
 
 	# POST /contracts
@@ -52,9 +61,11 @@ class ContractsController < ApplicationController
 	# PATCH/PUT /contracts/1
 	# PATCH/PUT /contracts/1.json
 	def update
+		# set_contract is called prior to this method
 		respond_to do |format|
 			@semester = Semester.find(params[:contract][:semester])
-			@building = Building.find(params[:contract][:building_id])
+			@building = @contract.building
+			@contract.semester = @semester
 			if @contract.update(contract_params)
 				format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
 				format.json { render :show, status: :ok, location: @contract }
@@ -146,7 +157,7 @@ class ContractsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def contract_params
-		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro, :contract_agreement)
+		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro, :contract_agreement, :preferences, :number)
 	end
 
 	def set_prices
