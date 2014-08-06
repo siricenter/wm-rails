@@ -48,5 +48,6 @@ FactoryGirl.define do
 		living_standards_sig "John Doe"
 		parking_ack "John Doe"
 		contract_agreement "John Doe"
+		euro ""
 	end
 end

@@ -11,6 +11,34 @@ RSpec.describe "contracts/show", :type => :view do
 											  home_city: "Home City",
 											  home_state: "Home State",
 											  home_zip: "Home Zip"))
+		@contract.reload
+		@semester = @contract.semester
+		@application_fee = Prices::application_fee
+		@deposit = Prices::deposit(@semester)
+		@rent = Prices::rent(@semester)
+		@parking = Prices::parking_price(@contract.parking_type, @semester)
+		@early_bird = Prices::early_bird(@semester, Date.today)
+		@multiple_semesters = Prices::multiple_semester_discounts @semester
+
+		# Calculations
+		@parking_price = 0
+		@parking.each do |park|
+			@parking_price += park
+		end
+		@early_bird_sum = 0
+		@early_bird.each do |early|
+			@early_bird_sum += early
+		end
+		@multiple_semesters_sum = 0
+		@multiple_semesters.each do |discount|
+			@multiple_semesters_sum += discount
+		end
+
+		@euro = 0
+		@euro = 50 unless @contract.euro.empty?
+		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
+
+		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price - @discounts_total
 	end
 
 	it "renders attributes in <p>" do
