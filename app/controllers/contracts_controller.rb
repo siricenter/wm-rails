@@ -42,7 +42,7 @@ class ContractsController < ApplicationController
 				format.json { render :show, status: :created, location: @contract }
 			else
 				format.html { 
-					setup_form discount_path, @method, @contract
+					setup_form discounts_path, @method, @contract
 					render :new 
 				}
 				format.json { render json: @contract.errors, status: :unprocessable_entity }
