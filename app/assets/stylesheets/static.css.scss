@@ -7,7 +7,6 @@ $font: 'Ovo', serif;
 body
 {
 	background-color: #9A9C99;
-	background-image: image-url('building_cropped.png');
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 675px;
@@ -33,6 +32,8 @@ body
 
 $availability-height: 100px;
 $avail-marg: 35px;
+$marketing-height: $availability-height - 25px;
+$marketing-marg: 21px;
 .availability
 {
 	background-color: #591616;
@@ -196,5 +197,27 @@ $avail-marg: 35px;
 
 .tiles
 {
-	margin-top: 40%;
+	margin-top: 0%;
+}
+
+.marketing-text
+{
+	margin-top: 0%;
+}
+
+.image > img
+{
+	max-height: 50%;
+	width: 100%;
+}
+
+.marketing-text
+{
+	height: $marketing-height;
+
+	& > h3
+	{
+		margin-top: $marketing-marg;
+		text-align: center;
+	}
 }
