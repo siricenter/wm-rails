@@ -194,6 +194,13 @@ class ContractsController < ApplicationController
 
 		@contract ||= Contract.new
 		@building ||= Building.find(params[:building_id])
-		@semester ||= Semester.find(params[:semester_id]) if params[:semester_id]
+		@contract.building ||= @building
+		if params[:semester_id]
+			@semester ||= Semester.find(params[:semester_id]) 
+			@contract.semester = @semester
+		else
+			@semester ||= @semesters.first
+			@contract.semester = @semester
+		end
 	end
 end
