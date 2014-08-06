@@ -42,10 +42,11 @@ FactoryGirl.define do
 		home_state { Faker::Address.state }
 		home_zip { Faker::Address.zip }
 		apartment_type "6 Person"
-        parking_type "Private Covered"
+        parking_type 'Private Uncovered'
 		phone '555-555-5555'
 		eligibility_sig "John Doe"
 		living_standards_sig "John Doe"
 		parking_ack "John Doe"
+		contract_agreement "John Doe"
 	end
 end

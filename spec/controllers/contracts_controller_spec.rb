@@ -42,7 +42,8 @@ RSpec.describe ContractsController, :type => :controller do
 			building_id: building.to_param,
 			eligibility_sig: 'John Doe',
 			living_standards_sig: 'John Doe',
-			parking_ack: 'John Doe'
+			parking_ack: 'John Doe',
+			contract_agreement: 'John Doe'
 		}
 	}
 
@@ -163,7 +164,8 @@ RSpec.describe ContractsController, :type => :controller do
 					building_id: building.to_param,
 					eligibility_sig: 'John Doe',
 					living_standards_sig: 'John Doe',
-					parking_ack: 'John Doe'
+					parking_ack: 'John Doe',
+					contract_agreemnt: 'John Doe'
 				}}
 
 			it "updates the requested contract" do
@@ -201,22 +203,20 @@ RSpec.describe ContractsController, :type => :controller do
 		end
 	end
 
-	# We're not exposing the DELETE functionality right now. If we need to,
-	# the tests are here.
-	#
-	#describe "DELETE destroy" do
-	#	it "destroys the requested contract" do
-	#		contract = FactoryGirl.create :contract
-	#		expect {
-	#			delete :destroy, {:id => contract.to_param}, valid_session
-	#		}.to change(Contract, :count).by(-1)
-	#	end
+	
+	describe "DELETE destroy" do
+		it "destroys the requested contract" do
+			contract = FactoryGirl.create :contract
+			expect {
+				delete :destroy, {:id => contract.to_param}, valid_session
+			}.to change(Contract, :count).by(-1)
+		end
 
-	#	it "redirects to the contracts list" do
-	#		contract = FactoryGirl.create :contract
-	#		delete :destroy, {:id => contract.to_param}, valid_session
-	#		expect(response).to redirect_to(contracts_url)
-	#	end
-	#end
+		it "redirects to the contracts list" do
+			contract = FactoryGirl.create :contract
+			delete :destroy, {:id => contract.to_param}, valid_session
+			expect(response).to redirect_to(contracts_url)
+		end
+	end
 
 end
