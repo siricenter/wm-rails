@@ -21,10 +21,14 @@
 %p
   Contract signed and completed on
   = @contract.created_at.to_formatted_s(:long) + '.'
-%p
-  Requested a
-  = @contract.apartment_type
-  apartment, if it's available.
+- if @contract.apartment_type != 'No Preference'
+  %p
+    Requested a
+    = @contract.apartment_type
+    apartment, if it's available.
+- else
+  %p
+    No preference on apartment type
 - if @contract.preferences != ""
   %p
     Preferences Requested:

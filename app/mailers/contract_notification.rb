@@ -1,6 +1,5 @@
 class ContractNotification < ActionMailer::Base
 	default from: "managers@windsormanor.net"
-	default to: Proc.new {Admin.pluck(:email)}
 
 	# Subject can be set in your I18n file at config/locales/en.yml
 	# with the following lookup:
