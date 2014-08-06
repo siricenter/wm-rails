@@ -7,7 +7,7 @@ RSpec.describe ContractNotification, :type => :mailer do
 
 		it "renders the headers" do
 			expect(mail.subject).to eq("Your Receipt for Windsor Manor")
-			expect(mail.to).to eq(['CJPoll@gmail.com'])
+			expect(mail.to).to eq(['managers@windsormanor.net', contract.email])
 			expect(mail.from).to eq(["managers@windsormanor.net"])
 		end
 
