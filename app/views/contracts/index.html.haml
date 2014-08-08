@@ -1,12 +1,11 @@
-.container
+.container-fluid
   %h1 Listing contracts
 
-  %table
+  %table.table.table-bordered
     %tr
-      %th Semester
-      %th First name
-      %th Last name
+      %th Name
       %th Email
+      %th Semester
       %th Home address 1
       %th Home address 2
       %th Home city
@@ -15,13 +14,13 @@
       %th Parking type
       %th Preferences (If any)
       %th Number (If known)
+      %th Date Created
 
     - @contracts.each do |contract|
       %tr
-        %td= contract.semester.name
-        %td= contract.first_name
-        %td= contract.last_name
+        %td= "#{contract.first_name} #{contract.last_name}"
         %td= contract.email
+        %td= contract.semester.name
         %td= contract.home_address_1
         %td= contract.home_address_2
         %td= contract.home_city
@@ -30,7 +29,8 @@
         %td= contract.parking_type
         %td= contract.preferences
         %td= contract.number
+        %td= contract.created_at.to_formatted_s(:short)
 
-        %td= link_to 'Show', contract
+        %td= link_to 'View', contract
         %td= link_to 'Edit', edit_contract_path(contract)
         %td= link_to 'Delete', destroy_contract_path(contract), method: :delete
