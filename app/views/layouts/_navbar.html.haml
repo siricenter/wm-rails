@@ -5,3 +5,8 @@
         = image_tag 'logo-no-text.png'
       = link_to root_path, class: 'navbar-brand' do
         %h1 Windsor Manor
+      .collapse
+        - unless current_admin.nil?
+          = link_to 'Logout', destroy_admin_session_path, method: :delete
+
+      
