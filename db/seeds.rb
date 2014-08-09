@@ -54,4 +54,9 @@
 #spring_fall_winter.contract_durations << fall_duration
 #spring_fall_winter.save!
 
-Admin.create({email: 'managers@windsormanor.net', password: 'Greatestplace1'})
+#Admin.create({email: 'managers@windsormanor.net', password: 'Greatestplace1'})
+
+fall = Semester.new({name: "Fall 2015", rent: 1445, deposit: 50, duration: 1})
+fall_duration = ContractDuration.new({start_date: Date.new(2015, 1, 2), end_date: Date.new(2015, 4, 11), payment_due: Date.new(2014, 12, 15), semester: fall})
+fall.contract_durations << fall_duration
+fall.save!
