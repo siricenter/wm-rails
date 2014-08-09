@@ -9,7 +9,7 @@ class ContractNotification < ActionMailer::Base
 	def contract_saved contract
 		@contract = contract
 
-		mail to: 'CJPoll@gmail.com',#['managers@windsormanor.net', @contract.email],
+		mail to: ['CJPoll@gmail.com'],#['managers@windsormanor.net', @contract.email],
 			subject: 'Your Receipt for Windsor Manor'
 	end
 end
