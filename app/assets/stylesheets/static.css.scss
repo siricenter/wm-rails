@@ -205,6 +205,10 @@ $marketing-marg: 21px;
 {
 	max-height: 60%;
 	width: 100%;
+	-webkit-filter: sepia(.3);
+	-o-filter: sepia(.3);
+	-moz-filter: sepia(.3);
+	-ms-filter: sepia(.3);
 }
 
 .marketing-text
