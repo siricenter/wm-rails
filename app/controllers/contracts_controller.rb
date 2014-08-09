@@ -38,7 +38,6 @@ class ContractsController < ApplicationController
 
 		respond_to do |format|
 			if @contract.save
-				ContractNotification.contract_saved(@contract).deliver
 				format.html { redirect_to :root, notice: 'Contract was successfully created.' }
 				format.json { render :show, status: :created, location: @contract }
 			else
@@ -126,6 +125,7 @@ class ContractsController < ApplicationController
 			respond_to do |format|
 				unless session[:reserved]
 					if @contract.save
+						ContractNotification.contract_saved(@contract).deliver
 						session[:reserved] = true
 						format.html {render :success}
 					else
