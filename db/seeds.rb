@@ -16,4 +16,5 @@ Semester.create!({name: 'Winter 2016', deposit: 50, rent: 1500, start_date: Date
 Semester.create!({name: 'Spring 2016', deposit: 50, rent: 1600, start_date: Date.new(2016, 4, 15), end_date: Date.new(2016, 7, 21)})
 Semester.create!({name: 'Fall 2016', deposit: 50, rent: 1600, start_date: Date.new(2016, 9, 10), end_date: Date.new(2016, 12, 13)})
 
+
 Admin.create({email: 'managers@windsormanor.net', password: 'Greatestplace1'})

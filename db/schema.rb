@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20140819083451) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "apartments", force: true do |t|
+    t.integer  "number"
+    t.integer  "bed_count"
+    t.integer  "floor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "building_id"
+  end
+
   create_table "buildings", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
