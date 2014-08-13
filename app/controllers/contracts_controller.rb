@@ -29,8 +29,8 @@ class ContractsController < ApplicationController
 	# POST /contracts.json
 	def create
 		@contract = Contract.new(contract_params)
-        @semesters = params[:contract][:contract_semester_ids]
-        @semester = Semester.find(@semesters[0])
+		@semesters = params[:contract][:contract_semester_ids]
+		@semester = Semester.find(@semesters[0])
 		@building = Building.find(params[:contract][:building_id])
 
 
@@ -81,29 +81,30 @@ class ContractsController < ApplicationController
 
 	def discounts
 		# Model Retrieval
-        # If data is from the form
+		# If data is from the form
 		if params.has_key? :contract
-      semester_ids = []
-      params[:contract][:semesters].each do |key, id|
-        semester_ids << id
-      end
-      @semesters = Semester.where(semester_ids)
-      @contract = Contract.new(contract_params)
+			@semesters = []
+			params[:contract][:semesters].each do |semester_id, checked|
+				unless checked == '0'
+					@semesters << Semester.find(semester_id) 
+				end
+			end
+			@contract = Contract.new(contract_params)
 			@building = Building.find(params[:building_id])
-      @semesters.each do |semester|
+			@semesters.each do |semester|
 				@contract.semesters << semester
-      end
+			end
 			@contract.building = @building
-            
-    else # handles clicking the back button
-		
+
+		else # handles clicking the back button
+
 		end
 
 
 		session[:temp_contract] = @contract.to_json
-    session[:semesters] = @semesters.map do |semester|
-      semester.id
-    end
+		session[:semesters] = @semesters.map do |semester|
+			semester.id
+		end
 		session[:building_id] = @building.id
 
 		set_prices
@@ -161,11 +162,11 @@ class ContractsController < ApplicationController
 	def set_prices
 		# Prices
 		@application_fee = Prices::application_fee
-		@deposit = Prices::deposit(@semester)
-		@rent = Prices::rent(@semester)
-		@parking = Prices::parking_price(@contract.parking_type, @semester)
-		@early_bird = Prices::early_bird(@semester, Date.today)
-		@multiple_semesters = Prices::multiple_semester_discounts @semester
+		@deposit = Prices::deposit(@semesters)
+		@rent = Prices::rent(@semesters)
+		@parking = Prices::parking_price(@contract.parking_type, @semesters)
+		@early_bird = Prices::early_bird(@semesters, Date.today)
+		@multiple_semesters = Prices::multiple_semester_discounts @semesters
 
 		# Calculations
 		@parking_price = 0
@@ -185,7 +186,7 @@ class ContractsController < ApplicationController
 		@euro = 50 unless @contract.euro.empty?
 		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
 
-		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price - @discounts_total
+		@total = @application_fee + @deposit + @rent * @semesters.count + @parking_price - @discounts_total
 	end
 
 	def setup_form url, method, contract = nil

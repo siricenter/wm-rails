@@ -1,4 +1,4 @@
 = fields_for semester, index: semester_counter do |form|
   .col-md-6
-    = form.check_box :id, name: "contract[semesters[semester_#{semester_counter}]]"
+    = form.check_box :id, name: "contract[semesters[#{semester.id}]]"
     = form.label :name, semester.name

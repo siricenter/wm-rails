@@ -22,10 +22,10 @@
       %tr
         %td
           Rent ( x 
-          = @semester.duration
+          = @semesters.count
           Semesters )
         %td
-          = number_to_currency(@rent * @semester.duration)
+          = number_to_currency(@rent * @semesters.count)
       %tr
         %td
           Parking: 
