@@ -29,7 +29,8 @@ class ContractsController < ApplicationController
 	# POST /contracts.json
 	def create
 		@contract = Contract.new(contract_params)
-		@semester = Semester.find(params[:contract][:semester])
+        @semesters = params[:contract][:contract_semester_ids]
+        @semester = Semester.find(@semesters[0])
 		@building = Building.find(params[:contract][:building_id])
 
 
@@ -80,23 +81,29 @@ class ContractsController < ApplicationController
 
 	def discounts
 		# Model Retrieval
+        # If data is from the form
 		if params.has_key? :contract
-			@contract = Contract.new(contract_params)
-			@semester = Semester.find(params[:contract][:semester])
+      semester_ids = []
+      params[:contract][:semesters].each do |key, id|
+        semester_ids << id
+      end
+      @semesters = Semester.where(semester_ids)
+      @contract = Contract.new(contract_params)
 			@building = Building.find(params[:building_id])
-			@contract.semester = @semester
+      @semesters.each do |semester|
+				@contract.semesters << semester
+      end
 			@contract.building = @building
-		else
-			@contract = Contract.new(JSON.parse(session[:temp_contract]))
-			@semester = Semester.find(session[:semester_id])
-			@building = Building.find(session[:building_id])
-			@contract.semester = @semester
-			@contract.building = @building
+            
+    else # handles clicking the back button
+		
 		end
 
 
 		session[:temp_contract] = @contract.to_json
-		session[:semester_id] = @semester.id
+    session[:semesters] = @semesters.map do |semester|
+      semester.id
+    end
 		session[:building_id] = @building.id
 
 		set_prices
@@ -194,12 +201,5 @@ class ContractsController < ApplicationController
 		@contract ||= Contract.new
 		@building ||= Building.find(params[:building_id])
 		@contract.building ||= @building
-		if params[:semester_id]
-			@semester ||= Semester.find(params[:semester_id]) 
-			@contract.semester = @semester
-		else
-			@semester ||= @semesters.first
-			@contract.semester = @semester
-		end
 	end
 end

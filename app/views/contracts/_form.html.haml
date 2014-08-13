@@ -83,7 +83,10 @@
     .form-group
       = f.label :semester, class: ['col-md-2', 'control-label']
       .col-md-4
-        = f.select :semester, options_from_collection_for_select(@semesters, :id, :name, @contract.semester.id), {}, class: 'form-control'
+        = render partial: "contracts/semester", collection: @semesters
+        
+        <!--= collection_check_boxes(:contract, :semester_id, Semester.all, :id, :name)-->
+        
 
     .form-group
       = f.label :apartment_type, class: ['col-md-2', 'control-label']
