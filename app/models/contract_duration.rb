@@ -16,5 +16,5 @@ class ContractDuration < ActiveRecord::Base
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :payment_due, presence: true
+  validates :payment_due, presence: true # Date rent payment is due
 end

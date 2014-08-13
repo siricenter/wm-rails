@@ -22,7 +22,7 @@
           %td
             \- 
             = number_to_currency(@euro)
-      - if @semester.duration > 1
+      - if @semesters.count > 1
         %tr
           %td
             Multiple Semesters
