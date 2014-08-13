@@ -12,7 +12,7 @@
 #
 
 class Semester < ActiveRecord::Base
-	has_many :contracts
+	has_and_belongs_to_many :contracts
 	has_many :contract_durations
 
 	validates :name, presence: true, uniqueness: true
