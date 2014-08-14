@@ -1,12 +1,19 @@
-.navbar.navbar-fixed-top{:role => "navigation"}
+.navbar.navbar-default.navbar-inverse.navbar-fixed-top{:role => "navigation"}
   .container-fluid
     .navbar-header
+      - unless current_admin.nil?
+        %button.navbar-toggle{type: :button, 'data-toggle' => :collapse, 'data-target' => '#collapse'}
+          %span.sr-only
+            Toggle Navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
       = link_to root_path, class: 'navbar-brand' do
         = image_tag 'logo-no-text.png'
-      = link_to root_path, class: 'navbar-brand' do
-        %h1 Windsor Manor
-      .collapse
-        - unless current_admin.nil?
-          = link_to 'Logout', destroy_admin_session_path, method: :delete
+    - unless current_admin.nil?
+      .collapse.navbar-collapse#collapse
+        %ul.nav.navbar-nav
+          %li
+            = link_to 'Logout', destroy_admin_session_path, method: :delete
 
 .navbar-bottom      

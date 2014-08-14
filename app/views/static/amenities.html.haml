@@ -1,9 +1,9 @@
 .thumbnails
   .row
-    .col-xs-12.col-sm-6.col-md-4
-      .thumbnail
-        = image_tag 'kitchen-island.jpg', class: :image
-    .col-xs-12.col-sm-6.col-md-4
+    /.col-xs-12.col-sm-6.col-md-4
+    /  .thumbnail
+    /    = image_tag 'kitchen-island.jpg', class: :image
+    .col-sm-6.col-md-4
       .thumbnail
         = image_tag 'study-room.jpg', class: :image
     .col-xs-12.col-sm-6.col-md-4
@@ -15,28 +15,30 @@
     .col-xs-12.col-sm-6.col-md-4
       .thumbnail
         = image_tag 'fire-pit.jpg', class: :image
-.opaque.full-page
-  .container-fluid
+.container
+  .row
     %h1 Amenities
-    %ul.col-md-6
-      %li Super-fast fiber optic internet connection
-      %li 3-story parking garage
-      %li Central heating & AC
-      %li Kitchen islands with granite countertops
-      %li Exercise room
-      %li Covered & secured bike parking
-      %li Fire pit
-      %li 11 private study rooms
-      %li 3 music practice rooms with pianos 
-      %li Free utilities
-    %ul.col-md-6
-      %li Elevators
-      %li Libraries
-      %li Balconies!
-      %li A private bathroom for every bedroom
-      %li Stacked washer & dryer in every apartment - Free laundry!
-      %li USB plugs by each bed (charges electronic devices)
-      %li 2 refrigerators
-      %li Dishwasher
-      %li Wall-mounted microwave
-      %li Copier & printer room
+    .col-md-6
+      %ul
+        %li Super-fast fiber optic internet connection
+        %li 3-story parking garage
+        %li Central heating & AC
+        %li Kitchen islands with granite countertops
+        %li Exercise room
+        %li Covered & secured bike parking
+        %li Fire pit
+        %li 11 private study rooms
+        %li 3 music practice rooms with pianos 
+        %li Free utilities
+    .col-md-6
+      %ul
+        %li Elevators
+        %li Libraries
+        %li Balconies!
+        %li A private bathroom for every bedroom
+        %li Stacked washer & dryer in every apartment - Free laundry!
+        %li USB plugs by each bed (charges electronic devices)
+        %li 2 refrigerators
+        %li Dishwasher
+        %li Wall-mounted microwave
+        %li Copier & printer room

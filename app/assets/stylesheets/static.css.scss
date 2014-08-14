@@ -243,6 +243,6 @@ $marketing-marg: 21px;
 
 .thumbnails
 {
-	@extend .container-fluid;
+	@extend .container;
 	margin-top: 20px;
 }
