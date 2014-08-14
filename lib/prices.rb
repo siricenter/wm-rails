@@ -1,26 +1,43 @@
 module Prices
-	def self.parking_price type, semester
-		duration = semester.duration
+	def self.parking_price type, semesters
+		count = semesters.count
 		if type == 'Private Covered'
-			return [ 100 ] if duration == 1
-			return [ 100, 85 ] if duration == 2
-			return [ 100, 85, 75 ]
+      parking_array = Array.new(count, 75)
+      parking_array[0] = 100
+      parking_array[1] = 85
+      return parking_array
+#	#		return [ 100 ] if count == 1
+	#		return [ 100, 85 ] if count == 2
+	#		return [ 100, 85, 75 ]
 		elsif type == 'Tandem Covered'
-			return [ 75 ] if duration == 1
-			return [ 75, 65 ] if duration == 2
-			return [ 75, 65, 60 ]
+      parking_array = Array.new(count, 60)
+      parking_array[0] = 75
+      parking_array[1] = 65
+      return parking_array
+	#		return [ 75 ] if count == 1
+	#		return [ 75, 65 ] if count == 2
+	#		return [ 75, 65, 60 ]
 		elsif type == 'Private Uncovered'
-			return [ 50 ] if duration == 1
-			return [ 50, 40 ] if duration == 2
-			return [ 50, 40, 35 ]
+      parking_array = Array.new(count, 35)
+      parking_array[0] = 50
+      parking_array[1] = 40
+      return parking_array
+	#		return [ 50 ] if count == 1
+	#		return [ 50, 40 ] if count == 2
+	#		return [ 50, 40, 35 ]
 		elsif type == 'Tandem Uncovered'
-			return [ 35 ] if duration == 1
-			return [ 35, 30 ] if duration == 2
-			return [ 35, 30, 25 ]
+      parking_array = Array.new(count, 25)
+      parking_array[0] = 35
+      parking_array[1] = 30
+      return parking_array
+	#		return [ 35 ] if count == 1
+	#		return [ 35, 30 ] if count == 2
+	#		return [ 35, 30, 25 ]
 		else
-			return [ 0 ] if duration == 1
-			return [ 0, 0 ] if duration == 2
-			return [ 0, 0, 0 ]
+      return Array.new(count, 0)
+	#		return [ 0 ] if count == 1
+	#		return [ 0, 0 ] if count == 2
+	#		return [ 0, 0, 0 ]
 		end
 	end
 
@@ -28,36 +45,30 @@ module Prices
 		return 50
 	end
 
-	def self.deposit semester
-		return semester.deposit
+	def self.deposit semesters
+		return semesters.first.deposit
 	end
 
-	def self.rent semester
-		return semester.rent
+	def self.rent semesters
+		return semesters.first.rent
 	end
 
-	def self.multiple_semester_discounts semester
-		return [0] if semester.duration == 1
-		return [0, 95] if semester.duration == 2
-		return [0, 95, 105] if semester.duration == 3
+	def self.multiple_semester_discounts semesters
+    mult_sem_array = Array.new(semesters.count, 105)
+    mult_sem_array[0] = 0
+    mult_sem_array[1] = 95
+    return mult_sem_array
 	end
 
-	def self.early_bird semester, today
-		days = (semester.start_date - today).to_i
-		if semester.duration == 1
-			return [ 40 ] if days >= 90
-			return [ 20 ] if days >= 60
-			return [ 0 ]
-		elsif semester.duration == 2
-			return [40, 10] if days >= 90
-			return [20, 10] if days >= 60
-			return [0, 0]
-		elsif semester.duration == 3
-			return [40, 10, 10] if days >= 90
-			return [20, 10, 10] if days >= 60
-			return [0, 0, 0]
-		else
-			return [0, 0, 0]
-		end
-	end
+	def self.early_bird semesters, today
+		days = (semesters.first.start_date - today).to_i
+    if days < 60
+      return Array.new(semesters.count, 0)
+    else
+      early_bird_array = Array.new(semesters.count, 10)
+      early_bird_array[0] = 40 if days >= 90
+      early_bird_array[0] = 20 if days >= 60
+      return early_bird_array
+    end
+	end  
 end

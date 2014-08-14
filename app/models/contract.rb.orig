@@ -39,8 +39,9 @@ class BuildingAvailablityValidator < ActiveModel::Validator
 end
 
 class Contract < ActiveRecord::Base
-	belongs_to :semester
+	has_and_belongs_to_many :semesters
 	belongs_to :building
+    
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -58,7 +59,7 @@ class Contract < ActiveRecord::Base
 	validates :contract_agreement, presence: true
 	validates :euro, format: { with: /\A(\d\d\d\d|)\z/ }
 
-	validates_presence_of :semester
+	validates_presence_of :semesters
 	validates_presence_of :building
 	validates_with BuildingAvailablityValidator 
 end 

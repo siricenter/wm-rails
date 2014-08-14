@@ -12,8 +12,8 @@
 #
 
 class Semester < ActiveRecord::Base
-	has_many :contracts
-	has_many :contract_durations
+	has_and_belongs_to_many :contracts
+	has_one :contract_duration
 
 	validates :name, presence: true, uniqueness: true
     validates :deposit, presence: true, numericality: true
@@ -21,6 +21,6 @@ class Semester < ActiveRecord::Base
 	validates :duration, presence: true, numericality: true
 
 	def start_date
-		contract_durations.first.start_date
+		self.contract_duration.start_date
 	end
 end

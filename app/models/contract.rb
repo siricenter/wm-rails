@@ -30,13 +30,13 @@
 class BuildingAvailablityValidator < ActiveModel::Validator
 	def validate(record)
 		if record.building
-			record.errors[:building] << "is full" unless record.building.availabilities?(record.semester)
+			record.errors[:building] << "is full" unless record.building.availabilities?(record.semesters.first)
 		end
 	end 
 end
 
 class Contract < ActiveRecord::Base
-	belongs_to :semester
+	has_and_belongs_to_many :semesters
 	belongs_to :building
 
 	validates :first_name, presence: true
@@ -55,7 +55,7 @@ class Contract < ActiveRecord::Base
 	validates :contract_agreement, presence: true
 	validates :euro, format: { with: /\A(\d\d\d\d|)\z/ }
 
-	validates_presence_of :semester
+	validates_presence_of :semesters
 	validates_presence_of :building
 	validates_with BuildingAvailablityValidator 
 end 

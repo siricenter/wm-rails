@@ -29,7 +29,8 @@ class ContractsController < ApplicationController
 	# POST /contracts.json
 	def create
 		@contract = Contract.new(contract_params)
-		@semester = Semester.find(params[:contract][:semester])
+		@semesters = params[:contract][:contract_semester_ids]
+		@semester = Semester.find(@semesters[0])
 		@building = Building.find(params[:contract][:building_id])
 
 
@@ -80,23 +81,34 @@ class ContractsController < ApplicationController
 
 	def discounts
 		# Model Retrieval
+		# If data is from the form
 		if params.has_key? :contract
+			@semesters = []
+			params[:contract][:semesters].each do |semester_id, checked|
+				unless checked == '0'
+					@semesters << Semester.find(semester_id) 
+				end
+			end
 			@contract = Contract.new(contract_params)
-			@semester = Semester.find(params[:contract][:semester])
 			@building = Building.find(params[:building_id])
-			@contract.semester = @semester
+			@semesters.each do |semester|
+				@contract.semesters << semester
+			end
 			@contract.building = @building
-		else
-			@contract = Contract.new(JSON.parse(session[:temp_contract]))
-			@semester = Semester.find(session[:semester_id])
-			@building = Building.find(session[:building_id])
-			@contract.semester = @semester
-			@contract.building = @building
+
+		else # handles clicking the back button
+
 		end
 
 
 		session[:temp_contract] = @contract.to_json
-		session[:semester_id] = @semester.id
+    #session[:semesters] = new Array(@semesters.length)
+    @semesters.each_with_index do |semester, index|
+      session[:semesters][index] = semester.id
+    end
+		#session[:semesters] = @semesters.map do |semester|
+		#	semester.id
+		#end
 		session[:building_id] = @building.id
 
 		set_prices
@@ -114,11 +126,16 @@ class ContractsController < ApplicationController
 	end
 
 	def success
-		if session[:temp_contract] and session[:semester_id] and session[:building_id]
+		if session[:temp_contract] and session[:semesters] and session[:building_id]
 			@contract = Contract.new(JSON.parse(session[:temp_contract]))
-			@semester = Semester.find(session[:semester_id])
+      if(@semesters == nil)
+      	@semesters = []
+      	session[:semesters].each do |semester_id|
+					@semesters << Semester.find(semester_id)
+      	end
+    	end
 			@building = Building.find(session[:building_id])
-			@contract.semester = @semester
+			@contract.semesters = @semesters
 			@contract.building = @building
 			set_prices
 
@@ -154,11 +171,11 @@ class ContractsController < ApplicationController
 	def set_prices
 		# Prices
 		@application_fee = Prices::application_fee
-		@deposit = Prices::deposit(@semester)
-		@rent = Prices::rent(@semester)
-		@parking = Prices::parking_price(@contract.parking_type, @semester)
-		@early_bird = Prices::early_bird(@semester, Date.today)
-		@multiple_semesters = Prices::multiple_semester_discounts @semester
+		@deposit = Prices::deposit(@semesters)
+		@rent = Prices::rent(@semesters)
+		@parking = Prices::parking_price(@contract.parking_type, @semesters)
+		@early_bird = Prices::early_bird(@semesters, Date.today)
+		@multiple_semesters = Prices::multiple_semester_discounts @semesters
 
 		# Calculations
 		@parking_price = 0
@@ -178,7 +195,7 @@ class ContractsController < ApplicationController
 		@euro = 50 unless @contract.euro.empty?
 		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
 
-		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price - @discounts_total
+		@total = @application_fee + @deposit + @rent * @semesters.count + @parking_price - @discounts_total
 	end
 
 	def setup_form url, method, contract = nil
@@ -194,12 +211,5 @@ class ContractsController < ApplicationController
 		@contract ||= Contract.new
 		@building ||= Building.find(params[:building_id])
 		@contract.building ||= @building
-		if params[:semester_id]
-			@semester ||= Semester.find(params[:semester_id]) 
-			@contract.semester = @semester
-		else
-			@semester ||= @semesters.first
-			@contract.semester = @semester
-		end
 	end
 end

@@ -22,10 +22,19 @@
           %td
             \- 
             = number_to_currency(@euro)
-      - if @semester.duration > 1
+      - if @semesters.count > 1
         %tr
           %td
             Multiple Semesters
           %td
             \-
             = number_to_currency(@multiple_semesters_sum)
+    %tfoot
+      %tr
+        %td
+          %strong
+            Total
+        %td
+          %strong
+            \-
+            = number_to_currency(@discounts_total)

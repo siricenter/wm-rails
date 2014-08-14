@@ -45,6 +45,7 @@ end
 
 group :test do
 	gem 'capybara', '~> 2.4.1'
+  gem 'cucumber-rails'
 end
 
 # Use ActiveModel has_secure_password

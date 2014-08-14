@@ -8,11 +8,12 @@
   Thanks for trusting Windsor Manor to keep you feeling like you're at home. We can't wait to see you!
 
 %p
-  - if @contract.semester.duration > 1
+  - if @contract.semesters.count > 1
     Semesters:
   - else
     Semester:
-  = @contract.semester.name
+  - @contract.semesters.each do |semester|
+    = semester.name
 %p
   = "#{@contract.first_name} #{@contract.last_name} (#{@contract.email})"
 %p
