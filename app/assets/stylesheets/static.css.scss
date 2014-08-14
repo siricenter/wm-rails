@@ -237,5 +237,12 @@ $marketing-marg: 21px;
 
 .thumbnail .image
 {
-	height: 150px;
+	@extend .img-responsive;
+	max-height: 280px;
+}
+
+.thumbnails
+{
+	@extend .container-fluid;
+	margin-top: 20px;
 }

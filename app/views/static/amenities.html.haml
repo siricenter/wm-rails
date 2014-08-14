@@ -1,14 +1,20 @@
-.container-fluid
+.thumbnails
   .row
-    .col-sm-6.col-md-4
+    .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-        = image_tag 'kitchen-island.jpg', class: :'img-thumbnail'
-    .col-sm-6.col-md-4
+        = image_tag 'kitchen-island.jpg', class: :image
+    .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-        = image_tag 'exercise-room.jpg', class: :'img-thumbnail'
-    .col-sm-6.col-md-4
+        = image_tag 'study-room.jpg', class: :image
+    .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-        = image_tag 'fire-pit.jpg', class: :'img-thumbnail'
+        = image_tag 'private-bathroom.jpg', class: :image
+    .col-xs-12.col-sm-6.col-md-4
+      .thumbnail
+        = image_tag 'exercise-room.jpg', class: :image
+    .col-xs-12.col-sm-6.col-md-4
+      .thumbnail
+        = image_tag 'fire-pit.jpg', class: :image
 .opaque.full-page
   .container-fluid
     %h1 Amenities
