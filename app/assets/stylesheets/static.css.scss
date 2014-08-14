@@ -193,7 +193,7 @@ $marketing-marg: 21px;
 
 #session
 {
-	margin-top: 25px;
+	#margin-top: 25px;
 }
 
 .tiles
@@ -203,7 +203,7 @@ $marketing-marg: 21px;
 
 .image > img
 {
-	max-height: 60%;
+	//max-height: 60%;
 	width: 100%;
 	-webkit-filter: sepia(.3);
 	-o-filter: sepia(.3);
@@ -233,4 +233,9 @@ $marketing-marg: 21px;
 .full-page
 {
 	padding: 10px;
+}
+
+.thumbnail .image
+{
+	height: 150px;
 }

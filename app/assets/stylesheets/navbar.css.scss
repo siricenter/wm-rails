@@ -27,5 +27,11 @@ $nav-height: 135px;
 
 .main 
 {
-	margin-top: $nav-height - 55px;
+	//margin-top: $nav-height - 55px;
+}
+
+.navbar-bottom
+{
+	width: 100%;
+	height: $nav-height - 55px;
 }
