@@ -39,7 +39,7 @@ module Prices
 	def self.multiple_semester_discounts semesters
 		return [0] if semesters.count == 1
 		return [0, 95] if semesters.count == 2
-		return [0, 95, 105] if semesters.count == 3
+		return [0, 95, 105] if semesters.count > 2
 	end
 
 	def self.early_bird semesters, today
