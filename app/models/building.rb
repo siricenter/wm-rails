@@ -16,8 +16,6 @@ class Building < ActiveRecord::Base
 	validates :capacity, presence: true, numericality: true
 	
 	def availabilities? semester
-		contract_list = Contract.joins(:semesters).where(contracts_semesters: {semester: semester})
-		#contract_list = self.contracts.where(semester: semester)
-		return contract_list.count < self.capacity
+    return self.contracts.joins(:contracts_semesters).where(contracts_semesters: {semester_id: semester.id}).count < self.capacity
 	end
 end

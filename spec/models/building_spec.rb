@@ -39,15 +39,15 @@ RSpec.describe Building, :type => :model do
 		end
 
 		it "knows if there is an availability" do
-			subject.capacity = 1
-			FactoryGirl.create(:contract, building: subject, semester: @semester)
-			expect(subject.availabilities?(@semester)).to be false
+			subject.capacity = 2
+      FactoryGirl.create(:contract, building: subject, semesters: [@semester])
+      expect(subject.availabilities?(@semester)).to be true
 		end
 
 		it "knows if there's no availability" do
-			subject.capacity = 2
-			FactoryGirl.create(:contract, building: subject, semester: @semester)
-			expect(subject.availabilities?(@semester)).to be true
+			subject.capacity = 1
+			FactoryGirl.create(:contract, building: subject, semesters: [@semester])
+      expect(subject.availabilities?(@semester)).to be false
 		end
 	end
 end

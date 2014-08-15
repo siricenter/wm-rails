@@ -102,9 +102,13 @@ class ContractsController < ApplicationController
 
 
 		session[:temp_contract] = @contract.to_json
-		session[:semesters] = @semesters.map do |semester|
-			semester.id
-		end
+    session[:semesters] = Array.new(@semesters.length)
+    @semesters.each_with_index do |semester, index|
+      session[:semesters][index] = semester.id
+    end
+		#session[:semesters] = @semesters.map do |semester|
+		#	semester.id
+		#end
 		session[:building_id] = @building.id
 
 		set_prices

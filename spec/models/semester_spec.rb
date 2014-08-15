@@ -19,7 +19,7 @@ RSpec.describe Semester, :type => :model do
 	it "has a valid factory" do
 		subject.reload
 		expect(subject).to be_valid
-		expect(subject.contract_durations.empty?).to be false
+		expect(subject.contract_duration).to_not be_nil
 	end
 
 	it "is invalid without a name" do
@@ -29,7 +29,7 @@ RSpec.describe Semester, :type => :model do
 
 	it "is invalid if semester name is not unique" do
 		subject # Subject is lazily loaded, so it's not there if we don't call it
-		new_semester = FactoryGirl.build :semester
+    new_semester = FactoryGirl.build(:semester, name: subject.name)
 		expect(new_semester).to_not be_valid
 	end
 
