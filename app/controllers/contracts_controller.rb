@@ -102,7 +102,7 @@ class ContractsController < ApplicationController
 
 
 		session[:temp_contract] = @contract.to_json
-    #session[:semesters] = new Array(@semesters.length)
+    session[:semesters] = Array.new(@semesters.length)
     @semesters.each_with_index do |semester, index|
       session[:semesters][index] = semester.id
     end

@@ -15,7 +15,7 @@
 
 FactoryGirl.define do
   	factory :semester do
-    	name "Spring Semester 2014"
+      name {Faker::Name.first_name}
 	  	deposit 50
 		rent 1500
 		duration 1
