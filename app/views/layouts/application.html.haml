@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Wmrails
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    /%meta{:name => "viewport", :content => "width=device-width, user-scalable=yes"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Ovo", :rel => "stylesheet", :type => "text/css"}/
+  %body
+    = render partial: '/layouts/navbar'
+    = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
