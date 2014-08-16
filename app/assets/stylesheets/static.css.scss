@@ -1,7 +1,6 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'navbar.css';
 
 $font: 'Ovo', serif;
 body
@@ -34,20 +33,17 @@ $availability-height: 100px;
 $avail-marg: 35px;
 $marketing-height: $availability-height * .75;
 $marketing-marg: 21px;
-.availability
+.availability-bar
 {
+	@extend .row;
 	background-color: #591616;
 	min-height: $availability-height;
 	font-family: $font;
+	color: white;
 
-	& > *
+	.check-text
 	{
-		background-color: #591616;
-	}
-
-	& > h3
-	{
-		color: white;
+		@extend .col-xs-3;
 		font-size: 220%;
 		margin-top: $avail-marg;
 	}
@@ -69,6 +65,19 @@ $marketing-marg: 21px;
 	#sem-select {
 		margin-top: $avail-marg;
 		font-weight: bold;
+	}
+}
+
+.marketing-bar
+{
+	@extend .availability-bar;
+
+	.marketing-text
+	{
+		@extend .col-xs-12;
+		font-size: 220%;
+		margin-top: $avail-marg;
+		text-align: center;
 	}
 }
 
@@ -204,6 +213,7 @@ $marketing-marg: 21px;
 .image > img
 {
 	//max-height: 60%;
+	padding: 0;
 	width: 100%;
 	-webkit-filter: sepia(.3);
 	-o-filter: sepia(.3);

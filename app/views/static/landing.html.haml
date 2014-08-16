@@ -1,7 +1,8 @@
 / Main jumbotron for a primary marketing message or call to action
 .container-fluid
-  .row.availability
-    %h3.col-xs-3.col-md-3 Check Availability:
+  .availability-bar
+    %h3.check-text
+      Check Availability:
     %p#sem-select.col-xs-3.col-md-3
       = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2']
     .col-xs-1.col-xs-offset-1.col-md-1.col-md-offset-1.gender-icon#womens
@@ -16,8 +17,8 @@
 .container
   .row.image
     = image_tag 'building_cropped.png', class: ['col-md-12', :'img-responsive']
-  .row.availability.marketing-text.col-md-12
-    %h3
+  .marketing-bar
+    %h3.marketing-text
       = @marketing_text
 .container
   .row.tiles
