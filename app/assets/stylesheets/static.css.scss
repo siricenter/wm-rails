@@ -35,11 +35,6 @@ $avail-marg: 35px;
 $marketing-height: $availability-height * .75;
 $marketing-marg: 21px;
 
-.availability-container
-{
-	@extend .container-fluid;
-}
-
 .availability-bar
 {
 	@extend .row;
@@ -66,7 +61,7 @@ $marketing-marg: 21px;
 	}
 
 	& > .gender-icon:hover:not(.btn-blocky) {
-		background: rgba(255,255,255,0.3);
+		background: #E74C3C;//rgba(255,255,255,0.3);
 	}
 
 	#sem-select-container {
@@ -159,9 +154,10 @@ $marketing-marg: 21px;
 .tile
 {
 	@extend .col-sm-4;
-	background: white;
+	background: whitesmoke;
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 	padding: 10px;
+	height: 20%;
 
 	@media(max-width: $screen-sm-min - 1) 
 	{
@@ -194,7 +190,7 @@ $marketing-marg: 21px;
 
 	&:hover
 	{
-		background-color: $theme-lblue;
+		background-color: $theme-blue;
 		color: white;
 	}
 }
@@ -283,14 +279,17 @@ $marketing-marg: 21px;
 .image
 {
 	@extend .row;
+	background-color: whitesmoke;
 }
 
 .image > img
 {
-	//max-height: 60%;
+	max-height: 60%;
 	padding: 0;
-	width: 100%;
-	@include sepia(.3);
+	margin-left: auto;
+	margin-right: auto;
+	@extend .img-responsive;
+	//@include sepia(.3);
 }
 
 .marketing-text
@@ -328,12 +327,7 @@ $marketing-marg: 21px;
 	margin-top: 20px;
 }
 
-.image-container
-{
-	@extend .container-fluid;
-}
-
-.social-container
+#image-container, #marketing-container, #social-container, #availability-container
 {
 	@extend .container-fluid;
 }
@@ -342,8 +336,9 @@ $marketing-marg: 21px;
 {
 	@extend .container-fluid;
 	display: block;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: 15px;
 	background-color: $theme-dblue;
 	color: white;
+	height: 50px;
+	vertical-align: middle;
 }

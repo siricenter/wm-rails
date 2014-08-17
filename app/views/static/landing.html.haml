@@ -1,5 +1,5 @@
 / Main jumbotron for a primary marketing message or call to action
-.availability-container
+#availability-container
   .availability-bar
     %h3.check-text
       Check Availability:
@@ -14,9 +14,10 @@
     .col-md-1
     #available-answer
       %p 
-.image-container
+#image-container
   .image
-    = image_tag 'building_cropped.png', class: ['col-md-12', :'img-responsive']
+    = image_tag 'building_cropped.png'
+#marketing-container
   .marketing-bar
     %h3.marketing-text
       = @marketing_text
@@ -54,7 +55,7 @@
       %p A photo gallery
       %button.btn.cntr Coming Soon!
   /= render 'news'
-//.social-container
+//#social-container
 //  #social
 //    %h3.col-md-12.text-center Follow us on
 //    #social-icons.col-md-12
