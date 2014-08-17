@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$sepia-amount: .3;
 $font: 'Ovo', serif;
 body
 {
-	background-color: #9A9C99;
+	background-color: $theme-lgrey;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 675px;
@@ -36,7 +37,7 @@ $marketing-marg: 21px;
 .availability-bar
 {
 	@extend .row;
-	background-color: #591616;
+	background-color: $theme-lburgandy;
 	min-height: $availability-height;
 	font-family: $font;
 	color: white;
@@ -71,6 +72,7 @@ $marketing-marg: 21px;
 .marketing-bar
 {
 	@extend .availability-bar;
+	background-color: $theme-lburgandy;
 
 	.marketing-text
 	{
@@ -109,7 +111,7 @@ $marketing-marg: 21px;
 
 .success
 {
-	background-color: #5f7319;
+	background-color: $theme-dgreen;
 	cursor: pointer;
 }
 
@@ -118,13 +120,29 @@ $marketing-marg: 21px;
 	background-color: red;
 }
 
-.inner-tile
+.tile
 {
+	@extend .col-sm-4;
 	background: white;
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-	margin-top: 10px;
-	//margin: 5px 0px 5px 0px;
 	padding: 10px;
+
+	@media(max-width: $screen-sm-min - 1) 
+	{
+		border-bottom: $theme-dblue;
+		border-bottom-style: solid;
+	}
+
+	@media (min-width: $screen-sm-min) 
+	{
+		border-right-style: solid;
+		border-right-color: $theme-dblue;
+	}
+
+	&:last-child
+	{
+		border-right-style: none;
+	}
 
 	& > h3, & > p
 	{
@@ -136,6 +154,12 @@ $marketing-marg: 21px;
 	& > button
 	{
 		margin-top: 50px;
+	}
+
+	&:hover
+	{
+		background-color: $theme-lblue;
+		color: white;
 	}
 }
 
@@ -195,19 +219,26 @@ $marketing-marg: 21px;
 	margin-top: 50px;
 }
 
-.opaque
-{
-	background-color: #9A9C99;
-}
-
 #session
 {
 	#margin-top: 25px;
 }
 
+.tiles-container
+{
+	@extend .container-fluid;
+}
+
 .tiles
 {
-	margin-top: 0%;
+	@extend .row;
+	border-bottom: $theme-dblue;
+	border-bottom-style: solid;
+
+	&:last-of-type
+	{
+		border-bottom-style: none;
+	}
 }
 
 .image > img
@@ -215,10 +246,7 @@ $marketing-marg: 21px;
 	//max-height: 60%;
 	padding: 0;
 	width: 100%;
-	-webkit-filter: sepia(.3);
-	-o-filter: sepia(.3);
-	-moz-filter: sepia(.3);
-	-ms-filter: sepia(.3);
+	@include sepia(.3);
 }
 
 .marketing-text
@@ -254,4 +282,14 @@ $marketing-marg: 21px;
 {
 	@extend .container;
 	margin-top: 20px;
+}
+
+.footer
+{
+	@extend .container-fluid;
+	display: block;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: $theme-dblue;
+	color: white;
 }

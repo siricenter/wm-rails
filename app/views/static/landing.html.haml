@@ -14,51 +14,47 @@
     .col-md-1
     .col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
       %p 
-.container
+.container-fluid
   .row.image
     = image_tag 'building_cropped.png', class: ['col-md-12', :'img-responsive']
   .marketing-bar
     %h3.marketing-text
       = @marketing_text
-.container
-  .row.tiles
-    .col-md-4.col-sm-4.tile
-      .inner-tile
-        %h3 Complex
-        .circular.cir-img-complex
-        %p Info about the complex
-        %button.btn.cntr Coming Soon!
-    .col-md-4.col-md-4.tile
-      .inner-tile
-        %h3 Apartments
-        .circular.cir-img-apartments
-        %p Info about the Apartments
-        %button.btn.cntr Coming Soon!
-    .col-md-4.col-md-4.tile
-      .inner-tile
-        %h3 Amenities
-        .circular.cir-img-amenities
-        %p Info about the amenities
-        %button.btn.cntr Coming Soon!
-    .col-md-4.col-md-4.tile
-      .inner-tile
-        %h3 Reservations
-        .circular.cir-img-reservations
-        %p Info about the reservations
-        %button.btn.cntr Coming Soon!
-    .col-md-4.col-md-4.tile
-      .inner-tile
-        %h3 Current Tenants
-        .circular.cir-img-tenants
-        %p Info for current tenants
-        %button.btn.cntr Coming Soon!
-    .col-md-4.col-md-4.tile
-      .inner-tile
-        %h3 Gallery
-        .circular.cir-img-gallery
-        %p A photo gallery
-        %button.btn.cntr Coming Soon!
+.tiles-container
+  .tiles
+    .inner-tile.tile
+      %h3 Complex
+      .circular.cir-img-complex
+      %p Info about the complex
+      %button.btn.cntr Coming Soon!
+    .inner-tile.tile
+      %h3 Apartments
+      .circular.cir-img-apartments
+      %p Info about the Apartments
+      %button.btn.cntr Coming Soon!
+    .inner-tile.tile
+      %h3 Amenities
+      .circular.cir-img-amenities
+      %p Info about the amenities
+      %button.btn.cntr Coming Soon!
+  .tiles
+    .inner-tile.tile
+      %h3 Reservations
+      .circular.cir-img-reservations
+      %p Info about the reservations
+      %button.btn.cntr Coming Soon!
+    .inner-tile.tile
+      %h3 Current Tenants
+      .circular.cir-img-tenants
+      %p Info for current tenants
+      %button.btn.cntr Coming Soon!
+    .inner-tile.tile
+      %h3 Gallery
+      .circular.cir-img-gallery
+      %p A photo gallery
+      %button.btn.cntr Coming Soon!
   /= render 'news'
+.container-fluid
   #social.row
     %h3.col-md-12.text-center Follow us on
     #social-icons.col-md-12
@@ -68,5 +64,7 @@
         %a{:href => ""}
           = image_tag 'twitter.png'
   %hr/
-  %footer
-    %p.text-center &copy; Windsor Manor 2014
+.footer
+  .row
+    %footer
+      %p.text-center &copy; Windsor Manor 2014

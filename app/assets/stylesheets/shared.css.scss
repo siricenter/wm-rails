@@ -1,5 +1,6 @@
 $choose-tag-width: 200px;
-$theme-blue: #24284D;
+$theme-dblue: #24284D;
+$theme-lblue: #24284D;
 $theme-dgrey: #2B2B2B;
 $theme-lgrey: #9A9C99;
 $theme-dburgandy: #3D0101;
@@ -11,8 +12,8 @@ h1 {
   color: $theme-dgrey;
 }
 
-.back-blue {
-  background: $theme-blue;
+.back-dblue {
+  background: $theme-dblue;
 }
 
 .back-lgrey {
@@ -159,4 +160,12 @@ img.choose
 {
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+
+@mixin sepia($amount)
+{
+	-webkit-filter: sepia(.3);
+	-o-filter: sepia(.3);
+	-moz-filter: sepia(.3);
+	-ms-filter: sepia(.3);
 }
