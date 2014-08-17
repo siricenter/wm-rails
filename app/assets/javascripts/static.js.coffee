@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 checkAvailability = (building) ->
 	$('#available-answer').fadeOut()
-	semesterId = $('#semester').val()
+	semesterId = $('#sem-select').val()
 	if building == 'mens'
 		buildingId = 1
 	if building == 'womens'

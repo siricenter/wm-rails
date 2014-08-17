@@ -1,21 +1,21 @@
 / Main jumbotron for a primary marketing message or call to action
-.container-fluid
+.availability-container
   .availability-bar
     %h3.check-text
       Check Availability:
-    %p#sem-select.col-xs-3.col-md-3
-      = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2']
-    .col-xs-1.col-xs-offset-1.col-md-1.col-md-offset-1.gender-icon#womens
+    #sem-select-container
+      = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), id: [:'sem-select']
+    #womens
       = image_tag 'women_bg.png'
       %p Women
-    .col-xs-1.col-md-1.gender-icon#mens
+    #mens
       = image_tag 'men_bg.png'
       %p Men
     .col-md-1
-    .col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
+    #available-answer
       %p 
-.container-fluid
-  .row.image
+.image-container
+  .image
     = image_tag 'building_cropped.png', class: ['col-md-12', :'img-responsive']
   .marketing-bar
     %h3.marketing-text
@@ -54,8 +54,8 @@
       %p A photo gallery
       %button.btn.cntr Coming Soon!
   /= render 'news'
-.container-fluid
-  #social.row
+.social-container
+  #social
     %h3.col-md-12.text-center Follow us on
     #social-icons.col-md-12
       .cntr.fit-width
