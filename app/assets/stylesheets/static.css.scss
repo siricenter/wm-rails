@@ -332,7 +332,7 @@ $marketing-marg: 21px;
 	@extend .container-fluid;
 }
 
-.footer
+.footer-container
 {
 	@extend .container-fluid;
 	display: block;
@@ -341,4 +341,9 @@ $marketing-marg: 21px;
 	color: white;
 	height: 50px;
 	vertical-align: middle;
+}
+
+.footer
+{
+	@extend .row;
 }
