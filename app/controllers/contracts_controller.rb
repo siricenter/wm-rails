@@ -197,10 +197,10 @@ class ContractsController < ApplicationController
 		@semesters = Semester.all
 		@url = url
 		@method = method
-		if contract
+		if contract 
 			@contract = contract
 			@building = @contract.building
-			@semester = @contract.semester
+			@semesters = @contract.semesters
 		end
 
 		@contract ||= Contract.new

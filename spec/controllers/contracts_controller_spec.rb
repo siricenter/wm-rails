@@ -24,9 +24,10 @@ RSpec.describe ContractsController, :type => :controller do
 	# Contract. As you add validations to Contract, be sure to
 	# adjust the attributes here as well.
 	let(:valid_attributes) {
-		semester = FactoryGirl.create :semester, name: Faker::Name.first_name
+		semesters = []
+    semesters << FactoryGirl.create(:semester, name: Faker::Name.first_name)
 		building = FactoryGirl.create :building
-		{
+		contract = {
 			semester: semester.to_param,
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
