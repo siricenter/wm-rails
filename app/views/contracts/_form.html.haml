@@ -101,7 +101,7 @@
       .col-md-4
         = f.select :parking_type, [['None - $0.00', 'None'], ['Tandem Uncovered - $35.00', 'Tandem Uncovered'], ['Tandem Covered - $75.00', 'Tandem Covered'], ['Private Uncovered - $50.00', 'Private Uncovered'], ['Private Covered - $100.00', 'Private Covered']], {}, class: 'form-control'
   .row
-    %strong.col-md-6.text-danger
+    %strong.col-md-6.text-warning
       *Tandem parking is a two-car driveway you share with your roommate
   .row
     .form-group
@@ -126,7 +126,7 @@
         = f.text_field :euro, placeholder: 'Your Euro Number', class: 'form-control'
 
   .row
-    %strong.col-md-6.text-danger
+    %strong.col-md-6.text-warning
       *The Windsor Euro is a coupon that you can request on our website.
         
 
