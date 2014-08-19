@@ -189,7 +189,11 @@ class ContractsController < ApplicationController
 		@euro = 50 unless @contract.euro.empty?
 		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
 
-		@total = @application_fee + @deposit + @rent * @semesters.count + @parking_price - @discounts_total
+		@rent_sum = 0
+		@rent.each do |rent|
+			@rent_sum += rent
+		end
+		@total = @application_fee + @deposit + @rent_sum + @parking_price - @discounts_total
 	end
 
 	def setup_form url, method, contract = nil

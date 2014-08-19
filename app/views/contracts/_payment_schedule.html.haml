@@ -1,61 +1,62 @@
 .col-md-12
-  %h2
-    Payment Schedule
-  %table.table.table-hover
-    %thead
-      %tr
-        %th
-          Due Date
-        %th
-          Now
-        - @semesters.each do |semester|
-          %th
-            = semester.payment_due.to_formatted_s(:long)
-    %tbody
-      %tr
-        %td
-          Amount
-        %td
-          = number_to_currency(@application_fee) 
-          Application Fee
-          %br
-          = number_to_currency(@deposit) 
-          Deposit
-        - @semesters.each do |semester|
-          %td
-            = number_to_currency(@rent)
-            Rent 
-            %br
-            = number_to_currency(@parking.first)
-            Parking
-            %br
-            - unless @multiple_semesters.first == 0
-              - multiple_semesters = @multiple_semesters.first
-              \-
-              = number_to_currency(multiple_semesters)
-              Multiple Semesters
-              %br
-            - unless @semesters.first != semester or@contract.euro.empty?
-              \-
-              = number_to_currency(50)
-              Windsor Euro Discount
-              %br
-            \-
-            - early_bird = @early_bird.first
-            = number_to_currency(early_bird)
-            Early Bird
-      %tfoot
-        %tr
-          %td
-            %strong
-              Total
-          %td
-            %strong
-              = number_to_currency(@application_fee + @deposit)
-          - @semesters.each_with_index do |semester, index|
-            %td
-              %strong
-                - total = @rent + @parking.first - @early_bird[index] - @multiple_semesters[index]
-                - if !(@contract.euro.empty?) and index == 0
-                  - total -= 50
-                = number_to_currency(total)
+	%h2
+		Payment Schedule
+	%table.table.table-hover
+		%thead
+			%tr
+				%th
+					Due Date
+				%th
+					Now
+				- @semesters.each do |semester|
+					%th
+						= semester.payment_due.to_formatted_s(:long)
+		%tbody
+			%tr
+				%td
+					Amount
+				%td
+					= number_to_currency(@application_fee) 
+					Application Fee
+					%br
+					= number_to_currency(@deposit) 
+					Deposit
+				- @semesters.each_with_index do |semester, index|
+					%td
+						= number_to_currency(semester.rent)
+						Rent 
+						%br
+						- unless @parking[index] == 0
+							= number_to_currency(@parking[index])
+							Parking
+							%br
+						- unless @multiple_semesters[index] == 0
+							- multiple_semesters = @multiple_semesters[index]
+							\-
+							= number_to_currency(multiple_semesters)
+							Multiple Semesters
+							%br
+						- unless @semesters.first != semester or @contract.euro.empty?
+							\-
+							= number_to_currency(50)
+							Windsor Euro Discount
+							%br
+						\-
+						- early_bird = @early_bird[index]
+						= number_to_currency(early_bird)
+						Early Bird
+			%tfoot
+				%tr
+					%td
+						%strong
+							Total
+					%td
+						%strong
+							= number_to_currency(@application_fee + @deposit)
+					- @semesters.each_with_index do |semester, index|
+						%td
+							%strong
+								- total = semester.rent + @parking[index] - @early_bird[index] - @multiple_semesters[index]
+								- if !(@contract.euro.empty?) and index == 0
+									- total -= 50
+								= number_to_currency(total)

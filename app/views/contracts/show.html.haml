@@ -1,49 +1,50 @@
 .container
-  %p#notice= notice
+	%p#notice= notice
 
-  .row-fluid
-    %p
-      %b Semester
-      = @contract.semester.name
-    %p
-      %b First name:
-      = @contract.first_name
-    %p
-      %b Last name:
-      = @contract.last_name
-    %p
-      %b Email:
-      = @contract.email
-    %p
-      %b Home address 1:
-      = @contract.home_address_1
-    %p
-      %b Home address 2:
-      = @contract.home_address_2
-    %p
-      %b Home city:
-      = @contract.home_city
-    %p
-      %b Home state:
-      = @contract.home_state
-    %p
-      %b Home zip:
-      = @contract.home_zip
-    %p
-      %b Parking Type
-      = @contract.parking_type
+	.row-fluid
+		%p
+			%b Semesters
+			- @contract.semesters.each do |semester|
+				= semester.name
+		%p
+			%b First name:
+			= @contract.first_name
+		%p
+			%b Last name:
+			= @contract.last_name
+		%p
+			%b Email:
+			= @contract.email
+		%p
+			%b Home address 1:
+			= @contract.home_address_1
+		%p
+			%b Home address 2:
+			= @contract.home_address_2
+		%p
+			%b Home city:
+			= @contract.home_city
+		%p
+			%b Home state:
+			= @contract.home_state
+		%p
+			%b Home zip:
+			= @contract.home_zip
+		%p
+			%b Parking Type
+			= @contract.parking_type
 
-    %p
-      %b Preferences (If any)
-      = @contract.preferences
+		%p
+			%b Preferences (If any)
+			= @contract.preferences
 
-    %p
-      %b Apartment Number (if known)
-      = @contract.number
+		%p
+			%b Apartment Number (if known)
+			= @contract.number
 
-  .row
-    = render 'payment_schedule'
+	.row
+		= render 'payment_schedule'
 
-  = link_to 'Edit', edit_contract_path(@contract)
-  \|
-  = link_to 'Back', contracts_path
+	= link_to 'Edit', edit_contract_path(@contract)
+	\|
+	= link_to 'Back', contracts_path
