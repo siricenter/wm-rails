@@ -1,16 +1,11 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'bootstrap';
-@import 'shared';
-@import 'navbar';
 
-
-$sepia-amount: .3;
 $font: 'Ovo', serif;
 body
 {
-	background-color: $theme-lgrey;
+	background-color: #9A9C99;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 675px;
@@ -38,11 +33,10 @@ $availability-height: 100px;
 $avail-marg: 35px;
 $marketing-height: $availability-height * .75;
 $marketing-marg: 21px;
-
 .availability-bar
 {
 	@extend .row;
-	background-color: $theme-lburgandy;
+	background-color: #591616;
 	min-height: $availability-height;
 	font-family: $font;
 	color: white;
@@ -65,47 +59,18 @@ $marketing-marg: 21px;
 	}
 
 	& > .gender-icon:hover:not(.btn-blocky) {
-		background: #E74C3C;//rgba(255,255,255,0.3);
+		background: rgba(255,255,255,0.3);
 	}
 
-	#sem-select-container {
-		@extend .col-xs-4;
-		margin-top: $avail-marg - 10;
+	#sem-select {
+		margin-top: $avail-marg;
 		font-weight: bold;
-
-		#sem-select
-		{
-			@extend .form-control;
-		}
-	}
-
-	#womens
-	{
-		@extend .col-sm-1;
-		@extend .col-md-1;
-		@extend .gender-icon;
-	}
-
-	#mens
-	{
-		@extend .col-xs-1;
-		@extend .gender-icon;
-	}
-
-	#available-answer
-	{
-		@extend .col-xs-3;
-		@extend .col-md-2;
-		@extend .col-md-offset-1;
-		@extend .text-center;
-		@extend .btn-blocky;
 	}
 }
 
 .marketing-bar
 {
 	@extend .availability-bar;
-	background-color: $theme-lburgandy;
 
 	.marketing-text
 	{
@@ -125,9 +90,7 @@ $marketing-marg: 21px;
 
 	img 
 	{
-		margin-left: auto;
-		margin-right: auto;
-		max-height: 60px;
+		height: 60px;
 	}
 }
 
@@ -146,7 +109,7 @@ $marketing-marg: 21px;
 
 .success
 {
-	background-color: $theme-dgreen;
+	background-color: #5f7319;
 	cursor: pointer;
 }
 
@@ -155,30 +118,13 @@ $marketing-marg: 21px;
 	background-color: red;
 }
 
-.tile
+.inner-tile
 {
-	@extend .col-sm-4;
-	background: whitesmoke;
+	background: white;
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	margin-top: 10px;
+	//margin: 5px 0px 5px 0px;
 	padding: 10px;
-	height: 20%;
-
-	@media(max-width: $screen-sm-min - 1) 
-	{
-		border-bottom: $theme-dblue;
-		border-bottom-style: solid;
-	}
-
-	@media (min-width: $screen-sm-min) 
-	{
-		border-right-style: solid;
-		border-right-color: $theme-dblue;
-	}
-
-	&:last-child
-	{
-		border-right-style: none;
-	}
 
 	& > h3, & > p
 	{
@@ -190,12 +136,6 @@ $marketing-marg: 21px;
 	& > button
 	{
 		margin-top: 50px;
-	}
-
-	&:hover
-	{
-		background-color: $theme-blue;
-		color: white;
 	}
 }
 
@@ -252,10 +192,12 @@ $marketing-marg: 21px;
 
 #news, #social
 {
-	@extend .row;
-	padding-bottom: 20px;
-	background-color: $theme-dgreen;
-	color: white;
+	margin-top: 50px;
+}
+
+.opaque
+{
+	background-color: #9A9C99;
 }
 
 #session
@@ -263,37 +205,20 @@ $marketing-marg: 21px;
 	#margin-top: 25px;
 }
 
-.tiles-container
-{
-	@extend .container-fluid;
-}
-
 .tiles
 {
-	@extend .row;
-	border-bottom: $theme-dblue;
-	border-bottom-style: solid;
-
-	&:last-of-type
-	{
-		border-bottom-style: none;
-	}
-}
-
-.image
-{
-	@extend .row;
-	background-color: whitesmoke;
+	margin-top: 0%;
 }
 
 .image > img
 {
-	max-height: 60%;
+	//max-height: 60%;
 	padding: 0;
-	margin-left: auto;
-	margin-right: auto;
-	@extend .img-responsive;
-	//@include sepia(.3);
+	width: 100%;
+	-webkit-filter: sepia(.3);
+	-o-filter: sepia(.3);
+	-moz-filter: sepia(.3);
+	-ms-filter: sepia(.3);
 }
 
 .marketing-text
@@ -329,25 +254,4 @@ $marketing-marg: 21px;
 {
 	@extend .container;
 	margin-top: 20px;
-}
-
-#image-container, #marketing-container, #social-container, #availability-container
-{
-	@extend .container-fluid;
-}
-
-.footer-container
-{
-	@extend .container-fluid;
-	display: block;
-	padding-top: 15px;
-	background-color: $theme-dblue;
-	color: white;
-	height: 50px;
-	vertical-align: middle;
-}
-
-.footer
-{
-	@extend .row;
 }
