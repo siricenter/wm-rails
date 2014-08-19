@@ -29,8 +29,7 @@ class ContractsController < ApplicationController
 	# POST /contracts.json
 	def create
 		@contract = Contract.new(contract_params)
-		@semesters = params[:contract][:contract_semester_ids]
-		@semesters = Semester.find(@semesters)
+		@semesters = Semester.find(params[:contract][:semesters])
 		@building = Building.find(params[:contract][:building_id])
 
 
@@ -58,14 +57,14 @@ class ContractsController < ApplicationController
 	# PATCH/PUT /contracts/1.json
 	def update
 		# set_contract is called prior to this method
+		#render inline: params.inspect
+
+		@semesters = Semester.find(params[:contract][:semesters])
+		@old_semesters = @contract.semesters
+		@building = @contract.building
+		@contract.semesters = @semesters
+		
 		respond_to do |format|
-			@semesters = Semester.find(params[:contract][:contract_semester_ids])
-			@old_semesters = @contract.semesters
-			@old_semesters.each do |semester|
-				mark_for_destruction(semester)
-			end
-			@building = @contract.building
-			@contract.semesters = @semesters
 			if @contract.attributes = contract_params and @contract.save
 				format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
 				format.json { render :show, status: :ok, location: @contract }

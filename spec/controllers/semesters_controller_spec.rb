@@ -27,14 +27,16 @@ RSpec.describe SemestersController, :type => :controller do
 		name: "Spring Semester 2014", 
 		rent: 1500,
 		deposit: 50,
-		duration: 1
+		start_date: Date.tomorrow,
+		end_date: Date.tomorrow + 3
 	}}
 
 	let(:invalid_attributes) {{
 		name: "", 
 		rent: 1500,
 		deposit: 50,
-		duration: 1
+		start_date: Date.tomorrow,
+		end_date: Date.tomorrow + 3
 	}}
 
 	login_admin
@@ -111,17 +113,18 @@ RSpec.describe SemestersController, :type => :controller do
 	describe "PUT update" do
 		describe "with valid params" do
 			let(:new_attributes) {{
-				name: "Spring Semester 2014", 
+				name: "Spring Semester 2018", 
 				rent: 1500,
-				deposit: 250,
-				duration: 1
+				deposit: 50,
+				start_date: Date.tomorrow,
+				end_date: Date.tomorrow + 3
 			}}
 
 			it "updates the requested semester" do
 				semester = FactoryGirl.create :semester
 				put :update, {:id => semester.to_param, :semester => new_attributes}, valid_session
 				semester.reload
-				expect(semester.deposit).to eq(250)
+				expect(semester.name).to eq("Spring Semester 2018")
 			end
 
 			it "assigns the requested semester as @semester" do
