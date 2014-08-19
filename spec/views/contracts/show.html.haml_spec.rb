@@ -12,13 +12,13 @@ RSpec.describe "contracts/show", :type => :view do
 											  home_state: "Home State",
 											  home_zip: "Home Zip"))
 		@contract.reload
-		@semester = @contract.semester
+		@semesters = @contract.semesters
 		@application_fee = Prices::application_fee
-		@deposit = Prices::deposit(@semester)
-		@rent = Prices::rent(@semester)
-		@parking = Prices::parking_price(@contract.parking_type, @semester)
-		@early_bird = Prices::early_bird(@semester, Date.today)
-		@multiple_semesters = Prices::multiple_semester_discounts @semester
+		@deposit = Prices::deposit(@semesters)
+		@rent = Prices::rent(@semesters)
+		@parking = Prices::parking_price(@contract.parking_type, @semesters)
+		@early_bird = Prices::early_bird(@semesters, Date.today)
+		@multiple_semesters = Prices::multiple_semester_discounts @semesters
 
 		# Calculations
 		@parking_price = 0
@@ -38,7 +38,11 @@ RSpec.describe "contracts/show", :type => :view do
 		@euro = 50 unless @contract.euro.empty?
 		@discounts_total = @early_bird_sum + @multiple_semesters_sum + @euro
 
-		@total = @application_fee + @deposit + @rent * @semester.duration + @parking_price - @discounts_total
+		@rent_sum = 0
+		@rent.each do |rent|
+			@rent_sum += rent
+		end
+		@total = @application_fee + @deposit + @rent_sum + @parking_price - @discounts_total
 	end
 
 	it "renders attributes in <p>" do

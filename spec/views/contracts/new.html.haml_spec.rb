@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "contracts/new", :type => :view do
   before(:each) do
     @contract = assign(:contract, FactoryGirl.build(:contract))
-	@semesters = assign(:semesters, [@contract.semester])
+	@semesters = assign(:semesters, [FactoryGirl.create(:semester)])
 	@building = assign(:building, FactoryGirl.create(:building))
   end
 
