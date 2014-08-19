@@ -59,10 +59,14 @@ class ContractsController < ApplicationController
 	def update
 		# set_contract is called prior to this method
 		respond_to do |format|
-			@semester = Semester.find(params[:contract][:semester])
+			@semesters = Semester.find(params[:contract][:contract_semester_ids])
+			@old_semesters = @contract.semesters
+			@old_semesters.each do |semester|
+				mark_for_destruction(semester)
+			end
 			@building = @contract.building
-			@contract.semester = @semester
-			if @contract.update(contract_params)
+			@contract.semesters = @semesters
+			if @contract.attributes = contract_params and @contract.save
 				format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
 				format.json { render :show, status: :ok, location: @contract }
 			else
