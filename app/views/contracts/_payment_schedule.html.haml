@@ -10,7 +10,7 @@
           Now
         - @semesters.each do |semester|
           %th
-            = semester.contract_duration.payment_due.to_formatted_s(:long)
+            = semester.payment_due.to_formatted_s(:long)
     %tbody
       %tr
         %td

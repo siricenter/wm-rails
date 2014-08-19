@@ -17,9 +17,7 @@ RSpec.describe Semester, :type => :model do
 	subject {FactoryGirl.create :semester}
 
 	it "has a valid factory" do
-		subject.reload
 		expect(subject).to be_valid
-		expect(subject.contract_duration).to_not be_nil
 	end
 
 	it "is invalid without a name" do
