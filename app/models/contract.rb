@@ -57,5 +57,6 @@ class Contract < ActiveRecord::Base
 
 	validates_presence_of :semesters
 	validates_presence_of :building
+
 	validates_with BuildingAvailablityValidator 
 end 

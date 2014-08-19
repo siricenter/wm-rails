@@ -102,10 +102,10 @@ class ContractsController < ApplicationController
 
 
 		session[:temp_contract] = @contract.to_json
-    session[:semesters] = Array.new(@semesters.length)
-    @semesters.each_with_index do |semester, index|
-      session[:semesters][index] = semester.id
-    end
+		session[:semesters] = Array.new(@semesters.length)
+		@semesters.each_with_index do |semester, index|
+			session[:semesters][index] = semester.id
+		end
 		#session[:semesters] = @semesters.map do |semester|
 		#	semester.id
 		#end
@@ -128,15 +128,17 @@ class ContractsController < ApplicationController
 	def success
 		if session[:temp_contract] and session[:semesters] and session[:building_id]
 			@contract = Contract.new(JSON.parse(session[:temp_contract]))
-      if(@semesters == nil)
-      	@semesters = []
-      	session[:semesters].each do |semester_id|
-					@semesters << Semester.find(semester_id)
-      	end
-    	end
+			@semesters = []
+
+			session[:semesters].each do |semester_id|
+				@semesters << Semester.find(semester_id)
+			end
+
 			@building = Building.find(session[:building_id])
+
 			@contract.semesters = @semesters
 			@contract.building = @building
+
 			set_prices
 
 			respond_to do |format|
