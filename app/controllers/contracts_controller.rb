@@ -89,7 +89,11 @@ class ContractsController < ApplicationController
 		# Model Retrieval
 		# If data is from the form
 		#render inline: params.inspect
-		@semesters = Semester.find(params[:contract][:semesters])
+		if params[:contract][:semesters].present?
+    	@semesters = Semester.find(params[:contract][:semesters])
+    else
+      @semesters = []
+    end
 		@contract = Contract.new(contract_params)
 		@building = Building.find(params[:building_id])
 		@semesters.each do |semester|
@@ -104,10 +108,9 @@ class ContractsController < ApplicationController
 		end.to_json
 		session[:building_id] = @building.id
 
-		set_prices
-
 		respond_to do |format|
 			if @contract.valid?
+        set_prices
 				format.html 
 			else
 				format.html {
@@ -166,9 +169,9 @@ class ContractsController < ApplicationController
 		# Prices
 		@application_fee = Prices::application_fee
 		@deposit = Prices::deposit(@semesters)
+    @early_bird = Prices::early_bird(@semesters, Date.today)
 		@rent = Prices::rent(@semesters)
 		@parking = Prices::parking_price(@contract.parking_type, @semesters)
-		@early_bird = Prices::early_bird(@semesters, Date.today)
 		@multiple_semesters = Prices::multiple_semester_discounts @semesters
 
 		# Calculations

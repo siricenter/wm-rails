@@ -28,8 +28,8 @@
 
 class BuildingAvailablityValidator < ActiveModel::Validator
 	def validate(record)
-		if record.building
-			record.errors[:building] << "is full" unless record.building.availabilities?(record.semesters.first)
+    if record.building and not record.semesters.empty?
+      record.errors[:building] << "is full" unless record.building.availabilities?(record.semesters.first)
 		end
 	end 
 end
