@@ -151,12 +151,14 @@ RSpec.describe ContractsController, :type => :controller do
 	describe "PUT update" do
 		describe "with valid params" do
 			let(:new_attributes) {
-				semesters = [FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param]
+				semesters = [
+					FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param, 
+					FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param]
 				building = FactoryGirl.create :building
 				{
 					first_name: Faker::Name.first_name,
 					last_name: Faker::Name.last_name,
-					email: 'student1@byui.edu',
+					email: 'student2@byui.edu',
 					home_address_1: Faker::Address.street_address,
 					home_address_2: Faker::Address.secondary_address,
 					home_city: Faker::Address.city,
@@ -179,7 +181,8 @@ RSpec.describe ContractsController, :type => :controller do
 				contract = FactoryGirl.create :contract
 				put :update, {:id => contract.to_param, :contract => new_attributes}, valid_session
 				contract.reload
-				expect(contract.parking_type).to eq("Tandem Covered")
+				expect(contract.email).to eq("student2@byui.edu")
+				expect(contract.semesters.count).to eq(1)
 			end
 
 			it "assigns the requested contract as @contract" do

@@ -35,7 +35,7 @@ class BuildingAvailablityValidator < ActiveModel::Validator
 end
 
 class Contract < ActiveRecord::Base
-	has_and_belongs_to_many :semesters
+	has_and_belongs_to_many :semesters, autosave: true
 	belongs_to :building
 
 	validates :first_name, presence: true
