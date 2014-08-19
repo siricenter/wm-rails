@@ -11,7 +11,7 @@ class ContractsController < ApplicationController
 	# GET /contracts/1
 	# GET /contracts/1.json
 	def show
-		@semester = @contract.semester
+		@semesters = @contract.semesters
 		set_prices
 	end
 
@@ -30,11 +30,14 @@ class ContractsController < ApplicationController
 	def create
 		@contract = Contract.new(contract_params)
 		@semesters = params[:contract][:contract_semester_ids]
-		@semester = Semester.find(@semesters[0])
+		@semesters = Semester.find(@semesters)
 		@building = Building.find(params[:contract][:building_id])
 
 
-		@contract.semester = @semester
+		@semesters.each do |semester|
+			@contract.semesters << semester
+		end
+
 		@contract.building = @building
 
 		respond_to do |format|

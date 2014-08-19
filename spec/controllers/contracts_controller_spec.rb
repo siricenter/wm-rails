@@ -24,11 +24,9 @@ RSpec.describe ContractsController, :type => :controller do
 	# Contract. As you add validations to Contract, be sure to
 	# adjust the attributes here as well.
 	let(:valid_attributes) {
-		semesters = []
-    semesters << FactoryGirl.create(:semester, name: Faker::Name.first_name)
+		semesters = [FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param]
 		building = FactoryGirl.create :building
-		contract = {
-			semester: semester.to_param,
+		{
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
 			email: 'student1@byui.edu',
@@ -44,18 +42,20 @@ RSpec.describe ContractsController, :type => :controller do
 			eligibility_sig: 'John Doe',
 			living_standards_sig: 'John Doe',
 			parking_ack: 'John Doe',
-			contract_agreement: 'John Doe'
+			contract_agreement: 'John Doe',
+			preferences: '',
+			number: '103',
+			contract_semester_ids: semesters
 		}
 	}
 
 	let(:invalid_attributes) {
-		semester = FactoryGirl.create :semester, name: Faker::Name.first_name
+		semesters = [FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param]
 		building = FactoryGirl.create :building
 		{
-			semester: semester.to_param,
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
-			email: Faker::Internet.email,
+			email: 'student1@gmail.com',
 			home_address_1: Faker::Address.street_address,
 			home_address_2: Faker::Address.secondary_address,
 			home_city: Faker::Address.city,
@@ -67,7 +67,11 @@ RSpec.describe ContractsController, :type => :controller do
 			building_id: building.to_param,
 			eligibility_sig: 'John Doe',
 			living_standards_sig: 'John Doe',
-			parking_ack: 'John Doe'
+			parking_ack: 'John Doe',
+			contract_agreement: 'John Doe',
+			preferences: '',
+			number: '103',
+			contract_semester_ids: semesters
 		}
 	}
 
@@ -147,10 +151,9 @@ RSpec.describe ContractsController, :type => :controller do
 	describe "PUT update" do
 		describe "with valid params" do
 			let(:new_attributes) {
-				semester = FactoryGirl.create :semester, name: Faker::Name.first_name
+				semesters = [FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param]
 				building = FactoryGirl.create :building
 				{
-					semester: semester.to_param,
 					first_name: Faker::Name.first_name,
 					last_name: Faker::Name.last_name,
 					email: 'student1@byui.edu',
@@ -159,14 +162,17 @@ RSpec.describe ContractsController, :type => :controller do
 					home_city: Faker::Address.city,
 					home_state: Faker::Address.state,
 					home_zip: Faker::Address.zip,
-					parking_type: "Tandem Covered",
+					parking_type: "Private Covered",
 					phone: Faker::PhoneNumber.phone_number,
 					apartment_type: '8 Person',
 					building_id: building.to_param,
 					eligibility_sig: 'John Doe',
 					living_standards_sig: 'John Doe',
 					parking_ack: 'John Doe',
-					contract_agreemnt: 'John Doe'
+					contract_agreement: 'John Doe',
+					preferences: '',
+					number: '103',
+					contract_semester_ids: semesters
 				}}
 
 			it "updates the requested contract" do
@@ -204,7 +210,7 @@ RSpec.describe ContractsController, :type => :controller do
 		end
 	end
 
-	
+
 	describe "DELETE destroy" do
 		it "destroys the requested contract" do
 			contract = FactoryGirl.create :contract
