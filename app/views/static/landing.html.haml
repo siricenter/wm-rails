@@ -15,11 +15,69 @@
 		.col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
 			%p 
 .container
-	.row.image
-		= image_tag 'building_cropped.png', class: 'col-md-12'
-	.marketing-bar
-		%h3.marketing-text
-			= @marketing_text
+  .row.image
+
+  
+    .col-md-1
+
+    %div(id="myCarousel" class="carousel slide col-md-10" data-ride="carousel")
+
+      %ol(class="carousel-indicators")
+        %li(data-target="#myCarousel" data-slide-to="0" class="active")
+        %li(data-target="#myCarousel" data-slide-to="1")
+        %li(data-target="#myCarousel" data-slide-to="2")
+      
+      %div(class="carousel-inner")
+      
+        %div(class="item active")
+          = image_tag 'large_apt.jpg', class: 'slideImages', alt: 'First slide'
+          %div(class="container")
+            %div(class="carousel-caption")
+              %h1.headline
+                Example headline.
+              %p.slideText
+                This will be replaced with relevant text
+              %p
+                %a(class="btn btn-lg btn-primary" href="#" role="button")
+                  Sign up today
+                 
+        %div(class="item")
+          = image_tag 'amenities_example.jpg', class: 'slideImages', alt: 'Second slide'
+          %div(class="container")
+            %div(class="carousel-caption")
+              %h1.headline
+                Another example headline
+              %p.slideText
+                This will also be replaced with relevant text
+              %p
+                %a(class="btn btn-lg btn-primary" href="#" role="button")
+                  Learn more
+                  
+        %div(class="item")
+          = image_tag 'studentsgrp.png', class: 'slideImages', alt: 'Third slide'
+          %div(class="container")
+            %div(class="carousel-caption")
+              %h1.headline
+                Headline
+              %p.slideText
+                We can put text here
+              %p
+                %a(class="btn btn-lg btn-primary" href="#" role="button")
+                  Learn more
+            
+        
+      %a(class="left carousel-control" href="#myCarousel" role="button" data-slide="prev")
+        %span(class="glyphicon glyphicon-chevron-left")
+      %a(class="right carousel-control" href="#myCarousel" role="button" data-slide="next")
+        %span(class="glyphicon glyphicon-chevron-right")
+
+
+    .col-md-1
+
+
+  .row.availability.marketing-text.col-md-12
+    %h3
+      = @marketing_text
 .container
 	.row.tiles
 		.col-md-4.col-sm-4.tile

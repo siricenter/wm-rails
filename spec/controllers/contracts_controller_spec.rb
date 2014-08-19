@@ -82,18 +82,12 @@ RSpec.describe ContractsController, :type => :controller do
 	# ContractsController. Be sure to keep this updated too.
 	let(:valid_session) { {} }
 
-	describe "GET index" do
-		it "assigns all contracts as @contracts" do
-			contract = FactoryGirl.create :contract
-			get :index, {}, valid_session
-			expect(assigns(:contracts)).to eq([contract])
-		end
-	end
-
+    
+  
 	describe "GET show" do
 		it "assigns the requested contract as @contract" do
 			contract = FactoryGirl.create :contract
-			get :show, {:id => contract.to_param}, valid_session
+      get :show, {:id => contract.id}, valid_session
 			expect(assigns(:contract)).to eq(contract)
 		end
 	end

@@ -17,3 +17,25 @@
 @import 'shared';
 @import 'navbar';
 @import 'static';
+
+.slideImages
+{
+  @extend col-md-12;
+  height: 200px;
+  text-align:center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+
+.headline
+{
+  color: white;
+}
+
+.slideText
+{
+  font-size: 1.5em;
+}
