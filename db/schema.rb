@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813171735) do
+ActiveRecord::Schema.define(version: 20140819064441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,17 +49,6 @@ ActiveRecord::Schema.define(version: 20140813171735) do
     t.datetime "updated_at"
     t.integer  "capacity"
   end
-
-  create_table "contract_durations", force: true do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "semester_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.date     "payment_due"
-  end
-
-  add_index "contract_durations", ["semester_id"], name: "index_contract_durations_on_semester_id", using: :btree
 
   create_table "contracts", force: true do |t|
     t.integer  "semester_id"
@@ -109,6 +98,9 @@ ActiveRecord::Schema.define(version: 20140813171735) do
     t.integer  "deposit"
     t.integer  "rent"
     t.integer  "duration"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "payment_due"
   end
 
 end

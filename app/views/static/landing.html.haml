@@ -1,70 +1,71 @@
 / Main jumbotron for a primary marketing message or call to action
-#availability-container
-  .availability-bar
-    %h3.check-text
-      Check Availability:
-    #sem-select-container
-      = select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), id: [:'sem-select']
-    #womens
-      = image_tag 'women_bg.png'
-      %p Women
-    #mens
-      = image_tag 'men_bg.png'
-      %p Men
-    .col-md-1
-    #available-answer
-      %p 
-#image-container
-  .image
-    = image_tag 'building_cropped.png'
-#marketing-container
-  .marketing-bar
-    %h3.marketing-text
-      = @marketing_text
-.tiles-container
-  .tiles
-    .inner-tile.tile
-      %h3 Complex
-      .circular.cir-img-complex
-      %p Info about the complex
-      %button.btn.cntr Coming Soon!
-    .inner-tile.tile
-      %h3 Apartments
-      .circular.cir-img-apartments
-      %p Info about the Apartments
-      %button.btn.cntr Coming Soon!
-    .inner-tile.tile
-      %h3 Amenities
-      .circular.cir-img-amenities
-      %p Info about the amenities
-      %button.btn.cntr Coming Soon!
-  .tiles
-    .inner-tile.tile
-      %h3 Reservations
-      .circular.cir-img-reservations
-      %p Info about the reservations
-      %button.btn.cntr Coming Soon!
-    .inner-tile.tile
-      %h3 Current Tenants
-      .circular.cir-img-tenants
-      %p Info for current tenants
-      %button.btn.cntr Coming Soon!
-    .inner-tile.tile
-      %h3 Gallery
-      .circular.cir-img-gallery
-      %p A photo gallery
-      %button.btn.cntr Coming Soon!
-  /= render 'news'
-//#social-container
-//  #social
-//    %h3.col-md-12.text-center Follow us on
-//    #social-icons.col-md-12
-//      .cntr.fit-width
-//        %a{:href => ""}
-//          = image_tag 'facebook.png'
-//        %a{:href => ""}
-//          = image_tag 'twitter.png'
-.footer
-  .footer-container
-    %footer
-      %p.text-center &copy; Windsor Manor 2014
+.container-fluid
+	.row.availability
+		%h3.col-xs-3.col-md-3 Check Availability:
+		%p#sem-select.col-xs-3.col-md-3
+			= select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2']
+		.col-xs-1.col-xs-offset-1.col-md-1.col-md-offset-1.gender-icon#womens
+			= image_tag 'women_bg.png'
+			%p Women
+		.col-xs-1.col-md-1.gender-icon#mens
+			= image_tag 'men_bg.png'
+			%p Men
+		.col-md-1
+		.col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
+			%p 
+.container
+	.row.image
+		= image_tag 'building_cropped.png', class: 'col-md-12'
+	.row.availability.marketing-text.col-md-12
+		%h3
+			= @marketing_text
+.container
+	.row.tiles
+		.col-md-4.col-sm-4.tile
+			.inner-tile
+				%h3 Complex
+				.circular.cir-img-complex
+				%p Info about the complex
+				%button.btn.cntr Coming Soon!
+		.col-md-4.col-md-4.tile
+			.inner-tile
+				%h3 Apartments
+				.circular.cir-img-apartments
+				%p Info about the Apartments
+				%button.btn.cntr Coming Soon!
+		.col-md-4.col-md-4.tile
+			.inner-tile
+				%h3 Amenities
+				.circular.cir-img-amenities
+				%p Info about the amenities
+				%button.btn.cntr Coming Soon!
+		.col-md-4.col-md-4.tile
+			.inner-tile
+				%h3 Reservations
+				.circular.cir-img-reservations
+				%p Info about the reservations
+				%button.btn.cntr Coming Soon!
+		.col-md-4.col-md-4.tile
+			.inner-tile
+				%h3 Current Tenants
+				.circular.cir-img-tenants
+				%p Info for current tenants
+				%button.btn.cntr Coming Soon!
+		.col-md-4.col-md-4.tile
+			.inner-tile
+				%h3 Gallery
+				.circular.cir-img-gallery
+				%p A photo gallery
+				%button.btn.cntr Coming Soon!
+	/= render 'news'
+	#social.row
+		%h3.col-md-12.text-center Follow us on
+		#social-icons.col-md-12
+			.cntr.fit-width
+				%a{:href => ""}
+					= image_tag 'facebook.png'
+				%a{:href => ""}
+					= image_tag 'twitter.png'
+	%hr/
+	%footer
+		%p.text-center &copy; Windsor Manor 2014
