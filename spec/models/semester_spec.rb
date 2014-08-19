@@ -35,14 +35,4 @@ RSpec.describe Semester, :type => :model do
 		subject.rent = nil
 		expect(subject).to_not be_valid
 	end
-
-	it "is invalid without duration" do
-		subject.duration = nil
-		expect(subject).to_not be_valid
-	end
-
-	it "is invalid if duration is not a number" do
-		subject.duration = 'ABC'
-		expect(subject).to_not be_valid
-	end
 end
