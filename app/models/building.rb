@@ -10,7 +10,6 @@
 #
 
 class Building < ActiveRecord::Base
-	has_many :apartments
 	has_many :contracts, dependent: :destroy
 
 	validates :name, presence: true
