@@ -13,14 +13,14 @@
 
 class Semester < ActiveRecord::Base
 	has_and_belongs_to_many :contracts
-	has_one :contract_duration
 
 	validates :name, presence: true, uniqueness: true
     validates :deposit, presence: true, numericality: true
 	validates :rent, presence: true, numericality: true
-	validates :duration, presence: true, numericality: true
+	validates :start_date, presence: true
+	validates :end_date, presence: true
 
-	def start_date
-		self.contract_duration.start_date
+	def payment_due
+		self.start_date - 61
 	end
 end
