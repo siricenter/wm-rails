@@ -31,8 +31,7 @@
 
 FactoryGirl.define do
 	factory :contract do
-    #semesters = []
-    #semesters << FactoryGirl.create :semester
+		semesters {[FactoryGirl.create(:semester)]}
 		building 
 		first_name { Faker::Name.first_name } 
 		last_name { Faker::Name.last_name }
@@ -43,7 +42,7 @@ FactoryGirl.define do
 		home_state { Faker::Address.state }
 		home_zip { Faker::Address.zip }
 		apartment_type "6 Person"
-        parking_type 'Private Uncovered'
+		parking_type 'Private Uncovered'
 		phone '555-555-5555'
 		eligibility_sig "John Doe"
 		living_standards_sig "John Doe"
