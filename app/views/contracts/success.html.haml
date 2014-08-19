@@ -7,8 +7,10 @@
     A paypal account is not required; simply click 'Pay with a debit or credit card, or Bill Me Later' to pay with a card.
   %p
     The last day to cancel your contract is
-    %strong
-      = (@semester.contract_durations.first.start_date - 61).to_formatted_s(:long) << '.'
+    %ul
+      %strong
+        - @semesters.each do |semester|
+          %li= semester.name + ": " + (semester.payment_due).to_formatted_s(:long) << '.'
 
 .col-md-12
   %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :target => "_top"}

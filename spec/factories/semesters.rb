@@ -19,13 +19,7 @@ FactoryGirl.define do
 	  	deposit 50
 		rent 1500
 		duration 1
-
-		after :build do |semester|
-			build_list(:contract_duration, 1, semester: semester)
-		end
-
-		after :create do |semester|
-			create_list(:contract_duration, 1, semester: semester)
-		end
+		start_date Date.tomorrow
+		end_date Date.tomorrow + 1
   	end
 end
