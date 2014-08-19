@@ -41,17 +41,10 @@ module Prices
 	end
 
 	def self.multiple_semester_discounts semesters
-<<<<<<< HEAD
 		mult_sem_array = Array.new(semesters.count, 105)
 		mult_sem_array[0] = 0
 		mult_sem_array[1] = 95 if semesters.count > 1
 		return mult_sem_array
-=======
-    mult_sem_array = Array.new(semesters.count, 105)
-    mult_sem_array[0] = 0
-    mult_sem_array[1] = 95 if semesters.count > 1
-    return mult_sem_array
->>>>>>> added tests for the model and started tests for the controller. also fixed errors in Prices lib where there was only one semester
 	end
 
 	def self.early_bird semesters, today
