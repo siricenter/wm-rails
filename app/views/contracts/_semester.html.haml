@@ -1,4 +1,3 @@
-= fields_for semester, index: semester_counter do |form|
-  .col-md-6
-    = form.check_box :id, name: "contract[semesters[#{semester.id}]]"
-    = form.label :name, semester.name
+.col-md-6
+	= check_box_tag "contract[semesters][]", semester.id, @contract.semesters.include?(semester)
+	= label_tag :name, semester.name

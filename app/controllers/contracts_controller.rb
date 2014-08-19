@@ -89,33 +89,20 @@ class ContractsController < ApplicationController
 	def discounts
 		# Model Retrieval
 		# If data is from the form
-		if params.has_key? :contract
-			@semesters = []
-			params[:contract][:semesters].each do |semester_id, checked|
-				unless checked == '0'
-					@semesters << Semester.find(semester_id) 
-				end
-			end
-			@contract = Contract.new(contract_params)
-			@building = Building.find(params[:building_id])
-			@semesters.each do |semester|
-				@contract.semesters << semester
-			end
-			@contract.building = @building
-
-		else # handles clicking the back button
-
+		#render inline: params.inspect
+		@semesters = Semester.find(params[:contract][:semesters])
+		@contract = Contract.new(contract_params)
+		@building = Building.find(params[:building_id])
+		@semesters.each do |semester|
+			@contract.semesters << semester
 		end
+		@contract.building = @building
 
 
 		session[:temp_contract] = @contract.to_json
-		session[:semesters] = Array.new(@semesters.length)
-		@semesters.each_with_index do |semester, index|
-			session[:semesters][index] = semester.id
-		end
-		#session[:semesters] = @semesters.map do |semester|
-		#	semester.id
-		#end
+		session[:semesters] = @semesters.map do |semester|
+			semester.id
+		end.to_json
 		session[:building_id] = @building.id
 
 		set_prices
@@ -137,28 +124,27 @@ class ContractsController < ApplicationController
 			@contract = Contract.new(JSON.parse(session[:temp_contract]))
 			@semesters = []
 
-			session[:semesters].each do |semester_id|
-				@semesters << Semester.find(semester_id)
+			JSON.parse(session[:semesters]).each do |semester_id|
+				semester = Semester.find(semester_id)
+				@semesters << semester
+				@contract.semesters << semester
 			end
 
 			@building = Building.find(session[:building_id])
 
-			@contract.semesters = @semesters
 			@contract.building = @building
 
 			set_prices
 
+			#render inline: @contract.save.to_s
+
 			respond_to do |format|
-				unless session[:reserved]
-					if @contract.save
-						ContractNotification.contract_saved(@contract).deliver
-						session[:reserved] = true
-						format.html {render :success}
-					else
-						format.html {render :failure}
-					end
-				else
+				if @contract.save!
+					ContractNotification.contract_saved(@contract).deliver
+					session[:reserved] = true
 					format.html {render :success}
+				else
+					format.html {render :failure}
 				end
 			end
 		else
@@ -174,7 +160,7 @@ class ContractsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def contract_params
-		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro, :contract_agreement, :preferences, :number)
+		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro, :contract_agreement, :preferences, :number, :semesters)
 	end
 
 	def set_prices
