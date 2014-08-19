@@ -200,11 +200,12 @@ class ContractsController < ApplicationController
 		if contract 
 			@contract = contract
 			@building = @contract.building
-			@semesters = @contract.semesters
+			@selected_semesters = @contract.semesters
 		end
 
 		@contract ||= Contract.new
 		@building ||= Building.find(params[:building_id])
 		@contract.building ||= @building
+		@selected_semesters ||= []
 	end
 end
