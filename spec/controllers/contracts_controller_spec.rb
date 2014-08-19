@@ -45,7 +45,7 @@ RSpec.describe ContractsController, :type => :controller do
 			contract_agreement: 'John Doe',
 			preferences: '',
 			number: '103',
-			contract_semester_ids: semesters
+			semesters: semesters
 		}
 	}
 
@@ -71,7 +71,7 @@ RSpec.describe ContractsController, :type => :controller do
 			contract_agreement: 'John Doe',
 			preferences: '',
 			number: '103',
-			contract_semester_ids: semesters
+			semesters: semesters
 		}
 	}
 
@@ -152,8 +152,9 @@ RSpec.describe ContractsController, :type => :controller do
 		describe "with valid params" do
 			let(:new_attributes) {
 				semesters = [
-					FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param, 
-					FactoryGirl.create(:semester, name: Faker::Name.first_name).to_param]
+					FactoryGirl.create(:semester, name: Faker::Name.first_name), 
+					FactoryGirl.create(:semester, name: Faker::Name.first_name),
+					FactoryGirl.create(:semester, name: Faker::Name.first_name)]
 				building = FactoryGirl.create :building
 				{
 					first_name: Faker::Name.first_name,
@@ -174,7 +175,7 @@ RSpec.describe ContractsController, :type => :controller do
 					contract_agreement: 'John Doe',
 					preferences: '',
 					number: '103',
-					contract_semester_ids: semesters
+					semesters: semesters
 				}}
 
 			it "updates the requested contract" do
@@ -182,7 +183,7 @@ RSpec.describe ContractsController, :type => :controller do
 				put :update, {:id => contract.to_param, :contract => new_attributes}, valid_session
 				contract.reload
 				expect(contract.email).to eq("student2@byui.edu")
-				expect(contract.semesters.count).to eq(1)
+				expect(contract.semesters.count).to eq(3)
 			end
 
 			it "assigns the requested contract as @contract" do
