@@ -6,7 +6,7 @@ class StaticController < ApplicationController
 		@marketing_text = MarketingText.first
 		@marketing_text = @marketing_text.text if @marketing_text
 		@marketing_text ||= ""
-		@semesters = Semester.all.order(:start_date)
+		@semesters = Semester.where('start_date >= ?', Date.today - 30).order(:start_date).limit(6)
 	end
 
 	def choose
