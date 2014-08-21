@@ -133,6 +133,7 @@
 	.row
 		%h2
 			Legal
+		= hidden_field_tag 'contract[contract_text_id]', @contract.contract_text.id
 		.col-md-6{ class: (if @contract.errors[:contract_agreement].present? then 'has-error' else 'required' end) }
 			%h3
 				Contract Acceptance

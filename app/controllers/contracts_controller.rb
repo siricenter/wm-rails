@@ -96,10 +96,12 @@ class ContractsController < ApplicationController
 		end
 		@contract = Contract.new(contract_params)
 		@building = Building.find(params[:building_id])
+		@contract_text = ContractText.find(params[:contract][:contract_text_id])
 		@semesters.each do |semester|
 			@contract.semesters << semester
 		end
 		@contract.building = @building
+		@contract.contract_text = @contract_text
 
 
 		session[:temp_contract] = @contract.to_json
@@ -107,6 +109,7 @@ class ContractsController < ApplicationController
 			semester.id
 		end.to_json
 		session[:building_id] = @building.id
+		session[:contract_text_id] = @contract.contract_text.id
 
 		respond_to do |format|
 			if @contract.valid?
@@ -134,8 +137,10 @@ class ContractsController < ApplicationController
 		@semesters = @semesters.sort{|a, b| a.start_date <=> b.start_date}
 
 		@building = Building.find(session[:building_id])
+		@contract_text = ContractText.find(session[:contract_text_id])
 
 		@contract.building = @building
+		@contract.contract_text = @contract_text
 
 		set_prices
 
