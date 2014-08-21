@@ -3,13 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $font: 'Ovo', serif;
-body
+body, html
 {
 	background-color: #9A9C99;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 675px;
 	color: #2B2B2B;
+	height: 100%;
 }
 
 .cntr
@@ -255,3 +256,11 @@ $marketing-marg: 21px;
 	@extend .container;
 	margin-top: 20px;
 }
+
+.dashboard
+{
+	@extend .container;
+	height: 50%;
+	background-color: whitesmoke;
+}
+
