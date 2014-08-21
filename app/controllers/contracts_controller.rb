@@ -207,6 +207,7 @@ class ContractsController < ApplicationController
 			@contract = contract
 			@building = @contract.building
 			@selected_semesters = @contract.semesters
+			@semesters.concat(@contract.semesters).uniq
 		end
 
 		@contract ||= Contract.new
