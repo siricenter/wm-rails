@@ -1,40 +1,67 @@
 %h1
-  Your Receipt
+	Your Receipt
 
 %p
-  Hey 
-  = @contract.first_name + ','
+	Hey 
+	= @contract.first_name + ','
 %p
-  Thanks for trusting Windsor Manor to keep you feeling like you're at home. We can't wait to see you!
+	Thanks for trusting Windsor Manor to keep you feeling like you're at home. We can't wait to see you!
 
 %p
-  - if @contract.semesters.count > 1
-    Semesters:
-  - else
-    Semester:
-  = @contract.semesters.first.name
+	- if @contract.semesters.count > 1
+		Semesters:
+	- else
+		Semester:
+	- @contract.semesters.each do |semester|
+		%br
+		= semester.name
+	
 %p
-  = "#{@contract.first_name} #{@contract.last_name} (#{@contract.email})"
+	= "#{@contract.first_name} #{@contract.last_name} (#{@contract.email})"
 %p
-  Parking: 
-  = @contract.parking_type + '.'
+	Parking: 
+	= @contract.parking_type + '.'
 %p
-  Contract signed and completed on
-  = @contract.created_at.to_formatted_s(:long) + '.'
+	Contract signed and completed on
+	= @contract.created_at.to_formatted_s(:long) + '.'
 - if @contract.apartment_type != 'No Preference'
-  %p
-    Requested a
-    = @contract.apartment_type
-    apartment, if it's available.
+	%p
+		Requested a
+		= @contract.apartment_type
+		apartment, if it's available.
 - else
-  %p
-    No preference on apartment type
+	%p
+		No preference on apartment type
 - if @contract.preferences != ""
-  %p
-    Preferences Requested:
-    = @contract.preferences
+	%p
+		Preferences Requested:
+		= @contract.preferences
 - if @contract.number != ""
-  %p
-    Apartment Number Requested:
-    = @contract.number
+	%p
+		Apartment Number Requested:
+		= @contract.number
 
+%h2 Legal
+	%h3 Contract
+	%p
+		= @contract.contract_text.contract
+	%h3 Addendum
+	%p
+		= @contract.contract_text.addendum
+	%p
+		= @contract.contract_agreement
+	%h3 Living Standards
+	%p
+		= @contract.contract_text.living_standards
+	%p
+		= @contract.living_standards_sig
+	%h3 Parking Acknowledgement
+	%p
+		= @contract.contract_text.parking_acknowledgement
+	%p
+		= @contract.parking_ack
+	%h3 Eligibility
+	%p
+		= @contract.contract_text.eligibility
+	%p
+		= @contract.eligibility
