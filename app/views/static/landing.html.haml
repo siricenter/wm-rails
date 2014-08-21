@@ -34,24 +34,14 @@
 					%div(class="container")
 						%div(class="carousel-caption")
 							%h1.headline
-								Example headline.
-							%p.slideText
-								This will be replaced with relevant text
-							%p
-								%a(class="btn btn-lg btn-primary" href="#" role="button")
-									Sign up today
+								= @marketing_text
 								 
 				%div(class="item")
 					= image_tag 'amenities_example.jpg', class: 'slideImages', alt: 'Second slide'
 					%div(class="container")
 						%div(class="carousel-caption")
 							%h1.headline
-								Another example headline
-							%p.slideText
-								This will also be replaced with relevant text
-							%p
-								%a(class="btn btn-lg btn-primary" href="#" role="button")
-									Learn more
+								= @marketing_text
 									
 				%div(class="item")
 					= image_tag 'studentsgrp.png', class: 'slideImages', alt: 'Third slide'
