@@ -67,3 +67,4 @@ end
 gem 'debugger', group: [:development, :test]
 gem 'thin', '~> 1.6.2'
 gem 'mandrill-api', '~> 1.0.52'
+gem 'rails_12factor'
