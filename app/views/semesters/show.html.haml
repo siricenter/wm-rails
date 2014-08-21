@@ -1,8 +1,25 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @semester.name
+	%b 
+		Name:
+	= @semester.name
+%p
+	%b 
+		Deposit:
+	= @semester.deposit
+%p
+	%b Rent
+	= @semester.rent
+%p
+	%b Start Date
+	= @semester.start_date.to_formatted_s(:long)
+%p
+	%b End Date
+	= @semester.end_date.to_formatted_s(:long)
+%p
+	%b Payment Due
+	= @semester.payment_due.to_formatted_s(:long)
 
 = link_to 'Edit', edit_semester_path(@semester)
 \|
