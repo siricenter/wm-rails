@@ -7,7 +7,10 @@
 				%th
 					Due Date
 				%th
-					= @contract.created_at.to_date.to_formatted_s(:long)
+					- if @contract.created_at
+						= @contract.created_at.to_date.to_formatted_s(:long)
+					- else
+						= Date.today.to_formatted_s(:long)
 				- @semesters.each do |semester|
 					%th
 						= semester.payment_due.to_formatted_s(:long)
