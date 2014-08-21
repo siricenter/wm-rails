@@ -24,6 +24,7 @@
 #  contract_agreement   :string(255)
 #  preferences          :text
 #  number               :text
+#  contract_text_id     :integer
 #
 
 class BuildingAvailablityValidator < ActiveModel::Validator
@@ -36,6 +37,7 @@ end
 
 class Contract < ActiveRecord::Base
 	has_and_belongs_to_many :semesters, autosave: true
+	belongs_to :contract_text
 	belongs_to :building
 
 	validates :first_name, presence: true

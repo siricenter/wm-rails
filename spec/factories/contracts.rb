@@ -24,6 +24,7 @@
 #  contract_agreement   :string(255)
 #  preferences          :text
 #  number               :text
+#  contract_text_id     :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

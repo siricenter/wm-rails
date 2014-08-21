@@ -208,6 +208,7 @@ class ContractsController < ApplicationController
 		end
 
 		@contract ||= Contract.new
+		@contract.contract_text ||= ContractText.last
 		@building ||= Building.find(params[:building_id])
 		@contract.building ||= @building
 		@selected_semesters ||= []

@@ -24,6 +24,7 @@
 #  contract_agreement   :string(255)
 #  preferences          :text
 #  number               :text
+#  contract_text_id     :integer
 #
 
 require 'rails_helper'

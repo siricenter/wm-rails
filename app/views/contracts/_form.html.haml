@@ -145,7 +145,7 @@
 			%h3
 				Living Standards
 			%p
-				I agree to comply with and acknowledge Landlord’s and my responsibility to maintain the Apartment Living Standards as stated in the BYU-Idaho Approved Housing Guidebook incorporated herein by reference. Students are expected to help their guests and other residents understand and maintain the BYU-Idaho Apartment Living Standards. Failure to meet these expectations can be sufficient cause for termination of this Contract and eviction.
+				= @contract.contract_text.living_standards
 				%br
 				%br
 			= f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
@@ -156,21 +156,7 @@
 			%h3
 				Parking Acknowledgement
 			%p
-				I know and understand that whether or not I own or operate a motor vehicle, 
-
-				I am responsible to know the parking guidelines and requirements of the 
-
-				housing property and abide by them. I also understand that I have a 
-
-				responsibility to reasonably inform guests who visit my apartment of the 
-
-				parking requirements. I understand that if I or any of my guests park illegally 
-
-				(e.g., in a resident’s or handicapped stall for which I or my guest(s) do not 
-				
-				have a permit, outside of a designated stall, in a “no parking zone,” etc.), I 
-
-				or my guest(s) accept the risk of being booted or towed.
+				= @contract.contract_text.parking_acknowledgement
 			%br
 
 			= f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
@@ -179,30 +165,7 @@
 			%h3
 				Eligibility
 			%p
-				I hereby certify that I am a “student” in good standing and am eligible to 
-
-				rent and reside in BYU-Idaho approved housing. I have been admitted to 
-
-				a track as a student at BYU-Idaho. Online-only and Continuing Education 
-
-				students are not eligible for approved housing. I understand that I cannot 
-
-				live in approved housing prior to my assigned semester start date or after 
-
-				graduation. I recognize and understand that my certification of student 
-
-				status and responsibility to maintain my student eligibility while attending 
-
-				BYU-Idaho is material to and relied upon by Landlord in entering into this 
-
-				rental agreement. I further certify that I am not registered as a sex offender. 
-
-				Any misrepresentation found herein is grounds for immediate termination 
-
-				of this rental agreement and such other legal and equitable remedies as 
-
-				Landlord may pursue. (See section 5 for more information.)
-
+				= @contract.contract_text.eligibility
 				%br
 				%br
 
