@@ -1,19 +1,21 @@
-%h1 Listing semesters
+.container
+	%h1 Semesters
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
+	.row
+		.col-xs-12
+			%table.table.table-hover
+				%tr
+					%th 
+						Name
+					%th
+					%th
+					%th
 
-  - @semesters.each do |semester|
-    %tr
-      %td= semester.name
-      %td= link_to 'Show', semester
-      %td= link_to 'Edit', edit_semester_path(semester)
-      %td= link_to 'Destroy', semester, :method => :delete, :data => { :confirm => 'Are you sure?' }
+				- @semesters.each do |semester|
+					%tr
+						%td= link_to semester.name, semester
+						%td= link_to 'Edit', edit_semester_path(semester)
+						%td= link_to 'Destroy', semester, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Semester', new_semester_path
+	.row
+		= link_to 'New Semester', new_semester_path, class: [:btn, :'btn-primary']
