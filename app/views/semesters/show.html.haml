@@ -1,26 +1,10 @@
-%p#notice= notice
+.container
+	%h1
+		= @semester.name
 
-%p
-	%b 
-		Name:
-	= @semester.name
-%p
-	%b 
-		Deposit:
-	= @semester.deposit
-%p
-	%b Rent
-	= @semester.rent
-%p
-	%b Start Date
-	= @semester.start_date.to_formatted_s(:long)
-%p
-	%b End Date
-	= @semester.end_date.to_formatted_s(:long)
-%p
-	%b Payment Due
-	= @semester.payment_due.to_formatted_s(:long)
+	.row.text-success#notice= notice
 
-= link_to 'Edit', edit_semester_path(@semester)
-\|
-= link_to 'Back', semesters_path
+	= render 'form', disabled: true
+
+	.row
+		= link_to 'Edit', edit_semester_path(@semester), class: [:btn, :'btn-primary', :'col-xs-2']
