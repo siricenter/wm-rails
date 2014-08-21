@@ -14,7 +14,14 @@
 		Semester:
 	- @contract.semesters.each do |semester|
 		%br
-		= semester.name
+		= semester.name 
+		(
+		= semester.start_date
+		\-
+		= semester.end_date
+		)
+
+= render 'contracts/payment_schedule'
 	
 %p
 	= "#{@contract.first_name} #{@contract.last_name} (#{@contract.email})"
