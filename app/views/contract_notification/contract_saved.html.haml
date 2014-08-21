@@ -21,7 +21,7 @@
 		= semester.end_date
 		)
 
-= render 'contracts/payment_schedule'
+= render partial: 'contracts/payment_schedule'
 	
 %p
 	= "#{@contract.first_name} #{@contract.last_name} (#{@contract.email})"
