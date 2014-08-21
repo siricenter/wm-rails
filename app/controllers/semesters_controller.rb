@@ -5,7 +5,7 @@ class SemestersController < ApplicationController
 	# GET /semesters
 	# GET /semesters.json
 	def index
-		@semesters = Semester.all
+		@semesters = Semester.all.order(start_date: :desc)
 	end
 
 	# GET /semesters/1
