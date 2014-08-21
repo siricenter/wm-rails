@@ -63,7 +63,7 @@ class ContractsController < ApplicationController
 		@old_semesters = @contract.semesters
 		@building = @contract.building
 		@contract.semesters = @semesters
-		
+
 		respond_to do |format|
 			if @contract.attributes = contract_params and @contract.save
 				format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
@@ -90,10 +90,10 @@ class ContractsController < ApplicationController
 		# If data is from the form
 		#render inline: params.inspect
 		if params[:contract][:semesters].present?
-    	@semesters = Semester.find(params[:contract][:semesters])
-    else
-      @semesters = []
-    end
+			@semesters = Semester.find(params[:contract][:semesters])
+		else
+			@semesters = []
+		end
 		@contract = Contract.new(contract_params)
 		@building = Building.find(params[:building_id])
 		@semesters.each do |semester|
@@ -110,7 +110,7 @@ class ContractsController < ApplicationController
 
 		respond_to do |format|
 			if @contract.valid?
-        set_prices
+				set_prices
 				format.html 
 			else
 				format.html {
@@ -122,35 +122,32 @@ class ContractsController < ApplicationController
 	end
 
 	def success
-		if session[:temp_contract] and session[:semester_id] and session[:building_id]
-			@contract = Contract.new(JSON.parse(session[:temp_contract]))
-			@semesters = []
+		@contract = Contract.new(JSON.parse(session[:temp_contract]))
+		@semesters = []
 
-			JSON.parse(session[:semesters]).each do |semester_id|
-				semester = Semester.find(semester_id)
-				@semesters << semester
-				@contract.semesters << semester
+		JSON.parse(session[:semesters]).each do |semester_id|
+			semester = Semester.find(semester_id)
+			@semesters << semester
+			@contract.semesters << semester
+		end
+
+		@semesters = @semesters.sort{|a, b| a.start_date <=> b.start_date}
+
+		@building = Building.find(session[:building_id])
+
+		@contract.building = @building
+
+		set_prices
+
+		#render inline: @contract.save.to_s
+
+		respond_to do |format|
+			if @contract.save!
+				ContractNotification.contract_saved(@contract).deliver
+				format.html {render :success}
+			else
+				format.html {render :failure}
 			end
-
-			@building = Building.find(session[:building_id])
-
-			@contract.building = @building
-
-			set_prices
-
-			#render inline: @contract.save.to_s
-
-			respond_to do |format|
-				if @contract.save!
-					ContractNotification.contract_saved(@contract).deliver
-					session[:reserved] = true
-					format.html {render :success}
-				else
-					format.html {render :failure}
-				end
-			end
-		else
-			redirect_to root_url
 		end
 	end
 
@@ -169,7 +166,7 @@ class ContractsController < ApplicationController
 		# Prices
 		@application_fee = Prices::application_fee
 		@deposit = Prices::deposit(@semesters)
-    @early_bird = Prices::early_bird(@semesters, Date.today)
+		@early_bird = Prices::early_bird(@semesters, Date.today)
 		@rent = Prices::rent(@semesters)
 		@parking = Prices::parking_price(@contract.parking_type, @semesters)
 		@multiple_semesters = Prices::multiple_semester_discounts @semesters
