@@ -6,7 +6,7 @@ class StaticController < ApplicationController
 		@marketing_text = MarketingText.first
 		@marketing_text = @marketing_text.text if @marketing_text
 		@marketing_text ||= ""
-		@semesters = Semester.all
+		@semesters = Semester.all.order(:start_date)
 	end
 
 	def choose
