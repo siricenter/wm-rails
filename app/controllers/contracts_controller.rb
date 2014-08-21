@@ -205,11 +205,14 @@ class ContractsController < ApplicationController
 		@semesters = Semester.where('start_date >= ?', Date.today - 30).order(:start_date).limit(6)
 		@url = url
 		@method = method
+
 		if contract 
 			@contract = contract
 			@building = @contract.building
 			@selected_semesters = @contract.semesters
-			@semesters.concat(@contract.semesters).uniq
+			@selected_semesters.each do |semester|
+				@semesters << semester unless @semesters.include?(semester)
+			end
 		end
 
 		@contract ||= Contract.new
