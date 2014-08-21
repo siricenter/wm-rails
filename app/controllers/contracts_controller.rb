@@ -200,7 +200,7 @@ class ContractsController < ApplicationController
 	end
 
 	def setup_form url, method, contract = nil
-		@semesters = Semester.all
+		@semesters = Semester.all.sort_by(:start_date).limit(6)
 		@url = url
 		@method = method
 		if contract 
