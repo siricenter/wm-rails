@@ -70,6 +70,6 @@ class ContractTextsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def contract_text_params
-		params.require(:contract_text).permit(:contract, :living_standards, :parking_acknowledgement, :eligibility)
+		params.require(:contract_text).permit(:contract, :living_standards, :parking_acknowledgement, :eligibility, :addendum)
 	end
 end
