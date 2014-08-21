@@ -1,0 +1,25 @@
+%h1 Listing contract_texts
+
+%table
+  %tr
+    %th Contract
+    %th Living standards
+    %th Parking acknowledgement
+    %th Eligibility
+    %th
+    %th
+    %th
+
+  - @contract_texts.each do |contract_text|
+    %tr
+      %td= contract_text.contract
+      %td= contract_text.living_standards
+      %td= contract_text.parking_acknowledgement
+      %td= contract_text.eligibility
+      %td= link_to 'Show', contract_text
+      %td= link_to 'Edit', edit_contract_text_path(contract_text)
+      %td= link_to 'Destroy', contract_text, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Contract text', new_contract_text_path

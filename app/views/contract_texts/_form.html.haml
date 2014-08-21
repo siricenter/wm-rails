@@ -1,0 +1,22 @@
+= form_for @contract_text do |f|
+  - if @contract_text.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@contract_text.errors.count, "error")} prohibited this contract_text from being saved:"
+      %ul
+        - @contract_text.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :contract
+    = f.text_area :contract
+  .field
+    = f.label :living_standards
+    = f.text_area :living_standards
+  .field
+    = f.label :parking_acknowledgement
+    = f.text_area :parking_acknowledgement
+  .field
+    = f.label :eligibility
+    = f.text_area :eligibility
+  .actions
+    = f.submit 'Save'

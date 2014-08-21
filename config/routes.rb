@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 	get 'contracts/success'
 	get 'contracts/failure'
 	get 'amenities', to: 'static#amenities', as: :amenities
@@ -18,6 +19,10 @@ Rails.application.routes.draw do
 	get '/buildings/:id/availability/:semester_id', to: 'availability#available'
 
 	scope :admin do
+		resources :buildings
+		resources :semesters
+		resources :contract_texts
+
 		get '/contracts', to: 'contracts#index', as: :contracts
 		post '/contracts', to: 'contracts#create'
 		get '/contracts/:id', to: 'contracts#show', as: :contract
@@ -25,8 +30,6 @@ Rails.application.routes.draw do
 		get '/contracts/:id/edit', to: 'contracts#edit', as: :edit_contract
 		delete '/contracts/:id', to: 'contracts#destroy', as: :destroy_contract
 
-		resources :buildings
-		resources :semesters
 		get '/', to: 'static#dashboard', as: :dashboard
 		get '/marketing-text', to: 'static#marketing_text', as: :edit_text
 		post '/marketing-text', to: 'static#edit_text', as: :update_text

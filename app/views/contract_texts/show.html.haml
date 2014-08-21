@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Contract:
+  = @contract_text.contract
+%p
+  %b Living standards:
+  = @contract_text.living_standards
+%p
+  %b Parking acknowledgement:
+  = @contract_text.parking_acknowledgement
+%p
+  %b Eligibility:
+  = @contract_text.eligibility
+
+= link_to 'Edit', edit_contract_text_path(@contract_text)
+\|
+= link_to 'Back', contract_texts_path
