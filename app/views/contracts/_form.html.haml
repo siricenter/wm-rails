@@ -138,8 +138,10 @@
 				Contract Acceptance
 			%p
 				I have read and agree to the terms of 
-				= link_to 'the contract.', '/contract.pdf', target: '_blank'
+				= link_to 'the contract.', @contract.contract_text, target: '_blank'
+
 			%br
+
 			= f.text_field :contract_agreement, placeholder: 'Type Your Signature', class: 'form-control'
 		.col-md-6{ class: (if @contract.errors[:living_standards_sig].present? then 'has-error' else 'required' end) }
 			%h3

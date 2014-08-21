@@ -1,5 +1,5 @@
 class ContractTextsController < ApplicationController
-	before_action :authenticate_admin!
+	before_action :authenticate_admin!, except: [:show]
 	before_action :set_contract_text, only: [:show, :edit, :update, :destroy]
 
 	# GET /contract_texts
