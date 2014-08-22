@@ -1,0 +1,23 @@
+%h1 Listing amenities
+
+%table
+  %tr
+    %th Title
+    %th Img
+    %th Img desc
+    %th
+    %th
+    %th
+
+  - @amenities.each do |amenity|
+    %tr
+      %td= amenity.title
+      %td= cl_image_tag(amenity.img_id, :crop => :fill, :width => 120, :height => 80, cloud_name: 'business-development-center', api_key: '872819185828939', api_secret: 'AvOSNOAW79cHK1nFpEViPZrhPUw')
+      %td= amenity.img_desc
+      %td= link_to 'Show', amenity
+      %td= link_to 'Edit', edit_amenity_path(amenity)
+      %td= link_to 'Destroy', amenity, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Amenity', new_amenity_path

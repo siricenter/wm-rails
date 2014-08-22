@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 #### Images
 #gem "rmagick"
 #gem "carrierwave"
-gem "paperclip", "~> 4.1"
+gem 'cloudinary'
 ####
 
 

@@ -1,0 +1,20 @@
+= form_for @amenity do |f|
+  - if @amenity.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@amenity.errors.count, "error")} prohibited this amenity from being saved:"
+      %ul
+        - @amenity.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.hidden_field :img_id
+  .field
+    = f.label :img_desc
+    = f.text_field :img_desc
+    
+    = cl_image_upload_tag(:img_id, cloud_name: 'business-development-center', api_key: '872819185828939', api_secret: 'AvOSNOAW79cHK1nFpEViPZrhPUw', :html => {:class => "image_upload"})
+  .actions
+    = f.submit 'Save'

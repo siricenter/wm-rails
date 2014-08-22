@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @amenity.title
+%p
+  %b Img:
+  = cl_image_tag(@amenity.img_id, :crop => :fill, :width => 120, :height => 80, cloud_name: 'business-development-center', api_key: '872819185828939', api_secret: 'AvOSNOAW79cHK1nFpEViPZrhPUw')
+  = @amenity.img_id
+%p
+  %b Img desc:
+  = @amenity.img_desc
+
+= link_to 'Edit', edit_amenity_path(@amenity)
+\|
+= link_to 'Back', amenities_path
