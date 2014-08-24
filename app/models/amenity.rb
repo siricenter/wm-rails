@@ -11,4 +11,7 @@
 #
 
 class Amenity < ActiveRecord::Base
+	validates :image_id, presence: true
+	validates :title, presence: true
+	validates :description, presence: true
 end
