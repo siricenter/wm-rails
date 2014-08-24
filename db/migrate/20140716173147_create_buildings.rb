@@ -6,8 +6,8 @@ class CreateBuildings < ActiveRecord::Migration
 			t.timestamps
 		end
 
-		remove_column :apartments, :building, :reference
+		#remove_column :apartments, :building, :reference
 
-		add_column :apartments, :building_id, :integer, references: :buildings
+		#add_column :apartments, :building_id, :integer, references: :buildings
 	end
 end

@@ -1,0 +1,134 @@
+From c507ce3b3f236d3c258982ad8725d18e41274803 Mon Sep 17 00:00:00 2001
+From: Cody Poll <CJPoll@gmail.com>
+Date: Tue, 19 Aug 2014 01:39:00 -0600
+Subject: [PATCH] Removed the contract durations stuff
+
+---
+ app/models/contract_duration.rb                    | 20 ------------
+ .../20140725170531_create_contract_durations.rb    | 11 -------
+ spec/factories/contract_durations.rb               | 23 --------------
+ spec/models/contract_duration_spec.rb              | 37 ----------------------
+ 4 files changed, 91 deletions(-)
+ delete mode 100644 app/models/contract_duration.rb
+ delete mode 100644 db/migrate/20140725170531_create_contract_durations.rb
+ delete mode 100644 spec/factories/contract_durations.rb
+ delete mode 100644 spec/models/contract_duration_spec.rb
+
+diff --git a/app/models/contract_duration.rb b/app/models/contract_duration.rb
+deleted file mode 100644
+index e8110c5..0000000
+--- a/app/models/contract_duration.rb
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# == Schema Information
+-#
+-# Table name: contract_durations
+-#
+-#  id          :integer          not null, primary key
+-#  start_date  :date
+-#  end_date    :date
+-#  semester_id :integer
+-#  created_at  :datetime
+-#  updated_at  :datetime
+-#  payment_due :date
+-#
+-
+-class ContractDuration < ActiveRecord::Base
+-  belongs_to :semester
+-
+-  validates :start_date, presence: true
+-  validates :end_date, presence: true
+-  validates :payment_due, presence: true # Date rent payment is due
+-end
+diff --git a/db/migrate/20140725170531_create_contract_durations.rb b/db/migrate/20140725170531_create_contract_durations.rb
+deleted file mode 100644
+index 816a0d1..0000000
+--- a/db/migrate/20140725170531_create_contract_durations.rb
++++ /dev/null
+@@ -1,11 +0,0 @@
+-class CreateContractDurations < ActiveRecord::Migration
+-  def change
+-    create_table :contract_durations do |t|
+-      t.date :start_date
+-      t.date :end_date
+-      t.references :semester, index: true
+-
+-      t.timestamps
+-    end
+-  end
+-end
+diff --git a/spec/factories/contract_durations.rb b/spec/factories/contract_durations.rb
+deleted file mode 100644
+index 537dcf4..0000000
+--- a/spec/factories/contract_durations.rb
++++ /dev/null
+@@ -1,23 +0,0 @@
+-# == Schema Information
+-#
+-# Table name: contract_durations
+-#
+-#  id          :integer          not null, primary key
+-#  start_date  :date
+-#  end_date    :date
+-#  semester_id :integer
+-#  created_at  :datetime
+-#  updated_at  :datetime
+-#  payment_due :date
+-#
+-
+-# Read about factories at https://github.com/thoughtbot/factory_girl
+-
+-FactoryGirl.define do
+-  factory :contract_duration do
+-    start_date "2014-07-25"
+-    end_date "2014-07-25"
+-	payment_due "2014-07-21"
+-	semester
+-  end
+-end
+diff --git a/spec/models/contract_duration_spec.rb b/spec/models/contract_duration_spec.rb
+deleted file mode 100644
+index a7043af..0000000
+--- a/spec/models/contract_duration_spec.rb
++++ /dev/null
+@@ -1,37 +0,0 @@
+-# == Schema Information
+-#
+-# Table name: contract_durations
+-#
+-#  id          :integer          not null, primary key
+-#  start_date  :date
+-#  end_date    :date
+-#  semester_id :integer
+-#  created_at  :datetime
+-#  updated_at  :datetime
+-#  payment_due :date
+-#
+-
+-require 'rails_helper'
+-
+-RSpec.describe ContractDuration, :type => :model do
+-	subject {FactoryGirl.build :contract_duration}
+-
+-	it "has a valid factory" do
+-		expect(subject).to be_valid
+-	end
+-
+-	it "is invalid without a start_date" do
+-		subject.start_date = nil
+-		expect(subject).to_not be_valid
+-	end
+-
+-	it "is invalid without an end date" do
+-		subject.end_date = nil
+-		expect(subject).to_not be_valid
+-	end
+-
+-	it "is invalid without a payment_due" do
+-		subject.payment_due = nil
+-		expect(subject).to_not be_valid
+-	end
+-end
+-- 
+1.8.5.2 (Apple Git-48)
+
