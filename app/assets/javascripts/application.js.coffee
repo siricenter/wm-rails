@@ -14,18 +14,26 @@
 #= require jquery_ujs
 #= require cloudinary
 #= require turbolinks
-#= require bootstrap
+#= require bootstrap-sprockets
 #= require_tree .
 
 # When cloudinary file upload is done
-$(".cloudinary-fileupload").bind("cloudinarydone", (e, data) ->
-	$(".preview").html $.cloudinary.image(data.result.public_id,
-		format: data.result.format
-		version: data.result.version
-		crop: "fill"
-		width: 150
-		height: 100
-	)
-	$(".image_public_id").val data.result.public_id
-	window.alert('Completed Upload!')
-	true)
+$('document').ready () ->
+	$('.cloudinary-fileupload').bind('cloudinarydone', (e, data) ->
+		$('.preview').html $.cloudinary.image(data.result.public_id,
+			format: data.result.format
+			version: data.result.version
+			crop: 'fill'
+			width: 150
+			height: 100
+		)
+		$('.image_public_id').val data.result.public_id
+		window.alert('Completed Upload!')
+		true)
+
+# Update bootstrap progress bar as file upload progresses
+	$('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
+		progress = Math.round((data.loaded * 100.0) / data.total)
+		$('#progress-bar').css('width', progress + '%')
+		window.alert ("#{(data.loaded * 100.0) / data.total}")
+
