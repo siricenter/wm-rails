@@ -8,7 +8,7 @@
 
 	.field
 		= label_tag :image, 'Image'
-		= cl_image_upload_tag(:image_id)
+		= cl_image_upload_tag('amenity[image_id]')
 	.field
 		= f.label :title
 		= f.text_field :title
