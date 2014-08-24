@@ -33,5 +33,6 @@ class StaticController < ApplicationController
 	end
 
 	def amenities
+		@amenities = Amenity.all
 	end
 end
