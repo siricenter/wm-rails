@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	get '/contracts/success'
 	get '/contracts/failure'
-	get '/amenities', to: 'static#amenities', as: :amenities
+	get '/amenities', to: 'static#amenities', as: :show_amenities
 
 	devise_for :admins
 	root 'static#landing'
