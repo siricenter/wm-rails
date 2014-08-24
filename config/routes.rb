@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-
-
-	get 'contracts/success'
-	get 'contracts/failure'
-	get 'amenities', to: 'static#amenities', as: :amenities
+	get '/contracts/success'
+	get '/contracts/failure'
+	get '/amenities', to: 'static#amenities', as: :amenities
 
 	devise_for :admins
 	root 'static#landing'
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
 	get '/buildings/:id/availability/:semester_id', to: 'availability#available'
 
 	scope :admin do
+		resources :amenities
 		resources :buildings
 		resources :semesters
 		resources :contract_texts

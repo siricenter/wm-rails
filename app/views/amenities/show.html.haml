@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Image:
+  = @amenity.image_id
+%p
+  %b Title:
+  = @amenity.title
+%p
+  %b Description:
+  = @amenity.description
+
+= link_to 'Edit', edit_amenity_path(@amenity)
+\|
+= link_to 'Back', amenities_path

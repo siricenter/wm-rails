@@ -1,0 +1,23 @@
+%h1 Listing amenities
+
+%table
+  %tr
+    %th Image
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+
+  - @amenities.each do |amenity|
+    %tr
+      %td= amenity.image_id
+      %td= amenity.title
+      %td= amenity.description
+      %td= link_to 'Show', amenity
+      %td= link_to 'Edit', edit_amenity_path(amenity)
+      %td= link_to 'Destroy', amenity, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Amenity', new_amenity_path
