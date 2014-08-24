@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 #### Images
 #gem "rmagick"
 #gem "carrierwave"
-gem "paperclip", "~> 4.1"
+#gem "paperclip", "~> 4.1"
 ####
 
 
@@ -68,4 +68,5 @@ end
 gem 'debugger', group: [:development, :test]
 gem 'thin', '~> 1.6.2'
 gem 'mandrill-api', '~> 1.0.52'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
+gem 'cloudinary', '~> 1.0.75'

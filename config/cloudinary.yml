@@ -1,0 +1,6 @@
+development:
+  cloud_name: business-development-center
+  api_key: '872819185828939'
+  api_secret: AvOSNOAW79cHK1nFpEViPZrhPUw
+  enhance_image_tag: true
+  static_image_support: false
