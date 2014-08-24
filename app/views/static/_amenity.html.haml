@@ -1,5 +1,12 @@
 .col-xs-12.col-md-4.col-lg-3
-  .thumbnail
-    = image_tag image, class: :image
-    .caption
-      = yield
+	.thumbnail
+		/ # For whatever reason, cloudinary's built-in cl_image_tag() helper 
+		/ # doesn't work. It seems like our controller isn't parsing the image 
+		/ # id correctly, but I don't know how to fix it just yet. Current hack
+		/ # is to just hardcode the cloudinary URL and append the image_id.
+		= image_tag "http://res.cloudinary.com/business-development-center/" + amenity.image_id, class: :image
+		.caption
+			%h2
+				= amenity.title
+			%p
+				= amenity.description

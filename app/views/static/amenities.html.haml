@@ -1,53 +1,55 @@
 .thumbnails
-  .row-fluid
+	.row-fluid
 
-    = render layout: 'static/amenity', locals: {image: 'study-room.jpg'} do
-      %h3
-        Private Study Rooms
-      %p
-        The world is noisy. Neighbors chatter, roommates play video games, and that random person across the street blares his stereo every weekend.
-      %p
-        Normally, you like to join in. But duty calls every so often, and the homework has to be done. Think quietly in the private room you reserved; then come back and join the party.
+		= render partial: 'amenity', collection: @amenities
 
-    = render layout: 'static/amenity', locals: {image: 'private-bathroom.jpg'} do
-      %h3
-        Private Bathrooms
-      %p
-        It's 8:53 AM. You slept through your alarm, and class starts in less than 10 minutes. Your rush out of your room, but your roommates hog the bathroom. Not happening.
-      %p
-        Here, every bedroom has a private bathroom. No lines. No wait. Just you, your hairbrush, and that awesome person who looks back in the mirror.
+		/= render layout: 'static/amenity', locals: {image: 'study-room.jpg'} do
+		/	%h3
+		/		Private Study Rooms
+		/	%p
+		/		The world is noisy. Neighbors chatter, roommates play video games, and that random person across the street blares his stereo every weekend.
+		/	%p
+		/		Normally, you like to join in. But duty calls every so often, and the homework has to be done. Think quietly in the private room you reserved; then come back and join the party.
 
-    = render layout: 'static/amenity', locals: {image: 'exercise-room.jpg'} do
-      %h3
-        Exercise Room
+		/= render layout: 'static/amenity', locals: {image: 'private-bathroom.jpg'} do
+		/	%h3
+		/		Private Bathrooms
+		/	%p
+		/		It's 8:53 AM. You slept through your alarm, and class starts in less than 10 minutes. Your rush out of your room, but your roommates hog the bathroom. Not happening.
+		/	%p
+		/		Here, every bedroom has a private bathroom. No lines. No wait. Just you, your hairbrush, and that awesome person who looks back in the mirror.
 
-    = render layout: 'static/amenity', locals: {image: 'fire-pit.jpg'} do
-      %h3
-        Beautiful Fire Pit
+		/= render layout: 'static/amenity', locals: {image: 'exercise-room.jpg'} do
+		/	%h3
+		/		Exercise Room
 
-  .row-fluid
-    %h2 Amenities
-    .col-md-6
-      %ul
-        %li Super-fast fiber optic internet connection
-        %li 3-story parking garage
-        %li Central heating & AC
-        %li Kitchen islands with granite countertops
-        %li Exercise room
-        %li Covered & secured bike parking
-        %li Fire pit
-        %li 11 private study rooms
-        %li 3 music practice rooms with pianos 
-        %li Free utilities
-    .col-md-6
-      %ul
-        %li Elevators
-        %li Libraries
-        %li Balconies!
-        %li A private bathroom for every bedroom
-        %li Stacked washer & dryer in every apartment - Free laundry!
-        %li USB plugs by each bed (charges electronic devices)
-        %li 2 refrigerators
-        %li Dishwasher
-        %li Wall-mounted microwave
-        %li Copier & printer room
+		/= render layout: 'static/amenity', locals: {image: 'fire-pit.jpg'} do
+		/	%h3
+		/		Beautiful Fire Pit
+
+	.row-fluid
+		%h2 Amenities
+		.col-md-6
+			%ul
+				%li Super-fast fiber optic internet connection
+				%li 3-story parking garage
+				%li Central heating & AC
+				%li Kitchen islands with granite countertops
+				%li Exercise room
+				%li Covered & secured bike parking
+				%li Fire pit
+				%li 11 private study rooms
+				%li 3 music practice rooms with pianos 
+				%li Free utilities
+		.col-md-6
+			%ul
+				%li Elevators
+				%li Libraries
+				%li Balconies!
+				%li A private bathroom for every bedroom
+				%li Stacked washer & dryer in every apartment - Free laundry!
+				%li USB plugs by each bed (charges electronic devices)
+				%li 2 refrigerators
+				%li Dishwasher
+				%li Wall-mounted microwave
+				%li Copier & printer room
