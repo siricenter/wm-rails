@@ -51,6 +51,7 @@ group :development do
 end
 
 group :test do
+	gem 'cucumber'
 	gem 'capybara', '~> 2.4.1'
 end
 
