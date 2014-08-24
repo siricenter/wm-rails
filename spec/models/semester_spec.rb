@@ -2,16 +2,15 @@
 #
 # Table name: semesters
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
-#  deposit     :integer
-#  rent        :integer
-#  duration    :integer
-#  start_date  :date
-#  end_date    :date
-#  payment_due :date
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  deposit    :integer
+#  rent       :integer
+#  duration   :integer
+#  start_date :date
+#  end_date   :date
 #
 
 require 'rails_helper'

@@ -3,6 +3,7 @@
 # Table name: contracts
 #
 #  id                   :integer          not null, primary key
+#  semester_id          :integer
 #  first_name           :string(255)
 #  last_name            :string(255)
 #  email                :string(255)
