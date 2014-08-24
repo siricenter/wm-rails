@@ -28,12 +28,11 @@ $('document').ready () ->
 			height: 100
 		)
 		$('.image_public_id').val data.result.public_id
-		window.alert('Completed Upload!')
 		true)
 
 # Update bootstrap progress bar as file upload progresses
 	$('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
 		progress = Math.round((data.loaded * 100.0) / data.total)
 		$('#progress-bar').css('width', progress + '%')
-		window.alert ("#{(data.loaded * 100.0) / data.total}")
+		$('progress-bar').html(progress + '% Done!')
 
