@@ -7,17 +7,20 @@
 					%li= msg
 
 	.row
-		= label_tag :image, 'Image'
-		= cl_image_upload_tag('amenity[image_id]', crop: :limit, width: 600, height: 400, id: :uploader)
+		= label_tag :image, 'Image', class: [:'col-xs-2', :'control-label']
+		= cl_image_upload_tag('amenity[image_id]', crop: :limit, width: 600, height: 400, id: :uploader, class: :'col-xs-10')
+	.row
 		.progress-container
 			.progress
 				.progress-bar#progress-bar{role: :'progressbar', style: 'width: 0%;'}
 		.preview
 	.row
-		= f.label :title
-		= f.text_field :title
+		= f.label :title, class: [:'control-label', :'col-sm-2']
+		.col-sm-10
+			= f.text_field :title, class: [:'form-control']
 	.row
-		= f.label :description
-		= f.text_area :description
+		= f.label :description, class: [:'control-label', :'col-sm-2']
+		.col-sm-10
+			= f.text_area :description, class: [:'form-control']
 	.actions
-		= f.submit 'Save'
+		= f.submit 'Save', class: [:btn, :'btn-primary']
