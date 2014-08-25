@@ -52,7 +52,7 @@ module Prices
 		if days < 60
 			return Array.new(semesters.count, 0)
 		else
-			early_bird_array = Array.new(semesters.count, 10)
+			early_bird_array = Array.new(semesters.count, 0)
 			early_bird_array[0] = 40 if days >= 90
 			early_bird_array[0] = 20 if days >= 60
 			return early_bird_array
