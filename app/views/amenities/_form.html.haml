@@ -8,9 +8,10 @@
 
 	.row
 		= label_tag :image, 'Image'
-		= cl_image_upload_tag('amenity[image_id]', crop: :limit, width: 600, height: 400)
-		.progress
-			.progress-bar#progress-bar{role: :'progressbar', style: 'width: 0%;'}
+		= cl_image_upload_tag('amenity[image_id]', crop: :limit, width: 600, height: 400, id: :uploader)
+		.progress-container
+			.progress
+				.progress-bar#progress-bar{role: :'progressbar', style: 'width: 0%;'}
 		.preview
 	.row
 		= f.label :title
