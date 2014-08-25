@@ -34,5 +34,5 @@ $('document').ready () ->
 	$('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
 		progress = Math.round((data.loaded * 100.0) / data.total)
 		$('#progress-bar').css('width', progress + '%')
-		$('progress-bar').html(progress + '% Done!')
+		$('#progress-bar').html(progress + '% Done!')
 
