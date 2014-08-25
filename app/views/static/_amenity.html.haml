@@ -1,4 +1,4 @@
-.col-xs-12.col-md-4.col-lg-3
+.col-xs-12.col-sm-6.col-md-4.col-lg-3
 	.thumbnail
 		/ # For whatever reason, cloudinary's built-in cl_image_tag() helper 
 		/ # doesn't work. It seems like our controller isn't parsing the image 
@@ -10,3 +10,9 @@
 				= amenity.title
 			%p
 				= amenity.description
+- if amenity_counter % 4 == 3
+	.clearfix.hidden-xs.hidden-md.hidden-sm.visible-lg-block
+- if amenity_counter % 3 == 2
+	.clearfix.hidden-xs.visible-md-block
+- if amenity_counter % 2 == 1
+	.clearfix.hidden-xs.visible-sm.hidden-md.hidden-lg
