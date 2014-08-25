@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :maintenances
+
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities

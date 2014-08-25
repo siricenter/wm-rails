@@ -1,0 +1,27 @@
+%h1 Listing maintenances
+
+%table
+  %tr
+    %th Tenant name
+    %th Building
+    %th Location
+    %th Description
+    %th Tenant phone
+    %th
+    %th
+    %th
+
+  - @maintenances.each do |maintenance|
+    %tr
+      %td= maintenance.tenant_name
+      %td= Building.where({id: maintenance.building_id.to_i})[0].name
+      %td= maintenance.location
+      %td= maintenance.description
+      %td= maintenance.tenant_phone
+      %td= link_to 'Show', maintenance
+      %td= link_to 'Edit', edit_maintenance_path(maintenance)
+      %td= link_to 'Destroy', maintenance, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Maintenance', new_maintenance_path

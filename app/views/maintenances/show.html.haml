@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Tenant name:
+  = @maintenance.tenant_name
+%p
+  %b Building:
+  = Building.where({id: @maintenance.building_id.to_i})[0].name
+%p
+  %b Location:
+  = @maintenance.location
+%p
+  %b Description:
+  = @maintenance.description
+%p
+  %b Tenant phone:
+  = @maintenance.tenant_phone
+
+= link_to 'Edit', edit_maintenance_path(@maintenance)
+\|
+= link_to 'Back', maintenances_path
