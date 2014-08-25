@@ -14,8 +14,8 @@
 
 FactoryGirl.define do
   factory :amenity do
-    image_id "MyString"
-    title "MyString"
-    description "MyText"
+    image_id "MyPicture"
+    title "MyPicture"
+    description "MyPicture text"
   end
 end
