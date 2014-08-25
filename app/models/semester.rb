@@ -23,6 +23,6 @@ class Semester < ActiveRecord::Base
 	validates :end_date, presence: true
 
 	def payment_due
-		self.start_date - 61
+    self.start_date - 21 # three weeks
 	end
 end

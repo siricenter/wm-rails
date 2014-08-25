@@ -44,10 +44,11 @@
 							= number_to_currency(50)
 							Windsor Euro Discount
 							%br
-						\-
 						- early_bird = @early_bird[index]
-						= number_to_currency(early_bird)
-						Early Bird
+						- unless early_bird <= 0
+							\-
+							= number_to_currency(early_bird)
+							Early Bird
 			%tfoot
 				%tr
 					%td
