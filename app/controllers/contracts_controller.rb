@@ -142,6 +142,7 @@ class ContractsController < ApplicationController
       else
       	#session[:building_id] = @contract.building_id
       	@building = Building.find(@contract.building_id)
+        @contract.semesters = []
       	setup_form discounts_path, :post
       	render :new
       end
