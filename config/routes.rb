@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities
+  
+  get '/renew', to: 'contracts#getUserContract'
 
 	devise_for :admins
 	root 'static#landing'
