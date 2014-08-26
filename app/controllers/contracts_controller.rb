@@ -85,6 +85,9 @@ class ContractsController < ApplicationController
 		end
 	end
 
+  ###
+  # This will find all of the discounts that the student will recieve
+  ###
 	def discounts
 		# Model Retrieval
 		# If data is from the form
@@ -125,28 +128,23 @@ class ContractsController < ApplicationController
 	end
   
   ###
-  # this will get a user contract based on first name last name and email
+  # This will get a user contract based on first name last name and email
   ###
   def getUserContract
     if params[:first_name].nil? or params[:last_name].nil? or params[:email].nil?
       render :getUserContract
     else
-      # get user variables
-      @sqlContract = (Contract.where(params[:first_name] == :first_name, params[:last_name] == :last_name, params[:email] == :email)).last
-      params[:first_name] = @sqlContract[:first_name]
-      params[:last_name] = @sqlContract[:last_name]
-      params[:email] = @sqlContract[:email]
-      params[:home_address_1] = @sqlContract[:home_address_1]
-      params[:home_city] = @sqlContract[:home_city]
-      params[:home_state] = @sqlContract[:home_state]
-      params[:home_zip] = @sqlContract[:home_zip]
-      params[:parking_type] = @sqlContract[:parking_type]
-      params[:phone] = @sqlContract[:phone]
-      params[:apartment_type] = @sqlContract[:apartment_type]
-      params[:building_id] = @sqlContract[:building_id]
-      session[:building_id] = params[:building_id]
-      @building = Building.find(session[:building_id])
-      render :new
+      # get user contract
+      @contract = nil
+      @contract = (Contract.find_by(first_name: params[:first_name], last_name: params[:last_name], email: params[:email]))
+      if @contract.nil? or not @contract.present?
+       	render :getUserContract
+      else
+      	#session[:building_id] = @contract.building_id
+      	@building = Building.find(@contract.building_id)
+      	setup_form discounts_path, :post
+      	render :new
+      end
     end
   end
   
