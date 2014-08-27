@@ -14,7 +14,7 @@
 #  updated_at              :datetime
 #  addendum                :text
 
-#ContractText.create!({contract: "contract text", living_standards: "living_standards text", parking_acknowledgement: "parking_acknowledgement text" , eligibility: "eligibility text", addendum: "addendum text"})
+ContractText.create!({contract: "contract text", living_standards: "living_standards text", parking_acknowledgement: "parking_acknowledgement text" , eligibility: "eligibility text", addendum: "addendum text"})
 Building.create!({name: 'Windsor Manor Men\'s', capacity: 206})
 Building.create!({name: 'Windsor Manor Women\'s', capacity: 344})
 
