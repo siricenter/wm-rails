@@ -2,4 +2,7 @@
 
 = render 'form'
 
-= link_to 'Back', maintenances_path
+- if admin_signed_in?
+  = link_to 'Back', maintenances_path
+- else
+  = link_to 'Back', root_path

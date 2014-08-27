@@ -8,20 +8,20 @@
 
   .field
     = f.label :tenant_name
-    = f.text_field :tenant_name
+    = f.text_field :tenant_name, :required => true
+  .field
+    = f.label :tenant_phone
+    = f.text_field :tenant_phone, :required => true
   .field
     = f.label :building_id
-    %select{name: :'maintenance[building_id]', id: :maintenance_building_id}
+    %select{name: :'maintenance[building_id]', id: :maintenance_building_id, :required => true}
       - @buildings.each do | building |
         %option{:value => building.id} #{building.name}
   .field
     = f.label :location
-    = f.text_field :location
+    = f.text_field :location, :required => true
   .field
     = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :tenant_phone
-    = f.text_field :tenant_phone
+    = f.text_area :description, :required => true
   .actions
     = f.submit 'Submit'
