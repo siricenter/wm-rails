@@ -12,7 +12,7 @@ class ContractsController < ApplicationController
 	# GET /contracts/1.json
 	def show
 		@semesters = @contract.semesters
-		set_prices
+    set_prices(@contract.created_at.to_date)
 	end
 
 	# GET /contracts/new
@@ -193,11 +193,11 @@ class ContractsController < ApplicationController
 		params.require(:contract).permit(:first_name, :last_name, :email, :home_address_1, :home_address_2, :home_city, :home_state, :home_zip, :room_type, :parking_type, :phone, :apartment_type, :eligibility_sig, :living_standards_sig, :parking_ack, :euro, :contract_agreement, :preferences, :number, :semesters)
 	end
 
-	def set_prices
+  def set_prices(date = Date.today)
 		# Prices
 		@application_fee = Prices::application_fee
 		@deposit = Prices::deposit(@semesters)
-		@early_bird = Prices::early_bird(@semesters, Date.today)
+    @early_bird = Prices::early_bird(@semesters, date)
 		@rent = Prices::rent(@semesters)
 		@parking = Prices::parking_price(@contract.parking_type, @semesters)
 		@multiple_semesters = Prices::multiple_semester_discounts @semesters
