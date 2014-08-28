@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities
-    get 'maintenances/created', to: 'maintenances#created'
+  get 'maintenances/created', to: 'maintenances#created'
   
   get '/renew', to: 'contracts#getUserContract'
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 		resources :buildings
 		resources :semesters
 		resources :contract_texts
-        resources :maintenances
+    resources :maintenances
 
 		get '/contracts', to: 'contracts#index', as: :contracts
 		post '/contracts', to: 'contracts#create'
