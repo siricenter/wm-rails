@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Building:
+  = @study_room.building.name
+%p
+  %b Rm type:
+  = @study_room.rm_type
+%p
+  %b Rm number:
+  = @study_room.rm_number
+%p
+  %b Floor:
+  = @study_room.floor
+
+= link_to 'Edit', edit_study_room_path(@study_room)
+\|
+= link_to 'Back', study_rooms_path

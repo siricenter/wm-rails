@@ -1,0 +1,25 @@
+%h1 Listing study_rooms
+
+%table
+  %tr
+    %th Building
+    %th Rm type
+    %th Rm number
+    %th Floor
+    %th
+    %th
+    %th
+
+  - @study_rooms.each do |study_room|
+    %tr
+      %td= study_room.building.name
+      %td= study_room.rm_type
+      %td= study_room.rm_number
+      %td= study_room.floor
+      %td= link_to 'Show', study_room
+      %td= link_to 'Edit', edit_study_room_path(study_room)
+      %td= link_to 'Destroy', study_room, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Study room', new_study_room_path

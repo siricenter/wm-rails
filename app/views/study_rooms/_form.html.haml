@@ -1,0 +1,23 @@
+= form_for @study_room do |f|
+  - if @study_room.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@study_room.errors.count, "error")} prohibited this study_room from being saved:"
+      %ul
+        - @study_room.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %select{name: :'study_room[building_id]', id: :study_room_building_id, :required => true}
+      - @buildings.each do | building |
+        %option{:value => building.id} #{building.name}
+  .field
+    = f.label :rm_type
+    = f.text_field :rm_type
+  .field
+    = f.label :rm_number
+    = f.number_field :rm_number
+  .field
+    = f.label :floor
+    = f.number_field :floor
+  .actions
+    = f.submit 'Save'

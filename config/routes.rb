@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  
+
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
 	get '/buildings/:id/availability/:semester_id', to: 'availability#available'
 
 	scope :admin do
+    resources :study_rooms
 		resources :amenities
 		resources :buildings
 		resources :semesters
