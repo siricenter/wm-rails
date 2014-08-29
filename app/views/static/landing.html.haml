@@ -90,7 +90,8 @@
 				%h3 Gallery
 				.circular.cir-img-gallery
 				%p A photo gallery
-				%button.btn.cntr Coming Soon!
+				%form(action="/galleries")
+					%button.btn.cntr View Gallery!
 	/= render 'news'
 	#social.row
 		%h3.col-md-12.text-center Follow us on
