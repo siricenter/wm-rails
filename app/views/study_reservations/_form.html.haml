@@ -1,0 +1,26 @@
+= form_for @study_reservation do |f|
+  - if @study_reservation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@study_reservation.errors.count, "error")} prohibited this study_reservation from being saved:"
+      %ul
+        - @study_reservation.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :study_room_id
+    %select{name: :'study_reservation[study_room_id]', id: :study_reservation_study_room_id, :required => true}
+      - @study_rooms.each do | study_room |
+        %option{:value => study_room.id} #{study_room.rm_type + " " + String(study_room.rm_number)}
+  .field
+    = f.label :start
+    = f.time_select :start
+  .field
+    = f.label :stop
+    = f.time_select :stop
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

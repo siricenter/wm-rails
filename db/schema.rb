@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828184752) do
+ActiveRecord::Schema.define(version: 20140828191920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,18 @@ ActiveRecord::Schema.define(version: 20140828184752) do
     t.date     "start_date"
     t.date     "end_date"
   end
+
+  create_table "study_reservations", force: true do |t|
+    t.integer  "study_room_id"
+    t.time     "start"
+    t.time     "stop"
+    t.date     "date"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "study_reservations", ["study_room_id"], name: "index_study_reservations_on_study_room_id", using: :btree
 
   create_table "study_rooms", force: true do |t|
     t.integer  "building_id"

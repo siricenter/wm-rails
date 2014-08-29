@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Study room:
+  = @study_reservation.study_room.rm_type + " " + String(@study_reservation.study_room.rm_number)
+%p
+  %b Start:
+  = @study_reservation.start
+%p
+  %b Stop:
+  = @study_reservation.stop
+%p
+  %b Date:
+  = @study_reservation.date
+%p
+  %b Name:
+  = @study_reservation.name
+
+= link_to 'Edit', edit_study_reservation_path(@study_reservation)
+\|
+= link_to 'Back', study_reservations_path
