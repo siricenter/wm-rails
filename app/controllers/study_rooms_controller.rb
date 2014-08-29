@@ -1,4 +1,5 @@
 class StudyRoomsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_study_room, only: [:show, :edit, :update, :destroy]
 
   # GET /study_rooms

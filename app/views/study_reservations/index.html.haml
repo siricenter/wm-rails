@@ -20,7 +20,8 @@
       %td= study_reservation.name
       %td= link_to 'Show', study_reservation
       %td= link_to 'Edit', edit_study_reservation_path(study_reservation)
-      %td= link_to 'Destroy', study_reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - if admin_signed_in?
+        %td= link_to 'Destroy', study_reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -23,13 +23,14 @@ Rails.application.routes.draw do
 	get '/buildings/:id/availability/:semester_id', to: 'availability#available'
 
 	scope :admin do
-    resources :study_rooms
 		resources :amenities
 		resources :buildings
 		resources :semesters
 		resources :contract_texts
     resources :maintenances
+    resources :study_rooms
 
+    
 		get '/contracts', to: 'contracts#index', as: :contracts
 		post '/contracts', to: 'contracts#create'
 		get '/contracts/:id', to: 'contracts#show', as: :contract

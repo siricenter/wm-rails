@@ -1,4 +1,5 @@
 class StudyReservationsController < ApplicationController
+  before_action :authenticate_admin!, only: [:destroy]
   before_action :set_study_reservation, only: [:show, :edit, :update, :destroy]
 
   # GET /study_reservations
