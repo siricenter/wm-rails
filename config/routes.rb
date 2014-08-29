@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  
+
   resources :study_reservations
 
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities
+    get '/galleries', to: 'static#galleries', as: :show_galleries
   get 'maintenances/created', to: 'maintenances#created'
   
   get '/renew', to: 'contracts#getUserContract'
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
 
 	scope :admin do
 		resources :amenities
+        resources :galleries
 		resources :buildings
 		resources :semesters
 		resources :contract_texts

@@ -1,0 +1,23 @@
+= form_for @gallery do |f|
+	- if @gallery.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@gallery.errors.count, "error")} prohibited this gallery from being saved:"
+			%ul
+				- @gallery.errors.full_messages.each do |msg|
+					%li= msg
+
+	.row
+		= label_tag :image, 'Image'
+		= cl_image_upload_tag('gallery[image_id]', crop: :limit, width: 600, height: 400, id: :uploader)
+		.progress-container
+			.progress
+				.progress-bar#progress-bar{role: :'progressbar', style: 'width: 0%;'}
+		.preview
+	.row
+		= f.label :title
+		= f.text_field :title
+	.row
+		= f.label :description
+		= f.text_area :description
+	.actions
+		= f.submit 'Save'
