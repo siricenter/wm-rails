@@ -30,7 +30,7 @@ body, html
 	width: 35%;
 }
 
-$availability-height: 100px;
+$availability-height: 7em;
 $avail-marg: 35px;
 $marketing-height: $availability-height * .75;
 $marketing-marg: 21px;
@@ -44,8 +44,11 @@ $marketing-marg: 21px;
 
 	.check-text
 	{
-		@extend .col-xs-3;
-		font-size: 220%;
+		@extend .col-xs-12;
+        @extend .col-sm-4;
+        @extend .col-md-4;
+        @extend .col-lg-2;
+		font-size: 2em;
 		margin-top: $avail-marg;
 	}
 
@@ -98,13 +101,14 @@ $marketing-marg: 21px;
 .btn-blocky
 {
 	border-radius: none;
-	height: $availability-height;
+	height: 5.8em;
 	margin: 0;
-	font-size: 120%;
+	font-size: 1.2em;
+    display: table-cell;
 
 	p
 	{
-		margin-top: 30px;
+		margin-top: .5em;
 	}
 }
 
