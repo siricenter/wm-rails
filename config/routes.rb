@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 	root 'static#landing'
 
 	get '/choose', to: 'static#choose', as: :choose_apartment
+  get '/complex', to: 'static#complex', as: :complex
 
 	get '/success', to: 'contracts#success', as: :success
 

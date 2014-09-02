@@ -6,6 +6,7 @@
 		= csrf_meta_tags
 		%meta{:name => "viewport", :content => "width=device-width, user-scalable=yes"}
 		%link{:href => "https://fonts.googleapis.com/css?family=Ovo", :rel => "stylesheet", :type => "text/css"}/
+    %script(src="https://maps.googleapis.com/maps/api/js")
 	%body
 		= render partial: '/layouts/navbar'
 		= yield

@@ -269,3 +269,7 @@ $marketing-marg: 21px;
  		color: maroon;
   	text-decoration: none;
 }
+
+.map_canvas {
+	@extend .col-md-6;
+}
