@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :happenings
+
   resources :study_reservations
 
 	get '/contracts/success'

@@ -1,0 +1,24 @@
+%h1 Listing happenings
+
+%table
+  %tr
+    %th Heading
+    %th Description
+    %th Date
+    %th
+    %th
+    %th
+
+  - @happenings.each do |happening|
+    %tr
+      %td= happening.heading
+      %td= happening.description
+      %td= happening.date
+      %td= link_to 'Show', happening
+      - if admin_signed_in?
+        %td= link_to 'Edit', edit_happening_path(happening)
+        %td= link_to 'Destroy', happening, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+- if admin_signed_in?
+  = link_to 'New Happening', new_happening_path

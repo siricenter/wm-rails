@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Heading:
+  = @happening.heading
+%p
+  %b Description:
+  = @happening.description
+%p
+  %b Date:
+  = @happening.date
+- if admin_signed_in?
+  = link_to 'Edit', edit_happening_path(@happening)
+  \|
+  = link_to 'Back', happenings_path

@@ -1,0 +1,19 @@
+= form_for @happening do |f|
+  - if @happening.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@happening.errors.count, "error")} prohibited this happening from being saved:"
+      %ul
+        - @happening.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :heading
+    = f.text_field :heading
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :date
+    = f.date_select :date
+  .actions
+    = f.submit 'Save'
