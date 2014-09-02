@@ -4,7 +4,8 @@
 		/ # doesn't work. It seems like our controller isn't parsing the image 
 		/ # id correctly, but I don't know how to fix it just yet. Current hack
 		/ # is to just hardcode the cloudinary URL and append the image_id.
-		= image_tag "http://res.cloudinary.com/business-development-center/" + apartment.image_id, class: :image
+		-if apartment.image_id
+			= image_tag "http://res.cloudinary.com/business-development-center/" + apartment.image_id, class: :image
 		.caption
 			%h2
 				= apartment.title

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities
-    get '/galleries', to: 'static#galleries', as: :show_galleries
+  get '/galleries', to: 'static#galleries', as: :show_galleries
+  get '/apartments', to: 'static#apartments', as: :show_apartments
   get 'maintenances/created', to: 'maintenances#created'
   
   get '/renew', to: 'contracts#getUserContract'

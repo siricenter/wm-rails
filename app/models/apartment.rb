@@ -8,13 +8,17 @@ class Apartment < ActiveRecord::Base
   
   # saves the item id before destroying
   def backupItem
-    @public_id = self.image_id.split('/').last
-    @public_id = @public_id.split('#').first
-    @public_id = @public_id.split('.').first
+    if self.image_id
+    	@public_id = self.image_id.split('/').last
+    	@public_id = @public_id.split('#').first
+    	@public_id = @public_id.split('.').first
+    end
   end
   
   # after destroying the image from the db this will remove it from cloudinary
   def deleteItem
-    Cloudinary::Uploader.destroy(@public_id)
+    if @public_id
+    	Cloudinary::Uploader.destroy(@public_id)
+    end
   end
 end
