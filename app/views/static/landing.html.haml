@@ -3,16 +3,15 @@
 	.availability-bar
 		%h3.check-text
 			Check Availability:
-		%p.col-xs-3
+		%p.col-xs-12.col-sm-2.col-md-3.col-lg-2
 			= select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2'], id: :'sem-select'
-		.col-md-1.col-md-offset-1.gender-icon#womens
+		.col-xs-3.col-sm-2.col-md-1.col-md-offset-1.col-lg-offset-2.gender-icon#womens
 			= image_tag 'women_bg.png'
 			%p Women
-		.col-xs-1.col-md-1.gender-icon#mens
+		.col-xs-3.col-sm-2.col-md-1.gender-icon#mens
 			= image_tag 'men_bg.png'
 			%p Men
-		.col-md-1
-		.col-xs-3.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
+		.col-xs-6.col-sm-2.col-md-2.col-md-offset-1.text-center.btn-blocky#available-answer
 			%p 
 .container
 	.row.image
