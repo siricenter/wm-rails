@@ -28,12 +28,13 @@ Rails.application.routes.draw do
 
 	scope :admin do
 		resources :amenities
-        resources :galleries
+    resources :galleries
 		resources :buildings
 		resources :semesters
 		resources :contract_texts
     resources :maintenances
     resources :study_rooms
+    resources :apartments
 
     
 		get '/contracts', to: 'contracts#index', as: :contracts

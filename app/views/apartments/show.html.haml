@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @apartment.title
+%p
+  %b Description:
+  = @apartment.description
+%p
+  %b Image:
+  = @apartment.image_id
+
+= link_to 'Edit', edit_apartment_path(@apartment)
+\|
+= link_to 'Back', apartments_path
