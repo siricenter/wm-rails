@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/tenant', to: 'static#tenant'
   get 'maintenances/created', to: 'maintenances#created'
   
-  get '/renew', to: 'contracts#getUserContract'
+  get '/renew', to: 'contracts#renew'
+  get '/userPayment', to: 'contracts#userPayment'
+  get '/makePayment', to: 'static#makePayment'
 
 	devise_for :admins
 	root 'static#landing'

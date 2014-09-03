@@ -127,24 +127,48 @@ class ContractsController < ApplicationController
 		end
 	end
   
+  
+  def renew
+    if getUserContract
+      setup_form discounts_path, :post
+      render :new
+    else
+      render :renew
+    end
+  end
+  
+  def userPayment
+    if getUserContract()
+      render :makePayment
+    else
+      render :userPayment
+    end
+  end
+  
+  def makePayment
+  end
+  
   ###
   # This will get a user contract based on first name last name and email
   ###
   def getUserContract
     if params[:first_name].nil? or params[:last_name].nil? or params[:email].nil?
-      render :getUserContract
+      #render :getUserContract
+      return false
     else
       # get user contract
       @contract = nil
       @contract = (Contract.find_by(first_name: params[:first_name], last_name: params[:last_name], email: params[:email]))
       if @contract.nil? or not @contract.present?
-       	render :getUserContract
+       	#render :getUserContract
+        return false
       else
       	#session[:building_id] = @contract.building_id
       	@building = Building.find(@contract.building_id)
         @contract.semesters = []
-      	setup_form discounts_path, :post
-      	render :new
+        return true
+      	#setup_form discounts_path, :post
+      	#render :new
       end
     end
   end

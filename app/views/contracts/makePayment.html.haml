@@ -1,0 +1,8 @@
+.container
+  %h2
+    = "Welcome " + @contract.first_name
+  %p
+    To make a payment click "Pay Now" to be redirected to PayPal
+  %p
+    On PayPal, be sure to enter the amount you would like to pay today under payment summary and please use you BYU-I email address
+  = render "static/payment"
