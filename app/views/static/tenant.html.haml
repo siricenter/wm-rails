@@ -1,0 +1,18 @@
+/This section of the site will help add value to the tenant experience by providing a place for them to 
+/ interface with management and other tenants. It will include the following views/links:
+
+.dashboard
+  %h1
+    Tenant Dashboard
+  / Maintenance request
+  = link_to 'Maintenance Request', '/admin/maintenances/new', class: ['btn', 'btn-primary']
+  / Reserve study rooms
+  = link_to 'Reserve Study Room', study_reservations_path, class: ['btn', 'btn-primary']
+  / Contract renewal
+  = link_to 'Renew Contract', '/renew', class: ['btn', 'btn-primary']
+  / Payment processing
+  
+  / Contact the manager
+  %form(class='buttonForm' action="mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20")
+    %button(class='btn btn-primary')
+      Contact the manager

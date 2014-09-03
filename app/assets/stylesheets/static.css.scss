@@ -274,6 +274,12 @@ $marketing-marg: 21px;
   	text-decoration: none;
 }
 
-.map_canvas {
+.map_canvas 
+{
 	@extend .col-md-6;
+}
+
+.buttonForm
+{
+  display: inline;
 }
