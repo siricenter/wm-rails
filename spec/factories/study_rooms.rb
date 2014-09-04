@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :study_room do
-    building nil
+    building
     rm_type "MyString"
     rm_number 1
     floor 1

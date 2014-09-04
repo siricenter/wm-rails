@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :study_reservation do
-    study_room nil
-    start "2014-08-28 19:19:20"
-    stop "2014-08-28 19:19:20"
-    date "2014-08-28"
-    name "MyString"
+    study_room
+    start Time.current
+    stop Time.current.end_of_day
+    date Date.today
+    name "Jimmy John"
   end
 end

@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :maintenance do
-    tenant_name "MyString"
+    tenant_name "Jimmy Johns"
     building_id 1
-    location "MyString"
-    description "MyString"
-    tenant_phone "MyString"
+    location "Lobby"
+    description "Stain on the carpet"
+    tenant_phone "1234567891"
   end
 end
