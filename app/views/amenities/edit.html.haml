@@ -1,7 +1,11 @@
-%h1 Editing amenity
+.container
+	.row
+		%h1 Editing amenity
 
-= render 'form'
+	.row
+		= render 'form'
 
-= link_to 'Show', @amenity
-\|
-= link_to 'Back', amenities_path
+	.row
+		= link_to 'Show', @amenity
+		\|
+		= link_to 'Back', amenities_path
