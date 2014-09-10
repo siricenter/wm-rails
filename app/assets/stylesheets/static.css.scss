@@ -42,12 +42,25 @@ $marketing-marg: 21px;
 	font-family: $font;
 	color: white;
 
+	#available-answer
+	{
+		@extend .col-xs-6;
+		@extend .col-sm-2;
+		@extend .col-lg-offset-1;
+
+		p
+		{
+			margin-top: $availability-height / 4;
+			vertical-align: middle;
+		}
+	}
+
 	.check-text
 	{
 		@extend .col-xs-12;
-        @extend .col-sm-4;
-        @extend .col-md-4;
-        @extend .col-lg-2;
+		@extend .col-sm-4;
+		@extend .col-md-4;
+		@extend .col-lg-3;
 		font-size: 2em;
 		margin-top: $avail-marg;
 	}
@@ -104,7 +117,7 @@ $marketing-marg: 21px;
 	height: 5.8em;
 	margin: 0;
 	font-size: 1.2em;
-    display: table-cell;
+	display: table-cell;
 
 	p
 	{
@@ -137,7 +150,7 @@ $marketing-marg: 21px;
 		text-align: center;
 		font-family: $font;
 	}
-  
+
 	button
 	{
 		margin-top: 50px;
@@ -270,8 +283,8 @@ $marketing-marg: 21px;
 
 .contact_manager
 {
- 		color: maroon;
-  	text-decoration: none;
+	color: maroon;
+	text-decoration: none;
 }
 
 .map_canvas 
@@ -281,5 +294,5 @@ $marketing-marg: 21px;
 
 .buttonForm
 {
-  display: inline;
+	display: inline;
 }
