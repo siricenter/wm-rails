@@ -1,8 +1,9 @@
-%h1 New maintenance
+.container
+	%h1 Maintenance Request
 
-= render 'form'
+	= render 'form'
 
-- if admin_signed_in?
-  = link_to 'Back', maintenances_path
-- else
-  = link_to 'Back', root_path
+	- if admin_signed_in?
+		= link_to 'Back', maintenances_path
+	- else
+		= link_to 'Back', root_path
