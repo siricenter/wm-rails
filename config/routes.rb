@@ -1,26 +1,26 @@
 Rails.application.routes.draw do
 
-  resources :happenings
+	resources :happenings
 
-  resources :study_reservations
+	resources :study_reservations
 
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :show_amenities
-  get '/galleries', to: 'static#galleries', as: :show_galleries
-  get '/apartments', to: 'static#apartments', as: :show_apartments
-  get '/tenant', to: 'static#tenant'
-  get 'maintenances/created', to: 'maintenances#created'
-  
-  get '/renew', to: 'contracts#renew'
-  get '/userPayment', to: 'contracts#userPayment'
-  get '/makePayment', to: 'static#makePayment'
+	get '/galleries', to: 'static#galleries', as: :show_galleries
+	get '/apartments', to: 'static#apartments', as: :show_apartments
+	get '/tenant', to: 'static#tenant'
+	get 'maintenances/created', to: 'maintenances#created'
+
+	get '/renew', to: 'contracts#renew'
+	get '/userPayment', to: 'contracts#userPayment'
+	get '/makePayment', to: 'static#makePayment'
 
 	devise_for :admins
 	root 'static#landing'
 
 	get '/choose', to: 'static#choose', as: :choose_apartment
-  get '/complex', to: 'static#complex', as: :complex
+	get '/complex', to: 'static#complex', as: :complex
 
 	get '/success', to: 'contracts#success', as: :success
 
@@ -32,15 +32,15 @@ Rails.application.routes.draw do
 
 	scope :admin do
 		resources :amenities
-    resources :galleries
+		resources :galleries
 		resources :buildings
 		resources :semesters
 		resources :contract_texts
-    resources :maintenances
-    resources :study_rooms
-    resources :apartments
+		resources :maintenances
+		resources :study_rooms
+		resources :apartments
 
-    
+
 		get '/contracts', to: 'contracts#index', as: :contracts
 		post '/contracts', to: 'contracts#create'
 		get '/contracts/:id', to: 'contracts#show', as: :contract
