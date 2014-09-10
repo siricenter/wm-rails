@@ -37,7 +37,7 @@ class StaticController < ApplicationController
 	end
     
   def galleries
-        @galleries = Gallery.all
+    @galleries = Gallery.all
 	end    
   
   def apartments
