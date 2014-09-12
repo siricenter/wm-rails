@@ -1,17 +1,15 @@
 %nav.navbar.navbar-default{:role => "navigation"}
-  .container-fluid
-    .navbar-header
-      - unless current_admin.nil?
-        %button.navbar-toggle{type: :button, 'data-toggle' => :collapse, 'data-target' => '#collapse'}
-          %span.sr-only
-            Toggle Navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-      = link_to root_path, class: 'navbar-brand' do
-        = image_tag 'windsorlogohorizA.jpg', id: :logo
-    - unless current_admin.nil?
-      .collapse.navbar-collapse#collapse
-        %ul.nav.navbar-nav
-          %li
-            = link_to 'Logout', destroy_admin_session_path, method: :delete
+	.container-fluid
+		.navbar-header
+			%button.navbar-toggle{type: :button, 'data-toggle' => :collapse, 'data-target' => '#collapse'}
+				%span.sr-only
+					Toggle Navigation
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			= link_to root_path, class: 'navbar-brand' do
+				= image_tag 'windsorlogohorizA.jpg', id: :logo
+	.collapse.navbar-collapse#collapse
+		%ul.nav.navbar-nav.nav-pills
+			%li
+				= link_to 'Home', root_path

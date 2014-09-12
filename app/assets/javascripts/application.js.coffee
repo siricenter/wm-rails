@@ -15,6 +15,7 @@
 #= require cloudinary
 #= require turbolinks
 #= require bootstrap-sprockets
+#= require bootstrap
 #= require_tree .
 
 # When cloudinary file upload is done
