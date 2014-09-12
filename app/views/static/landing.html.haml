@@ -26,19 +26,19 @@
 			
 				.item.active
 					= image_tag 'large_apt.jpg', class: 'slideImages', alt: 'First slide'
-					.carousel-caption
+					.carousel-caption.hidden-xs
 						%h1.headline
 							= @marketing_text
 								 
 				.item
 					= image_tag 'amenities_example.jpg', class: 'slideImages', alt: 'Second slide'
-					.carousel-caption
+					.carousel-caption.hidden-xs
 						%h1.headline
 							= @marketing_text
 									
 				.item
 					= image_tag 'studentsgrp.png', class: 'slideImages', alt: 'Third slide'
-					.carousel-caption
+					.carousel-caption.hidden-xs
 						%h1.headline
 							= @marketing_text
 						
@@ -94,6 +94,10 @@
 				%p A photo gallery
 				%form(action="/galleries")
 					%button.btn.cntr View Gallery
+.container.visible-xs
+	.marketing-bar
+		%h2.text-center
+			= @marketing_text
 	/= render 'news'
 	#social.row
 		%h3.col-md-12.text-center Follow us on
