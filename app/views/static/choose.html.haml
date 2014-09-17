@@ -1,79 +1,50 @@
 .container-fluid
   #choose-gender.row
-    = link_to new_contract_path(@mens) do
+    /= link_to new_contract_path(@mens), id: ['mens-link'] do
+    #mens-link
       .choose-tag.choose-left
         .arrow-left
         %p Men's Housing
       = image_tag 'studentsgrp.png', class: [:choose]
-    = link_to new_contract_path(@womens) do 
+    /= link_to new_contract_path(@womens), id: ['womens-link'] do 
+    #womens-link
       .choose-tag.choose-right
         %p Women's Housing
         .arrow-right
       = image_tag 'studentstbl.png', class: [:choose]
 
-  #choos-floor.row
-    .col-md-12
+  #choose-floor.choose-section
+    .choose-section-title
       %h1 Choose your floor
-    .col-md-12
-      .cir-div.back-blue.text-center
-        .cir-div-inner.cntr
-          %h1 3
-    .col-md-12
-      .cir-div.back-dgrey.text-center
-        .cir-div-inner.cntr
-          %h1 2
-    .col-md-12
-      .cir-div.back-lburgandy.text-center
-        .cir-div-inner.cntr
-          %h1 1
-    .col-md-1
-      .cir-div
-        %input.form-control{type: "checkbox"}
-    .col-md-11
-      %h2 Do you have a car?
+    #bldg-map.imgmap-container
+      = image_tag 'building_no_labels.png', class: [:'']
+      #floor4.map-overlay{:alt => "Floor 4", :title => "Floor 4"}
+        %p
+          Floor 4
+      #floor3.map-overlay{:alt => "Floor 3", :title => "Floor 3"}
+        %p
+          Floor 3
+      #floor2.map-overlay{:alt => "Floor 2", :title => "Floor 2"}
+        %p
+          Floor 2
+      #floor1.map-overlay{:alt => "Floor 1", :title => "Floor 1"}
+        %p
+          Floor 1
       
-  #choose-size.row
+  #choose-apt.choose-section
     .col-md-12
-      %h1 How many roommates would you like?
-    .col-md-12
-      .cir-div.back-blue.text-center
-        .cir-div-inner.cntr
-          %h1 8
-    .col-md-12
-      .cir-div.back-dgrey.text-center
-        .cir-div-inner.cntr
-          %h1 6
-    .col-md-12
-      .cir-div.back-lburgandy.text-center
-        .cir-div-inner.cntr
-          %h1 4
+      %h1 Choose your apartment layout
+    #floor-map.imgmap-container
+      #floor-blueprint
+      #layout-overlays
       
-  #choose-layout.row
+  #choose-bed.choose-section
     .col-md-12
-      %h1 Pick an apartment layout you like
-    .col-md-12
-      %h1.text-center name 1
-      = image_tag '', class: ['cntr'], alt: "name1"
-    .col-md-12
-      %h1.text-center name 2
-      = image_tag '', class: ['cntr'], alt: "name2"
-    .col-md-12
-      %h1.text-center name 3
-      = image_tag '', class: ['cntr'], alt: "name3"
+      %h1 Choose your bed
+    #floor-map.imgmap-container
+      
     .col-md-12
       .btn.btn-primary Continue
-      
-  #choose-pay.row
-    .col-md-12
-      %h1 Confirm and Pay
-    .col-md-12
-      %h3 You will be charged a $50 processing fee to reserve your apartment and process your contract
-    .col-md-12
-      %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
-        %input{name: "cmd", type: "hidden", value: "_s-xclick"}/
-        %input{name: "hosted_button_id", type: "hidden", value: "4YSV326V7S5NN"}/
-        %input{alt: "PayPal - The safer, easier way to pay online!", border: "0", name: "submit", src: "https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif", type: "image"}/
-        %img{alt: "", border: "0", height: "1", src: "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", width: "1"}/
 
       
   %hr/

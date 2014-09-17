@@ -119,6 +119,98 @@ img.choose
   }
 }
 
+.choose-section
+{
+  @extends .row;
+}
+.choose-section-title
+{
+  @extends .col-md-12;
+}
+
+.imgmap-container
+{
+  position: relative;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bldg-map
+{
+  #floor4
+  {
+    top: 291px; 
+    left: 329px; 
+    width: 646px; 
+    height: 56px;
+  }
+  #floor3
+  {
+    top: 347px; 
+    left: 177px; 
+    width: 798px; 
+    height: 54px;
+  }
+  #floor2
+  {
+    top: 401px; 
+    left: 177px; 
+    width: 798px; 
+    height: 54px;
+  }
+  #floor1
+  {
+    top: 455px; 
+    left: 177px; 
+    width: 798px; 
+    height: 56px;
+  }
+}
+
+.map-overlay
+{
+  position: absolute;
+  color: white;
+  background: rgba(0,0,0,0.35);
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 15px;
+  cursor: pointer;
+  p
+  {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: right;
+  }
+  &:hover
+  {
+    background: $theme-lgreen;
+  }
+}
+
+.blueprint
+{
+  @extends .col-md-12;
+  img
+  {
+    
+  }
+}
+.blueprint-inner{
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  #floor-4
+  {
+    background: rgba(0,0,0,0.5);
+    
+  }
+}
+
 .arrow-up {
 	width: 0; 
 	height: 0; 
