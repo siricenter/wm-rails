@@ -1,20 +1,34 @@
 /This section of the site will help add value to the tenant experience by providing a place for them to 
 / interface with management and other tenants. It will include the following views/links:
 
-.dashboard
-  %h1
-    Tenant Dashboard
-  / Contract renewal
-  = link_to 'Local Happenings', '/happenings', class: ['btn', 'btn-primary']
-  / Maintenance request
-  = link_to 'Maintenance Request', '/admin/maintenances/new', class: ['btn', 'btn-primary']
-  / Reserve study rooms
-  = link_to 'Reserve Study Room', study_reservations_path, class: ['btn', 'btn-primary']
-  / Contract renewal
-  = link_to 'Renew Contract', '/renew', class: ['btn', 'btn-primary']
-  / Payment processing
-  = link_to 'Make a Payment', '/userPayment', class: ['btn', 'btn-primary']
-  / Contact the manager
-  %form(class='buttonForm' action="mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20")
-    %button(class='btn btn-primary')
-      Contact the manager
+.container
+	.row.tiles
+		.tile
+			.inner-tile
+				%h3 Local Happenings
+				= image_tag :'local-happenings.jpg', class: [:'tile-picture']
+				= link_to 'Local Happenings', '/happenings', class: [:btn, :'btn-primary', :cntr]
+		.tile
+			.inner-tile
+				%h3 Maintenance Request
+				= image_tag :'maintenance-request.jpg', class: [:'tile-picture']
+				= link_to 'Maintenance Request', '/admin/maintenances/new', class: [:btn, :'btn-primary', :cntr]
+		.clearfix.visible-sm
+		.tile
+			.inner-tile
+				%h3 Reserve Study Room
+				= image_tag :'study-room.jpg', class: [:'tile-picture']
+				= link_to 'Reserve Study Room', study_reservations_path, class: [:btn, :'btn-primary', :cntr]
+		.clearfix.visible-md.visible-lg
+		.tile
+			.inner-tile
+				%h3 Make a Payment
+				= image_tag :'payment.jpg', class: [:'tile-picture']
+				= link_to 'Make a Payment', '/userPayment', class: [:btn, :'btn-primary', :cntr]
+		.clearfix.visible-sm
+		.tile
+			.inner-tile
+				%h3 Contact the manager
+				= image_tag :'managers.jpg', class: [:'tile-picture']
+				= link_to 'Contact the Manager', "mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20", class: [:btn, :'btn-primary', :cntr]
+			

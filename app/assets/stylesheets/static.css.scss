@@ -295,5 +295,25 @@ $marketing-marg: 21px;
 
 .buttonForm
 {
+	width: 100%;
 	display: inline;
+
+	button
+	{
+		margin-top: 0;
+		width: 100%;
+	}
+}
+
+.tile-picture
+{
+	@extend .img-responsive;
+	@extend .img-thumbnail;
+}
+
+.tile
+{
+	@extend .col-xs-12;
+	@extend .col-sm-6;
+	@extend .col-md-4;
 }
