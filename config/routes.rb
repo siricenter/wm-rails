@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
 	get '/contracts/success'
 	get '/contracts/failure'
-	get '/amenities', to: 'static#amenities', as: :show_amenities
-	get '/galleries', to: 'static#galleries', as: :show_galleries
+	get '/amenities', to: 'static#amenities', as: :amenities
+	get '/galleries', to: 'static#galleries', as: :gallery
 	get '/apartments', to: 'static#apartments', as: :show_apartments
-	get '/tenant', to: 'static#tenant'
+	get '/tenant', to: 'static#tenant', as: :tenant
 	get 'maintenances/created', to: 'maintenances#created'
 
 	get '/renew', to: 'contracts#renew'
