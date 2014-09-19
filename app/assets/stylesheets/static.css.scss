@@ -87,12 +87,15 @@ $marketing-marg: 21px;
 
 .marketing-bar
 {
-	@extend .availability-bar;
+/* 	@extend .availability-bar; */
 	font-size: 220%;
 	vertical-align: middle;
 	text-align: center;
 	padding-top: $marketing-marg;
 	min-height: $availability-height;
+	position: relative;
+	background: rgba(0,0,0,0.5);
+	margin-top: -$availability-height;
 }
 
 .gender-icon
