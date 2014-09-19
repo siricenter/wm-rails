@@ -30,7 +30,7 @@ body, html
 	width: 35%;
 }
 
-$availability-height: 7em;
+$availability-height: 100px;
 $avail-marg: 35px;
 $marketing-height: $availability-height * .75;
 $marketing-marg: 21px;
@@ -88,15 +88,11 @@ $marketing-marg: 21px;
 .marketing-bar
 {
 	@extend .availability-bar;
-	margin-top: 20px;
-
-	.marketing-text
-	{
-		@extend .col-xs-12;
-		font-size: 220%;
-		margin-top: $avail-marg;
-		text-align: center;
-	}
+	font-size: 220%;
+	vertical-align: middle;
+	text-align: center;
+	padding-top: $marketing-marg;
+	min-height: $availability-height;
 }
 
 .gender-icon
@@ -231,26 +227,8 @@ $marketing-marg: 21px;
 
 .image > img
 {
-	//max-height: 60%;
 	padding: 0;
 	width: 100%;
-	-webkit-filter: sepia(.3);
-	-o-filter: sepia(.3);
-	-moz-filter: sepia(.3);
-	-ms-filter: sepia(.3);
-}
-
-.marketing-text
-{
-	min-height: $marketing-height;
-	margin: 0;
-	//margin-top: 5px;
-
-	& > h3
-	{
-		margin-top: $marketing-marg;
-		text-align: center;
-	}
 }
 
 .opaque
