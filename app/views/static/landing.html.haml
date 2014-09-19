@@ -15,38 +15,6 @@
 			%p 
 .container
 	.row.image
-		#myCarousel.carousel.slide.col-xs-10.col-xs-offset-1{"data-ride" => 'carousel'}
-
-			%ol.carousel-indicators
-				%li(data-target="#myCarousel" data-slide-to="0" class="active")
-				%li(data-target="#myCarousel" data-slide-to="1")
-				%li(data-target="#myCarousel" data-slide-to="2")
-			
-			.carousel-inner
-			
-				.item.active
-					= image_tag 'large_apt.jpg', class: 'slideImages', alt: 'First slide'
-					.carousel-caption.hidden-xs
-						%h1.headline
-							= @marketing_text
-								 
-				.item
-					= image_tag 'amenities_example.jpg', class: 'slideImages', alt: 'Second slide'
-					.carousel-caption.hidden-xs
-						%h1.headline
-							= @marketing_text
-									
-				.item
-					= image_tag 'studentsgrp.png', class: 'slideImages', alt: 'Third slide'
-					.carousel-caption.hidden-xs
-						%h1.headline
-							= @marketing_text
-						
-				
-			%a(class="left carousel-control" href="#myCarousel" role="button" data-slide="prev")
-				%span(class="glyphicon glyphicon-chevron-left")
-			%a(class="right carousel-control" href="#myCarousel" role="button" data-slide="next")
-				%span(class="glyphicon glyphicon-chevron-right")
 
 	/.row.availability.marketing-text.col-md-12
 	/	%h3
