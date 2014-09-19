@@ -1,50 +1,74 @@
 .container-fluid
   #choose-gender.row
     /= link_to new_contract_path(@mens), id: ['mens-link'] do
-    #mens-link
+    #womens-link
       .choose-tag.choose-left
         .arrow-left
-        %p Men's Housing
+        %p Women's Housing
       = image_tag 'studentsgrp.png', class: [:choose]
     /= link_to new_contract_path(@womens), id: ['womens-link'] do 
-    #womens-link
+    #mens-link
       .choose-tag.choose-right
-        %p Women's Housing
+        %p Men's Housing
         .arrow-right
       = image_tag 'studentstbl.png', class: [:choose]
 
   #choose-floor.choose-section
     .choose-section-title
-      %h1 Choose your floor
+      %h1 
+        %span.bk-btn.btn.btn-default.btn-sm{:type => "button"}
+          /%span.glyphicon.glyphicon-chevron-left
+          Back
+        Choose your floor
     #bldg-map.imgmap-container
-      = image_tag 'building_no_labels.png', class: [:'']
-      #floor4.map-overlay{:alt => "Floor 4", :title => "Floor 4"}
-        %p
-          Floor 4
-      #floor3.map-overlay{:alt => "Floor 3", :title => "Floor 3"}
-        %p
-          Floor 3
-      #floor2.map-overlay{:alt => "Floor 2", :title => "Floor 2"}
-        %p
-          Floor 2
-      #floor1.map-overlay{:alt => "Floor 1", :title => "Floor 1"}
-        %p
-          Floor 1
+      #bldg-blueprint
+      #layout-overlays-bldg
       
   #choose-apt.choose-section
     .col-md-12
-      %h1 Choose your apartment layout
+      %h1
+        %span.bk-btn.btn.btn-default.btn-sm{:type => "button"}
+          /%span.glyphicon.glyphicon-chevron-left
+          Back
+        Choose your apartment
     #floor-map.imgmap-container
       #floor-blueprint
-      #layout-overlays
+      #layout-overlays-apt
       
   #choose-bed.choose-section
     .col-md-12
-      %h1 Choose your bed
-    #floor-map.imgmap-container
+      %h1
+        %span.bk-btn.btn.btn-default.btn-sm{:type => "button"}
+          /%span.glyphicon.glyphicon-chevron-left
+          Back
+        Choose your bed
+    #apt-map.imgmap-container
+      #bed-blueprint
+      #layout-overlays-bed
       
+  #choose-conf.choose-section
     .col-md-12
-      .btn.btn-primary Continue
+      %h1
+        %span.bk-btn.btn.btn-default.btn-sm{:type => "button"}
+          /%span.glyphicon.glyphicon-chevron-left
+          Back
+        Please confirm your choices
+      .col-md-4.col-md-offset-4
+        %form#conf-form{:role => "form"}
+          .form-group
+            %label{:for => "genderChoice"} Women's or Men's
+            %input#genderChoice.form-control{:type => "text"}/
+          .form-group
+            %label{:for => "floorChoice"} Floor
+            %input#floorChoice.form-control{:type => "text"}/
+          .form-group
+            %label{:for => "aptChoice"} Apartment Number
+            %input#aptChoice.form-control{:type => "text"}/
+          .form-group
+            %label{:for => "bedChoice"} Bed
+            %input#bedChoice.form-control{:type => "text"}/
+          %input#genderNum{:type => "hidden"}/
+          %button.btn.btn-primary{:type => "submit"} Proceed to Checkout
 
       
   %hr/
