@@ -133,13 +133,31 @@ $marketing-marg: 21px;
 	background-color: red;
 }
 
+.tiles
+{
+	@extend .row;
+	margin-bottom: 100px;
+}
+
+.tile
+{
+	@extend .col-xs-12;
+	@extend .col-sm-6;
+	@extend .col-md-4;
+}
+
+.tile-picture
+{
+	@extend .img-responsive;
+/* 	@extend .img-thumbnail; */
+}
+
 .inner-tile
 {
 	background: white;
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 	margin-top: 10px;
-	//margin: 5px 0px 5px 0px;
-	padding: 10px;
+	height: 325px;
 
 	& > h3, & > p
 	{
@@ -152,6 +170,72 @@ $marketing-marg: 21px;
 	{
 		margin-top: 50px;
 	}
+}
+
+.tile-overlay
+{
+/* 	position: absolute; */
+	bottom: 0;
+	background: rgba(0,0,0,0.45);
+	color: white;
+	padding: 10px 12px;
+	width: 100%;
+}
+
+#complex-tile > div
+{
+	background: image-url('building_cropped.png') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#apartments-tile > div 
+{
+	background: image-url('large_apt.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#contracts-tile > div 
+{
+	background: image-url('amenities_example.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#local-hap-tile > div
+{
+	background: image-url('local-happenings.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#maint-req-tile > div
+{
+	background: image-url('maintenance-request.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#study-rm-tile > div
+{
+	background: image-url('study-room.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#payment-tile > div
+{
+	background: image-url('payment.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
+}
+
+#contact-mngr > div
+{
+	background: image-url('managers.jpg') no-repeat;
+	background-size: cover;
+  background-position: center;
 }
 
 .circular
@@ -220,12 +304,6 @@ $marketing-marg: 21px;
 	#margin-top: 25px;
 }
 
-.tiles
-{
-	@extend .row;
-	margin-top: 0%;
-}
-
 .image > img
 {
 	padding: 0;
@@ -282,17 +360,4 @@ $marketing-marg: 21px;
 		margin-top: 0;
 		width: 100%;
 	}
-}
-
-.tile-picture
-{
-	@extend .img-responsive;
-	@extend .img-thumbnail;
-}
-
-.tile
-{
-	@extend .col-xs-12;
-	@extend .col-sm-6;
-	@extend .col-md-4;
 }

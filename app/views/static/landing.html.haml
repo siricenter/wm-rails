@@ -1,5 +1,11 @@
 / Main jumbotron for a primary marketing message or call to action
 .container-fluid
+	.row.image
+		= image_tag 'building_cropped.png'
+
+	.marketing-bar
+		= @marketing_text
+	
 	.availability-bar
 		%h3.check-text
 			Check Availability:
@@ -13,54 +19,20 @@
 			%p Men
 		.text-center.btn-blocky#available-answer
 			%p 
-	.row.image
-		= image_tag 'building_cropped.png'
-
-	.marketing-bar
-		= @marketing_text
 
 	.tiles
-		.col-md-4.col-sm-4.tile
+		#complex-tile.tile
 			.inner-tile
-				%h3 Complex
-				.circular.cir-img-complex
-				%p Info about the complex
-				%form(action="/complex")
-					%button.btn.cntr View Info
-		.col-md-4.col-md-4.tile
+				.tile-overlay
+					%h3 Complex
+		#apartments-tile.tile
 			.inner-tile
-				%h3 Apartments
-				.circular.cir-img-apartments
-				%p Info about the Apartments
-				%form(action="/apartments")
-					%button.btn.cntr View Apartments
-		.col-md-4.col-md-4.tile
+				.tile-overlay
+					%h3 Apartments
+		#contracts-tile.tile
 			.inner-tile
-				%h3 Amenities
-				.circular.cir-img-amenities
-				%p Info about the amenities
-				%form(action="/amenities")
-					%button.btn.cntr View Amenities
-		.col-md-4.col-md-4.tile
-			.inner-tile
-				%h3 Reservations
-				.circular.cir-img-reservations
-				%p Info about the reservations
-				%button.btn.cntr Coming Soon!
-		.col-md-4.col-md-4.tile
-			.inner-tile
-				%h3 Current Tenants
-				.circular.cir-img-tenants
-				%p Info for current tenants
-				%form(action="/tenant")
-					%button.btn.cntr Tenant Dashboard
-		.col-md-4.col-md-4.tile
-			.inner-tile
-				%h3 Gallery
-				.circular.cir-img-gallery
-				%p A photo gallery
-				%form(action="/galleries")
-					%button.btn.cntr View Gallery
+				.tile-overlay
+					%h3 Contracts
 .container.visible-xs
 	.marketing-bar
 		%h2.text-center

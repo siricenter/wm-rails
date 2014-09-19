@@ -9,12 +9,12 @@
 		= link_to root_path, class: 'navbar-brand' do
 			= image_tag 'windsorlogohorizA.jpg', id: :logo
 	.collapse.navbar-collapse#collapse
-		%ul.nav.navbar-nav
+		%ul.nav.navbar-nav.navbar-right
 			%li
 				= link_to 'Home', root_path
-			%li
-				= link_to 'Tenants', tenant_path
 			%li
 				= link_to 'Amenities', amenities_path
 			%li
 				= link_to 'Gallery', gallery_path
+			%li
+				= link_to 'Tenants', tenant_path
