@@ -65,8 +65,18 @@ layoutOverlaysApt.on "click", "div", (event) ->
   return
 
 layoutOverlaysBed.on "click", "div", (event) ->
+  genVal = ""
   console.log @dataset.bedlabel
   bed = @dataset.bedlabel
+  if gender is 1
+    genVal = "Women's"
+  else
+    genVal = "Men's"
+  $("#genderChoice").val(genVal)
+  $("#floorChoice").val(floor)
+  $("#aptChoice").val(aptNum)
+  $("#bedChoice").val(bed)
+  $("#genderNum").val(gender)
   $("#choose-bed").fadeOut()
   $("#choose-conf").fadeIn()
   return
@@ -128,17 +138,17 @@ deliverFloorBlueprint = (gender, floor) ->
   else
     switch floor
       when 1
-        htmlImgOut = '<img src="/assets/w1f.png" alt="mens first floor plan">'
-        htmlOverlayOut = '<div class="map-overlay" data-layout="8a" data-aptnum="202" style="position: absolute; top: 89px; left: 32px; width: 219px; height: 422px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="4a" data-aptnum="204" style="position: absolute; top: 666px; left: 32px; width: 217px; height: 272px;"  alt="4 bed" title="4 bed" ><p>4 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="206" style="position: absolute; top: 784px; left: 249px; width: 339px; height: 221px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="207" style="position: absolute; top: 531px; left: 434px; width: 340px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="208" style="position: absolute; top: 784px; left: 588px; width: 421px; height: 221px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="209" style="position: absolute; top: 531px; left: 774px; width: 343px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
-        htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 500px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
+        htmlImgOut = '<img src="/assets/m1f.png" alt="mens first floor plan">'
+        htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="102" style="position: absolute; top: 923px; left: 69px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="103" style="position: absolute; top: 670px; left: 178px; width: 426px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="104" style="position: absolute; top: 923px; left: 413px; width: 343px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="105" style="position: absolute; top: 448px; left: 640px; width: 212px; height: 342px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 787px; left: 893px; width: 220px; height: 344px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="107" style="position: absolute; top: 104px; left: 640px; width: 212px; height: 344px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="108" style="position: absolute; top: 448px; left: 893px; width: 220px; height: 339px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
+        htmlOverlayOut += '<div class="map-overlay" data-layout="8b" data-aptnum="110" style="position: absolute; top: 23px; left: 893px; width: 220px; height: 425px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 2
-        htmlImgOut = '<img src="/assets/w2f.png" alt="mens second floor plan">'
+        htmlImgOut = '<img src="/assets/m2f.png" alt="mens second floor plan">'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 500px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -148,7 +158,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 500px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 3
-        htmlImgOut = '<img src="/assets/w3f.png" alt="mens third floor plan">'
+        htmlImgOut = '<img src="/assets/m3f.png" alt="mens third floor plan">'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 500px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -158,7 +168,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 500px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 4
-        htmlImgOut = '<img src="/assets/w4f.png" alt="mens fourth floor plan">'
+        htmlImgOut = '<img src="/assets/m4f.png" alt="mens fourth floor plan">'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 500px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 500px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
