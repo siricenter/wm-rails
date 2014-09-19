@@ -222,6 +222,7 @@ $marketing-marg: 21px;
 
 .tiles
 {
+	@extend .row;
 	margin-top: 0%;
 }
 
