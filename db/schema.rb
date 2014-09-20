@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920212354) do
+ActiveRecord::Schema.define(version: 20140920225436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,10 @@ ActiveRecord::Schema.define(version: 20140920212354) do
     t.text     "preferences"
     t.text     "number"
     t.integer  "contract_text_id"
+    t.integer  "bed_id"
   end
 
+  add_index "contracts", ["bed_id"], name: "index_contracts_on_bed_id", using: :btree
   add_index "contracts", ["building_id"], name: "index_contracts_on_building_id", using: :btree
   add_index "contracts", ["contract_text_id"], name: "index_contracts_on_contract_text_id", using: :btree
 
