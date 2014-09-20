@@ -1,5 +1,8 @@
 $(".choose-section").hide()
-  
+
+pageURL = window.location.pathname
+semesterId = pageURL[pageURL.length - 1]
+console.log "building id: " + semesterId
 gender = 0
 floor = 0
 layout = 0
@@ -49,8 +52,7 @@ mens.click ->
   return
 
 layoutOverlaysBldg.on "click", "div", (event) ->
-  building_id = gender
-  $.get "/building/:building_id/apartments/1", (data, status) -> #TODO: get the :semester_id from the url and replace the hardcoded semester
+  $.get "/building/" + gender + "/apartments/" + semesterId, (data, status) -> #TODO: get the :semester_id from the url and replace the hardcoded semester
     console.log "Data: " + data + "\nStatus: " + status
     return
   console.log @dataset.floornum
