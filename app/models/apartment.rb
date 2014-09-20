@@ -21,6 +21,8 @@ class Apartment < ActiveRecord::Base
 	before_destroy :backupItem
 	after_destroy :deleteItem
 
+	validates_presence_of :building
+
 	# saves the item id before destroying
 	def backupItem
 		if self.image_id
