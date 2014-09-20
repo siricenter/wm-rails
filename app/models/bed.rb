@@ -11,5 +11,6 @@
 
 class Bed < ActiveRecord::Base
   belongs_to :apartment
+  has_many :contracts
   validates_presence_of :apartment
 end

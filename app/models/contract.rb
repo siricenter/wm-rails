@@ -30,8 +30,8 @@
 
 class BuildingAvailablityValidator < ActiveModel::Validator
 	def validate(record)
-    if record.building and not record.semesters.empty?
-      record.errors[:building] << "is full" unless record.building.availabilities?(record.semesters.first)
+		if record.building and not record.semesters.empty?
+			record.errors[:building] << "is full" unless record.building.availabilities?(record.semesters.first)
 		end
 	end 
 end
@@ -58,7 +58,8 @@ class Contract < ActiveRecord::Base
 	validates :euro, format: { with: /\A(\d\d\d\d|)\z/ }
 
 	validates_presence_of :semesters
-	validates_presence_of :building
+	#validates_presence_of :building
+	validates_presence_of :bed
 
 	validates_with BuildingAvailablityValidator 
 end 
