@@ -1,53 +1,53 @@
 <table style="width:960px; margin:0 auto; table-layout:fixed;">
-  <tr>
-  	<td colspan="2"></td>
-    <td colspan="2"><img></td>
-    <td colspan="8" style="font-weight: bold;">Brigham Young Universty-Idaho Student Landlord Housing Contract</td>
-  </tr>
+	<tr>
+		<td colspan="2"></td>
+		<td colspan="2"><img></td>
+		<td colspan="8" style="font-weight: bold;">Brigham Young Universty-Idaho Student Landlord Housing Contract</td>
+	</tr>
 </table>
 <br/>
 <table style="width:960px; margin:0 auto; border-collapse:collapse; table-layout:fixed">
-  <tr>
-    <td style="border:1px solid black;" colspan="6">Property Name: Windsor Manor</td>
-    <td style="border:1px solid black;" colspan="6">Website: windsormanor.net</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black;" colspan="12">Address: 125 East 2nd South, Rexburg, ID 83440</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black;" colspan="8">Telephone Number: 208-356-6789</td>
-    <td style="border:1px solid black;" colspan="4">Fax Number:</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black;" colspan="8">Alternate Phone Number:</td>
-    <td style="border:1px solid black;" colspan="4">E-mail: managers@windsormanor.net</td>
-  </tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="6">Property Name: Windsor Manor</td>
+		<td style="border:1px solid black;" colspan="6">Website: windsormanor.net</td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="12">Address: 125 East 2nd South, Rexburg, ID 83440</td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="8">Telephone Number: 208-356-6789</td>
+		<td style="border:1px solid black;" colspan="4">Fax Number:</td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="8">Alternate Phone Number:</td>
+		<td style="border:1px solid black;" colspan="4">E-mail: managers@windsormanor.net</td>
+	</tr>
 </table>
 <br/>
 <table style="width:960px; margin:0 auto; border-collapse:collapse; table-layout:fixed">
 	<!-- <tr><td style="border:1px solid black;">1</td><td style="border:1px solid black;">2</td><td style="border:1px solid black;">3</td><td style="border:1px solid black;">4</td><td style="border:1px solid black;">5</td><td style="border:1px solid black;">6</td><td style="border:1px solid black;">7</td><td style="border:1px solid black;">8</td><td style="border:1px solid black;">9</td><td style="border:1px solid black;">10</td><td style="border:1px solid black;">11</td><td style="border:1px solid black;">12</td></tr> -->
-  <tr>
-    <td style="border:1px solid black;" colspan="6">Students Name:</td>
-    <td style="border:1px solid black;" colspan="6">BYU-I E-mail:</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black;" colspan="2">City:</td>
-    <td style="border:1px solid black;" colspan="2">State:</td>
-    <td style="border:1px solid black;" colspan="2">Zip:</td>
-    <td style="border:1px solid black;" colspan="6">Cell Phone #:</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black;" colspan="4">Occupancy Dates</td>
-    <td style="border:1px solid black;" colspan="4">Occupancy Start:</td>
-    <td style="border:1px solid black;" colspan="4">Occupancy End:</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black;" colspan="3">Type of Apartment/Room</td>
+	<tr>
+		<td style="border:1px solid black;" colspan="6">Students Name: <%= @contract.first_name %></td>
+		<td style="border:1px solid black;" colspan="6">BYU-I E-mail: <%= @contract.email %></td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="2">City: <%= @contract.home_city %></td>
+		<td style="border:1px solid black;" colspan="2">State: <%= @contract.home_state %></td>
+		<td style="border:1px solid black;" colspan="2">Zip: <%= @contract.home_zip %></td>
+		<td style="border:1px solid black;" colspan="6">Cell Phone #: <%= @contract.phone %></td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="4">Occupancy Dates</td>
+		<td style="border:1px solid black;" colspan="4">Occupancy Start: <%= @semesters.first.start_date %> </td>
+		<td style="border:1px solid black;" colspan="4">Occupancy End: <%= @semesters.last.end_date %></td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black;" colspan="3">Type of Apartment/Room</td>
 		<td style="border:1px solid black;">&#x25fb; Private</td>
 		<td style="border:1px solid black;">&#x2611; Shared</td>
 		<td style="border:1px solid black;" colspan="3">&#x25fb; Other (specify)</td>
-    <td style="border:1px solid black;" colspan="4">Apt #:</td>
-  </tr>
+		<td style="border:1px solid black;" colspan="4">Apt #: <%= @contract.number %></td>
+	</tr>
 </table>
 <br/>
 <!-- ===================== Beginning of 2 col layout ===================== -->
@@ -63,11 +63,11 @@
 				<tr><td>&nbsp;</td></tr>
 				<tr>
 					<td colspan="4">
-						________________________ <br/>
+						<%= @contract.eligibility_sig %> <br/>
 						Student Signature
 					</td>
 					<td colspan="2">
-						____________ <br/>
+						<%= @contract.date_created %> <br/>
 						Date
 					</td>
 				</tr>
@@ -83,11 +83,11 @@
 				<tr><td>&nbsp;</td></tr>
 				<tr>
 					<td colspan="4">
-						________________________ <br/>
+						<%= @contract.living_standards_sig %> <br/>
 						Student Signature
 					</td>
 					<td colspan="2">
-						____________ <br/>
+						<%= @contract.date_created %> <br/>
 						Date
 					</td>
 				</tr>
@@ -110,11 +110,11 @@
 				<tr><td>&nbsp;</td></tr>
 				<tr>
 					<td colspan="4">
-						________________________ <br/>
+						<%= @contract.parking_ack %> <br/>
 						Student Signature
 					</td>
 					<td colspan="2">
-						____________ <br/>
+						<%= @contract.date_created %> <br/>
 						Date
 					</td>
 				</tr>
@@ -497,18 +497,18 @@
 </table>
 <br/>
 <table style="width:960px; margin:0 auto; border-collapse:collapse; table-layout:fixed">
-  <tr>
-    <td style="border:1px solid black;" colspan="12">
-    	I acknowledge that I have read and agree with all terms of this Contract including 
-    	the University-approved addendum (if applicable) incorporated herein by reference.
+	<tr>
+		<td style="border:1px solid black;" colspan="12">
+			I acknowledge that I have read and agree with all terms of this Contract including 
+			the University-approved addendum (if applicable) incorporated herein by reference.
 		</td>
-  </tr>
-  <tr>
-    <td style="border:1px solid black; padding-bottom: 25px" colspan="4">Student Signature:</td>
-    <td style="border:1px solid black; padding-bottom: 25px" colspan="2">Date:</td>
-    <td style="border:1px solid black; padding-bottom: 25px" colspan="4">Landlord Signature:</td>
-    <td style="border:1px solid black; padding-bottom: 25px" colspan="2">Date:</td>
-  </tr>
+	</tr>
+	<tr>
+		<td style="border:1px solid black; padding-bottom: 25px" colspan="4">Student Signature: <%= @contract.contract_agreement %></td>
+		<td style="border:1px solid black; padding-bottom: 25px" colspan="2">Date: <%= @contract.date_created %></td>
+		<td style="border:1px solid black; padding-bottom: 25px" colspan="4">Landlord Signature:</td>
+		<td style="border:1px solid black; padding-bottom: 25px" colspan="2">Date:</td>
+	</tr>
 </table>
 <br/>
 <br/>
@@ -669,7 +669,7 @@
 			At the beginning of the semester, a Student Living Meeting will be held to teach and share principles consistent
 			with successful apartment living. At the end of each semester, a complex-wide meeting will be held explaining checkout and 
 			white-glove procedures. <span style="font-weight: bold; text-decoration: underline"> All students will be held accountable for any information discussed or distributed in the meetings 
-			whether or not they attend.</span>
+				whether or not they attend.</span>
 		</td>
 	</tr>
 	<tr><td>&nbsp;</td></tr>
@@ -688,8 +688,8 @@
 			<span style="font-weight:bold;">15. PARKING:</span>
 			Students bringing cars must have a parking contract and get a parking permit from the manager at check-in.
 			Parking permit fees are listed above. <span style="font-weight: bold; text-decoration: underline"> Parking is at a premium and parking permits are given on a first-come, first-served basis. 
-			We highly advise leaving cars at home if possible due to our incredible location and close proximity to BYU-I classrooms. If 
-			you do need a parking spot, on the first page of this contract, please request a parking stall.</span> Tandem parking is available 
+				We highly advise leaving cars at home if possible due to our incredible location and close proximity to BYU-I classrooms. If 
+				you do need a parking spot, on the first page of this contract, please request a parking stall.</span> Tandem parking is available 
 			for friends and/or roommates who are both tenants of Windsor Manor. Tandem parking is when two stalls are placed one in 
 			front of the other; essentially, a 36 foot deep stall for two full-size cars. Access to the car parked in front is necessary to be 
 			coordinated between the two students. For the inconvenience, the tandem parking stalls have been reduced in price and are 
