@@ -5,7 +5,7 @@
 $font: 'Ovo', serif;
 body, html
 {
-	background-color: #9A9C99;
+	background-color: #EDEDED;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 675px;
@@ -156,11 +156,11 @@ $marketing-marg: 21px;
 }
 
 .inner-tile
-{
-	background: white;
+{	
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 	margin-top: 10px;
 	height: 325px;
+	display: block;
 
 	& > h3, & > p
 	{
@@ -177,64 +177,64 @@ $marketing-marg: 21px;
 
 .tile-overlay
 {
-/* 	position: absolute; */
-	bottom: 0;
-	background: rgba(0,0,0,0.45);
+	position: relative;
+	top: 249px;
+	background: rgba(0,0,0,0.5);
 	color: white;
 	padding: 10px 12px;
 	width: 100%;
 }
 
-#complex-tile > div
+#complex-tile > a
 {
 	background: image-url('building_cropped.png') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#apartments-tile > div 
+#apartments-tile > a
 {
 	background: image-url('large_apt.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#contracts-tile > div 
+#contracts-tile > a
 {
 	background: image-url('amenities_example.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#local-hap-tile > div
+#local-hap-tile > a
 {
 	background: image-url('local-happenings.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#maint-req-tile > div
+#maint-req-tile > a
 {
 	background: image-url('maintenance-request.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#study-rm-tile > div
+#study-rm-tile > a
 {
 	background: image-url('study-room.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#payment-tile > div
+#payment-tile > a
 {
 	background: image-url('payment.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
-#contact-mngr > div
+#contact-mngr > a
 {
 	background: image-url('managers.jpg') no-repeat;
 	background-size: cover;

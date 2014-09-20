@@ -1,28 +1,31 @@
-%h1 Listing study_reservations
-
-%table
-  %tr
-    %th Study room
-    %th Start
-    %th Stop
-    %th Date
-    %th Name
-    %th
-    %th
-    %th
-
-  - @study_reservations.each do |study_reservation|
-    %tr
-      %td= study_reservation.study_room.rm_type + " " + String(study_reservation.study_room.rm_number)
-      %td= study_reservation.start
-      %td= study_reservation.stop
-      %td= study_reservation.date
-      %td= study_reservation.name
-      %td= link_to 'Show', study_reservation
-      %td= link_to 'Edit', edit_study_reservation_path(study_reservation)
-      - if admin_signed_in?
-        %td= link_to 'Destroy', study_reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Study reservation', new_study_reservation_path
+.container
+  .row
+    .col-md-12
+      %h1 Study Room Reservations
+    .col-md-12
+      %table
+        %tr
+          %th Study room
+          %th Start
+          %th Stop
+          %th Date
+          %th Name
+          %th
+          %th
+          %th
+        - @study_reservations.each do |study_reservation|
+          %tr
+            %td= study_reservation.study_room.rm_type + " " + String(study_reservation.study_room.rm_number)
+            %td= study_reservation.start
+            %td= study_reservation.stop
+            %td= study_reservation.date
+            %td= study_reservation.name
+            %td= link_to 'Show', study_reservation
+            %td= link_to 'Edit', edit_study_reservation_path(study_reservation)
+            - if admin_signed_in?
+              %td= link_to 'Destroy', study_reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
+  %br
+  .row
+    .col-md-12
+      = link_to 'New Study reservation', new_study_reservation_path, class: ['btn', 'btn-primary']

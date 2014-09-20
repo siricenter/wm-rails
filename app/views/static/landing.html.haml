@@ -21,15 +21,15 @@
 
 	.tiles
 		#complex-tile.tile
-			.inner-tile
+			= link_to complex_path, class: :"inner-tile" do
 				.tile-overlay
 					%h3 Complex
 		#apartments-tile.tile
-			.inner-tile
+			= link_to apartments_path, class: :"inner-tile" do
 				.tile-overlay
 					%h3 Apartments
 		#contracts-tile.tile
-			.inner-tile
+			= link_to tenant_path, class: :"inner-tile" do
 				.tile-overlay
 					%h3 Contracts
 .container.visible-xs

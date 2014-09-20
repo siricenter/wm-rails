@@ -4,31 +4,30 @@
 .container
 	.tiles
 		#local-hap-tile.tile
-			.inner-tile
+			= link_to tenant_path, class: :"inner-tile" do
 				.tile-overlay
 					%h3 Local Happenings
 				/= image_tag :'local-happenings.jpg', class: [:'tile-picture']
-				
 		#maint-req-tile.tile
-			.inner-tile
+			= link_to '/admin/maintenances/new', class: :"inner-tile" do
 				.tile-overlay
 					%h3 Maintenance Request
 				/= link_to 'Maintenance Request', '/admin/maintenances/new', class: [:btn, :'btn-primary', :cntr]
 		.clearfix.visible-sm
 		#study-rm-tile.tile
-			.inner-tile
+			= link_to study_reservations_path, class: :"inner-tile" do
 				.tile-overlay
 					%h3 Reserve Study Room
 				/= link_to 'Reserve Study Room', study_reservations_path, class: [:btn, :'btn-primary', :cntr]
 		.clearfix.visible-md.visible-lg
 		#payment-tile.tile
-			.inner-tile
+			= link_to '/userPayment', class: :"inner-tile" do
 				.tile-overlay
 					%h3 Make a Payment
 				/= link_to 'Make a Payment', '/userPayment', class: [:btn, :'btn-primary', :cntr]
 		.clearfix.visible-sm
 		#contact-mngr.tile
-			.inner-tile
+			= link_to "mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20", class: :"inner-tile" do
 				.tile-overlay
 					%h3 Contact the manager
 				/= link_to 'Contact the Manager', "mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20", class: [:btn, :'btn-primary', :cntr]
