@@ -22,10 +22,11 @@ $(document).ready ->
 
 available = (buildingId) ->
 	view = $('#available-answer')
+	semesterId = $('#sem-select').val()
 	view.children().first().text('Available: Click Here to Book Now!')
 	view.addClass('success').hide().fadeIn()
 	view.on 'click', () ->
-		window.location = "/contracts/new/#{buildingId}"
+		window.location = "/choose/#{semesterId}"
 
 unavailable = (data) ->
 	$('#available-answer').children().first().text('Sorry - We\'re booked!')
