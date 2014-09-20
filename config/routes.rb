@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :amenities
 	get '/galleries', to: 'static#galleries', as: :gallery
-	get '/apartments', to: 'static#apartments', as: :show_apartments
+	get '/apartments', to: 'static#apartments', as: :apartments
 	get '/tenant', to: 'static#tenant', as: :tenant
 	get 'maintenances/created', to: 'maintenances#created'
+	get '/building/:building_id/apartments', to: 'ajax#apartments'
 
 	get '/renew', to: 'contracts#renew'
 	get '/userPayment', to: 'contracts#userPayment'
