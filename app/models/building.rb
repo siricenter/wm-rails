@@ -12,6 +12,7 @@
 class Building < ActiveRecord::Base
     has_many :contracts, dependent: :destroy
     has_many :maintenances
+	has_many :apartments
 
 	validates :name, presence: true
 	validates :capacity, presence: true, numericality: true
