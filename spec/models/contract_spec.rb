@@ -87,9 +87,14 @@ RSpec.describe Contract, :type => :model do
         expect(subject).to_not be_valid
     end
 
-	it "is invalid without a building" do
+	it "is valid without a building" do
 		subject.building = nil
-        expect(subject).to_not be_valid
+        expect(subject).to be_valid
+	end
+
+	it "is invalid without an bed" do
+		subject.bed = nil
+		expect(subject).to_not be_valid
 	end
 
 	it "is invalid without an eligibility_sig" do
@@ -107,8 +112,16 @@ RSpec.describe Contract, :type => :model do
         expect(subject).to_not be_valid
 	end
 
-    it "is invalid if the building is full" do
-		subject.building.capacity = 0
-        expect(subject).to_not be_valid
+	it "is invalid if the bed is already contracted for the first semester" do
+		FactoryGirl.create(:contract, bed: subject.bed, semesters: subject.semesters)
+		expect(subject).to_not be_valid
+	end
+
+	it "is invalid if the bed is already contracted for a subsequent semester" do
+		semester2 = FactoryGirl.create(:semester)
+		subject.semesters << semester2
+		FactoryGirl.create(:contract, bed: subject.bed, semesters: [subject.semesters.last])
+		expect(subject).to_not be_valid
+		expect(subject.errors[:bed]).to eq(["is already taken #{semester2.name}"])
 	end
 end

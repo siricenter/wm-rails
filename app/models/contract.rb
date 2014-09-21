@@ -27,11 +27,12 @@
 #  number               :text
 #  contract_text_id     :integer
 #
-
-class BuildingAvailablityValidator < ActiveModel::Validator
+class BedTakenValidator < ActiveModel::Validator
 	def validate(record)
-		if record.building and not record.semesters.empty?
-			record.errors[:building] << "is full" unless record.building.availabilities?(record.semesters.first)
+		record.semesters.each do |semester|
+			unless semester.contracts.where(bed: record.bed).empty?
+				record.errors[:bed] << "is already taken #{semester.name}" 
+			end
 		end
 	end 
 end
@@ -40,6 +41,7 @@ class Contract < ActiveRecord::Base
 	has_and_belongs_to_many :semesters, autosave: true
 	belongs_to :contract_text
 	belongs_to :building
+	belongs_to :bed
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -61,5 +63,5 @@ class Contract < ActiveRecord::Base
 	#validates_presence_of :building
 	validates_presence_of :bed
 
-	validates_with BuildingAvailablityValidator 
-end 
+	validates_with BedTakenValidator
+end
