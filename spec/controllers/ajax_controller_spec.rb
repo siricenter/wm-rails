@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AjaxController, :type => :controller do
 	describe 'beds' do
-		it 'Should return a list of apartments for a building' do
+		it 'returns a list of apartments for a building' do
 			apartment1 = FactoryGirl.create(:apartment)
 			apartment2 = FactoryGirl.create(:apartment, building: apartment1.building)
 			FactoryGirl.create(:apartment)
