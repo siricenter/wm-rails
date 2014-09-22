@@ -1,19 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'ajax/beds.json.rabl', type: :view do
-	before :each do
+	let(:apartments) {
 		building = FactoryGirl.create(:building)
 		apartment1 = FactoryGirl.create(:apartment, building: building)
 		apartment2 = FactoryGirl.create(:apartment, building: building)
 
-		bed1 = FactoryGirl.create(:bed, apartment: apartment1)
-		bed2 = FactoryGirl.create(:bed, apartment: apartment1)
-		bed3 = FactoryGirl.create(:bed, apartment: apartment2)
-		@apartments = [apartment1, apartment2]
+		FactoryGirl.create(:bed, apartment: apartment1)
+		FactoryGirl.create(:bed, apartment: apartment1)
+		FactoryGirl.create(:bed, apartment: apartment2)
+		[apartment1, apartment2]
+	}
+	before :each do
+		@rendered = render([apartments])
 	end
 
 	it 'renders without errors' do
-		render
 	end
 
 	it 'includes the apartments number'
