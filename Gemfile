@@ -70,3 +70,4 @@ gem 'thin', '~> 1.6.2'
 gem 'mandrill-api', '~> 1.0.52'
 gem 'rails_12factor', group: :production
 gem 'cloudinary', '~> 1.0.75'
+gem 'rabl', '~> 0.11.0'
