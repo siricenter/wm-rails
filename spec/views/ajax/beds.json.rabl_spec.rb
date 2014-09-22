@@ -23,6 +23,10 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 	it 'renders without errors' do
 	end
 
+	it 'includes all the apartments' do
+		expect(@parsed['apartments'].size).to eq(2)
+	end
+
 	it 'includes the apartments number'
 	it 'includes all the apartments beds'
 	it 'specifies whether the bed is available that semester'
