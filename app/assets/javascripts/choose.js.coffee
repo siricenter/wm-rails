@@ -1,8 +1,8 @@
 $(".choose-section").hide()
 
-pageURL = window.location.pathname
-semesterId = pageURL[pageURL.length - 1]
-console.log "building id: " + semesterId
+pageURL = window.location.pathname  #grab the path from URL of the page
+semesterId = pageURL[pageURL.length - 1]  #get the last character from the path string
+console.log "semester id: " + semesterId
 gender = 0
 floor = 0
 layout = 0
@@ -57,6 +57,7 @@ layoutOverlaysBldg.on "click", "div", (event) ->
     return
   console.log @dataset.floornum
   floor = parseInt(@dataset.floornum)
+  deactivateElement 'data', 'map-overlay', 'aptnum', 106
   deliverFloorBlueprint gender, floor
   $("#choose-floor").fadeOut()
   $("#choose-apt").fadeIn()
@@ -236,4 +237,14 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="d" style="position: absolute; top: 29px; left: 165px; width: 26px; height: 50px;"  alt="bed d" title="bed d" ><p>D</p></div>'
   $("#bed-blueprint").html htmlImgOut
   $("#layout-overlays-bed").html htmlOverlayOut
+  return
+
+deactivateElement = (selectorType, className, dataName, value) ->  #the selectorType should be id for element id, data for a data element, class for class name, etc
+  element
+  switch selectorType
+    when 'id'
+      element = $("#" + value)
+    when 'data'
+      element = $('.' + className + '[data-' + dataName + '="' + value + '"]')
+  console.log "element retrieved: " + element
   return
