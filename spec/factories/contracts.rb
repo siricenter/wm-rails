@@ -33,7 +33,6 @@
 FactoryGirl.define do
 	factory :contract do
 		semesters {[FactoryGirl.create(:semester)]}
-		building 
 		first_name { Faker::Name.first_name }
 		last_name { Faker::Name.last_name }
 		email 'student1@byui.edu'
@@ -50,5 +49,6 @@ FactoryGirl.define do
 		parking_ack "John Doe"
 		contract_agreement "John Doe"
 		euro ""
+		bed
 	end
 end

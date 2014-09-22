@@ -18,5 +18,6 @@ FactoryGirl.define do
     title "MyString"
     description "MyText"
     image_id "MyString"
+	building
   end
 end

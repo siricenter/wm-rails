@@ -14,6 +14,6 @@
 FactoryGirl.define do
   factory :bed do
     letter "MyString"
-    apartment nil
+	apartment
   end
 end
