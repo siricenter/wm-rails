@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'ajax/beds.json.rabl', type: :view do
+
+	let(:semester) {
+		assign(:semester, @semester1 = FactoryGirl.create(:semester))
+	}
+
 	let(:apartments) {
 		building = FactoryGirl.create(:building)
 		@apartment1 = FactoryGirl.create(:apartment, building: building)
@@ -9,8 +14,11 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 		@bed1 = FactoryGirl.create(:bed, apartment: @apartment1)
 		@bed2 = FactoryGirl.create(:bed, apartment: @apartment1)
 		@bed3 = FactoryGirl.create(:bed, apartment: @apartment2)
-		[@apartment1, @apartment2]
+
+		@contract = FactoryGirl.create(:contract, bed: @bed2, semesters: [semester])
+		assign(:apartments, [@apartment1, @apartment2])
 	}
+
 
 	let(:apartments_json) {
 		{
@@ -22,10 +30,12 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 						{
 							"id" => @bed2.id, 
 							"letter" => @bed2.letter,
+							"available" => false,
 						},
 						{
 							"id" => @bed1.id, 
 							"letter" => @bed1.letter,
+							"available" => true,
 						},
 					]
 				},
@@ -36,6 +46,7 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 						{
 							"id" => @bed3.id, 
 							"letter" => @bed3.letter,
+							"available" => true,
 						},
 					]
 				},
@@ -62,8 +73,6 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 		expect(@parsed['apartments'].first['title']).to eq(@apartments.first.title)
 		expect(@parsed['apartments'].last['title']).to eq(@apartments.last.title)
 	end
-
-	it 'specifies whether the bed is available that semester'
 
 	it 'matches the expected json' do
 		expect(@parsed).to eq(apartments_json)
