@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 	get '/apartments', to: 'static#apartments', as: :apartments
 	get '/tenant', to: 'static#tenant', as: :tenant
 	get 'maintenances/created', to: 'maintenances#created'
-	get '/building/:building_id/apartments/:semester_id', to: 'ajax#apartments'
+	get '/buildings/:building_id/apartments/:semester_id', to: 'ajax#beds'
 
 	get '/renew', to: 'contracts#renew'
 	get '/userPayment', to: 'contracts#userPayment'
