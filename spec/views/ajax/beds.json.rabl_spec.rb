@@ -11,8 +11,13 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 		FactoryGirl.create(:bed, apartment: apartment2)
 		[apartment1, apartment2]
 	}
+
+	subject {apartments}
+
 	before :each do
-		@rendered = render([apartments])
+		@apartments = subject
+		@rendered = render
+		@parsed = JSON.parse(@rendered)
 	end
 
 	it 'renders without errors' do
