@@ -1,5 +1,5 @@
 class AjaxController < ApplicationController
-	def apartments
+	def beds
 		@building = Building.find(params[:building_id])
 	end
 end
