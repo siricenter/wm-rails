@@ -16,6 +16,7 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 		render
 	end
 
+	it 'includes the apartments number'
 	it 'includes all the apartments beds'
 	it 'specifies whether the bed is available that semester'
 end
