@@ -5,7 +5,7 @@ RSpec.describe AjaxController, :type => :controller do
 		it 'returns a list of apartments for a building' do
 			apartment1 = FactoryGirl.create(:apartment)
 			apartment2 = FactoryGirl.create(:apartment, building: apartment1.building)
-			FactoryGirl.create(:apartment)
+			FactoryGirl.create(:apartment) # tests that only the apartments from this building are returned
 			semester = FactoryGirl.create(:semester)
 
 			get :beds, {building_id: apartment1.building.to_param, semester_id: semester.to_param}
