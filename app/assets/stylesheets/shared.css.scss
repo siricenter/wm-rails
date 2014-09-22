@@ -101,6 +101,9 @@ img.choose
 .choose-section
 {
   @extend .row;
+	display: none;
+	position: absolute;
+	width: 100%;
 }
 .choose-section-title
 {
@@ -194,6 +197,18 @@ img.choose
 	border-top: 20px solid transparent;
 	border-bottom: 20px solid transparent; 
 	border-right:15px solid $theme-dburgandy; 
+}
+
+.deactivate
+{
+	background: rgba(240,231,15,.5);
+	cursor: auto;
+}
+
+.deactivate:hover
+{
+	background: rgba(240,231,15,.5);
+	cursor: auto;
 }
 
 .bold

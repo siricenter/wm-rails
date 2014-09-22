@@ -7,7 +7,7 @@ gender = 0
 floor = 0
 layout = 0
 aptNum = 0
-bed = ""
+bed = 0
 mens = $("#mens-link")
 womens = $("#womens-link")
 bkBtn = $(".bk-btn")
@@ -57,8 +57,11 @@ layoutOverlaysBldg.on "click", "div", (event) ->
     return
   console.log @dataset.floornum
   floor = parseInt(@dataset.floornum)
-  deactivateElement 'data', 'map-overlay', 'aptnum', 106
   deliverFloorBlueprint gender, floor
+  deactivateElement 'data', 'map-overlay', 'aptnum', 102
+  deactivateElement 'data', 'map-overlay', 'aptnum', 202
+  deactivateElement 'data', 'map-overlay', 'aptnum', 302
+  deactivateElement 'data', 'map-overlay', 'aptnum', 402
   $("#choose-floor").fadeOut()
   $("#choose-apt").fadeIn()
   return
@@ -187,7 +190,6 @@ deliverFloorBlueprint = (gender, floor) ->
   $("#floor-blueprint").html htmlImgOut
   $("#layout-overlays-apt").html htmlOverlayOut
   return
-
 deliverAptBlueprint = (gender, floor, layout, apt) ->
   console.log('Chose a ' + gender + ' apartment on floor ' + floor + ' with ' + layout + ' layout and apartment #' + apt + '.')
   htmlImgOut = ""
@@ -246,5 +248,9 @@ deactivateElement = (selectorType, className, dataName, value) ->  #the selector
       element = $("#" + value)
     when 'data'
       element = $('.' + className + '[data-' + dataName + '="' + value + '"]')
+  element.addClass('deactivate')
+  element.off "click", (event) ->
+    null
+    return
   console.log "element retrieved: " + element
   return
