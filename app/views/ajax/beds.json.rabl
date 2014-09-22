@@ -1,3 +1,1 @@
-collection @apartments
-
-attributes :id, :description, :created_at, :updated_at
+collection @apartments, root: "apartments", object_root: false
