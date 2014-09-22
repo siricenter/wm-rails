@@ -13,6 +13,7 @@
 
 class Apartment < ActiveRecord::Base
 	belongs_to :building
+	has_many :beds
 
 	validates :image_id, presence: true
 	validates :title, presence: true
