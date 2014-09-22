@@ -63,7 +63,6 @@ RSpec.describe 'ajax/beds.json.rabl', type: :view do
 		expect(@parsed['apartments'].last['title']).to eq(@apartments.last.title)
 	end
 
-	it 'includes all the apartments beds'
 	it 'specifies whether the bed is available that semester'
 
 	it 'matches the expected json' do
