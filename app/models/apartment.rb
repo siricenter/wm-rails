@@ -16,7 +16,7 @@ class Apartment < ActiveRecord::Base
 	has_many :beds
 
 	validates :image_id, presence: true
-	validates :title, presence: true
+	validates :title, presence: true, uniqueness: {scope: building_id, message: 'An apartment with that number already exists in that building'}
 	validates :description, presence: true
 
 	before_destroy :backupItem
