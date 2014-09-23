@@ -25,5 +25,75 @@ Semester.create!({name: 'Winter 2016', deposit: 50, rent: 1445, start_date: Date
 Semester.create!({name: 'Spring 2016', deposit: 50, rent: 1445, start_date: Date.new(2016, 4, 15), end_date: Date.new(2016, 7, 21)})
 Semester.create!({name: 'Fall 2016', deposit: 50, rent: 1445, start_date: Date.new(2016, 9, 10), end_date: Date.new(2016, 12, 13)})
 
+Apartment.create!({title: '106', description: '102 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 1})
+Apartment.create!({title: '202', description: '202 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 1})
+Apartment.create!({title: '302', description: '302 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 1})
+Apartment.create!({title: '404', description: '402 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 1})
+Apartment.create!({title: '102', description: '102 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 2})
+Apartment.create!({title: '202', description: '202 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 2})
+Apartment.create!({title: '302', description: '302 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 2})
+Apartment.create!({title: '402', description: '402 desc', image_id: 'none', created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18), building_id: 2})
+
+#  bldg 1
+# apt 106
+Bed.create!({letter: 'a', apartment_id: 1, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 1, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 1, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 1, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 1, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 1, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# apt 202
+Bed.create!({letter: 'a', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'g', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'h', apartment_id: 2, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# apt 302
+Bed.create!({letter: 'a', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'g', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'h', apartment_id: 3, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# apt 404
+Bed.create!({letter: 'a', apartment_id: 4, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 4, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 4, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 4, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# bldg 2
+# apt 102
+Bed.create!({letter: 'a', apartment_id: 5, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 5, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 5, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 5, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 5, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 5, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# apt 202
+Bed.create!({letter: 'a', apartment_id: 6, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 6, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 6, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 6, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 6, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 6, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# apt 302
+Bed.create!({letter: 'a', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+# apt 402
+Bed.create!({letter: 'a', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'b', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'c', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'd', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'e', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+Bed.create!({letter: 'f', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+
 
 Admin.create({email: 'managers@windsormanor.net', password: 'Greatestplace1'})

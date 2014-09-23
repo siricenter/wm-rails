@@ -52,8 +52,8 @@ mens.click ->
   return
 
 layoutOverlaysBldg.on "click", "div", (event) ->
-  $.get "/building/" + gender + "/apartments/" + semesterId, (data, status) -> #TODO: get the :semester_id from the url and replace the hardcoded semester
-    console.log "Data: " + data + "\nStatus: " + status
+  $.get "/buildings/" + gender + "/apartments/" + semesterId, (data, status) -> #TODO: get the :semester_id from the url and replace the hardcoded semester
+    console.log JSON.stringify data
     return
   console.log @dataset.floornum
   floor = parseInt(@dataset.floornum)
