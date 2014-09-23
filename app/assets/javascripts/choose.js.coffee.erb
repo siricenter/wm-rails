@@ -107,13 +107,13 @@ deliverBldgBlueprint = (gender) ->
   htmlOverlayOut = ""
   switch gender
     when 1
-      htmlImgOut = '<img src="/assets/women-exterior.png" alt="womens building">'
+      htmlImgOut = '<%= asset_path('women-exterior.png') %>'
       htmlOverlayOut = '<div class="map-overlay floor4" data-floornum="4" style="position: absolute; top: 157px; left: 217px; width: 646px; height: 56px;"  alt="fourth floor" title="Fourth Floor" ><p>Floor 4</p></div>'
       htmlOverlayOut += '<div class="map-overlay floor3" data-floornum="3" style="position: absolute; top: 213px; left: 65px; width: 798px; height: 54px;"  alt="third floor" title="Third Floor" ><p>Floor 3</p></div>'
       htmlOverlayOut += '<div class="map-overlay floor2" data-floornum="2" style="position: absolute; top: 267px; left: 65px; width: 798px; height: 54px;"  alt="second floor" title="Second Floor" ><p>Floor 2</p></div>'
       htmlOverlayOut += '<div class="map-overlay floor1" data-floornum="1" style="position: absolute; top: 321px; left: 65px; width: 798px; height: 56px;"  alt="first floor" title="First Floor" ><p>Floor 1</p></div>'
     when 2
-      htmlImgOut = '<img src="/assets/men-exterior.png" alt="womens building">'
+      htmlImgOut = '<%= asset_path('men-exterior.png') %>'
       htmlOverlayOut = '<div class="map-overlay floor4" data-floornum="4" style="position: absolute; top: 133px; left: 59px; width: 836px; height: 59px;"  alt="fourth floor" title="Fourth Floor" ><p>Floor 4</p></div>'
       htmlOverlayOut += '<div class="map-overlay floor3" data-floornum="3" style="position: absolute; top: 192px; left: 59px; width: 836px; height: 59px;"  alt="third floor" title="Third Floor" ><p>Floor 3</p></div>'
       htmlOverlayOut += '<div class="map-overlay floor2" data-floornum="2" style="position: absolute; top: 251px; left: 59px; width: 836px; height: 59px;"  alt="second floor" title="Second Floor" ><p>Floor 2</p></div>'
@@ -128,11 +128,11 @@ deliverFloorBlueprint = (gender, floor) ->
   if gender is 1
     switch floor
       when 1
-        htmlImgOut = '<img src="/assets/w1f.png" alt="womens first floor plan">'
+        htmlImgOut = '<%= asset_path('w1f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="106" style="position: absolute; top: 430px; left: 225px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="108" style="position: absolute; top: 430px; left: 569px; width: 425px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 2
-        htmlImgOut = '<img src="/assets/w2f.png" alt="womens second floor plan">'
+        htmlImgOut = '<%= asset_path('w2f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="8a" data-aptnum="202" style="position: absolute; top: 19px; left: 32px; width: 219px; height: 422px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="4a" data-aptnum="204" style="position: absolute; top: 596px; left: 32px; width: 217px; height: 272px;"  alt="4 bed" title="4 bed" ><p>4 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="206" style="position: absolute; top: 714px; left: 249px; width: 339px; height: 221px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -140,7 +140,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="208" style="position: absolute; top: 714px; left: 588px; width: 421px; height: 221px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="209" style="position: absolute; top: 461px; left: 774px; width: 343px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
       when 3
-        htmlImgOut = '<img src="/assets/w3f.png" alt="womens third floor plan">'
+        htmlImgOut = '<%= asset_path('w3f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="8a" data-aptnum="302" style="position: absolute; top: 10px; left: 10px; width: 220px; height: 427px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="304" style="position: absolute; top: 10px; left: 272px; width: 211px; height: 427px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="306" style="position: absolute; top: 711px; left: 228px; width: 339px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -148,7 +148,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="308" style="position: absolute; top: 711px; left: 567px; width: 424px; height: 219px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="309" style="position: absolute; top: 447px; left: 753px; width: 343px; height: 221px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
       when 4
-        htmlImgOut = '<img src="/assets/w4f.png" alt="womens fourth floor plan">'
+        htmlImgOut = '<%= asset_path('w4f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="8a" data-aptnum="402" style="position: absolute; top: 12px; left: 14px; width: 221px; height: 427px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8b" data-aptnum="403" style="position: absolute; top: 12px; left: 276px; width: 220px; height: 430px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="4a" data-aptnum="404" style="position: absolute; top: 596px; left: 10px; width: 224px; height: 276px;"  alt="4 bed" title="4 bed" ><p>4 bed</p></div>'
@@ -159,7 +159,7 @@ deliverFloorBlueprint = (gender, floor) ->
   else
     switch floor
       when 1
-        htmlImgOut = '<img src="/assets/m1f.png" alt="mens first floor plan">'
+        htmlImgOut = '<%= asset_path('m1f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="102" style="position: absolute; top: 923px; left: 69px; width: 344px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="103" style="position: absolute; top: 670px; left: 178px; width: 426px; height: 211px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="104" style="position: absolute; top: 923px; left: 413px; width: 343px; height: 211px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -169,7 +169,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="108" style="position: absolute; top: 448px; left: 893px; width: 220px; height: 339px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8b" data-aptnum="110" style="position: absolute; top: 23px; left: 893px; width: 220px; height: 425px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 2
-        htmlImgOut = '<img src="/assets/m2f.png" alt="mens second floor plan">'
+        htmlImgOut = '<%= asset_path('m2f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="202" style="position: absolute; top: 911px; left: 10px; width: 342px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="203" style="position: absolute; top: 649px; left: 115px; width: 429px; height: 219px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="204" style="position: absolute; top: 911px; left: 352px; width: 344px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -179,7 +179,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="208" style="position: absolute; top: 437px; left: 834px; width: 220px; height: 337px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8b" data-aptnum="210" style="position: absolute; top: 12px; left: 834px; width: 220px; height: 425px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 3
-        htmlImgOut = '<img src="/assets/m3f.png" alt="mens third floor plan">'
+        htmlImgOut = '<%= asset_path('m3f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="302" style="position: absolute; top: 911px; left: 12px; width: 342px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="303" style="position: absolute; top: 649px; left: 117px; width: 429px; height: 219px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="304" style="position: absolute; top: 911px; left: 354px; width: 344px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -189,7 +189,7 @@ deliverFloorBlueprint = (gender, floor) ->
         htmlOverlayOut += '<div class="map-overlay" data-layout="6a" data-aptnum="308" style="position: absolute; top: 437px; left: 836px; width: 220px; height: 337px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8b" data-aptnum="310" style="position: absolute; top: 12px; left: 834px; width: 220px; height: 425px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
       when 4
-        htmlImgOut = '<img src="/assets/m4f.png" alt="mens fourth floor plan">'
+        htmlImgOut = '<%= asset_path('m4f.png') %>'
         htmlOverlayOut = '<div class="map-overlay" data-layout="6a" data-aptnum="302" style="position: absolute; top: 913px; left: 9px; width: 342px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="8a" data-aptnum="303" style="position: absolute; top: 651px; left: 114px; width: 429px; height: 219px;"  alt="8 bed" title="8 bed" ><p>8 bed</p></div>'
         htmlOverlayOut += '<div class="map-overlay" data-layout="6b" data-aptnum="304" style="position: absolute; top: 913px; left: 351px; width: 344px; height: 219px;"  alt="6 bed" title="6 bed" ><p>6 bed</p></div>'
@@ -207,7 +207,7 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
   htmlOverlayOut = ""
   switch layout
     when '8a'
-      htmlImgOut = '<img src="/assets/8ba.png" alt="8 bedroom plan a">'
+      htmlImgOut = '<%= asset_path('8ba.png') %>'
       htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 88px; left: 36px; width: 52px; height: 107px;"  alt="bed a" title="bed a" ><p>A</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 88px; left: 151px; width: 52px; height: 107px;"  alt="bed b" title="bed b" ><p>B</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 57px; left: 210px; width: 52px; height: 107px;"  alt="bed c" title="bed c" ><p>C</p></div>'
@@ -217,7 +217,7 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="g" style="position: absolute; top: 88px; left: 755px; width: 52px; height: 107px;"  alt="bed g" title="bed g" ><p>G</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="h" style="position: absolute; top: 88px; left: 868px; width: 52px; height: 107px;"  alt="bed h" title="bed h" ><p>H</p></div>'
     when '8b'
-      htmlImgOut = '<img src="/assets/8bb.png" alt="8 bedroom plan b">'
+      htmlImgOut = '<%= asset_path('8bb.png') %>'
       htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 88px; left: 40px; width: 52px; height: 107px;"  alt="bed a" title="bed a" ><p>A</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 88px; left: 155px; width: 52px; height: 107px;"  alt="bed b" title="bed b" ><p>B</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 57px; left: 214px; width: 52px; height: 107px;"  alt="bed c" title="bed c" ><p>C</p></div>'
@@ -227,7 +227,7 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="g" style="position: absolute; top: 88px; left: 759px; width: 52px; height: 107px;"  alt="bed g" title="bed g" ><p>G</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="h" style="position: absolute; top: 88px; left: 872px; width: 52px; height: 107px;"  alt="bed h" title="bed h" ><p>H</p></div>'
     when '6a'
-      htmlImgOut = '<img src="/assets/6ba.png" alt="6 bedroom plan a">'
+      htmlImgOut = '<%= asset_path('6ba.png') %>'
       htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 110px; left: 37px; width: 65px; height: 130px;"  alt="bed a" title="bed a" ><p>A</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 110px; left: 179px; width: 65px; height: 130px;"  alt="bed b" title="bed b" ><p>B</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 71px; left: 498px; width: 65px; height: 130px;"  alt="bed c" title="bed c" ><p>C</p></div>'
@@ -235,7 +235,7 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="e" style="position: absolute; top: 110px; left: 715px; width: 65px; height: 130px;"  alt="bed e" title="bed e" ><p>E</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="f" style="position: absolute; top: 110px; left: 857px; width: 65px; height: 130px;"  alt="bed f" title="bed f" ><p>F</p></div>'
     when '6b'
-      htmlImgOut = '<img src="/assets/6bb.png" alt="6 bedroom plan b">'
+      htmlImgOut = '<%= asset_path('6bb.png') %>'
       htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 110px; left: 38px; width: 65px; height: 130px;"  alt="bed a" title="bed a" ><p>A</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 110px; left: 180px; width: 65px; height: 130px;"  alt="bed b" title="bed b" ><p>B</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 71px; left: 255px; width: 65px; height: 130px;"  alt="bed c" title="bed c" ><p>C</p></div>'
@@ -243,7 +243,7 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="e" style="position: absolute; top: 110px; left: 716px; width: 65px; height: 130px;"  alt="bed e" title="bed e" ><p>E</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="f" style="position: absolute; top: 110px; left: 858px; width: 65px; height: 130px;"  alt="bed f" title="bed f" ><p>F</p></div>'
     when '4a'
-      htmlImgOut = '<img src="/assets/4ba.png" alt="4 bedroom plan a">'
+      htmlImgOut = '<%= asset_path('4ba.png') %>'
       htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 149px; left: 61px; width: 74px; height: 154px;"  alt="bed a" title="bed a" ><p>A</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 45px; left: 162px; width: 154px; height: 74px;"  alt="bed b" title="bed b" ><p>B</p></div>'
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 91px; left: 359px; width: 74px; height: 154px;"  alt="bed c" title="bed c" ><p>C</p></div>'
