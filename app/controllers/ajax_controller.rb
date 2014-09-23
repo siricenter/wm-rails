@@ -4,6 +4,6 @@ class AjaxController < ApplicationController
 	def beds
 		@apartments = Apartment.where(building_id: params[:building_id])
 		@semester = Semester.find(params[:semester_id])
-		render 'ajax/beds'
+		render 'ajax/beds', formats: [:json]
 	end
 end
