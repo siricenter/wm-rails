@@ -15,7 +15,7 @@
 
 FactoryGirl.define do
   factory :apartment do
-    title "MyString"
+    title {Faker::Address.building_number}
     description "MyText"
     image_id "MyString"
 	building
