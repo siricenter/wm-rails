@@ -249,8 +249,6 @@ deactivateElement = (selectorType, className, dataName, value) ->  #the selector
     when 'data'
       element = $('.' + className + '[data-' + dataName + '="' + value + '"]')
   element.addClass('deactivate')
-  element.off "click", (event) ->
-    null
-    return
+  element.off "click", (event)
   console.log "element retrieved: " + element
   return
