@@ -108,6 +108,11 @@ img.choose
 .choose-section-title
 {
   @extend .col-md-12;
+  
+  span {
+    margin-left: 60px;
+    margin-right: 30px;
+  }
 }
 
 .imgmap-container
@@ -115,7 +120,7 @@ img.choose
   position: relative;
   width: -moz-fit-content;
   width: -webkit-fit-content;
-  margin-top: 70px;
+  margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -123,8 +128,9 @@ img.choose
 .map-overlay
 {
   position: absolute;
-  color: white;
-  background: rgba(0,0,0,0.35);
+  color: $theme-lgreen;
+  background: rgba(0,0,0,0.05);
+  border: 2px solid $theme-lgreen;
   text-decoration: none;
   padding-left: 10px;
   padding-right: 15px;
@@ -137,7 +143,7 @@ img.choose
   }
   &:hover
   {
-    background: $theme-lgreen;
+    background: rgba(0,0,0,0.55);
   }
 }
 
@@ -201,13 +207,14 @@ img.choose
 
 .deactivate
 {
-	background: rgba(240,231,15,.5);
+	background: rgba(145,18,10,.55);
+  color: white;
 	cursor: auto;
 }
 
 .deactivate:hover
 {
-	background: rgba(240,231,15,.5);
+	background: rgba(145,18,10,.55);
 	cursor: auto;
 }
 

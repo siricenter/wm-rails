@@ -8,6 +8,7 @@ floor = 0
 layout = 0
 aptNum = 0
 bed = 0
+availData = null
 mens = $("#mens-link")
 womens = $("#womens-link")
 bkBtn = $(".bk-btn")
@@ -52,16 +53,19 @@ mens.click ->
   return
 
 layoutOverlaysBldg.on "click", "div", (event) ->
-  $.get "/buildings/" + gender + "/apartments/" + semesterId, (data, status) ->
-    console.log JSON.stringify data
-    return
-  console.log @dataset.floornum
+  console.log "floornum: " + @dataset.floornum
   floor = parseInt(@dataset.floornum)
   deliverFloorBlueprint gender, floor
-  deactivateElement 'data', 'map-overlay', 'aptnum', 102
-  deactivateElement 'data', 'map-overlay', 'aptnum', 202
-  deactivateElement 'data', 'map-overlay', 'aptnum', 302
-  deactivateElement 'data', 'map-overlay', 'aptnum', 402
+  $.get "/buildings/" + gender + "/apartments/" + semesterId, (data, status) ->
+    console.log JSON.stringify data
+    availData = data
+    jQuery.each availData.apartments, (key, value) ->
+      console.log value.title
+      element = $('[data-aptnum="' + value.title + '"]')
+      console.log "element exits? " + element.exists()
+      if element.exists()
+        if countAvailableBeds(value) is 0
+          deactivateElement(element)
   $("#choose-floor").fadeOut()
   $("#choose-apt").fadeIn()
   return
@@ -70,6 +74,13 @@ layoutOverlaysApt.on "click", "div", (event) ->
   console.log @dataset.aptnum
   aptNum = @dataset.aptnum
   deliverAptBlueprint gender, floor, @dataset.layout, aptNum
+  jQuery.each availData.apartments, (key, value) ->
+    if value.title is aptNum
+      jQuery.each value.beds, (bedKey, bedValue) ->
+        element = $('[data-bedlabel="' + bedValue.letter + '"]')
+        if element.exists()
+          if bedValue.available is false
+            deactivateElement(element)
   $("#choose-apt").fadeOut()
   $("#choose-bed").fadeIn()
   return
@@ -233,22 +244,27 @@ deliverAptBlueprint = (gender, floor, layout, apt) ->
       htmlOverlayOut += '<div class="map-overlay" data-bedlabel="f" style="position: absolute; top: 110px; left: 858px; width: 65px; height: 130px;"  alt="bed f" title="bed f" ><p>F</p></div>'
     when '4a'
       htmlImgOut = '<img src="/assets/4ba.png" alt="4 bedroom plan a">'
-      htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 49px; left: 16px; width: 26px; height: 50px;"  alt="bed a" title="bed a" ><p>A</p></div>'
-      htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 16px; left: 49px; width: 50px; height: 25px;"  alt="bed b" title="bed b" ><p>B</p></div>'
-      htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 29px; left: 111px; width: 26px; height: 50px;"  alt="bed c" title="bed c" ><p>C</p></div>'
-      htmlOverlayOut += '<div class="map-overlay" data-bedlabel="d" style="position: absolute; top: 29px; left: 165px; width: 26px; height: 50px;"  alt="bed d" title="bed d" ><p>D</p></div>'
+      htmlOverlayOut = '<div class="map-overlay" data-bedlabel="a" style="position: absolute; top: 149px; left: 61px; width: 74px; height: 154px;"  alt="bed a" title="bed a" ><p>A</p></div>'
+      htmlOverlayOut += '<div class="map-overlay" data-bedlabel="b" style="position: absolute; top: 45px; left: 162px; width: 154px; height: 74px;"  alt="bed b" title="bed b" ><p>B</p></div>'
+      htmlOverlayOut += '<div class="map-overlay" data-bedlabel="c" style="position: absolute; top: 91px; left: 359px; width: 74px; height: 154px;"  alt="bed c" title="bed c" ><p>C</p></div>'
+      htmlOverlayOut += '<div class="map-overlay" data-bedlabel="d" style="position: absolute; top: 91px; left: 521px; width: 74px; height: 154px;"  alt="bed d" title="bed d" ><p>D</p></div>'
   $("#bed-blueprint").html htmlImgOut
   $("#layout-overlays-bed").html htmlOverlayOut
   return
 
-deactivateElement = (selectorType, className, dataName, value) ->  #the selectorType should be id for element id, data for a data element, class for class name, etc
-  element
-  switch selectorType
-    when 'id'
-      element = $("#" + value)
-    when 'data'
-      element = $('.' + className + '[data-' + dataName + '="' + value + '"]')
+countAvailableBeds = (aptObj) ->
+  counter = 0
+  jQuery.each aptObj.beds, (key, value) ->
+    counter++ if value.available is true
+  counter
+    
+
+deactivateElement = (element) -> 
   element.addClass('deactivate')
+  element.children()[0].text = "unavailable"
   element.off "click", (event)
-  console.log "element retrieved: " + element
+  console.log "element deactivatd: " + element
   return
+
+$.fn.exists = ->
+  @length isnt 0
