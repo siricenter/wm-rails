@@ -52,7 +52,7 @@ mens.click ->
   return
 
 layoutOverlaysBldg.on "click", "div", (event) ->
-  $.get "/buildings/" + gender + "/apartments/" + semesterId, (data, status) -> #TODO: get the :semester_id from the url and replace the hardcoded semester
+  $.get "/buildings/" + gender + "/apartments/" + semesterId, (data, status) ->
     console.log JSON.stringify data
     return
   console.log @dataset.floornum
