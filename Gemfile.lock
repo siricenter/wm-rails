@@ -42,6 +42,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cliver (0.3.2)
     cloudinary (1.0.75)
       aws_cf_signer
       rest-client
@@ -59,6 +60,12 @@ GEM
       gherkin (~> 2.12)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.1)
+    cucumber-rails (1.4.1)
+      capybara (>= 1.1.2, < 3)
+      cucumber (>= 1.3.8, < 2)
+      mime-types (~> 1.16)
+      nokogiri (~> 1.5)
+      rails (>= 3, < 5)
     daemons (1.1.9)
     database_cleaner (1.3.0)
     debugger (1.6.8)
@@ -122,6 +129,11 @@ GEM
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    poltergeist (1.5.1)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
     rabl (0.11.0)
       activesupport (>= 2.3.14)
@@ -208,6 +220,7 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket-driver (0.3.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -220,7 +233,7 @@ DEPENDENCIES
   capybara (~> 2.4.1)
   cloudinary (~> 1.0.75)
   coffee-rails (~> 4.0.0)
-  cucumber
+  cucumber-rails (~> 1.4.1)
   database_cleaner (~> 1.3.0)
   debugger
   devise (~> 3.2.4)
@@ -232,6 +245,7 @@ DEPENDENCIES
   jquery-rails
   mandrill-api (~> 1.0.52)
   pg
+  poltergeist (~> 1.5.1)
   rabl (~> 0.11.0)
   rails (= 4.1.4)
   rails_12factor

@@ -43,6 +43,8 @@ group :development, :test do
 	gem 'rspec-rails', '~> 3.0.1'
 	gem 'faker', '~> 1.4.2'
 	gem 'database_cleaner', '~> 1.3.0'
+	gem 'cucumber-rails', '~> 1.4.1', require: false
+	gem 'poltergeist', '~> 1.5.1'
 end
 
 group :development do
@@ -51,7 +53,6 @@ group :development do
 end
 
 group :test do
-	gem 'cucumber'
 	gem 'capybara', '~> 2.4.1'
 end
 
