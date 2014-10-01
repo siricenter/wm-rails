@@ -25,6 +25,21 @@ body, html
 	width: -webkit-fit-content;
 }
 
+.navbar-landing
+{
+  box-shadow: none;
+  border: none;
+}
+
+.landing-brand
+{
+  margin-top: 10px;
+  img 
+  {
+    max-height: 130px;
+  }
+}
+
 #tagline
 {
 	width: 35%;
@@ -328,6 +343,11 @@ $marketing-marg: 21px;
 .thumbnail .image
 {
 	@extend .img-responsive;
+}
+
+.contract-info-text
+{
+  color: $theme-lgreen;
 }
 
 .thumbnails

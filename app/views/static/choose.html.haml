@@ -1,5 +1,5 @@
 .container-fluid
-  #choose-gender.row
+  #choose-gender.choose-section
     /= link_to new_contract_path(@mens), id: ['mens-link'] do
     #womens-link
       .choose-tag.choose-left
@@ -68,4 +68,4 @@
             %label{:for => "bedChoice"} Bed
             %input#bedChoice.form-control{:type => "text"}/
           %input#genderNum{:type => "hidden"}/
-          %button.btn.btn-primary{:type => "submit"} Proceed to Contract
+          %button.btn.btn-primary{:type => "submit"} Continue

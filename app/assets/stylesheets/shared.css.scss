@@ -108,6 +108,7 @@ img.choose
 .choose-section-title
 {
   @extend .col-md-12;
+  text-align: center;
   
   span {
     margin-left: 60px;
@@ -145,6 +146,11 @@ img.choose
   {
     background: rgba(0,0,0,0.55);
   }
+}
+
+.floor4 p, .floor3 p, .floor2 p, .floor1 p
+{
+  margin-right: -155px;
 }
 
 .blueprint

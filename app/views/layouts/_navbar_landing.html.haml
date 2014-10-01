@@ -1,0 +1,18 @@
+%nav.navbar.navbar-default.navbar-landing{:role => "navigation"}
+	.navbar-header
+		%button.navbar-toggle{type: :button, 'data-toggle' => :collapse, 'data-target' => '#collapse'}
+			%span.sr-only
+				Toggle Navigation
+			%span.icon-bar
+			%span.icon-bar
+			%span.icon-bar
+		= link_to root_path, class: ['navbar-brand', 'landing-brand'] do
+			= image_tag 'windsorlogohorizB.jpg'
+	.collapse.navbar-collapse#collapse
+		%ul.nav.navbar-nav.navbar-right
+			%li
+				= link_to 'Complex', complex_path
+			%li
+				= link_to 'Apartments', apartments_path
+			%li
+				= link_to 'Tenants', tenant_path
