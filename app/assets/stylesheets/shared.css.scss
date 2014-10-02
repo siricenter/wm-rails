@@ -117,6 +117,11 @@ img.choose
 	}
 }
 
+.skip-btn
+{
+	text-align: center;
+}
+
 .imgmap-container
 {
 	position: relative;
@@ -178,6 +183,10 @@ img.choose
 #conf-form
 {
 	margin-top: 50px;
+  label
+  {
+    font-size: 2em;
+  }
 }
 
 .arrow-up {
@@ -251,7 +260,7 @@ $marketing-marg: 21px;
 .availability-bar
 {
 	@extend .row;
-	background-color: #591616;
+	background-color: $theme-dblue;
 	max-height: $availability-height;
 	font-family: $font;
 	color: white;
