@@ -1,36 +1,38 @@
 /location
-.thumbnails
-	.row
-		%h1 Location
-	.row
-		%h2
-			101 East, 2nd South Rexburg, Idaho 83440
-	.row-fluid
-		.col-md-1
-		.map_canvas
-			%iframe(src="https://www.google.com/maps/embed?pb=!1m29!1m12!1m3!1d2878.660411638808!2d-111.78539166966645!3d43.82140285036765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m14!1i0!3e6!4m5!1s0x53540a5598ddef01%3A0xf5b3cb0224ed2708!2s125+E+2nd+S%2C+Rexburg%2C+ID+83440!3m2!1d43.8218411!2d-111.7800558!4m5!1s0x53540baaed05b31d%3A0xb36d87b9f4e809a1!2sBYU-Idaho+Viking+Stadium%2C+South+Center+Street%2C+Rexburg%2C+ID!3m2!1d43.820937!2d-111.786436!5e0!3m2!1sen!2sus!4v1410015786684" width="600" height="450" frameborder="0" style="border:0")
-		.col-md-1
-		.col-md-4
+.container-fluid
+	= render 'landing/availability_bar'
+	.thumbnails
+		.row
+			%h1 Location
+		.row
+			%h2
+				101 East, 2nd South Rexburg, Idaho 83440
+		.row-fluid
+			.col-md-1
+			.map_canvas
+				%iframe(src="https://www.google.com/maps/embed?pb=!1m29!1m12!1m3!1d2878.660411638808!2d-111.78539166966645!3d43.82140285036765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m14!1i0!3e6!4m5!1s0x53540a5598ddef01%3A0xf5b3cb0224ed2708!2s125+E+2nd+S%2C+Rexburg%2C+ID+83440!3m2!1d43.8218411!2d-111.7800558!4m5!1s0x53540baaed05b31d%3A0xb36d87b9f4e809a1!2sBYU-Idaho+Viking+Stadium%2C+South+Center+Street%2C+Rexburg%2C+ID!3m2!1d43.820937!2d-111.786436!5e0!3m2!1sen!2sus!4v1410015786684" width="600" height="450" frameborder="0" style="border:0")
+			.col-md-1
+			.col-md-4
 
-// amenities
-/.thumbnails
-/	.row
-/		%h2 Amenities
-/	.row-fluid
-/		= render partial: 'amenity', collection: @amenities
-/
-/
-// amenities
-/.thumbnails
-/	.row
-/		%h2 Apartments
-/	.row-fluid
-/		= render partial: 'apartment', collection: @apartments
-/
-/
-// gallery
-/.thumbnails
-/	.row
-/		%h2 Gallery
-/	.row-fluid
-/		= render partial: 'gallery', collection: @galleries
+	// amenities
+	/.thumbnails
+	/	.row
+	/		%h2 Amenities
+	/	.row-fluid
+	/		= render partial: 'amenity', collection: @amenities
+	/
+	/
+	// amenities
+	/.thumbnails
+	/	.row
+	/		%h2 Apartments
+	/	.row-fluid
+	/		= render partial: 'apartment', collection: @apartments
+	/
+	/
+	// gallery
+	/.thumbnails
+	/	.row
+	/		%h2 Gallery
+	/	.row-fluid
+	/		= render partial: 'gallery', collection: @galleries
