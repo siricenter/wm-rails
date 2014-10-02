@@ -1,7 +1,8 @@
 /This section of the site will help add value to the tenant experience by providing a place for them to 
 / interface with management and other tenants. It will include the following views/links:
 
-.container
+.container-fluid
+	= render 'landing/availability_bar'
 	.tiles
 		#local-hap-tile.tile
 			= link_to tenant_path, class: :"inner-tile" do
