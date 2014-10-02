@@ -99,6 +99,7 @@ layoutOverlaysBed.on "click", "div.available", (event) ->
   $("#genderNum").val(gender)
   $("#choose-bed").fadeOut()
   $("#choose-conf").fadeIn()
+  $("#conf-form").attr("action", "/contracts/new/#{gender}/#{semesterId}")
   return
 
 deliverBldgBlueprint = (gender) ->
