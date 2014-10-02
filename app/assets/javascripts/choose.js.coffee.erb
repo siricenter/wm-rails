@@ -4,6 +4,7 @@ pageURL = window.location.pathname  #grab the path from URL of the page
 params = pageURL.split('/')
 semesterId = params[2]  #get the last character from the path string
 gender = 0
+gender = params[3] if params.length >= 4
 floor = 0
 layout = 0
 aptNum = 0
