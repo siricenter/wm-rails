@@ -61,7 +61,7 @@ layoutOverlaysBldg.on "click", "div.available", (event) ->
     jQuery.each availData.apartments, (key, value) ->
       console.log value.title
       element = $('[data-aptnum="' + value.title + '"]')
-      console.log "element exits? " + element.exists()
+      console.log "element exists? " + element.exists()
       if element.exists()
         if countAvailableBeds(value) is 0
           deactivateElement(element)

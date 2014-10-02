@@ -18,7 +18,7 @@ ContractText.create!({contract: "contract text", living_standards: "living_stand
 Building.create!({name: 'Windsor Manor Men\'s', capacity: 206})
 Building.create!({name: 'Windsor Manor Women\'s', capacity: 344})
 
-Semester.create!({name: 'Winter 2015', deposit: 50, rent: 1445, start_date: Date.new(2015, 1, 1), end_date: Date.new(2015, 4, 12)})
+sem1 = Semester.create!({name: 'Winter 2015', deposit: 50, rent: 1445, start_date: Date.new(2015, 1, 1), end_date: Date.new(2015, 4, 12)})
 Semester.create!({name: 'Spring 2015', deposit: 50, rent: 1445, start_date: Date.new(2015, 4, 15), end_date: Date.new(2015, 7, 21)})
 Semester.create!({name: 'Fall 2015', deposit: 50, rent: 1445, start_date: Date.new(2015, 9, 10), end_date: Date.new(2015, 12, 13)})
 Semester.create!({name: 'Winter 2016', deposit: 50, rent: 1445, start_date: Date.new(2016, 1, 1), end_date: Date.new(2016, 1, 31)})
@@ -88,12 +88,109 @@ Bed.create!({letter: 'd', apartment_id: 7, created_at: Date.new(2014, 9, 18), up
 Bed.create!({letter: 'e', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
 Bed.create!({letter: 'f', apartment_id: 7, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
 # apt 402
-Bed.create!({letter: 'a', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
-Bed.create!({letter: 'b', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
-Bed.create!({letter: 'c', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
-Bed.create!({letter: 'd', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
-Bed.create!({letter: 'e', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
-Bed.create!({letter: 'f', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+bed1 = Bed.create!({letter: 'a', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+bed2 = Bed.create!({letter: 'b', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+bed3 = Bed.create!({letter: 'c', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+bed4 = Bed.create!({letter: 'd', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+bed5 = Bed.create!({letter: 'e', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+bed6 = Bed.create!({letter: 'f', apartment_id: 8, created_at: Date.new(2014, 9, 18), updated_at: Date.new(2014, 9, 18)})
+
+Contract.create!({semesters: [sem1], 
+  first_name: "Evan", 
+  last_name: "Caldwell", 
+  email: "cal98022@byui.edu", 
+  home_address_1: "123 fake st.", 
+  home_city: "Rexburg",
+  home_state: "ID",
+  home_zip: "83440",
+  parking_type: "Tandem Uncovered",
+  phone: "801-753-8260",
+  apartment_type: "6 Person",
+  eligibility_sig: "Evan Caldwell",
+  living_standards_sig: "Evan Caldwell",
+  parking_ack: "Evan Caldwell",
+  contract_agreement: "Evan Caldwell",
+  bed: bed1})
+Contract.create!({semesters: [sem1], 
+  first_name: "Evan", 
+  last_name: "Caldwell", 
+  email: "cal98022@byui.edu", 
+  home_address_1: "123 fake st.", 
+  home_city: "Rexburg",
+  home_state: "ID",
+  home_zip: "83440",
+  parking_type: "Tandem Uncovered",
+  phone: "801-753-8260",
+  apartment_type: "6 Person",
+  eligibility_sig: "Evan Caldwell",
+  living_standards_sig: "Evan Caldwell",
+  parking_ack: "Evan Caldwell",
+  contract_agreement: "Evan Caldwell",
+  bed: bed2})
+Contract.create!({semesters: [sem1], 
+  first_name: "Evan", 
+  last_name: "Caldwell", 
+  email: "cal98022@byui.edu", 
+  home_address_1: "123 fake st.", 
+  home_city: "Rexburg",
+  home_state: "ID",
+  home_zip: "83440",
+  parking_type: "Tandem Uncovered",
+  phone: "801-753-8260",
+  apartment_type: "6 Person",
+  eligibility_sig: "Evan Caldwell",
+  living_standards_sig: "Evan Caldwell",
+  parking_ack: "Evan Caldwell",
+  contract_agreement: "Evan Caldwell",
+  bed: bed3})
+Contract.create!({semesters: [sem1], 
+  first_name: "Evan", 
+  last_name: "Caldwell", 
+  email: "cal98022@byui.edu", 
+  home_address_1: "123 fake st.", 
+  home_city: "Rexburg",
+  home_state: "ID",
+  home_zip: "83440",
+  parking_type: "Tandem Uncovered",
+  phone: "801-753-8260",
+  apartment_type: "6 Person",
+  eligibility_sig: "Evan Caldwell",
+  living_standards_sig: "Evan Caldwell",
+  parking_ack: "Evan Caldwell",
+  contract_agreement: "Evan Caldwell",
+  bed: bed4})
+Contract.create!({semesters: [sem1], 
+  first_name: "Evan", 
+  last_name: "Caldwell", 
+  email: "cal98022@byui.edu", 
+  home_address_1: "123 fake st.", 
+  home_city: "Rexburg",
+  home_state: "ID",
+  home_zip: "83440",
+  parking_type: "Tandem Uncovered",
+  phone: "801-753-8260",
+  apartment_type: "6 Person",
+  eligibility_sig: "Evan Caldwell",
+  living_standards_sig: "Evan Caldwell",
+  parking_ack: "Evan Caldwell",
+  contract_agreement: "Evan Caldwell",
+  bed: bed5})
+Contract.create!({semesters: [sem1], 
+  first_name: "Evan", 
+  last_name: "Caldwell", 
+  email: "cal98022@byui.edu", 
+  home_address_1: "123 fake st.", 
+  home_city: "Rexburg",
+  home_state: "ID",
+  home_zip: "83440",
+  parking_type: "Tandem Uncovered",
+  phone: "801-753-8260",
+  apartment_type: "6 Person",
+  eligibility_sig: "Evan Caldwell",
+  living_standards_sig: "Evan Caldwell",
+  parking_ack: "Evan Caldwell",
+  contract_agreement: "Evan Caldwell",
+  bed: bed6})
 
 
 Admin.create({email: 'managers@windsormanor.net', password: 'Greatestplace1'})
