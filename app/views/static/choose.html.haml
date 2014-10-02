@@ -57,15 +57,15 @@
         %form#conf-form{:role => "form"}
           .form-group
             %label{:for => "genderChoice"} Women's or Men's
-            %input#genderChoice.form-control{:type => "text"}/
+            %input#genderChoice.form-control{type: "text", readonly: true}/
           .form-group
             %label{:for => "floorChoice"} Floor
-            %input#floorChoice.form-control{:type => "text"}/
+            %input#floorChoice.form-control{type: "text", readonly: true}/
           .form-group
             %label{:for => "aptChoice"} Apartment Number
-            %input#aptChoice.form-control{:type => "text"}/
+            %input#aptChoice.form-control{type: "text", readonly: true}/
           .form-group
             %label{:for => "bedChoice"} Bed
-            %input#bedChoice.form-control{:type => "text"}/
+            %input#bedChoice.form-control{type: "text", readonly: true}/
           %input#genderNum{:type => "hidden"}/
           %button.btn.btn-primary{:type => "submit"} Continue
