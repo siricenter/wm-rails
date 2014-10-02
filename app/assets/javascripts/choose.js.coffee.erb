@@ -2,7 +2,7 @@ $(".choose-section").hide()
 
 pageURL = window.location.pathname  #grab the path from URL of the page
 params = pageURL.split('/')
-semesterId = pageURL[2]  #get the last character from the path string
+semesterId = params[2]  #get the last character from the path string
 if params.length < 4
   gender = 0
 else
@@ -63,7 +63,7 @@ layoutOverlaysBldg.on "click", "div.available", (event) ->
     console.log JSON.stringify data
     availData = data
     jQuery.each availData.apartments, (key, value) ->
-      console.log value.title
+      console.log "value.title: " + value.title
       element = $('[data-aptnum="' + value.title + '"]')
       console.log "element exists? " + element.exists()
       if element.exists()
