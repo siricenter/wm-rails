@@ -56,16 +56,16 @@
       .col-md-4.col-md-offset-4
         %form#conf-form{:role => "form"}
           .form-group
-            %label{:for => "genderChoice"} Women's or Men's
-            %input#genderChoice.form-control{type: "text", readonly: true}/
+            = label_tag :gender, 'Women or Men'
+            = text_field_tag :gender, '', id: 'genderChoice', readonly: true, class: :'form-control'
           .form-group
-            %label{:for => "floorChoice"} Floor
-            %input#floorChoice.form-control{type: "text", readonly: true}/
+            = label_tag :floor
+            = text_field_tag :floor, '', id: 'floorChoice', readonly: true, class: :'form-control'
           .form-group
-            %label{:for => "aptChoice"} Apartment Number
-            %input#aptChoice.form-control{type: "text", readonly: true}/
+            = label_tag :apartment, :'Apartment Number'
+            = text_field_tag :apartment, '', id: 'aptChoice', readonly: true, class: :'form-control'
           .form-group
-            %label{:for => "bedChoice"} Bed
-            %input#bedChoice.form-control{type: "text", readonly: true}/
+            = label_tag :bed
+            = text_field_tag :bed, '', id: 'bedChoice', readonly: true, class: :'form-control'
           %input#genderNum{:type => "hidden"}/
-          %button.btn.btn-primary{:type => "submit"} Continue
+          = submit_tag 'Continue', class: [:'btn', :'btn-primary']
