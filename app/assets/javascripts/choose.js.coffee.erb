@@ -129,7 +129,7 @@ deliverBldgBlueprint = (gender) ->
 deliverFloorBlueprint = (gender, floor) ->
   htmlImgOut = ""
   htmlOverlayOut = ""
-  if gender is 1
+  if gender is 2
     switch floor
       when 1
         htmlImgOut = '<img src="<%= asset_path('w1f.png') %>">'
