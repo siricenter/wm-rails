@@ -106,6 +106,8 @@ class ContractsController < ApplicationController
 		end
 		@contract.building = @building
 		@contract.contract_text = @contract_text
+		apartment = Apartment.find_by_title(params[:contract][:number])
+		@contract.bed = apartment.beds.find_by_letter(params[:contract][:bed].downcase)
 
 
 		session[:temp_contract] = @contract.to_json
