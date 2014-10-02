@@ -1,8 +1,12 @@
 $(".choose-section").hide()
 
 pageURL = window.location.pathname  #grab the path from URL of the page
-semesterId = pageURL[pageURL.length - 1]  #get the last character from the path string
-gender = 0 #TODO: if the url includes the builidng ID then skip the gender selection
+params = pageURL.split('/')
+semesterId = pageURL[2]  #get the last character from the path string
+if params.length < 4
+  gender = 0
+else
+  gender = parseInt(params[3]) #TODO: if the url includes the builidng ID then skip the gender selection
 floor = 0
 layout = 0
 aptNum = 0
@@ -38,14 +42,14 @@ bkBtn.click ->
     return
 
 womens.click ->
-  gender = 1
+  gender = 2
   deliverBldgBlueprint(gender)
   $("#choose-gender").fadeOut()
   $("#choose-floor").fadeIn()
   return
 
 mens.click ->
-  gender = 2
+  gender = 1
   deliverBldgBlueprint(gender)
   $("#choose-gender").fadeOut()
   $("#choose-floor").fadeIn()
@@ -106,13 +110,13 @@ deliverBldgBlueprint = (gender) ->
   htmlImgOut = ""
   htmlOverlayOut = ""
   switch gender
-    when 1
+    when 2
       htmlImgOut = "<img src=\"<%= asset_path('women-exterior.png') %>\">"
       htmlOverlayOut = '<div class="map-overlay available floor4" data-floornum="4" style="position: absolute; top: 157px; left: 217px; width: 646px; height: 56px;"  alt="fourth floor" title="Fourth Floor" ><p>Floor 4</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor3" data-floornum="3" style="position: absolute; top: 213px; left: 65px; width: 798px; height: 54px;"  alt="third floor" title="Third Floor" ><p>Floor 3</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor2" data-floornum="2" style="position: absolute; top: 267px; left: 65px; width: 798px; height: 54px;"  alt="second floor" title="Second Floor" ><p>Floor 2</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor1" data-floornum="1" style="position: absolute; top: 321px; left: 65px; width: 798px; height: 56px;"  alt="first floor" title="First Floor" ><p>Floor 1</p></div>'
-    when 2
+    when 1
       htmlImgOut = '<img src="<%= asset_path('men-exterior.png') %>">'
       htmlOverlayOut = '<div class="map-overlay available floor4" data-floornum="4" style="position: absolute; top: 133px; left: 59px; width: 836px; height: 59px;"  alt="fourth floor" title="Fourth Floor" ><p>Floor 4</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor3" data-floornum="3" style="position: absolute; top: 192px; left: 59px; width: 836px; height: 59px;"  alt="third floor" title="Third Floor" ><p>Floor 3</p></div>'
