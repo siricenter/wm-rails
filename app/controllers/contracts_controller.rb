@@ -17,6 +17,7 @@ class ContractsController < ApplicationController
 
 	# GET /contracts/new
 	def new
+		setup_defaults
 		setup_form discounts_path, :post
 	end
 
@@ -272,5 +273,9 @@ class ContractsController < ApplicationController
 		@selected_semesters ||= []
 	end
   
-    
+	def setup_defaults
+		@apartment = params[:apartment] if params.has_key? :apartment
+		@bed = params[:bed] if params.has_key? :bed
+		@selected_semesters = [Semester.find(params[:semester_id])]
+	end
 end
