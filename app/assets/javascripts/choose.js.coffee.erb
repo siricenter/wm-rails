@@ -1,8 +1,9 @@
 $(".choose-section").hide()
 
 pageURL = window.location.pathname  #grab the path from URL of the page
-semesterId = pageURL[pageURL.length - 1]  #get the last character from the path string
-gender = 0 #TODO: if the url includes the builidng ID then skip the gender selection
+params = pageURL.split('/')
+semesterId = params[2]  #get the last character from the path string
+gender = 0
 floor = 0
 layout = 0
 aptNum = 0
@@ -14,6 +15,27 @@ bkBtn = $(".bk-btn")
 layoutOverlaysBldg = $("#layout-overlays-bldg")
 layoutOverlaysApt = $("#layout-overlays-apt")
 layoutOverlaysBed = $("#layout-overlays-bed")
+
+$(document).ready () ->
+  gender = params[3] if params.length >= 4
+  mens_function() if gender == '1'
+  womens_function() if gender == '2'
+  console.log("Gender: #{gender}")
+
+
+mens_function = () ->
+  gender = 2
+  deliverBldgBlueprint(gender)
+  $("#choose-gender").fadeOut()
+  $("#choose-floor").fadeIn()
+  return
+
+womens_function = () ->
+  gender = 1
+  deliverBldgBlueprint(gender)
+  $("#choose-gender").fadeOut()
+  $("#choose-floor").fadeIn()
+  return
 
 bkBtn.click ->
   if bed isnt 0
@@ -37,19 +59,9 @@ bkBtn.click ->
     gender = 0
     return
 
-womens.click ->
-  gender = 1
-  deliverBldgBlueprint(gender)
-  $("#choose-gender").fadeOut()
-  $("#choose-floor").fadeIn()
-  return
+womens.click womens_function
 
-mens.click ->
-  gender = 2
-  deliverBldgBlueprint(gender)
-  $("#choose-gender").fadeOut()
-  $("#choose-floor").fadeIn()
-  return
+mens.click mens_function
 
 layoutOverlaysBldg.on "click", "div.available", (event) ->
   console.log "floornum: " + @dataset.floornum
@@ -201,6 +213,7 @@ deliverFloorBlueprint = (gender, floor) ->
   $("#floor-blueprint").html htmlImgOut
   $("#layout-overlays-apt").html htmlOverlayOut
   return
+
 deliverAptBlueprint = (gender, floor, layout, apt) ->
   console.log('Chose a ' + gender + ' apartment on floor ' + floor + ' with ' + layout + ' layout and apartment #' + apt + '.')
   htmlImgOut = ""
