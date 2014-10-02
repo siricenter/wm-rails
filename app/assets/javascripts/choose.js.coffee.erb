@@ -1,12 +1,8 @@
 $(".choose-section").hide()
 
 pageURL = window.location.pathname  #grab the path from URL of the page
-params = pageURL.split('/')
-semesterId = params[2]  #get the last character from the path string
-if params.length < 4
-  gender = 0
-else
-  gender = parseInt(params[3]) #TODO: if the url includes the builidng ID then skip the gender selection
+semesterId = pageURL[pageURL.length - 1]  #get the last character from the path string
+gender = 0 #TODO: if the url includes the builidng ID then skip the gender selection
 floor = 0
 layout = 0
 aptNum = 0
@@ -42,14 +38,14 @@ bkBtn.click ->
     return
 
 womens.click ->
-  gender = 2
+  gender = 1
   deliverBldgBlueprint(gender)
   $("#choose-gender").fadeOut()
   $("#choose-floor").fadeIn()
   return
 
 mens.click ->
-  gender = 1
+  gender = 2
   deliverBldgBlueprint(gender)
   $("#choose-gender").fadeOut()
   $("#choose-floor").fadeIn()
@@ -63,7 +59,7 @@ layoutOverlaysBldg.on "click", "div.available", (event) ->
     console.log JSON.stringify data
     availData = data
     jQuery.each availData.apartments, (key, value) ->
-      console.log "value.title: " + value.title
+      console.log value.title
       element = $('[data-aptnum="' + value.title + '"]')
       console.log "element exists? " + element.exists()
       if element.exists()
@@ -92,7 +88,7 @@ layoutOverlaysBed.on "click", "div.available", (event) ->
   genVal = ""
   console.log @dataset.bedlabel
   bed = @dataset.bedlabel
-  if gender is 2
+  if gender is 1
     genVal = "Women's"
   else
     genVal = "Men's"
@@ -110,14 +106,14 @@ deliverBldgBlueprint = (gender) ->
   htmlImgOut = ""
   htmlOverlayOut = ""
   switch gender
-    when 2
+    when 1
       htmlImgOut = "<img src=\"<%= asset_path('women-exterior.png') %>\">"
       htmlOverlayOut = '<div class="map-overlay available floor4" data-floornum="4" style="position: absolute; top: 157px; left: 217px; width: 646px; height: 56px;"  alt="fourth floor" title="Fourth Floor" ><p>Floor 4</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor3" data-floornum="3" style="position: absolute; top: 213px; left: 65px; width: 798px; height: 54px;"  alt="third floor" title="Third Floor" ><p>Floor 3</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor2" data-floornum="2" style="position: absolute; top: 267px; left: 65px; width: 798px; height: 54px;"  alt="second floor" title="Second Floor" ><p>Floor 2</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor1" data-floornum="1" style="position: absolute; top: 321px; left: 65px; width: 798px; height: 56px;"  alt="first floor" title="First Floor" ><p>Floor 1</p></div>'
-    when 1
-      htmlImgOut = "<img src=\"<%= asset_path('men-exterior.png') %>\">"
+    when 2
+      htmlImgOut = '<img src="<%= asset_path('men-exterior.png') %>">'
       htmlOverlayOut = '<div class="map-overlay available floor4" data-floornum="4" style="position: absolute; top: 133px; left: 59px; width: 836px; height: 59px;"  alt="fourth floor" title="Fourth Floor" ><p>Floor 4</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor3" data-floornum="3" style="position: absolute; top: 192px; left: 59px; width: 836px; height: 59px;"  alt="third floor" title="Third Floor" ><p>Floor 3</p></div>'
       htmlOverlayOut += '<div class="map-overlay available floor2" data-floornum="2" style="position: absolute; top: 251px; left: 59px; width: 836px; height: 59px;"  alt="second floor" title="Second Floor" ><p>Floor 2</p></div>'
@@ -129,7 +125,7 @@ deliverBldgBlueprint = (gender) ->
 deliverFloorBlueprint = (gender, floor) ->
   htmlImgOut = ""
   htmlOverlayOut = ""
-  if gender is 2
+  if gender is 1
     switch floor
       when 1
         htmlImgOut = '<img src="<%= asset_path('w1f.png') %>">'
