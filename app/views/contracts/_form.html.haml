@@ -114,11 +114,11 @@
 			.col-md-2
 				= f.label :number, 'Apartment Number', class: [:'control-label']
 			.col-md-1
-				= f.text_field :number, placeholder: '304', class: :'form-control'
+				= f.text_field :number, placeholder: '304', class: :'form-control', value: @apartment, readonly: !@apartment.nil?
 			.col-md-2.text-right
 				= f.label :bed, class: [:'control-label']
 			.col-md-1
-				= f.text_field :bed, placeholder: '304', class: :'form-control'
+				= f.text_field :bed, placeholder: '304', class: :'form-control', value: @bed, readonly: !@bed.nil?
 
 	.row
 		%h2
