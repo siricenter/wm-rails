@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 	get '/makePayment', to: 'static#makePayment'
 
 	devise_for :admins
-	root 'static#landing'
+	root 'landing#landing'
 
 	get '/choose/:semester_id', to: 'static#choose', as: :choose_apartment
 	get '/complex', to: 'static#complex', as: :complex

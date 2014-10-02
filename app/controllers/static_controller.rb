@@ -1,13 +1,5 @@
 class StaticController < ApplicationController
-	layout 'landing', except: [:choose]
 	before_action :authenticate_admin!, only: ['dashboard', 'marketing_text']
-
-	def landing
-		@marketing_text = MarketingText.first
-		@marketing_text = @marketing_text.text if @marketing_text
-		@marketing_text ||= ""
-		@semesters = Semester.where('start_date >= ?', Date.today - 30).order(:start_date).limit(6)
-	end
 
 	def choose
 		buildings = Building.all
