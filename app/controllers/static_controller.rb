@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
 	before_action :authenticate_admin!, only: ['dashboard', 'marketing_text']
+	before_action :availability
 
 	def choose
 		buildings = Building.all
@@ -9,7 +10,7 @@ class StaticController < ApplicationController
 
 	def dashboard
 	end
-	
+
 	def marketing_text
 		@marketing_text = MarketingText.first
 		@marketing_text ||= MarketingText.new
@@ -27,13 +28,20 @@ class StaticController < ApplicationController
 	def amenities
 		@amenities = Amenity.all
 	end
-    
-  def galleries
-    @galleries = Gallery.all
+
+	def galleries
+		@galleries = Gallery.all
 	end    
-  
-  def apartments
-    @apartments = Apartment.all
+
+	def apartments
+		@apartments = Apartment.all
 	end    
-  
+
+	private
+	def availability
+		@marketing_text = MarketingText.first
+		@marketing_text = @marketing_text.text if @marketing_text
+		@marketing_text ||= ""
+		@semesters = Semester.where('start_date >= ?', Date.today - 30).order(:start_date).limit(6)
+	end
 end

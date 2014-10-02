@@ -1,0 +1,13 @@
+.availability-bar
+	%h3.check-text
+		Check Availability:
+	%p.col-xs-12.col-sm-2.col-md-3
+		= select_tag :semester, options_from_collection_for_select(@semesters, 'id', 'name'), class: ['form-control', 'col-md-2'], id: :'sem-select'
+	.col-xs-3.col-sm-2.col-md-1.col-md-offset-1.col-lg-offset-1.gender-icon#womens
+		= image_tag 'women_bg.png'
+		%p Women
+	.col-xs-3.col-sm-2.col-md-1.gender-icon#mens
+		= image_tag 'men_bg.png'
+		%p Men
+	.text-center.btn-blocky#available-answer
+		%p 
