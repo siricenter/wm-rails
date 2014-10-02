@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 	get '/invoice', to: 'contracts#discounts'
 
 	get '/contracts/new/:building_id/:semester_id', to: 'contracts#new', as: :new_contract
+	post '/contracts/new/:building_id/:semester_id', to: 'contracts#new'
 	get '/buildings/:id/availability/:semester_id', to: 'availability#available'
 
 	scope :admin do
