@@ -1,71 +1,71 @@
 .container-fluid
-  #choose-gender.choose-section
-    /= link_to new_contract_path(@mens), id: ['mens-link'] do
-    #womens-link
-      .choose-tag.choose-left
-        .arrow-left
-        %p Women's Housing
-      = image_tag 'studentsgrp.png', class: [:choose]
-    /= link_to new_contract_path(@womens), id: ['womens-link'] do 
-    #mens-link
-      .choose-tag.choose-right
-        %p Men's Housing
-        .arrow-right
-      = image_tag 'studentstbl.png', class: [:choose]
+	#choose-gender.choose-section
+		/= link_to new_contract_path(@mens), id: ['mens-link'] do
+		#womens-link
+			.choose-tag.choose-left
+				.arrow-left
+				%p Women's Housing
+			= image_tag 'studentsgrp.png', class: [:choose]
+		/= link_to new_contract_path(@womens), id: ['womens-link'] do 
+		#mens-link
+			.choose-tag.choose-right
+				%p Men's Housing
+				.arrow-right
+			= image_tag 'studentstbl.png', class: [:choose]
 
-  #choose-floor.choose-section
-    .choose-section-title
-      %h1 
-        %span.bk-btn.btn.btn-primary.btn-lg{:type => "button"}
-          /%span.glyphicon.glyphicon-chevron-left
-          Back
-        Choose your floor
-    #bldg-map.imgmap-container
-      #bldg-blueprint
-      #layout-overlays-bldg
-      
-  #choose-apt.choose-section
-    .choose-section-title
-      %h1
-        %span.bk-btn.btn.btn-primary.btn-lg{:type => "button"}
-          /%span.glyphicon.glyphicon-chevron-left
-          Back
-        Choose your apartment
-    #floor-map.imgmap-container
-      #floor-blueprint
-      #layout-overlays-apt
-      
-  #choose-bed.choose-section
-    .choose-section-title
-      %h1
-        %span.bk-btn.btn.btn-primary.btn-lg{:type => "button"}
-          /%span.glyphicon.glyphicon-chevron-left
-          Back
-        Choose your bed
-    #apt-map.imgmap-container
-      #bed-blueprint
-      #layout-overlays-bed
-      
-  #choose-conf.choose-section
-    .choose-section-title
-      %h1
-        %span.bk-btn.btn.btn-primary.btn{:type => "button"}
-          /%span.glyphicon.glyphicon-chevron-left
-          Back
-        Please confirm your choices
-      .col-md-4.col-md-offset-4
-        %form#conf-form{:role => "form"}
-          .form-group
-            = label_tag :gender, 'Women or Men'
-            = text_field_tag :gender, '', id: 'genderChoice', readonly: true, class: :'form-control'
-          .form-group
-            = label_tag :floor
-            = text_field_tag :floor, '', id: 'floorChoice', readonly: true, class: :'form-control'
-          .form-group
-            = label_tag :apartment, :'Apartment Number'
-            = text_field_tag :apartment, '', id: 'aptChoice', readonly: true, class: :'form-control'
-          .form-group
-            = label_tag :bed
-            = text_field_tag :bed, '', id: 'bedChoice', readonly: true, class: :'form-control'
-          %input#genderNum{:type => "hidden"}/
-          = submit_tag 'Continue', class: [:'btn', :'btn-primary']
+	#choose-floor.choose-section
+		.choose-section-title
+			%h1 
+				%span.bk-btn.btn.btn-primary.btn-lg{:type => "button"}
+					/%span.glyphicon.glyphicon-chevron-left
+					Back
+				Choose your floor
+		#bldg-map.imgmap-container
+			#bldg-blueprint
+			#layout-overlays-bldg
+			
+	#choose-apt.choose-section
+		.choose-section-title
+			%h1
+				%span.bk-btn.btn.btn-primary.btn-lg{:type => "button"}
+					/%span.glyphicon.glyphicon-chevron-left
+					Back
+				Choose your apartment
+		#floor-map.imgmap-container
+			#floor-blueprint
+			#layout-overlays-apt
+			
+	#choose-bed.choose-section
+		.choose-section-title
+			%h1
+				%span.bk-btn.btn.btn-primary.btn-lg{:type => "button"}
+					/%span.glyphicon.glyphicon-chevron-left
+					Back
+				Choose your bed
+		#apt-map.imgmap-container
+			#bed-blueprint
+			#layout-overlays-bed
+			
+	#choose-conf.choose-section
+		.choose-section-title
+			%h1
+				%span.bk-btn.btn.btn-primary.btn{:type => "button"}
+					/%span.glyphicon.glyphicon-chevron-left
+					Back
+				Please confirm your choices
+			.col-md-4.col-md-offset-4
+				%form#conf-form{:role => "form"}
+					.form-group
+						= label_tag :gender, 'Women or Men'
+						= text_field_tag :gender, '', id: 'genderChoice', readonly: true, class: :'form-control'
+					.form-group
+						= label_tag :floor
+						= text_field_tag :floor, '', id: 'floorChoice', readonly: true, class: :'form-control'
+					.form-group
+						= label_tag :apartment, :'Apartment Number'
+						= text_field_tag :apartment, '', id: 'aptChoice', readonly: true, class: :'form-control'
+					.form-group
+						= label_tag :bed
+						= text_field_tag :bed, '', id: 'bedChoice', readonly: true, class: :'form-control'
+					%input#genderNum{:type => "hidden"}/
+					= submit_tag 'Continue', class: [:'btn', :'btn-primary']
