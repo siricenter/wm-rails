@@ -26,7 +26,7 @@ available = (buildingId) ->
 	view.children().first().text('Available: Click Here to Book Now!')
 	view.addClass('success').hide().fadeIn()
 	view.on 'click', () ->
-		window.location = "/choose/#{semesterId}"
+		window.location = "/choose/#{semesterId}/#{buildingId}"
 
 unavailable = (data) ->
 	$('#available-answer').children().first().text('Sorry - We\'re booked!')

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 	devise_for :admins
 	root 'landing#landing'
 
+	get '/choose/:semester_id/:building_id', to: 'static#choose'
 	get '/choose/:semester_id', to: 'static#choose', as: :choose_apartment
 	get '/complex', to: 'static#complex', as: :complex
 
