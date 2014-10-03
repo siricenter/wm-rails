@@ -119,6 +119,201 @@
 				= f.label :bed, class: [:'control-label']
 			.col-md-1
 				= f.text_field :bed, placeholder: 'a', class: :'form-control', value: @bed, readonly: !@bed.nil?
+			.col-md-6.text-right
+				%br
+				=link_to "Help me choose my bed", choose_apartment_path(@selected_semesters.first), class: ['btn', "btn-primary", "btn-lg"]
+
+	.row
+		%h2
+			Special
+		.form-group
+			.col-md-2
+				= f.label :euro, 'Windsor Euro', class: ['control-label']
+				%span.text-danger
+					*
+			.col-md-4
+				= f.text_field :euro, placeholder: 'Your Euro Number', class: 'form-control'
+
+	.row
+		%strong.col-md-6.text-warning
+			*The Windsor Euro is a coupon that you can request on our website.
+				
+
+	.row
+		%h2
+			Legal
+		= hidden_field_tag 'contract[contract_text_id]', @contract.contract_text.id
+		.col-md-6{ class: (if @contract.errors[:contract_agreement].present? then 'has-error' else 'required' end) }
+			%h3
+				Contract Acceptance
+			%p
+				I have read and agree to the terms of 
+				= link_to 'the contract.', @contract.contract_text, target: '_blank'
+
+			%br
+
+			= f.text_field :contract_agreement, placeholder: 'Type Your Signature', class: 'form-control'
+		.col-md-6{ class: (if @contract.errors[:living_standards_sig].present? then 'has-error' else 'required' end) }
+			%h3
+				Living Standards
+			%p
+				= @contract.contract_text.living_standards
+				%br
+				%br
+			= f.text_field :living_standards_sig, placeholder: 'Type Your Signature', class: 'form-control'
+
+
+	.row
+		.col-md-6{ class: (if @contract.errors[:parking_ack].present? then 'has-error' else 'required' end) }
+			%h3
+				Parking Acknowledgement
+			%p
+				= @contract.contract_text.parking_acknowledgement
+			%br
+
+			= f.text_field :parking_ack, placeholder: 'Type Your Signature', class: 'form-control'
+
+		.col-md-6{ class: (if @contract.errors[:eligibility_sig].present? then 'has-error' else 'required' end) }
+			%h3
+				Eligibility
+			%p
+				= @contract.contract_text.eligibility
+				%br
+				%br
+
+				= f.text_field :eligibility_sig, placeholder: 'Type Your Signature', class: 'form-control'
+
+
+
+	.row
+		&nbsp;
+
+	.actions
+		- if @method == :post
+			= f.submit 'Check For Discounts!', class: ['btn', 'btn-primary', 'col-sm-2']
+		- else
+			= f.submit 'Save Changes', class: ['btn', 'btn-primary', 'col-sm-2']
+= form_for @contract, class: 'form-horizontal', role: 'form', url: @url, method: @method do |f|
+	- if @contract.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@contract.errors.count, "error")} prohibited this contract from being saved:"
+			%ul
+				- @contract.errors.full_messages.each do |msg|
+					%li= msg
+
+	%input{type: :hidden, value: @building.id, name: :building_id}
+	%p.contract-info-text
+		Please enter your basic information. You'll have a chance to check pricing and confirm before finalizing your contract.
+	%h2
+		Property Information
+
+	.row
+		.form-group
+			= label_tag :property, "Property", class: 'col-md-2'
+			.col-md-4
+				= hidden_field_tag 'contract[building_id]', @building.id
+				= text_field_tag :property, @building.name, readonly: true, class: ['form-control', 'col-md-6']
+			= label_tag :website, "Web Site", class: 'col-md-2'
+			.col-md-4
+				= text_field_tag :website, 'www.windsormanor.net', readonly: true, class: ['form-control', 'col-md-6']
+		.form-group
+			= label_tag :address, "Property Address", class: 'col-md-2'
+			.col-md-4
+				= text_field_tag :address, '125 East 2nd South Rexburg, ID 83440', readonly: true, class: 'form-control'
+		.form-group
+			= label_tag :address, "Property Phone", class: 'col-md-2'
+			.col-md-4
+				= text_field_tag :address, '(208) 709-7076', readonly: true, class: 'form-control'
+
+	.row
+		%h2
+			Your Information
+
+		.form-group
+			= f.label :first_name, 'First Name', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:first_name].present? then 'has-error' else 'required' end) }
+				= f.text_field :first_name, class: ['form-control', 'col-md-5']
+			= f.label :last_name, 'Last Name', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:last_name].present? then 'has-error' else 'required' end) }
+				= f.text_field :last_name, class: ['form-control', 'col-md-5']
+		.form-group
+			= f.label :school_email, 'BYU-I Email', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:email].present? then 'has-error' else 'required' end) }
+				= f.email_field :email, class: ['form-control', 'col-md-5']
+			= f.label :phone, 'Phone Number', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:phone].present? then 'has-error' else 'required' end) }
+				= f.text_field :phone, class: ['form-control', 'col-md-5']
+	.row
+		%h2
+			Your Home Address
+
+		.form-group
+			= f.label :home_address_1, 'Home Address 1', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:home_address_1].present? then 'has-error' else 'required' end) }
+				= f.text_field :home_address_1, class: ['form-control', 'col-md-5']
+
+		.form-group
+			= f.label :home_address_2, 'Home Address 2', class: ['col-md-2', 'control-label']
+			.col-md-4
+				= f.text_field :home_address_2, class: 'form-control'
+
+		.form-group
+			= f.label :home_city, 'Home City', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:home_city].present? then 'has-error' else 'required' end) }
+				= f.text_field :home_city, class: 'form-control'
+
+		.form-group
+			= f.label :home_state, 'Home State', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:home_state].present? then 'has-error' else 'required' end) }
+				= f.text_field :home_state, class: ['form-control', 'col-md-5']
+
+		.form-group
+			= f.label :home_zip, 'Home Zip', class: ['col-md-2', 'control-label']
+			.col-md-4{ class: (if @contract.errors[:home_zip].present? then 'has-error' else 'required' end) }
+				= f.text_field :home_zip, class: ['form-control', 'col-md-5']
+
+
+	.row
+		%h2
+			Your Apartment
+
+		.form-group
+			= f.label :semester, class: ['col-md-2', 'control-label']
+			.col-md-4
+				= render partial: "contracts/semester", collection: @semesters
+				
+				<!--= collection_check_boxes(:contract, :semester_id, Semester.all, :id, :name)-->
+				
+
+		.form-group
+			= f.label :apartment_type, class: ['col-md-2', 'control-label']
+			.col-md-4
+				= f.select :apartment_type, ['No Preference', '6 Person', '8 Person'], {}, class: 'form-control'
+
+		.form-group
+			.col-md-2
+				= f.label :parking_type, 'Parking Type', class: ['control-label']
+				%span.text-danger
+					*
+			.col-md-4
+				= f.select :parking_type, [['None - $0.00', 'None'], ['Tandem Uncovered - $35.00', 'Tandem Uncovered'], ['Tandem Covered - $75.00', 'Tandem Covered'], ['Private Uncovered - $50.00', 'Private Uncovered'], ['Private Covered - $100.00', 'Private Covered']], {}, class: 'form-control'
+	.row
+		%strong.col-md-6.text-warning
+			*Tandem parking is a two-car driveway you share with your roommate
+	.row
+		.form-group
+			.col-md-2
+				= f.label :preferences, 'Apartment Preferences (Optional)', class: [:'control-label']
+			.col-md-4
+				= f.text_area :preferences, placeholder: 'Ground floor, middle bedroom, etc.', class: [:'form-control']
+			.col-md-2
+				= f.label :number, 'Apartment Number', class: [:'control-label']
+			.col-md-1
+				= f.text_field :number, placeholder: '304', class: :'form-control', value: @apartment, readonly: !@apartment.nil?
+			.col-md-2.text-right
+				= f.label :bed, class: [:'control-label']
+			.col-md-1
+				= f.text_field :bed, placeholder: 'a', class: :'form-control', value: @bed, readonly: !@bed.nil?
 
 	.row
 		%h2

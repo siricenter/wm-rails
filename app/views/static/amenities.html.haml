@@ -1,4 +1,42 @@
 .thumbnails
+	= render 'landing/availability_bar'
+	.row
+		.col-md-5.col-md-offset-1
+			%h1 Location
+		.col-md-6
+			%h1 Amenities
+	.row
+		.col-md-5.col-md-offset-1
+			%h2
+				125 East, 2nd South Rexburg, Idaho 83440
+			.map-canvas
+				%iframe(src="https://www.google.com/maps/embed?pb=!1m27!1m12!1m3!1d1439.3415214066642!2d-111.78152565049382!3d43.8209334824405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m12!1i0!3e6!4m3!3m2!1d43.821388299999995!2d-111.78141839999999!4m5!1s0x53540a5598ddef01%3A0xf5b3cb0224ed2708!2s125+E+2nd+S%2C+Rexburg%2C+ID+83440!3m2!1d43.8218411!2d-111.7800558!5e0!3m2!1sen!2sus!4v1412315836160" width="600" height="450" frameborder="0" style="border:0")
+		.col-md-6
+			.row
+				.col-md-6
+					%ul
+						%li Super-fast fiber optic internet connection
+						%li 3-story parking garage
+						%li Central heating & AC
+						%li Kitchen islands with granite countertops
+						%li Exercise room
+						%li Covered & secured bike parking
+						%li Fire pit
+						%li 11 private study rooms
+						%li 3 music practice rooms with pianos 
+						%li Free utilities
+				.col-md-6
+					%ul
+						%li Elevators
+						%li Libraries
+						%li Balconies!
+						%li A private bathroom for every bedroom
+						%li Stacked washer & dryer in every apartment - Free laundry!
+						%li USB plugs by each bed (charges electronic devices)
+						%li 2 refrigerators
+						%li Dishwasher
+						%li Wall-mounted microwave
+						%li Copier & printer room
 	.row-fluid
 		= render partial: 'amenity', collection: @amenities
 
@@ -25,30 +63,3 @@
 		/= render layout: 'static/amenity', locals: {image: 'fire-pit.jpg'} do
 		/	%h3
 		/		Beautiful Fire Pit
-
-	.row-fluid
-		%h2 Amenities
-		.col-md-6
-			%ul
-				%li Super-fast fiber optic internet connection
-				%li 3-story parking garage
-				%li Central heating & AC
-				%li Kitchen islands with granite countertops
-				%li Exercise room
-				%li Covered & secured bike parking
-				%li Fire pit
-				%li 11 private study rooms
-				%li 3 music practice rooms with pianos 
-				%li Free utilities
-		.col-md-6
-			%ul
-				%li Elevators
-				%li Libraries
-				%li Balconies!
-				%li A private bathroom for every bedroom
-				%li Stacked washer & dryer in every apartment - Free laundry!
-				%li USB plugs by each bed (charges electronic devices)
-				%li 2 refrigerators
-				%li Dishwasher
-				%li Wall-mounted microwave
-				%li Copier & printer room

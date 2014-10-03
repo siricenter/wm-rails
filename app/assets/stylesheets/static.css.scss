@@ -256,9 +256,15 @@ body, html
   color: $theme-lgreen;
 }
 
+.contract-tbl-title
+{
+	@extend .col-md-12;
+	margin-top: 50px;
+}
+
 .thumbnails
 {
-	@extend .container;
+	@extend .container-fluid;
 	margin-top: 20px;
 }
 
@@ -275,9 +281,9 @@ body, html
 	text-decoration: none;
 }
 
-.map_canvas 
+.map-canvas 
 {
-	@extend .col-md-6;
+	
 }
 
 .buttonForm
