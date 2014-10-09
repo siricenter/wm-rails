@@ -1,10 +1,16 @@
 .container-fluid
 	= render 'landing/availability_bar'
+.container
 	.row
 		.col-md-12
 			%h4
-				Apartment Pricing:   The costs listed below are per bed in a shared bedroom. Each bedroom has a private bath and a large walk-in closet. Every apartment has an oversized washer and dryer. Contracts include all utilities plus high speed internet, free on-site exercise classes, convenient on-site fully equipped gym, free long term storage when you are off track, and an unbeatable location.
-.container
+				%span.strong
+					Apartment Pricing:   
+			The costs listed below are per bed in a shared bedroom. Each bedroom has a private bath and a large walk-in closet. Every apartment has an oversized washer and dryer. Contracts include all utilities plus high speed internet, free on-site exercise classes, convenient on-site fully equipped gym, free long term storage when you are off track, and an unbeatable location.
+	.row
+		.col-md-12
+			= link_to "http://thewindsormanor.com/voucher" do
+				%img{:src => "assets/weuro.jpg", :class => "weuro"}/
 	.row
 		.contract-tbl-title
 			%h3
@@ -226,7 +232,7 @@
 			%h3
 				Parking Pricing
 		.col-md-12
-			.table-responsive
+			.table-responsive.last-element-buffer
 				%table.table
 					%thead
 						%tr

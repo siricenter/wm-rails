@@ -109,21 +109,21 @@ body, html
 
 #complex-tile > a
 {
-	background: image-url('building_cropped.png') no-repeat;
+	background: image-url('complex_sm.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
 #apartments-tile > a
 {
-	background: image-url('large_apt.jpg') no-repeat;
+	background: image-url('apartments.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
 
 #contracts-tile > a
 {
-	background: image-url('amenities_example.jpg') no-repeat;
+	background: image-url('contracts_sm.jpg') no-repeat;
 	background-size: cover;
   background-position: center;
 }
@@ -262,6 +262,11 @@ body, html
 	margin-top: 50px;
 }
 
+.last-element-buffer
+{
+	margin-bottom: 150px;
+}
+
 .thumbnails
 {
 	@extend .container-fluid;
@@ -296,4 +301,10 @@ body, html
 		margin-top: 0;
 		width: 100%;
 	}
+}
+
+.weuro
+{
+	@extend .text-center;
+	margin-top: 50px;
 }

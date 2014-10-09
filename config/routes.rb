@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :amenities
-	get '/contracts_pricing', to: 'static#contracts_pricing', as: :contracts_pricng
+	get '/contracts_pricing', to: 'static#contracts_pricing', as: :pricing
 	get '/galleries', to: 'static#galleries', as: :gallery
 	get '/apartments', to: 'static#apartments', as: :apartments
 	get '/tenant', to: 'static#tenant', as: :tenant
