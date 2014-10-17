@@ -18,6 +18,24 @@ layoutOverlaysBldg = $("#layout-overlays-bldg")
 layoutOverlaysApt = $("#layout-overlays-apt")
 layoutOverlaysBed = $("#layout-overlays-bed")
 
+$.fn.exists = ->
+  @length isnt 0
+    
+deactivateElement = (element) -> 
+  element.removeClass('available')
+  element.addClass('deactivate')
+  element.children()[0].text = "unavailable"
+  element.off "click", (event)
+  console.log "element deactivatd: " + element
+  return
+
+countAvailableBeds = (aptObj) ->
+  counter = 0
+  jQuery.each aptObj.beds, (key, value) ->
+    counter++ if value.available is true
+    return
+  counter
+
 $(document).ready () ->
   gender = params[3] if params.length >= 4
   mens_function() if gender == '1'
@@ -277,21 +295,3 @@ if gender isnt 0
   return
 else
   $("#choose-gender").show()
-
-countAvailableBeds = (aptObj) ->
-  counter = 0
-  jQuery.each aptObj.beds, (key, value) ->
-    counter++ if value.available is true
-  counter
-    
-
-deactivateElement = (element) -> 
-  element.removeClass('available')
-  element.addClass('deactivate')
-  element.children()[0].text = "unavailable"
-  element.off "click", (event)
-  console.log "element deactivatd: " + element
-  return
-
-$.fn.exists = ->
-  @length isnt 0
