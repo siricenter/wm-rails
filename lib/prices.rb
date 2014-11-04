@@ -48,17 +48,21 @@ module Prices
 	end
 
 	def self.early_bird semesters, today
-		days = (semesters.first.start_date - today).to_i
+		days = (semesters.first.start_date - today - 0.25).to_i
+		array = nil
+
 		if days < 60
-			return Array.new(semesters.count, 0)
+			array = Array.new(semesters.count, 0)
 		else
-			early_bird_array = Array.new(semesters.count, 10)
-      if days >= 90
-				early_bird_array[0] = 40
-      else
-        early_bird_array[0] = 20
-      end
-			return early_bird_array
+			array = Array.new(semesters.count, 10)
+
+			if days >= 90
+				array[0] = 40
+			else
+				array[0] = 20
+			end
 		end
+
+		return array
 	end  
 end
