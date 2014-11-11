@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 	get '/tenant', to: 'static#tenant', as: :tenant
 	get 'maintenances/created', to: 'maintenances#created'
 	get '/buildings/:building_id/apartments/:semester_id', to: 'ajax#beds'
-
+	get '/semesters/new', to: 'semesters#new', as: :new_semester
+	get '/semesters', to: 'semesters#index', as: :semesters
+	post '/semesters', to: 'semesters#create', as: :create_semester
 	get '/renew', to: 'contracts#renew'
 	get '/userPayment', to: 'contracts#userPayment'
 	get '/makePayment', to: 'static#makePayment'
