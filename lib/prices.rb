@@ -48,7 +48,7 @@ module Prices
 	end
 
 	def self.early_bird semesters, today
-		days = (semesters.first.start_date - today - 0.25).to_i
+		days = (semesters.first.start_date)
 		array = nil
 
 		if days < 60
