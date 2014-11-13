@@ -21,6 +21,8 @@ class StudyReservationsController < ApplicationController
 
   # GET /study_reservations/1/edit
   def edit
+	  @study_reservation = StudyReservation.find(params[:id])
+	  @study_rooms = StudyRoom.all
   end
 
   # POST /study_reservations
