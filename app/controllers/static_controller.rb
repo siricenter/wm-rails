@@ -45,8 +45,9 @@ class StaticController < ApplicationController
 	def manager_email
 		@email = params[:email]
 		ContactManager.contact_email(@email).deliver
+		
 		respond_to do |format|
-		format.html { redirect_to tenant_path, notice: 'Email was successfully sent.' }
+		format.html { redirect_to contact_manager_path, notice: 'Email was successfully sent.' }
 		end
 	end
 
