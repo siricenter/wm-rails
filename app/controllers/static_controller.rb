@@ -9,6 +9,7 @@ class StaticController < ApplicationController
 	end
 
 	def dashboard
+		
 	end
 
 	def marketing_text
@@ -38,7 +39,6 @@ class StaticController < ApplicationController
 	end    
 	
 	def contact_manager
-		
 		
 	end
 	
