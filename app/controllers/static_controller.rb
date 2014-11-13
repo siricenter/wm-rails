@@ -36,6 +36,19 @@ class StaticController < ApplicationController
 	def apartments
 		@apartments = Apartment.all
 	end    
+	
+	def contact_manager
+		
+		
+	end
+	
+	def manager_email
+		@email = params[:email]
+		ContactManager.contact_email(@email).deliver
+		respond_to do |format|
+		format.html { redirect_to tenant_path, notice: 'Email was successfully sent.' }
+		end
+	end
 
 	private
 	def availability

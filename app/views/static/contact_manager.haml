@@ -1,0 +1,13 @@
+%h1
+="Message to Manager"
+.col-lg-1
+  = form_for(:email, url: contact_email_path, method: :post) do |f|
+    %h4
+    = f.label :name
+    = f.text_field :name
+    %h4
+    = f.label :message
+    = f.text_area :message, :autofocus => true
+    = f.submit "send"
+ 
+  

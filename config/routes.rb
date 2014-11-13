@@ -16,10 +16,10 @@ Rails.application.routes.draw do
 	get '/renew', to: 'contracts#renew'
 	get '/userPayment', to: 'contracts#userPayment'
 	get '/makePayment', to: 'static#makePayment'
-
 	devise_for :admins
 	root 'landing#landing'
-
+	get '/contact', to: 'static#contact_manager', as: :contact_manager
+	post '/contact', to: 'static#manager_email', as: :contact_email
 	get '/choose/:semester_id/:building_id', to: 'static#choose'
 	get '/choose/:semester_id', to: 'static#choose', as: :choose_apartment
 	get '/complex', to: 'static#complex', as: :complex

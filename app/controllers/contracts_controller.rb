@@ -11,12 +11,13 @@ class ContractsController < ApplicationController
 	# GET /contracts/1
 	# GET /contracts/1.json
 	def show
-		@semesters = @contract.semesters
+	@semesters = Semester.all #@contract.semesters
     set_prices(@contract.created_at.to_date)
 	end
 
 	# GET /contracts/new
 	def new
+		
 		setup_defaults
 		setup_form discounts_path, :post
 	end
@@ -42,6 +43,7 @@ class ContractsController < ApplicationController
 
 		respond_to do |format|
 			if @contract.save
+				ContractNotification.contract_saved(@contract).deliver
 				format.html { redirect_to :root, notice: 'Contract was successfully created.' }
 				format.json { render :show, status: :created, location: @contract }
 			else

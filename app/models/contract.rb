@@ -27,6 +27,8 @@
 #  number               :text
 #  contract_text_id     :integer
 #
+require 'time'
+
 class BedTakenValidator < ActiveModel::Validator
 	def validate(record)
 		record.semesters.each do |semester|
@@ -38,6 +40,7 @@ class BedTakenValidator < ActiveModel::Validator
 end
 
 class Contract < ActiveRecord::Base
+	
 	has_and_belongs_to_many :semesters, autosave: true
 	belongs_to :contract_text
 	belongs_to :building

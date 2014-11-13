@@ -28,8 +28,8 @@
 				/= link_to 'Make a Payment', '/userPayment', class: [:btn, :'btn-primary', :cntr]
 		.clearfix.visible-sm
 		#contact-mngr.tile
-			= link_to "mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20", class: :"inner-tile" do
+			= link_to contact_manager_path, class: :"inner-tile" do
 				.tile-overlay
 					%h3 Contact the manager
-				/= link_to 'Contact the Manager', "mailto:managers@windsormanor.net?Subject=Windsor%20Manor%20", class: [:btn, :'btn-primary', :cntr]
+				/= link_to 'Contact the Manager', /contact, class: [:btn, :'btn-primary', :cntr]
 			

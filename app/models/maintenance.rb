@@ -14,7 +14,6 @@
 
 class Maintenance < ActiveRecord::Base
     belongs_to :building
-    
     validates :tenant_name, presence: true
 	validates :tenant_phone, presence: true
 	validates :building_id, presence: true
