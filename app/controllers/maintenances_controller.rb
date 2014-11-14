@@ -33,6 +33,7 @@ class MaintenancesController < ApplicationController
 		@buildings = Building.all
 		respond_to do |format|
 			if @maintenance.save
+				MaintenanceMailer.maintenance_email(@maintenance)
 				if admin_signed_in?
 					format.html { redirect_to @maintenance, notice: 'Maintenance was successfully created.' }
 					format.json { render :show, status: :created, location: @maintenance}
