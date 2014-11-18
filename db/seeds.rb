@@ -266,4 +266,7 @@ end
 	  bed: bed})
 end
 
+
+StudyRoom.create(rm_type: "Music", rm_number: 102, floor: 1)
+
 Admin.create({email: 'managers@windsormanor.net', password: 'Greatestplace1'})

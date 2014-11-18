@@ -15,7 +15,10 @@
 %p
   %b Name:
   = @study_reservation.name
-
-= link_to 'Edit', edit_study_reservation_path(@study_reservation)
-\|
-= link_to 'Back', study_reservations_path
+%p
+  %b
+  = link_to 'Back', study_reservations_path
+- if admin_signed_in?
+  = link_to 'Edit', edit_study_reservation_path(@study_reservation)
+  \|
+  = link_to 'Back', study_reservations_path

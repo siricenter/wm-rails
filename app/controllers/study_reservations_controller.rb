@@ -13,6 +13,7 @@ class StudyReservationsController < ApplicationController
   def show
   end
 
+
   # GET /study_reservations/new
   def new
     @study_reservation = StudyReservation.new

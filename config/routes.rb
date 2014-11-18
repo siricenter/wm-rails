@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 	resources :happenings
 
 	resources :study_reservations
-
+	
 	get '/contracts/success'
 	get '/contracts/failure'
 	get '/amenities', to: 'static#amenities', as: :amenities
